@@ -1,7 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import './styles/navbar.css';
+@import './_styles/navbar.css';
+@import './_styles/villa.css';
+@import './_styles/locomotive-scroll.css';
 
 * {
   margin: 0;
@@ -23,22 +25,28 @@ body {
   --primary: #9b917e;
   --secondary: #f4d5ac;
   --background: #EAE6E0;
-  --primary_dark: #6E6259;
+  --primary_dark: #6e6259;
   --text_dark: #988F87;
   /* fonts */
-  --font-xs: 1.2rem;
-  --font-small: 1.4rem;
-  --font-normal: 1.6rem;
-  --font-large: 1.9rem;
-  --font-xl: 2.2rem;
-  --font-xl1: 2.4rem;
-  --font-xl2: 2.6rem;
-  --font-xl4: 2.8rem;
-  --font-xl5: 3rem;
-  --font-xl6: 3.2rem;
+  --font-xs: 1.2em;
+  --font-small: 1.4em;
+  --font-normal: 1.6em;
+  --font-normal2: 1.8em;
+  --font_para: 1.9rem;
+  --font-large: 2em;
+  --font-xl: 2.2em;
+  --font-xl1: 2.4em;
+  --font-xl2: 2.6em;
+  --font-xl4: 2.8em;
+  --font-xl5: 3.5em;
+  --font-xl6: 4em;
+ 
 }
 
-
+h1 {
+  margin: 0;
+  line-height: 0.9;
+}
 
 
 
