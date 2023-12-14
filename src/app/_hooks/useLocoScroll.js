@@ -1,13 +1,12 @@
 import { useEffect, useState, useRef } from "react";
 
-const useLocoScroll = ({ref, smooth}) => {
+const useLocoScroll = ({ref, ...otherProps}) => {
     const [locomotiveScrollRef, setRef] = useState(null);
     useEffect(() => {
         if(ref?.current) {
             import("locomotive-scroll").then(locomotiveModule => {
                 const scroll = new locomotiveModule.default({
                     el: ref.current,
-                    smooth,
                     lerp: 0.05,
                     smooth: true,
                     smartphone: {
@@ -15,7 +14,8 @@ const useLocoScroll = ({ref, smooth}) => {
                     },
                     tablet: {
                         smooth: true,
-                    }
+                    },
+                    ...otherProps
                 
                 })
                 setRef(scroll)

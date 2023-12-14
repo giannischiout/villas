@@ -36,17 +36,16 @@ const Page = () => {
     const [locomotiveRef] = useLocoScroll({
         ref: scrollRef,
         smooth: true,
-        class: 'is-reveal'
     })
    
     return (
-        <div ref={scrollRef} id="loco_container"  className='villa_container' data-scroll-container >
-            <div className="villa_top" data-scroll-section>
+        <div    className='villa_container' >
+            <div className="villa_top" >
                 <div className="v_sidebar">
                     <div className='v_sidebar_top'>
                         <p>Jira</p>
                     </div>
-                    <div className='v_sidebar_img_container'>
+                    <div className='v_sidebar_img_container' >
                         <Image
                             src="/1.webp"
                             fill={true}
@@ -60,8 +59,10 @@ const Page = () => {
                             <h2>AN OASIS OF PIECE AND QUIET</h2>
                         </div>
                     </div>
-                        <ImageScroll  />
-                    <div className="v_main_content" data-scroll data-scroll-speed="0.4">
+                    <div className='v_main_image_container'>
+                    <ImageScroll  />
+                    </div>
+                    <div className="v_main_content" >
                         <h3  >Barefoot luxury, elevated.</h3>
                         <p  >
                             Located on our top floor with unparalleled panoramic views, The Angelina Suite
@@ -77,7 +78,7 @@ const Page = () => {
                     </div>
                 </div>
             </div>
-            <div className='h-screen w-full bg-red-200' data-scroll-section></div>
+            <div className='h-screen w-full bg-red-200' ></div>
         </div>
     )
 }
@@ -90,31 +91,29 @@ const ImageScroll = () => {
     
     const { scrollYProgress } = useScroll();
     const [scope, animate] = useAnimate();
-
+    const [fired, setFired] = useState(false);
 
     useEffect(() => {
+
+       
         scrollYProgress.on("change", (v) => {
-            // const initialInset = { top: 5, right: 10, bottom: 0, left: 12 };
-            // let scroll = v * 3.3;
-            // const newInset = `inset(${initialInset.top - (initialInset.top * scroll)}% ${initialInset.right - (initialInset.right * scroll)}% ${initialInset.bottom - (initialInset.bottom * scroll)}% ${initialInset.left - (initialInset.left * scroll)}%)`;
-            // animate(scope.current, {
-            //     clipPath: newInset
-            // }, {
-            //     ease: "linear",
-            //     duration: 0.5
-            // })
-            if(v < 0.1) 
+            console.log(v)
+            const initialInset = { top: 2, right: 10, bottom: 0, left: 12 };
+            let scroll = v * 6;
+            const newInset = `inset(${initialInset.top - (initialInset.top * scroll)}% ${initialInset.right - (initialInset.right * scroll)}% ${initialInset.bottom - (initialInset.bottom * scroll)}% ${initialInset.left - (initialInset.left * scroll)}%)`;
             animate(scope.current, {
-                clipaPath: ["inset(3% 10% 0% 12%)", "inset(0% 0% 0% 0%)"]
+                clipPath: newInset
             }, {
                 ease: "linear",
-                duration: 0.5
+                duration: 0.4
             })
+
+         
         })
     }, [scrollYProgress])
 
     return (
-        <div ref={scope} className='v_main_image_container'>
+        <div  ref={scope} className='v_main_image_container_inner' >
             <Image
                 src="/1.webp"
                 fill={true}

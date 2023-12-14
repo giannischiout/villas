@@ -37,8 +37,8 @@
 }
 
 .v_sidebar_img_container {
-    width: 300px;
-    height: 250px;
+    width: 320px;
+    height: 320px;
     position: relative;
 }
 
@@ -76,10 +76,15 @@
 .v_main_image_container {
     height: 90vh;
     width: 100%;
+   
+}
+.v_main_image_container_inner {
+    height: 100%;
+    width: 100%;
     position: relative;
     overflow: hidden;
     position: relative;
-    clip-path: inset(3% 10% 0% 12%);
+    clip-path: inset(0% 10% 0% 12%);
 }
 
 .v_main_image img {
