@@ -37,10 +37,32 @@ const Page = () => {
         ref: scrollRef,
         smooth: true,
     })
+
+    
+    const { scrollYProgress } = useScroll();
+    const [scope, animate] = useAnimate();
+
+    useEffect(() => {
+        scrollYProgress.on("change", (v) => {
+            console.log(v)
+            const initialInset = { top: 2, right: 10, bottom: 0, left: 12 };
+            let scroll = v * 6;
+            const newInset = `inset(${initialInset.top - (initialInset.top * scroll)}% ${initialInset.right - (initialInset.right * scroll)}% ${initialInset.bottom - (initialInset.bottom * scroll)}% ${initialInset.left - (initialInset.left * scroll)}%)`;
+            animate('.v_main_image_container_inner', {
+                clipPath: newInset
+            }, {
+                ease: "linear",
+                duration: 0.4
+            })
+
+         
+        })
+    }, [scrollYProgress])
+
    
     return (
         <div    className='villa_container' >
-            <div className="villa_top" >
+            <div  ref={scope} className="villa_top" >
                 <div className="v_sidebar">
                     <div className='v_sidebar_top'>
                         <p>Jira</p>
@@ -52,7 +74,7 @@ const Page = () => {
                         />
                     </div>
                 </div>
-                <div className="v_main">
+                <div  className="v_main">
                     <div className='v_main_top'>
                         <div>
                             <h1>Location</h1>
@@ -89,31 +111,9 @@ const Page = () => {
 
 const ImageScroll = () => {
     
-    const { scrollYProgress } = useScroll();
-    const [scope, animate] = useAnimate();
-    const [fired, setFired] = useState(false);
-
-    useEffect(() => {
-
-       
-        scrollYProgress.on("change", (v) => {
-            console.log(v)
-            const initialInset = { top: 2, right: 10, bottom: 0, left: 12 };
-            let scroll = v * 6;
-            const newInset = `inset(${initialInset.top - (initialInset.top * scroll)}% ${initialInset.right - (initialInset.right * scroll)}% ${initialInset.bottom - (initialInset.bottom * scroll)}% ${initialInset.left - (initialInset.left * scroll)}%)`;
-            animate(scope.current, {
-                clipPath: newInset
-            }, {
-                ease: "linear",
-                duration: 0.4
-            })
-
-         
-        })
-    }, [scrollYProgress])
 
     return (
-        <div  ref={scope} className='v_main_image_container_inner' >
+        <div  className='v_main_image_container_inner' >
             <Image
                 src="/1.webp"
                 fill={true}
