@@ -4,22 +4,13 @@ import { useEffect, useState, useRef } from 'react';
 import { useAnimate, useScroll, useTransform, useSpring, animate } from 'framer-motion';
 import useLocoScroll from '@/app/_hooks/useLocoScroll';
 import Lenis from '@studio-freight/lenis'
-import { VillaFeatures, VillaDetails } from './VillaDetails';
+import { VillaFeatures, VillaDetails, VillaFacilities } from './VillaDetails';
 
 
 
 
 
 const Villa = () => {
-    const scrollRef = useRef(null)
-    const [locomotiveRef] = useLocoScroll({
-        ref: scrollRef,
-        smooth: true,
-    })
-
-
-   
-
     const { scrollYProgress } = useScroll();
     const [scope, animate] = useAnimate();
     useEffect(() => {
@@ -39,8 +30,8 @@ const Villa = () => {
 
 
     return (
-        <div  className='villa_container' 	 >
-            <div ref={scope} className="villa_top" >
+        <div  className='villa_container' data-scroll-container	 >
+            <div ref={scope} className="villa_top" data-scroll data-scroll-speed={'1'} >
                 <div className="v_sidebar">
                     <div className='v_sidebar_top'>
                         <p>Jira</p>
@@ -76,6 +67,7 @@ const Villa = () => {
                 </div>
             </div>
                 <ScrollImageSticky />
+                <VillaFacilities />
             <div className='h-screen w-full bg-red-200' ></div>
         </div>
     )
@@ -85,17 +77,12 @@ const Villa = () => {
 
 const ScrollImageSticky = () => {
     const ref = useRef(null);
-    const [clipPercentage, setClipPercentage] = useState(0);
     const { scrollYProgress } = useScroll({
       target: ref,
       offset: ["end end", "start start"]
     });
 
-    const smoothProgress = useSpring(scrollYProgress, { mass: 0.1 })
-    const y = useTransform(smoothProgress, value => {
-        return value;
-      });
-      
+    
     
     useEffect(() => {
         scrollYProgress.on("change", (v) => {
