@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import { useAnimate, useTransform, useScroll, motion } from "framer-motion"
+import { useInView } from "react-intersection-observer"
 
 const facilities = [
     'Safety Deposit Box',
@@ -91,39 +92,42 @@ export function VillaFeatures() {
 
 export function VillaFacilities() {
     const targetRef = useRef(null);
+    const [ref, inView] = useInView();
     const [scope, animate]= useAnimate();
     const { scrollYProgress } = useScroll({
         target: targetRef,
-        offset: ["start end", "end end"]
+        offset: ["start end", "center"]
     });
 
-    const y = useTransform(scrollYProgress, [0, 0.1], ['0', '10%'])
 
-    
+    // useEffect(() => {
+    //     scrollYProgress.on("change", (v) => {
 
-    useEffect(() => {
-        
-        
-        scrollYProgress.on("change", (v) => {
-            console.log(v)
-            animate(scope.current, {
-                y: -(v * 300)
-            })
-        })
-    }, [scrollYProgress])
+    //         animate('.v_facilites_views', {
+    //             transform: `translateY(${v * 300}px))`
+    //         },
+    //             {
+    //                 ease: "easeInOut",
+    //                 duration: 1
+    //         })
+    //         // animate('.v_facilites_header', {
+    //         //     tranlateY: -(v * 300)
+    //         // })
+    //         // animate('.v_facilites_content', {
+    //         //     tranlateY: -(v * 300)
+    //         // })
+          
+    //     })
+    // }, [scrollYProgress])
 
     return (
-        <div ref={targetRef} className="parallax_wrapper"  >
+        <div ref={ref} className="parallax_wrapper"  >
             <div ref={scope} className="v_facilites_wrapper" >
-                <div className="v_facilites_views">
-                    <div></div>
-                </div>
+                <FacilitesViews />
                 <div className="v_facilites_header">
                     <h6>ROOM FACILITIES</h6>
                 </div>
-                <div 
-            
-                className="v_facilites_content">
+                <div className="v_facilites_content">
                     <ul>
                         {facilities.map((item, index) => {
                             return (
@@ -149,3 +153,17 @@ export function VillaFacilities() {
 
 
 
+const FacilitesViews = () => {
+    return (
+        <div className="v_facilites_views">
+            <div>
+                <div></div>
+                <div></div>
+            </div>
+        {/* <div>
+            <div></div>
+            <div></div>
+        </div> */}
+    </div>
+    )
+}

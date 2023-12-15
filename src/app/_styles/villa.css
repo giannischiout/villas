@@ -171,8 +171,8 @@
     display: grid;
     grid-template-rows: 50vh 30vh 1fr;
     grid-template-columns: 1fr 1fr;
-    transform: translateX(-600);
-    margin-top: -200px;
+    transform: translateY(-100px);
+    /* margin-top: -200px; */
 }   
 
 .v_facilites_wrapper > div {
@@ -190,7 +190,7 @@
     justify-content: center;
 
 }
-.v_facilites_views div {
+.v_facilites_views > div {
     width: 80%;
     height: 100%;
     background-color: var(--background);
@@ -198,9 +198,9 @@
 }
 
 .v_facilites_header {
-    grid-column: 1 / span 1;
+    grid-column: 1 / span 2;
     grid-row: 2 / span 1;
-    padding-left: 5%;
+  
     justify-content: flex-end;
    
 }
@@ -247,6 +247,7 @@
 
 
 .v_facilites_header h6 {
+    margin-left: 15%;
     font-size: calc(5rem + 3vw);
     color: var(--primary);
 }

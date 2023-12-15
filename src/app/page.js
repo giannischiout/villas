@@ -1,8 +1,7 @@
 import Navbar from './_components/Navbar'
-
+import ImageSlider from './_components/ImageSlider'
 export default function Home() {
   return (
-      <div className='container'>
-      </div>
+        <ImageSlider />
   )
 }
