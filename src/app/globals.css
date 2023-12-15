@@ -5,6 +5,7 @@
 @import './_styles/villa.css';
 @import './_styles/lenis.css';
 @import './_styles/image_slider.css';
+@import './_styles/sticky_show.css';
 
 * {
   margin: 0;

@@ -1,0 +1,22 @@
+.sticky_show_container {
+    height: 200vh;
+    width: 100%;  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.sticky_show_grid {
+    width: 90%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 10px;
+}
+
+.sticky_show_inner div {
+    background-color: bisque;
+    padding: 10px;
+}

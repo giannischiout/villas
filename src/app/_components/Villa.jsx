@@ -4,6 +4,9 @@ import { useEffect, useState, useRef } from 'react';
 import { useAnimate, useScroll, useTransform, useSpring, animate } from 'framer-motion';
 import Lenis from '@studio-freight/lenis'
 import { VillaFeatures, VillaDetails, VillaFacilities } from './VillaDetails';
+import ImageSlider from './ImageSlider';
+import { Stick } from 'next/font/google';
+import StickyShow from './StickyShow';
 
 
 
@@ -67,7 +70,9 @@ const Villa = () => {
             </div>
                 <ScrollImageSticky />
                 <VillaFacilities />
-            <div className='h-screen w-full bg-red-200' ></div>
+                <ImageSlider />
+                <StickyShow />
+            {/* <div className='h-screen w-full bg-red-200' ></div> */}
         </div>
     )
 }
