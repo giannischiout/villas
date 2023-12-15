@@ -1,7 +1,7 @@
 'use client'
 import { Menu } from 'lucide-react';
 import { useEffect, useState } from 'react';
-
+import { useScroll, useTransform, motion, animate, stagger } from 'framer-motion';
 import { RiFacebookFill } from "react-icons/ri";
 import { RiInstagramFill } from "react-icons/ri";
 import { BsFillEnvelopeFill } from "react-icons/bs";
@@ -12,7 +12,6 @@ const Navbar = () => {
     return (
         <div className="navbar_container">
             <div className="navbar_left">
-               
                     < Burger />
                 <div>
                     <h1 className="tagline">Ionian Villas</h1>
@@ -106,17 +105,33 @@ const Burger = () => {
 }
 
 const Icons = () => {
+
+   const {scrollYProgress} = useScroll();
+   const [direction, setDirection] = useState('down')
+    const [scope, animate ] = useAnimate();
+    let y = useTransform(scrollYProgress, [0, 0.1], [0, -100, ], {stiffness: 100, damping: 100 }, stagger(5))
+//    useEffect(() => {
+
+//         const handleScroll = (e) => {
+
+//         }
+//         const unbind =    scrollYProgress.on("change", handleScroll)
+//         return () => {
+//             unbind()
+//         }
+
+//    }, [scrollYProgress])
     return (
-        <div className="icons">
-            <div className="icon">
+        <div className="icons" >
+            <motion.div className="icon" style={{y}}>
                 <RiFacebookFill />
-            </div>
-            <div className="icon">
+            </motion.div>
+            <motion.div className="icon" style={{y}}>
                 <RiInstagramFill />
-            </div>
-            <div className="icon">
+            </motion.div>
+            <motion.div className="icon" style={{y}}>
                 <BsFillEnvelopeFill />
-            </div>
+            </motion.div>
         </div>
     )
 }
@@ -126,17 +141,20 @@ export const BookNow = () => {
     const [scope, animate] = useAnimate()
 
     const handlMouseOver = async () => {
-        animate('.book_now_inner', {
-            width: ['100%']
-        }, {
-            ease: 'linear',
-            duration: 1
-        })
-        animate('#book_icon', {
-            color: 'white'
-        }, {
-            ease: 'easeInOut',
-        })
+        const bundleAnimations = async =() => {
+            animate('.book_now_inner', {
+                width: '100%'
+            }, {
+                ease: 'linear',
+                duration: 0.5
+            })
+            animate('#book_icon', {
+                color: 'white'
+            }, {
+                ease: 'easeInOut',
+            })
+        }
+       
     }
 
     const handleMouseLeave = async () => {

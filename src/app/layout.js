@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={ qautrocento.className}>
         <SmoothScrolling>
-              {/* <Navbar /> */}
+              <Navbar />
         {children}
         </SmoothScrolling>
         </body>

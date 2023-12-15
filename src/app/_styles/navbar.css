@@ -108,13 +108,13 @@
 
 /* ICONS */
 .book_now {
-    border: 1px solid var(--primary_dark);
+    border: 2px solid var(--primary_dark);
     width: 120px;
     cursor: pointer;
     display: flex;
     border-radius: 60px;
     font-size: var(--font-normal);
-    z-index: 2;
+    /* z-index: 2; */
     position: relative;
 }
 .book_now button {
@@ -142,6 +142,8 @@
     color: white;
     transform: translateY(-50%);
     touch-action: none;
+    z-index: 49;
+    font-size: 1.4rem;
     /* transform: translate( -30%, -50%); */
 }
 
@@ -156,15 +158,16 @@
     position: absolute;
     right: 10px;
     top: 50%;
+    font-size: 1rem;
+    font-weight: 700;
     color: var(--primary_dark);
     transform: translateY(-50%);
-    font-size: var(--font-xs);
 }
 
 
 .icons {
     display: grid;
-    min-width: 120px;
+    min-width: 140px;
     gap: 5px;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 1fr;
@@ -173,13 +176,13 @@
 }
 
 .icon {
-    border: 1px outset var(--primary_dark);
+    border: 1px solid var(--primary_dark);
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    width: 35px;
-    height: 35px;
+    width: 40px;
+    height: 40px;
 }
 
 
