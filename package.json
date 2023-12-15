@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@studio-freight/lenis": "^1.0.29",
+    "@studio-freight/react-lenis": "^0.0.38",
     "framer-motion": "^10.16.16",
     "locomotive-scroll": "^4.1.4",
     "lucide-react": "^0.294.0",

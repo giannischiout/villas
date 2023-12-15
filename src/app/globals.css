@@ -4,6 +4,7 @@
 @import './_styles/navbar.css';
 @import './_styles/villa.css';
 @import './_styles/locomotive-scroll.css';
+@import './_styles/lenis.css';
 
 * {
   margin: 0;
@@ -26,6 +27,7 @@ body {
   --secondary: #f4d5ac;
   --background: #EAE6E0;
   --primary_dark: #6e6259;
+  --primary_darker: #594e46;
   --text_dark: #988F87;
   /* fonts */
   --font-xs: 1.2em;

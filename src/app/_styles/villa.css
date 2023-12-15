@@ -74,7 +74,7 @@
 
 
 .v_main_image_container {
-    height: 90vh;
+    height: 80vh;
     width: 100%;
    
 }
@@ -94,8 +94,11 @@
 }
 
 .v_main_content {
-    padding: 3%;
+    padding-left: 3.2%;
+    padding-top: 3.2%;
+    padding-bottom: 12%;
     color: var(--primary_dark);
+    font-size: var(--font_para);
 }
 
 .v_main_content h3 {
@@ -106,46 +109,47 @@
 
 .v_main_content p {
     max-width: 550px;
-    font-size: var(--font_para);
+    line-height: 2;
+}
+.v_main_content li {
     line-height: 2;
 }
 .v_main_content h4 {
     font-size: 3rem;
-    margin: 30px 0;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+.v_main_content h5 {
+    font-size: 3rem;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+.v_details {
+    font-weight: 700;
+    color: var(--primary_darker);
 }
 
 
-/* .villa_container  {
-    height: 150vh;
+.v_scroll_image {
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    height: 160vh;
+    margin-top: -200px;
+    z-index: -1;
+    
 }
 
-.villa_header {
-    background-color: antiquewhite;
-    height: 30%;
+.v_scroll_image div {
     width: 100%;
-}
-.villa_inner {
-    overflow: hidden;
-    height: 70%;
-    width: 100%;
+    height: 100vh;
+    position: relative;
+    position: relative;
+    position: sticky;
+    top: 0;
+    clip-path: inset(15%);
+}   
 
-}
-
-
-.image_container  {
-    position: relative; 
-    height: 100%;
-    width: 100%;
-    clip-path: inset(29% 20% 32% 20%);
-}
-.image_container img  {
+.v_scroll_image div img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
- */
