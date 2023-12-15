@@ -2,7 +2,6 @@
 import Image from 'next/image';
 import { useEffect, useState, useRef } from 'react';
 import { useAnimate, useScroll, useTransform, useSpring, animate } from 'framer-motion';
-import useLocoScroll from '@/app/_hooks/useLocoScroll';
 import Lenis from '@studio-freight/lenis'
 import { VillaFeatures, VillaDetails, VillaFacilities } from './VillaDetails';
 
@@ -30,8 +29,8 @@ const Villa = () => {
 
 
     return (
-        <div  className='villa_container' data-scroll-container	 >
-            <div ref={scope} className="villa_top" data-scroll data-scroll-speed={'1'} >
+        <div  className='villa_container' 	 >
+            <div ref={scope} className="villa_top" >
                 <div className="v_sidebar">
                     <div className='v_sidebar_top'>
                         <p>Jira</p>
