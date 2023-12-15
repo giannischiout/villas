@@ -9,16 +9,20 @@ import { BsArrowUpRight } from "react-icons/bs";
 import { useAnimate } from 'framer-motion';
 
 const Navbar = () => {
+    const {scrollYProgress} = useScroll();
+    let y = useTransform(scrollYProgress, [0, 0.1], [0, -100, ], {stiffness: 100, damping: 100 }, stagger(5))
     return (
         <div className="navbar_container">
             <div className="navbar_left">
-                    < Burger />
                 <div>
+                < Burger />
+                </div>
+                <motion.div style={{y}}>
                     <h1 className="tagline">Ionian Villas</h1>
-                </div>
-                <div>
+                </motion.div>
+                {/* <div>
                     <Languages />
-                </div>
+                </div> */}
                 {/* <div className='tagline_container'>
 
                 </div> */}
@@ -29,10 +33,7 @@ const Navbar = () => {
                         <BookNow />
                     </div>
             </div>
-
-            <div className="navbar_inner_right">
-               
-            </div>
+           
         </div>
     )
 }
@@ -68,9 +69,9 @@ const Burger = () => {
             ease: 'easeIn',
             duration: 0.6
         })
-        animate('svg' , {
-            color: 'white'
-        })
+        // animate('svg' , {
+        //     color: 'white'
+        // })
     }
     
     const handleMouseLeave = async () => {
@@ -82,24 +83,20 @@ const Burger = () => {
             ease: 'easeOut',
             duration: 1
         })
-        animate('svg' , {
-            color: 'var(--primary_dark)'
+        // animate('svg' , {
+        //     color: 'var(--primary_dark)'
         
-        })
+        // })
     }
     
 
     
 
     return (
-        <div 
-            className="burger" 
-            ref={scope} 
-            onMouseEnter={handleMouseEnter} 
-            onMouseLeave={handleMouseLeave}
-        >
-            <div className='burger_curtain'></div>
-            <Menu strokeWidth={1} />
+        <div className='new_burger'>
+            <div></div>
+            <div></div>
+            <div></div>
         </div>
     )
 }
@@ -107,20 +104,8 @@ const Burger = () => {
 const Icons = () => {
 
    const {scrollYProgress} = useScroll();
-   const [direction, setDirection] = useState('down')
-    const [scope, animate ] = useAnimate();
     let y = useTransform(scrollYProgress, [0, 0.1], [0, -100, ], {stiffness: 100, damping: 100 }, stagger(5))
-//    useEffect(() => {
 
-//         const handleScroll = (e) => {
-
-//         }
-//         const unbind =    scrollYProgress.on("change", handleScroll)
-//         return () => {
-//             unbind()
-//         }
-
-//    }, [scrollYProgress])
     return (
         <div className="icons" >
             <motion.div className="icon" style={{y}}>
@@ -141,7 +126,6 @@ export const BookNow = () => {
     const [scope, animate] = useAnimate()
 
     const handlMouseOver = async () => {
-        const bundleAnimations = async =() => {
             animate('.book_now_inner', {
                 width: '100%'
             }, {
@@ -153,7 +137,6 @@ export const BookNow = () => {
             }, {
                 ease: 'easeInOut',
             })
-        }
        
     }
 
