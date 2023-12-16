@@ -1,6 +1,5 @@
 .villa_container
 {   
-    /* scroll-behavior: smooth; */
     margin-top: 120px;
     width: 100%;
     display: flex;
@@ -14,12 +13,12 @@
     display: grid;
     grid-template-columns: 7.5vw  13.847vw 1fr;
     grid-template-rows: 1fr;
-    /* margin-right: 30px; */
+  
     
 }   
 
 .v_sidebar_space {
-    background-color: aquamarine;
+    /* background-color: aquamarine; */
 }
 .v_sidebar {
     background-color: var(--background);
@@ -28,6 +27,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    z-index: 2;
    
 }
 
@@ -56,6 +56,8 @@
 .v_main {
     width: 100%;
     height: 100%;
+    
+      /* margin-right: 30px; */
 }
 
 
@@ -138,28 +140,37 @@
 
 .v_scroll_image {
     width: 100%;
-    height: 160vh;
-    margin-top: -200px;
-    z-index: -1;
+    height: 180vh;
+    margin-top: -300px;
+    z-index: 0;
+
     
 }
-
-.v_scroll_image div {
+.v_scroll_image_inner {
     width: 100%;
     height: 100vh;
-    position: relative;
-    position: relative;
+    z-index: 20;
     position: sticky;
     top: 0;
-    clip-path: inset(15%);
-}   
 
-.v_scroll_image div img {
+}
+
+
+
+
+.sticky_img_container {
+    width: 100%;
+    height: 100vh;
+    clip-path: inset(15%);
+    position: relative;
+
+}
+.sticky_img_container img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
 
+}
 
 /* FACILITIES */
 
@@ -251,6 +262,13 @@
 
 
 @media screen and (max-width: 1149px) {
+
+    /* first part of the villas */
+    .v_scroll_image {
+        height: 100vh;
+        margin-top: 0;
+    }
+
     .v_facilities_inner {
         display: grid;
         grid-template-columns: 1fr;
@@ -271,11 +289,7 @@
     .v_facilities_inner div:nth-child(1) ul  {
         width: 100%;
     }
-    .villa_top {
-        margin-right: 0;
-        height: 18vh;
-    }
-  
+    
     
 }
 
@@ -292,10 +306,7 @@
 
 @media screen and (max-width: 958px) {
    
-    .v_main_top {
-        height: 15vh;
 
-    }
     .v_main_image_container {
         height: 30vh;
     }
@@ -326,14 +337,25 @@ we want to change the grid so that it reflects the width of the burger div */
         display: none;
     }
 
-}
-
-
-/* HIDE THE IMAGE THAT IS ON THE SIDEBAR AND BECOMES TOO SMALL */
-@media screen and (max-width: 773px) {
-
-    .v_sidebar_img_container {
-        display: none;
+    .v_scroll_image {
+        height: 120vh;
+        margin-top: 0;
+        
     }
+    .v_scroll_image_inner {
+        width: 100%;
+        height: 40vh;
+    }
+    
+    /* .sticky_img_container {
+        width: 100%;
+        height: 40vh;
+        clip-path: inset(15%);
+        position: relative;
+    
+    } */
+   
+
 
 }
+

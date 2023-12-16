@@ -25,23 +25,6 @@ const Navbar = () => {
                 <Icons />
                 <BookNow />
             </div>
-            
-            {/* <div className="navbar_left">
-                <div>
-                < Burger />
-                </div>
-                <motion.div style={{y}}>
-                    <h1 className="tagline">Ionian Villas</h1>
-                </motion.div>
-               
-            </div>
-            <div className="nabar_right">
-                <div className='icon_container'>
-                        <Icons />
-                        <BookNow />
-                    </div>
-            </div> */}
-           
         </div>
     )
 }
@@ -130,7 +113,7 @@ const Icons = () => {
 }
 
 
-export const BookNow = () => {
+ export const BookNow = () => {
     const [scope, animate] = useAnimate()
 
     const handlMouseOver = async () => {
@@ -166,7 +149,8 @@ export const BookNow = () => {
     }
 
     return (
-        <div ref={scope} onMouseEnter={handlMouseOver} onMouseLeave={handleMouseLeave} className="book_now">
+        <div 
+        ref={scope} onMouseEnter={handlMouseOver} onMouseLeave={handleMouseLeave} className="book_now">
             <button className="book_now_inner">
             </button>
             <span>book now</span>

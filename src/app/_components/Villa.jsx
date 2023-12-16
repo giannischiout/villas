@@ -3,13 +3,12 @@ import Image from 'next/image';
 import { useEffect, useState, useRef } from 'react';
 import { useAnimate, useScroll, useTransform, useSpring, animate } from 'framer-motion';
 import { VillaFeatures, VillaDetails, VillaFacilities } from './VillaDetails';
+import { BookNow } from './Navbar';
 
 
 
 
-
-
-const Villa = ({name,}) => {
+const Villa = ({name,sidebarImg, mainImg, scrollImg }) => {
     const { scrollYProgress } = useScroll();
     const [scope, animate] = useAnimate();
     useEffect(() => {
@@ -38,8 +37,11 @@ const Villa = ({name,}) => {
                     </div>
                     <div className='v_sidebar_img_container' >
                         <Image
-                            src="/1.webp"
+                            src={sidebarImg}
                             fill={true}
+                            sizes='100%'
+                            priority={true}
+                            alt={`an image of the ioannian villa named ${name} that depictes the living room`}
                         />
                     </div>
                 </div>
@@ -51,7 +53,7 @@ const Villa = ({name,}) => {
                         </div>
                     </div>
                     <div className='v_main_image_container'  >
-                        <ImageScroll />
+                        <ImageScroll image={mainImg} />
                     </div>
                     <div className="v_main_content" >
                         <h3  >Barefoot luxury, elevated.</h3>
@@ -66,18 +68,19 @@ const Villa = ({name,}) => {
                     </div>
                 </div>
             </div>
-                {/* <ScrollImageSticky />
-                <VillaFacilities />
+                <ScrollImageSticky image={scrollImg}/>
+
+                {/* <VillaFacilities />
                 <ImageSlider />
                 <StickyShow /> */}
-            {/* <div className='h-screen w-full bg-red-200' ></div> */}
+            <div className='h-screen w-full bg-red-200' ></div>
         </div>
     )
 }
 
 
 
-const ScrollImageSticky = () => {
+const ScrollImageSticky = ({image}) => {
     const ref = useRef(null);
     const { scrollYProgress } = useScroll({
       target: ref,
@@ -89,7 +92,7 @@ const ScrollImageSticky = () => {
     useEffect(() => {
         scrollYProgress.on("change", (v) => {
             const scroll = (v ) * 15;
-            animate('#v_scroll_image_inner', {
+            animate('.sticky_img_container', {
                 clipPath: `inset(${scroll}%)`
             }, {
                 ease: "linear",
@@ -99,25 +102,37 @@ const ScrollImageSticky = () => {
     }, [])
     return (
         <div ref={ref} className='v_scroll_image'>
-            <div id="v_scroll_image_inner">
-                <Image
-                    alt='villa image'
-                    src="/1.webp"
-                    fill={true}
-                />
+            {/* <div className="v_scroll_image_inner">
+                <div className='sticky_img_container'>
+                    <Image
+                        alt='villa image'
+                        src={image}
+                        fill={true}
+                    />
+                </div>
+            </div> */}
+            <div className='v_scroll_image_inner'>
+                <div className='sticky_img_container'>
+                        <Image
+                            alt='villa image'
+                            src={image}
+                            fill={true}
+                        />
+                </div>
             </div>
         </div>
     )
 }
 
 
-const ImageScroll = () => {
-
+const ImageScroll = ({image}) => {
 
     return (
         <div className='v_main_image_container_inner' >
             <Image
-                src="/1.webp"
+                alt="an image of the interior of the ioannian villa"
+                src={image}
+                sizes={'100%'}
                 fill={true}
             />
         </div>
