@@ -1,6 +1,6 @@
 .villa_container
 {   
-    scroll-behavior: smooth;
+    /* scroll-behavior: smooth; */
     margin-top: 120px;
     width: 100%;
     display: flex;
@@ -10,9 +10,9 @@
 
 .villa_top {
     height: 100%;
-    width: 92%;
+    width: 92vw;
     display: grid;
-    grid-template-columns: 320px calc(100% - 320px);
+    grid-template-columns: 13.847vw calc(100% - 13.847vw);
     grid-template-rows: 1fr;
     margin-right: 30px;
     
@@ -37,39 +37,41 @@
 }
 
 .v_sidebar_img_container {
-    width: 320px;
-    height: 320px;
+   
+    height: 13.847vw;
     position: relative;
+    width: 13.847vw;
+
 }
 
 .v_sidebar_img_container img {
     object-fit: cover;
+    width: 100%;
+    height: 100%;
 }
 
 .v_main {
-    /* background-color: rgb(115, 115, 50); */
     width: 100%;
     height: 100%;
 }
 
 
 .v_main_top {
-    height: 30vh;
+    height: 20vh;
     display: flex;
     align-items: center;
 }
 
 .v_main_top div {
-    font-size: var(--font-xl2);
     margin-left: 40px;
 }
 .v_main_top div h1{
-    font-size: var(--font-xl1);
+    font-size: calc(2rem + 2vw);
     color: var(--primary_dark);
 }
 .v_main_top div h2{
-   
     color: var(--primary);
+    font-size: calc(1rem + 1vw);
 }
 
 
@@ -98,12 +100,12 @@
     padding-top: 3.2%;
     padding-bottom: 12%;
     color: var(--primary_dark);
-    font-size: var(--font_para);
+    font-size: calc(2rem );
 }
 
 .v_main_content h3 {
-    font-size: 4em;
-    margin-bottom: 3%;
+    font-size: calc(2rem + 2vw);
+    margin-bottom: 2%;
 
 }
 
@@ -159,95 +161,153 @@
 
 .parallax_wrapper {
     width: 100%;
-    min-height: 100vh;
+    /* min-height: 100vh; */
     display: flex;
     align-items: center;
     justify-content: center;
 
 }
-.v_facilites_wrapper {
-    min-height: 100vh;
+.v_facilities_wrapper {
     width: 100%;
-    display: grid;
-    grid-template-rows: 50vh 30vh 1fr;
-    grid-template-columns: 1fr 1fr;
-    transform: translateY(-100px);
-    /* margin-top: -200px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }   
 
-.v_facilites_wrapper > div {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    
-}
 
-.v_facilites_views { 
-    grid-column: 1 / span 2;
-    grid-row: 1 / span 1;
-    align-items: center;
-    justify-content: center;
 
-}
-.v_facilites_views > div {
+
+.v_facilities_inner {
+    padding: 4%;
     width: 80%;
     height: 100%;
     background-color: var(--background);
-  
+    transform: translateY(-100px);
+    display: grid;
+    grid-template-columns: 60% 40%;
+    grid-template-rows: 1fr;
+    gap: 10px;
+
+}       
+
+.v_facilities_inner div:nth-child(1) {
+    display: flex;
+    flex-direction: column;
+    padding: 4rem;
+}
+.v_facilities_inner div:nth-child(1) p {
+    font-size: calc(3rem);
+    letter-spacing: 1rem;
+    color: var(--primary);
+    margin-bottom: 20px;
+}
+.v_facilities_inner div:nth-child(1) ul {
+    color: var(--primary_darker);
+    max-width: 500px;
+    font-size: 4rem;
 }
 
-.v_facilites_header {
-    grid-column: 1 / span 2;
-    grid-row: 2 / span 1;
-  
-    justify-content: flex-end;
-   
-}
+.v_facilities_inner div:nth-child(1) ul li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+    height: 100px;
+    margin-bottom: 10px;
+}   
+
 .v_facilites_content {
-    padding: 4%;
-    grid-column: 1 / span 1;
-    grid-row: 3 / span 1;
+    display: flex;
     align-items: center;
     justify-content: center;
-  
-}
-.v_facilites_image {
-    padding: 4%;
-    grid-column: 2 / span 1;
-    grid-row: 3 / span 1;
-    align-items: center;
-    justify-content: center;
-    
-   
+
 }
 
-.v_facilites_content ul {
-}
-.v_facilites_content ul li {
-    line-height: 2.5;
-    font-size: 3rem;
-    color: var(--primary_dark)
-    
+.views_active {
+    border: 2px solid rgb(144, 125, 20);
 }
 
-.v_facilites_image div {
-    height: 80%;
-    min-height: 700px;
-    min-width: 500px;
-    width: 40%;
+.v_facilites_content > div {
     position: relative;
+    width: 300px;
+    height: 400px;
 }
 
-.v_facilites_image img {
+.v_facilites_content > div > img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+
 }
 
 
-.v_facilites_header h6 {
-    margin-left: 15%;
-    font-size: calc(5rem + 3vw);
-    color: var(--primary);
+
+
+
+
+
+@media screen and (max-width: 1149px) {
+
+
+    .v_facilities_inner {
+       
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 10px;
+        
+    }       
+
+    .v_facilities_inner div:nth-child(1) {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        order: 2;
+        width: 100%;
+        padding: 0;
+    }
+    
+    .v_facilities_inner div:nth-child(1) ul  {
+        width: 100%;
+    }
+    .villa_top {
+        width: 100%;
+    }
+  
+    
+}
+
+
+
+@media screen and (max-width: 1488px) {
+    .v_main_image_container {
+        height: 50vh;
+    }
+
+}
+
+
+
+@media screen and (max-width: 1000px) {
+
+    .v_main_top {
+        height: 15vh;
+    }
+    .v_main_image_container {
+        height: 30vh;
+    }
+
+    .v_sidebar_img_container {
+        display: none;
+    }
+
+}
+
+@media screen and (max-width: 773px) {
+
+   
+    .v_sidebar_img_container {
+        display: none;
+    }
+
 }

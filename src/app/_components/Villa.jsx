@@ -2,17 +2,14 @@
 import Image from 'next/image';
 import { useEffect, useState, useRef } from 'react';
 import { useAnimate, useScroll, useTransform, useSpring, animate } from 'framer-motion';
-import Lenis from '@studio-freight/lenis'
 import { VillaFeatures, VillaDetails, VillaFacilities } from './VillaDetails';
-import ImageSlider from './ImageSlider';
-import { Stick } from 'next/font/google';
-import StickyShow from './StickyShow';
 
 
 
 
 
-const Villa = () => {
+
+const Villa = ({name,}) => {
     const { scrollYProgress } = useScroll();
     const [scope, animate] = useAnimate();
     useEffect(() => {
@@ -36,7 +33,7 @@ const Villa = () => {
             <div ref={scope} className="villa_top" >
                 <div className="v_sidebar">
                     <div className='v_sidebar_top'>
-                        <p>Jira</p>
+                        <p>{name}</p>
                     </div>
                     <div className='v_sidebar_img_container' >
                         <Image
@@ -48,7 +45,7 @@ const Villa = () => {
                 <div className="v_main">
                     <div className='v_main_top'>
                         <div>
-                            <h1>Location</h1>
+                            <h1>{name.toUpperCase()}</h1>
                             <h2>AN OASIS OF PIECE AND QUIET</h2>
                         </div>
                     </div>
@@ -68,10 +65,10 @@ const Villa = () => {
                     </div>
                 </div>
             </div>
-                <ScrollImageSticky />
+                {/* <ScrollImageSticky />
                 <VillaFacilities />
                 <ImageSlider />
-                <StickyShow />
+                <StickyShow /> */}
             {/* <div className='h-screen w-full bg-red-200' ></div> */}
         </div>
     )

@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import { useAnimate, useTransform, useScroll, motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
+import { IoIosArrowForward } from "react-icons/io";
 
 const facilities = [
     'Safety Deposit Box',
@@ -11,8 +12,13 @@ const facilities = [
     'SAT-TV',
     'Toaster',
     'Washing Machine'
-
-
+]
+const views = [
+    'Garden View',
+    'Pool View',
+    'Sea View ',
+    'Sunset View',
+    
 ]
 
 const details = {
@@ -90,60 +96,50 @@ export function VillaFeatures() {
 }
 
 
+
+
 export function VillaFacilities() {
     const targetRef = useRef(null);
     const [ref, inView] = useInView();
-    const [scope, animate]= useAnimate();
+    const [scope, animate] = useAnimate();
+    const [active, setActive] = useState(0)
     const { scrollYProgress } = useScroll({
         target: targetRef,
         offset: ["start end", "center"]
     });
 
 
-    // useEffect(() => {
-    //     scrollYProgress.on("change", (v) => {
+    
 
-    //         animate('.v_facilites_views', {
-    //             transform: `translateY(${v * 300}px))`
-    //         },
-    //             {
-    //                 ease: "easeInOut",
-    //                 duration: 1
-    //         })
-    //         // animate('.v_facilites_header', {
-    //         //     tranlateY: -(v * 300)
-    //         // })
-    //         // animate('.v_facilites_content', {
-    //         //     tranlateY: -(v * 300)
-    //         // })
-          
-    //     })
-    // }, [scrollYProgress])
-
+    const onMouseEnter = (index) => {
+        setActive(index)
+    }
     return (
         <div ref={ref} className="parallax_wrapper"  >
-            <div ref={scope} className="v_facilites_wrapper" >
-                <FacilitesViews />
-                <div className="v_facilites_header">
-                    <h6>ROOM FACILITIES</h6>
-                </div>
-                <div className="v_facilites_content">
-                    <ul>
-                        {facilities.map((item, index) => {
-                            return (
-                                <li key={index}>
-                                    {item}
-                                </li>
-                            )
-                        })}
-                    </ul>
-                </div>
-                <div className="v_facilites_image">
+            <div ref={scope} className="v_facilities_wrapper" >
+                <div className="v_facilities_inner">
                     <div>
-                        <Image
-                            src="/1.webp"
+                        <p>VIEWS</p>
+                        <ul>
+                            {views.map((item, index) => {
+                                return (
+                                    <li className={active === index && 'views_active'} onMouseEnter={() => onMouseEnter(index)} key={index}>
+                                        <span>{item}</span>
+                                        {active === index && <IoIosArrowForward />}
+                                    </li>
+                                )
+                            })}
+                        </ul>
+                    </div>
+                    <div className="v_facilites_content"> 
+                        <div>
+                            <Image 
+                            src={`/views/${active + 1}.webp`}
                             fill={true}
-                        />
+                            sizes="200px"
+                            />
+                        </div>
+                      
                     </div>
                 </div>
             </div>
@@ -153,17 +149,3 @@ export function VillaFacilities() {
 
 
 
-const FacilitesViews = () => {
-    return (
-        <div className="v_facilites_views">
-            <div>
-                <div></div>
-                <div></div>
-            </div>
-        {/* <div>
-            <div></div>
-            <div></div>
-        </div> */}
-    </div>
-    )
-}
