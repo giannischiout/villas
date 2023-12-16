@@ -13,26 +13,25 @@ const Navbar = () => {
     let y = useTransform(scrollYProgress, [0, 0.1], [0, -100, ], {stiffness: 100, damping: 100 }, stagger(5))
     return (
         <div className="navbar_container">
-            <div className="navbar_left">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            {/* <div className="navbar_left">
                 <div>
                 < Burger />
                 </div>
                 <motion.div style={{y}}>
                     <h1 className="tagline">Ionian Villas</h1>
                 </motion.div>
-                {/* <div>
-                    <Languages />
-                </div> */}
-                {/* <div className='tagline_container'>
-
-                </div> */}
+               
             </div>
             <div className="nabar_right">
                 <div className='icon_container'>
                         <Icons />
                         <BookNow />
                     </div>
-            </div>
+            </div> */}
            
         </div>
     )

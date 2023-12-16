@@ -12,7 +12,7 @@
     height: 100%;
     width: 92vw;
     display: grid;
-    grid-template-columns: 13.847vw calc(100% - 13.847vw);
+    grid-template-columns: minmax(50px, 13.847vw) calc(100% - 13.847vw);
     grid-template-rows: 1fr;
     margin-right: 30px;
     
@@ -37,8 +37,7 @@
 }
 
 .v_sidebar_img_container {
-   
-    height: 13.847vw;
+    height: 9vw;
     position: relative;
     width: 13.847vw;
 
@@ -97,6 +96,7 @@
 
 .v_main_content {
     padding-left: 3.2%;
+    padding-right: 3%;
     padding-top: 3.2%;
     padding-bottom: 12%;
     color: var(--primary_dark);
@@ -250,7 +250,6 @@
 
 
     .v_facilities_inner {
-       
         display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 1fr;
@@ -272,6 +271,8 @@
     }
     .villa_top {
         width: 100%;
+        margin-right: 0;
+        height: 18vh;
     }
   
     
@@ -290,6 +291,7 @@
 
 @media screen and (max-width: 1000px) {
 
+
     .v_main_top {
         height: 15vh;
     }
@@ -299,6 +301,7 @@
 
     .v_sidebar_img_container {
         display: none;
+       
     }
 
 }
