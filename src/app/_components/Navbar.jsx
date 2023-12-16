@@ -13,10 +13,11 @@ const Navbar = () => {
     let y = useTransform(scrollYProgress, [0, 0.1], [0, -100, ], {stiffness: 100, damping: 100 }, stagger(5))
     return (
         <div className="navbar_container">
+            <div className='grid_burger'>
+                < Burger />
+            </div>
             <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+            
             {/* <div className="navbar_left">
                 <div>
                 < Burger />

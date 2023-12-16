@@ -12,7 +12,7 @@
     height: 100%;
     width: 92vw;
     display: grid;
-    grid-template-columns: minmax(50px, 13.847vw) calc(100% - 13.847vw);
+    grid-template-columns:  13.847vw 1fr;
     grid-template-rows: 1fr;
     margin-right: 30px;
     
@@ -270,7 +270,7 @@
         width: 100%;
     }
     .villa_top {
-        width: 100%;
+        /* width: 100%; */
         margin-right: 0;
         height: 18vh;
     }
@@ -291,9 +291,21 @@
 
 @media screen and (max-width: 1000px) {
 
+    .villa_top {
+        width: 100%;
+        margin-right: 0;
+        height: 18vh;
+    }
 
+}
+@media screen and (max-width: 958px) {
+    .villa_top {
+        grid-template-columns:  60px 1fr;
+        
+    }  
     .v_main_top {
         height: 15vh;
+
     }
     .v_main_image_container {
         height: 30vh;
