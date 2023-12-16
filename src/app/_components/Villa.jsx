@@ -31,6 +31,7 @@ const Villa = ({name,}) => {
     return (
         <div  className='villa_container' 	 >
             <div ref={scope} className="villa_top" >
+                <div className="v_sidebar_space"></div>
                 <div className="v_sidebar">
                     <div className='v_sidebar_top'>
                         <p>{name}</p>

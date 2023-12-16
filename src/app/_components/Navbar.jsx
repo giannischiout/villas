@@ -16,7 +16,15 @@ const Navbar = () => {
             <div className='grid_burger'>
                 < Burger />
             </div>
-            <div></div>
+            <div className='grid_tagline'>
+            <motion.div style={{y}}>
+                    <h1 className="tagline">Ionian Villas</h1>
+                </motion.div>
+            </div>
+            <div className='grid_icons'>
+                <Icons />
+                <BookNow />
+            </div>
             
             {/* <div className="navbar_left">
                 <div>

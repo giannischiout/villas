@@ -10,13 +10,17 @@
 
 .villa_top {
     height: 100%;
-    width: 92vw;
+    width: 100%;
     display: grid;
-    grid-template-columns:  13.847vw 1fr;
+    grid-template-columns: 7.5vw  13.847vw 1fr;
     grid-template-rows: 1fr;
-    margin-right: 30px;
+    /* margin-right: 30px; */
     
 }   
+
+.v_sidebar_space {
+    background-color: aquamarine;
+}
 .v_sidebar {
     background-color: var(--background);
     width: 100%;
@@ -247,8 +251,6 @@
 
 
 @media screen and (max-width: 1149px) {
-
-
     .v_facilities_inner {
         display: grid;
         grid-template-columns: 1fr;
@@ -270,7 +272,6 @@
         width: 100%;
     }
     .villa_top {
-        /* width: 100%; */
         margin-right: 0;
         height: 18vh;
     }
@@ -289,20 +290,8 @@
 
 
 
-@media screen and (max-width: 1000px) {
-
-    .villa_top {
-        width: 100%;
-        margin-right: 0;
-        height: 18vh;
-    }
-
-}
 @media screen and (max-width: 958px) {
-    .villa_top {
-        grid-template-columns:  60px 1fr;
-        
-    }  
+   
     .v_main_top {
         height: 15vh;
 
@@ -318,9 +307,31 @@
 
 }
 
+
+/* there is a div with whitespace on the left that is equal to the burger width div
+we want to change the grid so that it reflects the width of the burger div */
+@media screen and (max-width: 845px) {
+    .villa_top {
+        height: 100%;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 70px  1fr;
+        grid-template-rows: 1fr;
+        
+    }   
+
+    /* hide that extra space on the smaller screens */
+    /* now the main sidebar takes the place of that empty space and is equal to the burger */
+    .v_sidebar_space {
+        display: none;
+    }
+
+}
+
+
+/* HIDE THE IMAGE THAT IS ON THE SIDEBAR AND BECOMES TOO SMALL */
 @media screen and (max-width: 773px) {
 
-   
     .v_sidebar_img_container {
         display: none;
     }
