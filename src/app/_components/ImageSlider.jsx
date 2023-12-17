@@ -46,12 +46,12 @@ const ImageSlider = () => {
         <section ref={scope} onClick={handleNext} className="slider_container">
             <div className="slider_inner">
                 <div className="slider_image_container" id="slide_darker">
-                    <img src={images[index]} alt="villa" fill={true} sizes="100%" priority />
+                    <img src={images[index]} alt="villa"  />
                 </div>
                 <div className="slider_image_container" id="slide_anime">
                     <motion.img 
                
-                    className="slider_img" src={images[(index + 1) % images.length]} alt="villa" fill={true} sizes="100%" priority />
+                    className="slider_img" src={images[(index + 1) % images.length]} alt="villa"  />
                 </div>
                 <Teaser index={index} images={images} />
             </div>

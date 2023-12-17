@@ -6,7 +6,6 @@
 @import './_styles/lenis.css';
 @import './_styles/image_slider.css';
 @import './_styles/sticky_show.css';
-
 * {
   margin: 0;
   padding: 0;
@@ -27,9 +26,11 @@ body {
   --primary: #9b917e;
   --secondary: #f4d5ac;
   --background: #EAE6E0;
+  --background_light: #f4f2f0;
   --primary_dark: #6e6259;
   --primary_darker: #594e46;
   --text_dark: #988F87;
+  --text_light: #d7d2cb;
   /* fonts */
   --font-xs: 1.2em;
   --font-small: 1.4em;
@@ -51,5 +52,13 @@ h1 {
   line-height: 0.9;
 }
 
-
-
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}

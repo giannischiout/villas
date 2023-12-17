@@ -25,9 +25,11 @@
     width: 100%;
     height: 100%;
     display: flex;
+    transform: translateY(1000px);
     flex-direction: column;
     justify-content: space-between;
     z-index: 2;
+    position: relative;
    
 }
 
@@ -63,6 +65,8 @@
 
 .v_main_top {
     height: 20vh;
+    transform: translateY(30%);
+    opacity: 0;
     display: flex;
     align-items: center;
 }
@@ -92,6 +96,7 @@
     overflow: hidden;
     position: relative;
     clip-path: inset(0% 10% 0% 12%);
+    opacity: 0;
 }
 
 .v_main_image img {
@@ -160,7 +165,7 @@
 
 .sticky_img_container {
     width: 100%;
-    height: 100vh;
+    height: 100%;
     clip-path: inset(15%);
     position: relative;
 
@@ -180,20 +185,21 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 
 }
-.v_facilities_wrapper {
+.v_spaces {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+  
 }   
 
 
 
 
-.v_facilities_inner {
-    padding: 4%;
+.v_spaces_inner {
     width: 80%;
     height: 100%;
     background-color: var(--background);
@@ -203,7 +209,41 @@
     grid-template-rows: 1fr;
     gap: 10px;
 
-}       
+}
+
+.v_spaces_header {
+    display: flex;
+    align-items: flex-end;
+    line-height: 0.6;
+    font-size: calc(4rem + 4vw);
+    color: white;
+}
+
+
+
+
+
+.v_spaces_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 130px 0;
+
+}
+
+.v_spaces_content span {
+    font-size: calc(1rem + 1vw);
+    color: var(--primary_dark)
+}
+.v_spaces_content p {
+    font-size: calc(1rem + 1vw);
+    color: var(--primary)
+}
+.v_spaces_content > div {
+    margin-bottom: 20px;
+    min-width: 200px;
+}
+
 
 .v_facilities_inner div:nth-child(1) {
     display: flex;
@@ -222,33 +262,61 @@
     font-size: 4rem;
 }
 
-.v_facilities_inner div:nth-child(1) ul li {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 2rem;
-    height: 100px;
-    margin-bottom: 10px;
-}   
 
-.v_facilites_content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
 
-}
 
 .views_active {
     border: 2px solid rgb(144, 125, 20);
 }
 
-.v_facilites_content > div {
-    position: relative;
-    width: 300px;
-    height: 400px;
+
+
+/* FACILITES */
+
+.v_facilities {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 30vh 80vh;
+    width: 100%;
+    margin-top: 100px;
 }
 
-.v_facilites_content > div > img {
+.facilities_header {
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 1;
+    display: flex;
+    align-items: flex-end;
+    font-size: calc(4rem + 4vw);
+    color: var(--text_light);
+    padding-left: 4vw;
+}
+
+.facilities_content {
+    grid-row: 2 / span 1;
+    grid-column: 1 / span 1;
+    font-size: calc(1rem + 2vw);
+    color: var(--primary_dark);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.facilities_image {
+    grid-row: 2 / span 1;
+    grid-column: 2 / span 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.facilities_image div {
+    position: relative;
+    width: 18vw;
+    height: 70%;
+    overflow: hidden;
+}
+.facilities_image div img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -260,81 +328,9 @@
 
 
 
-
-@media screen and (max-width: 1149px) {
-
-    /* first part of the villas */
-    .v_scroll_image {
-        height: 100vh;
-        margin-top: 0;
-    }
-
-    .v_facilities_inner {
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr 1fr;
-        gap: 10px;
-        
-    }       
-
-    .v_facilities_inner div:nth-child(1) {
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        order: 2;
-        width: 100%;
-        padding: 0;
-    }
-    
-    .v_facilities_inner div:nth-child(1) ul  {
-        width: 100%;
-    }
-    
-    
-}
-
-
-
-@media screen and (max-width: 1488px) {
+@media screen and (max-width: 1500px) {
     .v_main_image_container {
         height: 50vh;
-    }
-
-}
-
-
-
-@media screen and (max-width: 958px) {
-   
-
-    .v_main_image_container {
-        height: 30vh;
-    }
-
-    .v_sidebar_img_container {
-        display: none;
-       
-    }
-
-}
-
-
-/* there is a div with whitespace on the left that is equal to the burger width div
-we want to change the grid so that it reflects the width of the burger div */
-@media screen and (max-width: 845px) {
-    .villa_top {
-        height: 100%;
-        width: 100%;
-        display: grid;
-        grid-template-columns: 70px  1fr;
-        grid-template-rows: 1fr;
-        
-    }   
-
-    /* hide that extra space on the smaller screens */
-    /* now the main sidebar takes the place of that empty space and is equal to the burger */
-    .v_sidebar_space {
-        display: none;
     }
 
     .v_scroll_image {
@@ -344,18 +340,114 @@ we want to change the grid so that it reflects the width of the burger div */
     }
     .v_scroll_image_inner {
         width: 100%;
+        height: 60vh;
+    }
+    
+    .sticky_img_container {
+        height: 100%;
+    }
+
+    .v_facilities {
+        grid-template-rows: auto 50vh;
+        margin-top: 0px;
+
+    }
+}
+@media screen and (max-width: 1200px) {
+    .v_scroll_image {
+        height: 100vh;
+        margin-top: 0;
+    }
+    
+}
+
+
+/* there is a div with whitespace on the left that is equal to the burger width div
+we want to change the grid so that it reflects the width of the burger div */
+@media screen and (max-width: 1000px) {
+    /* make the top image smaller */
+    .v_main_image_container {
+        height: 30vh;
+    }
+
+    /* hide the image on the sidebar*/
+    .v_sidebar_img_container {
+        display: none;
+       
+    }
+
+    .villa_top {
+        height: 100%;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 70px  1fr;
+        grid-template-rows: 1fr;
+
+    }   
+
+    /* hide that extra space on the smaller screens */
+    /* now the main sidebar takes the place of that empty space and is equal to the burger */
+    .v_sidebar_space {
+        display: none;
+    }
+
+    .v_scroll_image {
+        height: 110vh;
+        margin-top: 0;
+        /* background-color: red; */
+        
+    }
+    .v_scroll_image_inner {
+        width: 100%;
         height: 40vh;
     }
     
-    /* .sticky_img_container {
-        width: 100%;
-        height: 40vh;
-        clip-path: inset(15%);
-        position: relative;
+    .sticky_img_container {
+        height: 100%;
+    }
+
+    /* SPACES */
+    .v_spaces_inner {
+        transform: translateY(-100px);
+        width: 90%;
+        grid-template-columns: 1fr;
+        grid-template-rows:  auto;
+        
+    }
+    .v_spaces_content {
+        padding: 20px;
+    }
+    .v_spaces_inner div {
+        align-items: center;
     
-    } */
+    }
+    .v_spaces_header {
+        order: 2;
+        align-items: flex-end;
+    }
+    .v_spaces_inner div {
+        align-items: flex-end;
+    }
    
+    /* FACILITIES */
+    .v_facilities {
+        grid-template-rows: auto 30vh;
+        margin-top: 0px;
 
-
+    }
+    /* .facilities_content {
+        padding-bottom: 50px;
+    } */
+    
+    .facilities_image div {
+        display: none;
+    }
 }
 
+/* HIDE THE IMAGE THAT IS ON THE SIDEBAR AND BECOMES TOO SMALL */
+/* @media screen and (max-width: 773px) {
+    .v_sidebar_img_container {
+        display: none;
+    }
+
+} */

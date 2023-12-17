@@ -5,7 +5,7 @@ import Image from "next/image"
 import { useAnimate, useTransform, useScroll, motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import { IoIosArrowForward } from "react-icons/io";
-
+import AnimatedText from "./AnimatedText"
 const facilities = [
     'Safety Deposit Box',
     'Storage Room',
@@ -18,7 +18,7 @@ const views = [
     'Pool View',
     'Sea View ',
     'Sunset View',
-    
+
 ]
 
 const details = {
@@ -98,54 +98,84 @@ export function VillaFeatures() {
 
 
 
-export function VillaFacilities() {
+
+export function VillaFacilities({ image }) {
+    console.log(image)
     const targetRef = useRef(null);
-    const [ref, inView] = useInView();
-    const [scope, animate] = useAnimate();
-    const [active, setActive] = useState(0)
-    const { scrollYProgress } = useScroll({
+    const [ref, inView, entry] = useInView({
+        threshold: 0.5,
+        triggerOnce: false
+    });
+ 
+    const { scrollYProgress, scrollY } = useScroll({
         target: targetRef,
         offset: ["start end", "center"]
     });
 
-
-    
-
-    const onMouseEnter = (index) => {
-        setActive(index)
-    }
+    const y = useTransform(scrollYProgress, [0, 1], [0, 20],);
+    const variants = {
+        visible: { y: y },
+        hidden: {
+        }
+    };
     return (
-        <div ref={ref} className="parallax_wrapper"  >
-            <div ref={scope} className="v_facilities_wrapper" >
-                <div className="v_facilities_inner">
-                    <div>
-                        <p>VIEWS</p>
-                        <ul>
-                            {views.map((item, index) => {
-                                return (
-                                    <li className={active === index && 'views_active'} onMouseEnter={() => onMouseEnter(index)} key={index}>
-                                        <span>{item}</span>
-                                        {active === index && <IoIosArrowForward />}
-                                    </li>
-                                )
-                            })}
-                        </ul>
+        <div className="parallax_wrapper"  >
+            <div className="v_spaces" >
+                <div className="v_spaces_inner">
+                    <div className="v_spaces_header">
+                        <AnimatedText text="SPACES" />
                     </div>
-                    <div className="v_facilites_content"> 
+                    <div className="v_spaces_content">
                         <div>
-                            <Image 
-                            src={`/views/${active + 1}.webp`}
-                            fill={true}
-                            sizes="200px"
-                            />
+                            <span>Interior Space</span>
+                            <p> 645 square foot</p>
                         </div>
-                      
+                        <div>
+                            <span>Outdoor Space</span>
+                            <p>645 square foot</p>
+                        </div>
+                        <div>
+                            <span>Views</span>
+                            <p>garden</p>
+                        </div>
+
                     </div>
                 </div>
+            </div>
+            <div className="v_facilities">
+                <div className="facilities_header">
+                    <span>
+                        Room facilites
+                    </span>
+                </div>
+                <div className="facilities_content">
+                    <ul>
+                        {facilities.map((item, index) => {
+                            return (
+                                <li key={index}>
+                                    {item}
+                                </li>
+                            )
+                        })}
+                    </ul>
+                </div>
+
+                <motion.div
+                    animate={inView ? 'visible' : 'hidden'}
+                    variants={variants}
+                    transition={{ duration: 2, ease: 'easeOut' }}
+                    ref={ref} className="facilities_image">
+                    <div>
+                        <motion.img
+                            src={image}
+                        />
+                    </div>
+                </motion.div>
             </div>
         </div>
     )
 }
+
 
 
 

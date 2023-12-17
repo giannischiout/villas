@@ -6,7 +6,7 @@ export default function Page() {
             sidebarImg="/jira/jira_1.webp"
             mainImg="/jira/jira_7.webp"
             scrollImg="/jira/jira_6.webp"
-            
+            facilitiesImg="/jira/jira_6.webp"
             />
     )
 }
