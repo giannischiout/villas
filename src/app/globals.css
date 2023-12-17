@@ -6,6 +6,8 @@
 @import './_styles/lenis.css';
 @import './_styles/image_slider.css';
 @import './_styles/sticky_show.css';
+
+
 * {
   margin: 0;
   padding: 0;

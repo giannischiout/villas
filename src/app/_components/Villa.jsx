@@ -4,9 +4,7 @@ import { useEffect, useState, useRef } from 'react';
 import { useAnimate, useScroll, useTransform, useSpring, animate, stagger, useMotionValue } from 'framer-motion';
 import { VillaFeatures, VillaDetails, VillaFacilities } from './VillaDetails';
 import ImageSlider from './ImageSlider';
-import AnimatedText from './AnimatedText';
-
-
+import StickyShow from './StickyShow';
 const Villa = ({name,sidebarImg, mainImg, scrollImg, facilitiesImg }) => {
     const { scrollYProgress } = useScroll();
 
@@ -106,8 +104,8 @@ const Villa = ({name,sidebarImg, mainImg, scrollImg, facilitiesImg }) => {
 
                 <VillaFacilities image={facilitiesImg} />
                 <ImageSlider />
-                {/* <StickyShow /> */}
-            {/* <div className='h-screen w-full bg-red-200' ></div> */}
+                <StickyShow />
+            <div className='h-screen w-full bg-red-200' ></div>
         </div>
     )
 }
