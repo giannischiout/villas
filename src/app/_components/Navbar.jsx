@@ -7,14 +7,24 @@ import { RiInstagramFill } from "react-icons/ri";
 import { BsFillEnvelopeFill } from "react-icons/bs";
 import { BsArrowUpRight } from "react-icons/bs";
 import { useAnimate } from 'framer-motion';
+import { IoCloseOutline } from "react-icons/io5";
+import { RxHamburgerMenu } from "react-icons/rx";
 
+import NavMenu from './Menu';
 const Navbar = () => {
     const {scrollYProgress} = useScroll();
+    const [clicked, setClicked] = useState(false)
     let y = useTransform(scrollYProgress, [0, 0.1], [0, -100, ], {stiffness: 100, damping: 100 }, stagger(5))
+
+    const onClick = () => {
+        console.log('clcik')
+        setClicked(prev => !prev)
+    }
     return (
-        <div className="navbar_container">
+        <div>
+             <div className="navbar_container">
             <div className='grid_burger'>
-                < Burger />
+                < Burger onClick={onClick} clicked={clicked} />
             </div>
             <div className='grid_tagline'>
             <motion.div style={{y}}>
@@ -25,6 +35,9 @@ const Navbar = () => {
                 <Icons />
                 <BookNow />
             </div>
+        </div>
+        {clicked ? <NavMenu /> : null}
+        {/* <NavMenu /> */}
         </div>
     )
 }
@@ -49,7 +62,7 @@ const Languages = () => {
     )
 }
 
-const Burger = () => {
+const Burger = ({onClick, clicked}) => {
     const [scope, animate] = useAnimate()
     const handleMouseEnter = async () => {
         animate('.burger_curtain' , {
@@ -84,10 +97,17 @@ const Burger = () => {
     
 
     return (
-        <div className='new_burger'>
-            <div></div>
-            <div></div>
-            <div></div>
+        <div className={`nav_burger ${clicked ? 'times' : null }`} onClick={onClick}>
+            {clicked ? (
+                <div>
+                    <IoCloseOutline />
+                </div>
+                    
+            ) : (
+               <div>
+                 <RxHamburgerMenu />
+                </div>
+            )}
         </div>
     )
 }

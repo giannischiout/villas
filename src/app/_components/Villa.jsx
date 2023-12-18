@@ -5,6 +5,7 @@ import { useAnimate, useScroll, useTransform, useSpring, animate, stagger, useMo
 import { VillaFeatures, VillaDetails, VillaFacilities } from './VillaDetails';
 import ImageSlider from './ImageSlider';
 import StickyShow from './StickyShow';
+import Footer from './Footer';
 const Villa = ({name,sidebarImg, mainImg, scrollImg, facilitiesImg }) => {
     const { scrollYProgress } = useScroll();
 
@@ -43,7 +44,7 @@ const Villa = ({name,sidebarImg, mainImg, scrollImg, facilitiesImg }) => {
     useEffect(() => {
         scrollYProgress.on("change", (v) => {
             const initialInset = { top: 2, right: 10, bottom: 0, left: 12 };
-            let scroll = v * 6;
+            let scroll = v * 12;
             const newInset = `inset(${initialInset.top - (initialInset.top * scroll)}% ${initialInset.right - (initialInset.right * scroll)}% ${initialInset.bottom - (initialInset.bottom * scroll)}% ${initialInset.left - (initialInset.left * scroll)}%)`;
             animate('.v_main_image_container_inner', {
                 clipPath: newInset
@@ -105,7 +106,10 @@ const Villa = ({name,sidebarImg, mainImg, scrollImg, facilitiesImg }) => {
                 <VillaFacilities image={facilitiesImg} />
                 <ImageSlider />
                 <StickyShow />
-            <div className='h-screen w-full bg-red-200' ></div>
+            {/* <div className=' w-full bg-red-200 h-[100vh]'>
+               
+
+            </div> */}
         </div>
     )
 }
@@ -123,12 +127,13 @@ const ScrollImageSticky = ({image}) => {
     
     useEffect(() => {
         scrollYProgress.on("change", (v) => {
-            const scroll = (v ) * 15;
+            console.log('v', v)
+            const scroll = (v * 15) ;
             animate('.sticky_img_container', {
                 clipPath: `inset(${scroll}%)`
             }, {
                 ease: "linear",
-                duration: 0.2
+                duration: 0.4
             })
         })
     }, [])

@@ -159,7 +159,6 @@ export function VillaFacilities({ image }) {
                         })}
                     </ul>
                 </div>
-
                 <motion.div
                     animate={inView ? 'visible' : 'hidden'}
                     variants={variants}

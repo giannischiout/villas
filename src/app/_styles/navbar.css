@@ -8,7 +8,7 @@
     left: 0;
     width: 100%;
     user-select: none;
-    z-index: 100;
+    z-index: 99999;
 
 }
 
@@ -37,27 +37,25 @@
 }
 
 
-.new_burger {
-    height: 45px;
-    width: 45px;
-    display: flex;
+
+
+
+.nav_burger {
     border-radius: 50%;
-    flex-direction: column;
+    width: 35px;
+    height: 35px;
+    display: flex;
     align-items: center;
     justify-content: center;
-}
-
-
-.new_burger > div {
-    height: 3px;
-    border-radius: 6px;
-    width: 40px;
-    margin: 2px 0;
-    background-color: var(--primary);
     cursor: pointer;
+    z-index: 100;
+    font-size: 2rem;
+    color: var(--primary_dark);
+
 }
-
-
+.times {
+    border: 2px solid var(--primary_dark);
+}
 
 
 .burger_curtain {

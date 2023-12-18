@@ -1,21 +1,19 @@
 .sticky_show_container {
     width: 100%; 
-    
     display: flex;
-    /* align-items: center; */
     justify-content: center;
-    
+    height: 100vh;
+    margin: 300px 0;
+    overflow: hidden;
 }
 
 .sticky_show_grid {
-    width: 90%;
-    height: 150vh;
+    width: 80%;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
-    gap: 10px;
-    background-color: beige;
-  
+    height: 180vh;
+   
 }
 
 
@@ -54,13 +52,14 @@
     flex-direction: column;
     height:50vh;
     width: 100%;
-    background-color: aquamarine;
+    position: relative;
+    margin-bottom: 50px;
 }
+
 
 .sticky_show_card_image {
     position: relative;
     height: 40vh;
-    background-color: red;
 }
 
 .sticky_show_card_image img {
@@ -76,4 +75,12 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+}
+
+.sticky_show_card_details p {
+    font-weight: 700;
+    color: var(--primary_dark);
+}
+.sticky_show_card_details span {
+    color: var(--text_light);
 }

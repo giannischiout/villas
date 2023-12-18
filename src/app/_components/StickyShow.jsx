@@ -5,9 +5,8 @@ const StickyShow = () => {
         <div className="sticky_show_container">
             <div className="sticky_show_grid">
                 <div  className="sticky_show_content">
-                    <Card image={'/1.webp'} title={'villa mosco'} subTitle={'tranquility'} />
-                    <Card image={'/1.webp'} title={'villa mosco'} subTitle={'tranquility'} />
-                    <Card image={'/1.webp'} title={'villa mosco'} subTitle={'tranquility'} />
+                    <Card image={'/4.webp'} title={'villa mosco'} subTitle={'tranquility'} />
+                    <Card image={'/10.webp'} title={'villa mosco'} subTitle={'tranquility'} />
                 </div>
                 <div className="sticky_show_header">
                     <p>more villas</p>
@@ -31,7 +30,7 @@ const Card  = ({image, title, subTitle}) => {
             </div>
             <div className="sticky_show_card_details">
                 <p>{title}</p>
-                <p>{subTitle}</p>
+                <span>{subTitle}</span>
             </div>
         </div>
     )
