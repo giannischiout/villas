@@ -36,7 +36,7 @@ const Navbar = () => {
                 <BookNow />
             </div>
         </div>
-        {clicked ? <NavMenu /> : null}
+         {/* <NavMenu  isOpen={clicked}/>    */}
         {/* <NavMenu /> */}
         </div>
     )

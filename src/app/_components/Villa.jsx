@@ -6,12 +6,31 @@ import { VillaFeatures, VillaDetails, VillaFacilities } from './VillaDetails';
 import ImageSlider from './ImageSlider';
 import StickyShow from './StickyShow';
 import Footer from './Footer';
+import Lenis from '@studio-freight/lenis';
 const Villa = ({name,sidebarImg, mainImg, scrollImg, facilitiesImg }) => {
     const { scrollYProgress } = useScroll();
 
     const [scope, animate] = useAnimate();
     
-   
+    useEffect(() => {
+        const lenis = new Lenis({
+            duration: 1,
+            lerp: 0.1,
+            easing	: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        })
+
+lenis.on('scroll', (e) => {
+    console.log('lenis')
+  console.log(e)
+})
+
+function raf(time) {
+  lenis.raf(time)
+  requestAnimationFrame(raf)
+}
+
+requestAnimationFrame(raf)
+    }, [])
     const handleIntroAnimation = async () => {
         animate('.v_main_image_container_inner', {
             opacity: [0, 1]

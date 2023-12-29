@@ -2,24 +2,23 @@
 import { GoArrowUpRight } from "react-icons/go";
 import{motion} from 'framer-motion';
 
-const NavMenu = () => {
+const NavMenu = ({isOpen}) => {
 	
 	const variants = {
 		open: { 
-			opacity: 1, 
-			x: 0,
-			position: "fixed",
-			top: 0,
-			zIndex: 999, 
+			
+			
 		},
-		closed: { opacity: 0, x: "-100%" },
+		closed: { opacity: 0,  },
 	
 	}
 
 	return (
-		<section 
-	
-		className="testppp" >
+		<div className="testppp">
+			<motion.div
+			variants={variants}
+			animate={isOpen ? "open" : "closed"}
+			 >
 			<div className="menu_container">
 				<div className="menu_top">
 					<div>
@@ -40,12 +39,22 @@ const NavMenu = () => {
 						</div>
 						<div className="menu_item">
 							<div className="menu_title">
-								<h1>EXPLORE OUR VILLAS</h1>
+								<h1>EXPLORE MORE</h1>
 							</div>
 							<div className="menu_content">
 								<span>Jira</span>
 								<span>Molto</span>
 								<span>Quisnikov</span>
+							</div>
+						</div>
+						<div className="menu_item">
+							<div className="menu_title">
+								<h1>EXPLORE MORE</h1>
+							</div>
+							<div className="menu_content">
+								<span>Jira</span>
+								<span>Molto</span>
+							
 							</div>
 						</div>
 					</div>
@@ -55,7 +64,8 @@ const NavMenu = () => {
 			<video className="menu_video" autoPlay loop muted>
 				<source src={'/sea.mp4'} type="video/mp4" />
 			</video>
-		</section>
+		</motion.div>
+		</div>
 	)
 }
 

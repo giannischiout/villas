@@ -8,6 +8,7 @@
 @import './_styles/sticky_show.css';
 @import './_styles/footer.css';
 @import './_styles/menu.css';
+@import './_styles/intro.css';
 
 
 * {
@@ -19,6 +20,12 @@
 
 html {
   font-size: 62.5%;
+  scroll-behavior: initial !important;
+}
+
+html,body {
+  min-height: 100%;
+  height: auto;
 }
 body {
   font-size: var(--font-normal);
@@ -81,7 +88,7 @@ h1 {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: var(--primary_dark);
+  background: var(--background);
   border-radius: 6px;
 }
 
@@ -89,3 +96,7 @@ h1 {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+
+
+

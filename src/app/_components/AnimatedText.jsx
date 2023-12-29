@@ -4,14 +4,15 @@ const AnimatedText = ({ text, style, className }) => {
     const ref = useRef(null);
     const isInView = useInView(ref);
   const defaultLetterAnimation = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 50},
     visible: { opacity: 1, y: 0 },
   };
 
   const containerAnimation = {
-    hidden: { opacity: 0 },
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
+      y: 0,
     }
   };
 
