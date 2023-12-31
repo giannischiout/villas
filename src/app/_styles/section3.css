@@ -1,0 +1,127 @@
+
+.villa_section {
+    background-color: var(--background);
+    width: 100%;
+  }
+  
+  .villa_width {
+    width: 90%;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    
+  }
+  
+  .row_one {
+    display: flex;
+    height: 300px;
+    align-items: center;
+    transform: translateY(-150px);
+    width: 100%;
+  } 
+  
+  
+  .row_one_image {
+      width: 300px;
+      height: 300px;
+      position: relative;
+  
+  }
+  .row_one_image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+  }
+  
+  .row_one h2 {
+    position: absolute;
+    bottom: 0;
+    left: 120%;
+    font-size: calc(2rem + 2vw);
+    color: var(--primary_dark);
+    letter-spacing: 3px;
+  }
+  
+  .traslated_container {
+    transform: translateY(-150px);
+  }
+  .row_two {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 400px;
+   
+  }
+  .row_two p {
+    max-width: 280px;
+    margin-left: calc(17.5vw + 20px);
+    color: var(--primary_dark)
+  }
+  
+  .row_three {
+      display: flex;
+      width: 100%;
+  }
+  
+  
+  .row_three_image{
+    position: relative;
+    width: 70%;
+    height: 700px;
+    margin-left: calc(3vw + 20px);
+  }
+  .row_three_image img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+  
+  .row_three_content {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 3%;
+  }
+  .row_three_content p {
+    max-width: 300px;
+    color: var(--primary_dark);
+    font-size: calc(1.2rem + 0.2vw);
+  }
+  
+  
+  
+  @media  screen and (max-width: 600px) {
+    .row_one h2 {
+      position: relative;
+      left: 0;
+      bottom: -120%;
+      transform: translateY(-50px);
+    }
+   
+  }
+  
+  @media  screen and (max-width: 1079px) {
+    .row_three {
+      flex-direction: column;
+    }
+    
+   .row_three_image {
+     width: 100%;
+     margin: 0;
+   }
+  
+   .row_three_content {
+     width: 100%;
+    
+   }
+    .row_three_content p {
+      max-width: 500px;
+      padding-top: 10%;
+      margin: 0;
+      color: var(--primary_dark);
+      font-size: calc(1.2rem + 0.2vw);
+    }
+   
+  }

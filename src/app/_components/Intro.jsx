@@ -10,28 +10,42 @@ export default function Intro() {
 	const [scope, animate] = useAnimate();
 	const scrollContainerRef = useRef(null);
 
+	const introGrid = async () => {
+		await animate('.intro_grid', {
+			opacity: 1,
+			y: [400, 0],
+			
+		},{
+			delay: 0.5,
+			duration: 0.8,
+			ease: 'easeIn',
+		})
+		await animate('.intro_image', {
+			y: -250
+			
+		},
+		{	
+			duration: 0.8,
+			ease: 'easeIn',
+		})
+	   
+	}
+
 	const introAnimation = async () => {
-		
 		await animate('.intro_image', {
 			width: '45%',
 			height: 250,
 			top: '50%',
-			
-			// translateY: 'calc(-50% - 125px)'
 
 		},
 		{
 			duration: 0.8,
 			ease: [0.6, 0.05, -0.03, 0.9],
 		})
-		await animate('.intro_image', {
-			y: 'calc(-50% - 125px)',
-			
-		},
-		{
-			duration: 0.8,
-			ease: [0.6, 0.05, -0.03, 0.9],
-		})
+		
+
+		
+		
 			
 		
 	}
@@ -47,6 +61,7 @@ export default function Intro() {
 		scrollYProgress.on('change', (v) => {
 			if (v > 0.01 && v < 0.02) {
 				introAnimation()
+				introGrid()
 			}
 		})
 	}, [scrollYProgress])
@@ -64,15 +79,15 @@ export default function Intro() {
 				<div className='intro_grid'>
 					<div className='intro_top'>
 						<div className='intro_top_inner'>
-						<p>LOOK</p>
+							<p className='intro_top_inner_text'>LOOK</p>
+							<p className='intro_top_inner_absolute_text'>BEYOND LIMITS.</p>
 						</div>
 					</div>
 					<div className='intro_mid'>
 						<div className='intro_mid_image'>
-							{/* <Image 
-								src='/slider2.webp'
-								fill={true}
-							/> */}
+							{/* <video autoPlay >
+								<source src='/sea.mp4' type='video/mp4' />
+							</video> */}
 						</div>
 						<div className='intro_mid_text'>
 							<p>FIND</p>

@@ -9,6 +9,10 @@
 @import './_styles/footer.css';
 @import './_styles/menu.css';
 @import './_styles/intro.css';
+@import './_styles/section2.css';
+@import './_styles/section3.css';
+@import './_styles/section4.css';
+@import './_styles/section5.css';
 
 
 * {
@@ -16,20 +20,6 @@
   padding: 0;
   box-sizing: border-box;
 
-}
-
-html {
-  font-size: 62.5%;
-  scroll-behavior: initial !important;
-}
-
-html,body {
-  min-height: 100%;
-  height: auto;
-}
-body {
-  font-size: var(--font-normal);
-  font-family: var(--font-qautrocento);
 }
 
 :root {
@@ -57,6 +47,23 @@ body {
   --font-xl6: 4em;
  
 }
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: initial !important;
+}
+
+html,body {
+  min-height: 100%;
+  height: auto;
+}
+body {
+  font-size: var(--font-normal);
+  /* font-family: var(--font-qautrocento); */
+  font-family: var(--font-mont);
+}
+
+
 
 h1 {
   margin: 0;
@@ -100,3 +107,6 @@ h1 {
 
 
 
+p {
+  font-size: calc(1.6rem + 0.2vw);
+}

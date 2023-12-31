@@ -3,20 +3,18 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useRef } from "react";
 import Intro from "./Intro";
+import SectionThree from "./SectionThree";
+import { SectionTwo, SectionFour, SectionFive} from "./SectionThree";
 const Home = () => {
-  const ref = useRef(null);
-
-
-
 
   return (
     <>
-        <div
-          id="main-container"
-          data-scroll-container
-          ref={ref}
-        >
-          <Intro />
+        <div>
+          {/* <Intro /> */}
+          <SectionTwo />
+          <SectionThree />
+          <SectionFour />
+          <SectionFive />
         </div>
     </>
   );

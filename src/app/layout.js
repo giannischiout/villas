@@ -4,7 +4,7 @@ import { Inter, Quattrocento, Yellowtail, Montserrat } from 'next/font/google'
 import './globals.css'
 import Navbar from './_components/Navbar'
 import Footer from './_components/Footer'
-import '../app/_styles/locomotive-scroll.css'
+import SmoothScrolling from './_hooks/smoothScrolling'
 
 const inter = Inter({ subsets: ['latin'] })
 const mont = Montserrat({ subsets: ['latin'], weight: ['300','400', '500', '700'],
@@ -30,11 +30,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${qautrocento.variable} ${yellow.variable}  ${mont.variable}`}>
-        {/* <SmoothScrolling> */}
+        <SmoothScrolling>
           <Navbar />
           {children}
           <Footer />
-        {/* </SmoothScrolling> */}
+        </SmoothScrolling>
       </body>
     </html>
   )
