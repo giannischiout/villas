@@ -4,7 +4,8 @@ import { useEffect } from "react";
 import { useRef } from "react";
 import Intro from "./Intro";
 import SectionThree from "./SectionThree";
-import { SectionTwo, SectionFour, SectionFive} from "./SectionThree";
+import { SectionTwo, SectionFour, SectionFive, SectionSix} from "./SectionThree";
+import VillasPresentation from "./VillasPresentation";
 const Home = () => {
 
   return (
@@ -15,6 +16,8 @@ const Home = () => {
           <SectionThree />
           <SectionFour />
           <SectionFive />
+          <SectionSix />
+          <VillasPresentation />
         </div>
     </>
   );

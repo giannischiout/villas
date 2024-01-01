@@ -1,0 +1,129 @@
+
+
+.v_presentation_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+
+}
+
+
+.v_presentation_inner {
+    width: 80%;
+    height: 100%;
+}
+
+
+.v_presentation_top {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr;
+    padding-top: 50px;
+    background-color: var(--background);
+
+}
+
+.v_presentation_top > div:nth-child(1) {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.v_presentation_top > div:nth-child(2) {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.v_presentation_image_container {
+    width: 250px;
+    height: 250px;
+    position: relative;
+}
+
+.v_presentation_image_container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+
+.v_presentation_top > div:nth-child(1) p {
+  font-size: calc(1.8rem + 0.8rem);
+  color: var(--text_dark)
+}
+.v_presentation_top > div:nth-child(1) h5 {
+    line-height: 0.8;
+  font-size: calc(3rem + 4em);
+  color: var(--primary_dark)
+}
+
+
+
+.v_presentation_bottom {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr;
+    margin-top: 150px;
+    min-height: 30vh;
+    position: sticky;
+    top: 20%;
+     background-color: var(--background);
+}
+
+
+.v_presentation_bottom > div:nth-child(2) {
+    
+}
+.v_presentation_bottom > div:nth-child(2) p {
+    width: 300px;
+    color: var(--primary_dark)
+
+}
+.v_presentation_bottom > div:nth-child(2) h6 {
+    font-size: calc(1.8rem + 1rem);
+    color: var(--primary_dark);
+    margin-bottom: 30px;
+    font-weight: 500;
+}
+
+
+.v_presentation_villas {
+    margin-bottom: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    
+}
+
+
+.v_presentation_villas > div:nth-child(1) {
+}
+
+.v_presentation_villas_inner {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr;
+}
+.v_presentation_villas_inner > div:nth-child(1) {
+   margin-right: 10%;
+   transform: translateY(-300px);
+}
+
+
+.villas_card_container {
+    margin-bottom: 80px;
+}
+
+.v_presentation_card_image_container {
+    width: 100%;
+    height: 500px;
+    position: relative;
+}
+.v_presentation_card_image_container img {
+    object-fit: cover;
+}

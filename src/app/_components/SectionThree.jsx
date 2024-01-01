@@ -1,22 +1,21 @@
-import { useAnimate } from "framer-motion";
+import { useAnimate, useScroll, useTransform, motion } from "framer-motion";
 import Image from "next/image";
-import { useEffect } from "react";
-import { useInView } from "react-intersection-observer";
+import { useEffect, useRef } from "react";
 
 
 export const SectionTwo = () => {
     return (
         <section className="section_two_container">
-        <div className="section_two_col_1">
-         <div>
-                 <span>Tastemakers of Understated Chic Luxury</span>
-                 <p>Sitting atop the curvaceous cliffs of Italy’s Amalfi Coast,
-                     Casa Angelina offers a sublime slice of modern minimalism on the Mediterranean, with an emphasis on barefoot luxury and top-level gastronomy.</p>
-                 <p>Sitting atop the curvaceous cliffs of Italy’s Amalfi Coast, Casa Angelina offers a sublime slice of modern minimalism on the Mediterranean, with an emphasis on barefoot luxury and top-level gastronomy.</p>
-                 <p>We work to ensure everything about your stay is true perfection, from our welcome amenities and the thoughtful turndown services to the curated dishes from our chefs and activities organized by our concierge.</p>
-             </div>
-        </div>
- </section>
+            <div className="section_two_col_1">
+                <div>
+                    <span>Tastemakers of Understated Chic Luxury</span>
+                    <p>Sitting atop the curvaceous cliffs of Italy’s Amalfi Coast,
+                        Casa Angelina offers a sublime slice of modern minimalism on the Mediterranean, with an emphasis on barefoot luxury and top-level gastronomy.</p>
+                    <p>Sitting atop the curvaceous cliffs of Italy’s Amalfi Coast, Casa Angelina offers a sublime slice of modern minimalism on the Mediterranean, with an emphasis on barefoot luxury and top-level gastronomy.</p>
+                    <p>We work to ensure everything about your stay is true perfection, from our welcome amenities and the thoughtful turndown services to the curated dishes from our chefs and activities organized by our concierge.</p>
+                </div>
+            </div>
+        </section>
     )
 }
 
@@ -68,15 +67,15 @@ const SectionThree = () => {
 export const SectionFour = () => {
     return (
         <section className="section_four_container">
-               <div className="section_four_col_1">
+            <div className="section_four_col_1">
                 <div>
-                        <span>Tastemakers of Understated Chic Luxury</span>
-                        <p>Sitting atop the curvaceous cliffs of Italy’s Amalfi Coast,
-                            Casa Angelina offers a sublime slice of modern minimalism on the Mediterranean, with an emphasis on barefoot luxury and top-level gastronomy.</p>
-                        <p>Sitting atop the curvaceous cliffs of Italy’s Amalfi Coast, Casa Angelina offers a sublime slice of modern minimalism on the Mediterranean, with an emphasis on barefoot luxury and top-level gastronomy.</p>
-                        <p>We work to ensure everything about your stay is true perfection, from our welcome amenities and the thoughtful turndown services to the curated dishes from our chefs and activities organized by our concierge.</p>
-                    </div>
-               </div>
+                    <span>Tastemakers of Understated Chic Luxury</span>
+                    <p>Sitting atop the curvaceous cliffs of Italy’s Amalfi Coast,
+                        Casa Angelina offers a sublime slice of modern minimalism on the Mediterranean, with an emphasis on barefoot luxury and top-level gastronomy.</p>
+                    <p>Sitting atop the curvaceous cliffs of Italy’s Amalfi Coast, Casa Angelina offers a sublime slice of modern minimalism on the Mediterranean, with an emphasis on barefoot luxury and top-level gastronomy.</p>
+                    <p>We work to ensure everything about your stay is true perfection, from our welcome amenities and the thoughtful turndown services to the curated dishes from our chefs and activities organized by our concierge.</p>
+                </div>
+            </div>
         </section>
     )
 }
@@ -91,7 +90,7 @@ export const SectionFive = () => {
                 </div>
                 <div className="section_five_container_row_1_right">
                     <div>
-                        <Image 
+                        <Image
                             src={"/6.webp"}
                             fill={true}
                         />
@@ -100,7 +99,7 @@ export const SectionFive = () => {
             </div>
             <div className="section_five_container_row_2">
                 <div>
-                    <Image 
+                    <Image
                         src={"/5.webp"}
                         fill={true}
                     />
@@ -110,4 +109,97 @@ export const SectionFive = () => {
     )
 }
 
+
+
+const images = [
+    {
+        image: "/1.webp",
+        title: "Wellbeing"
+    },
+    {
+        image: "/2.webp",
+        title: "relax"
+    },
+    {
+        image: "/3.webp",
+        title: "enjoy"
+    },
+    {
+        image: "/4.webp",
+        title: "pool"
+    },
+    {
+        image: "/5.webp",
+        title: "pool"
+    },
+    {
+        image: "/6.webp",
+        title: "pool"
+    },
+    {
+        image: "/7.webp",
+        title: "pool"
+    },
+]
+
+export const SectionSix = () => {
+    const targetRef = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: targetRef,
+    });
+
+    const x = useTransform(scrollYProgress, [0, 1], ["1%", "-75%"]);
+    return (
+        <section ref={targetRef} className="section_six_container">
+            <div className="section_six_sticky">
+                <div>
+                    <p className="font-xl text-white">fsefsefsfesesessefsfesffesf</p>
+                    <p className="font-xl text-white">fsefsefsfesesessefsfesffesf</p>
+                    <p className="font-xl text-white">fsefsefsfesesessefsfesffesf</p>
+                    <p className="font-xl text-white">fsefsefsfesesessefsfesffesf</p>
+                </div>
+                <motion.div style={{ x }} className="section_six_motion">
+
+                    {images.map((item, index) => {
+                        if (index % 2 == 1) {
+                            return (
+                                <Item2 image={item.image} title={item.title} />
+                            )
+                        } else {
+                            return (
+                                <Item image={item.image} title={item.title} />
+                            )
+                        }
+                    })
+                    }
+                </motion.div>
+            </div>
+        </section>
+    )
+}
+
+
+const Item = ({ image, title }) => {
+    return (
+        <div className="section_six_sticky_item">
+            <Image
+                src={image}
+                fill={true}
+            />
+            <span>{title.toUpperCase()}</span>
+        </div>
+    )
+}
+
+const Item2 = ({ image, title }) => {
+    return (
+        <div className="section_six_sticky_item_2">
+            <Image
+                src={image}
+                fill={true}
+            />
+            <span>{title.toUpperCase()}</span>
+        </div>
+    )
+}
 export default SectionThree
