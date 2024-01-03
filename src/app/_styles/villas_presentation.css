@@ -133,7 +133,10 @@
 
 
 .villas_card_container {
-    margin-bottom: 80px;
+    margin-bottom: 120px;
+    border: 2px solid var(--background);
+    padding: 10px;
+    background-color: white;
 }
 
 .v_presentation_card_image_container {
@@ -143,4 +146,43 @@
 }
 .v_presentation_card_image_container img {
     object-fit: cover;
+}
+
+
+.v_presentation_card_text {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    /* flex-direction: column; */
+    justify-content: space-between;
+    padding: 30px;
+}
+.v_presentation_card_text p {
+    font-size: 1.6rem;
+    color: var(--text_dark);
+    position: relative;
+    margin-left: 15px;
+}
+.v_presentation_card_text p::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    position: absolute;
+    top: 50%;
+    border-radius: 50%;
+    left: -10px;
+    transform: translateY(-50%);
+    background-color: var(--text_dark);
+}
+.v_card_title {
+    font-size: calc(1.8rem + 0.8rem);
+    color: var(--text_dark);
+}
+
+.villa_btn {
+    border: 1px solid var(--primary_dark);
+    padding: 10px 20px;
+    border-radius: 30px;
+    background-color: var(--background);
 }

@@ -10,7 +10,9 @@ import { useAnimate } from 'framer-motion';
 import { IoCloseOutline } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
 
-import NavMenu from './Menu';
+
+
+
 const Navbar = () => {
     const {scrollYProgress} = useScroll();
     const [clicked, setClicked] = useState(false)
@@ -33,11 +35,10 @@ const Navbar = () => {
             </div>
             <div className='grid_icons'>
                 <Icons />
-                <BookNow />
+                <BookNow  text="book now"/>
             </div>
         </div>
-         {/* <NavMenu  isOpen={clicked}/>    */}
-        {/* <NavMenu /> */}
+        
         </div>
     )
 }
@@ -133,7 +134,7 @@ const Icons = () => {
 }
 
 
- export const BookNow = () => {
+ export const BookNow = ({text}) => {
     const [scope, animate] = useAnimate()
 
     const handlMouseOver = async () => {
@@ -141,7 +142,7 @@ const Icons = () => {
                 width: '100%'
             }, {
                 ease: 'linear',
-                duration: 0.5
+                duration: 0.3
             })
             animate('#book_icon', {
                 color: 'white'
@@ -157,7 +158,7 @@ const Icons = () => {
         },
             {
                 ease: 'easeOut',
-                duration: 0.4
+                duration: 0.2
 
             })
         animate('#book_icon', {
@@ -173,7 +174,7 @@ const Icons = () => {
         ref={scope} onMouseEnter={handlMouseOver} onMouseLeave={handleMouseLeave} className="book_now">
             <button className="book_now_inner">
             </button>
-            <span>book now</span>
+            <span>{text}</span>
             <BsArrowUpRight id="book_icon" />
         </div>
     )
