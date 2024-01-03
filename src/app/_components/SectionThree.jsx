@@ -152,22 +152,17 @@ export const SectionSix = () => {
     return (
         <section ref={targetRef} className="section_six_container">
             <div className="section_six_sticky">
-                <div>
-                    <p className="font-xl text-white">fsefsefsfesesessefsfesffesf</p>
-                    <p className="font-xl text-white">fsefsefsfesesessefsfesffesf</p>
-                    <p className="font-xl text-white">fsefsefsfesesessefsfesffesf</p>
-                    <p className="font-xl text-white">fsefsefsfesesessefsfesffesf</p>
-                </div>
+               
                 <motion.div style={{ x }} className="section_six_motion">
 
                     {images.map((item, index) => {
                         if (index % 2 == 1) {
                             return (
-                                <Item2 image={item.image} title={item.title} />
+                                <Item2 key={index} image={item.image} title={item.title} />
                             )
                         } else {
                             return (
-                                <Item image={item.image} title={item.title} />
+                                <Item key={index}  image={item.image} title={item.title} />
                             )
                         }
                     })
