@@ -101,10 +101,11 @@
         display: flex;
     }
     .section_five_container_row_1_right div {
-        width: 200px;
-        height: 200px;
+        display: none;
       
     }
+
+    
 }
 @media screen and (max-width: 600px) {
     .section_five_container_row_1 {

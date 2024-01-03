@@ -6,16 +6,7 @@
     
 }
 
-/* .section_six_container::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 250vh;
-    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
-    background-image: url('../../../public/intro.webp');
-} */
+
 
 .section_six_sticky {
     top: 0;
@@ -89,4 +80,30 @@
     left: -130px;
     rotate: 270deg;
     color: rgba(255, 255, 255, 0.382);
+}
+
+
+
+
+@media screen and (max-width: 800px) {
+    .section_six_sticky_item {
+        width: 400px;
+        height: 200px;
+        margin-right: 100px;
+    }
+    .section_six_sticky_item_2 {
+        width: 250px;
+        height: 350px;
+        margin-right: 100px;
+    }
+    .section_six_sticky_item span {
+        font-size: 5rem;
+        bottom: -30px;
+        left: -30px;
+    }
+    .section_six_sticky_item_2 span {
+        font-size: 5rem;
+        bottom: 30px;
+        left: -80px;
+    }
 }
