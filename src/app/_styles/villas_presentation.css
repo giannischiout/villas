@@ -4,24 +4,33 @@
     display: flex;
     align-items: center;
     justify-content: center;
-   
+    position: relative;
+    height: 250vh;
 
 }
 
 
 .v_presentation_inner {
-    width: 80%;
+    width: 100%;
     height: 100%;
+    position: relative;
 }
 
+.presentation_top_container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--background);
 
+}
 .v_presentation_top {
     display: grid;
     grid-template-columns: 2fr 1fr;
     grid-template-rows: 1fr;
     padding-top: 50px;
-    background-color: var(--background);
-
+    width: 80%;
+    
 }
 
 .v_presentation_top > div:nth-child(1) {
@@ -60,23 +69,34 @@
   color: var(--primary_dark)
 }
 
+.presentation_bottom_container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--background);
+}
 
 
+.v_presentation_sticky {
+  position: sticky;
+  top: 0;
+   
+
+}
 .v_presentation_bottom {
     display: grid;
+    width: 80%;
     grid-template-columns: 2fr 1fr;
     grid-template-rows: 1fr;
-    margin-top: 150px;
-    min-height: 30vh;
+    min-height: 50vh;
     position: sticky;
-    top: 20%;
-     background-color: var(--background);
+    top: 0;
+    align-items: center;
 }
 
 
-.v_presentation_bottom > div:nth-child(2) {
-    
-}
+
 .v_presentation_bottom > div:nth-child(2) p {
     width: 300px;
     color: var(--primary_dark)
@@ -91,7 +111,7 @@
 
 
 .v_presentation_villas {
-    margin-bottom: 150px;
+    /* margin-bottom: 150px; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -100,11 +120,8 @@
 }
 
 
-.v_presentation_villas > div:nth-child(1) {
-}
-
 .v_presentation_villas_inner {
-    width: 100%;
+    width: 80%;
     display: grid;
     grid-template-columns: 2fr 1fr;
     grid-template-rows: 1fr;
