@@ -65,7 +65,9 @@ body {
   font-family: var(--font-mont);
 }
 
-
+button:focus {
+  outline: none;
+}
 
 h1 {
   margin: 0;

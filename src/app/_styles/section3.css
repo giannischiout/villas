@@ -51,7 +51,7 @@
   }
   
   .traslated_container {
-    transform: translateY(-150px);
+    transform: translateY(-100px);
   }
   .row_two {
     display: flex;
@@ -119,17 +119,23 @@
       width: 500px;
       padding-top: 10%;
       margin: 0;
-      color: var(--primary_dark);
     }
    
   }
   
   @media  screen and (max-width: 800px) {
-    .villa_section {
+    .row_three_content p {
+      padding-top: 0;
+      
     }
+   
     .row_two {
       height: 250px;
       justify-content: center;
+    }
+
+    .row_one_text {
+      height: 50px;
     }
 
     .row_one {
@@ -137,6 +143,7 @@
       width: 200px;
       transform: translateY(-100px);
       margin-bottom: 30px;
+      flex-wrap: wrap;
     }
     .row_one_image {
       min-width: 200px;
@@ -152,7 +159,7 @@
     .row_three_image {
       width: 100%;
       margin: 0;
-      height: 300px;
+      height: 200px;
     }
     .row_two p {
      

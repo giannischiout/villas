@@ -35,7 +35,7 @@ const SectionThree = () => {
                         />
                     </div>
                     <div className="row_one_text">
-                        <h2>Villas</h2>
+                        <h2>Consept</h2>
                     </div>
                 </div>
                 <div className="traslated_container">
