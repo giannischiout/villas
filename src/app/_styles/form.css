@@ -1,0 +1,134 @@
+.form_container_mobile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+    padding: 80px 0;
+    width: 100%;
+}
+
+
+.form_container {
+    width: 80%;
+}
+
+.book_now_intro {
+    margin-bottom: 16px;
+}
+.book_now_intro span {
+    font-size: 3rem;
+    font-weight: 300;
+    color: var(--primary_dark);
+    margin-bottom: 16px;
+}
+.book_now_intro p {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--primary_dark);
+    margin-bottom: 16px;
+    line-height: 1.8;
+}
+
+.calendar_container {
+    position: relative;
+}
+
+
+.calendar_picker {
+    z-index: 5;
+    position: absolute;
+    top: 10%;
+    right: 0;
+    border-radius: 4px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.059);
+}
+.book_now_input {
+    z-index: 4;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border-radius: 30px;
+    padding: 10px 15px;
+    border: 1px solid var(--primary_dark);
+    min-width: 350px;
+    margin-bottom: 16px;
+}
+
+.book_now_input span,svg {
+    color: var(--primary_dark);
+    font-weight: 300;
+}
+.book_now_input svg {
+    margin-right: 8px;
+    color: var(--primary_dark);
+}
+
+
+/* NUMBER OF PEOPLE INPUT */ 
+.guests_container {
+    padding: 2px;
+    position: relative;
+}
+
+
+.guests_dropwdown {
+    overflow-y: scroll;
+    position: absolute;
+    width: 100%;
+    top: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.059);
+    z-index: 4;
+    background-color: white;
+   
+}
+
+.guests_item {
+    padding: 5px 16px;
+    cursor: pointer;
+}
+
+.guests_item:hover {
+    background-color: var(--primary);
+}
+
+.guests_item:hover span {
+    color: white;
+}
+
+.guest_bold {
+    font-weight: 700;
+}
+
+.submit_btn {
+    background-color: var(--primary_dark);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    min-width: 150px;
+    transition: all 0.3s ease-in-out;
+}
+
+.submit_btn:hover {
+    background-color: var(--primary);
+}
+
+.submit_btn:active {
+    transform: scale(0.9);
+    
+
+}
+
+.email_input {
+    z-index: 4;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border-radius: 30px;
+    padding: 10px 15px;
+    border: 1px solid var(--primary_dark);
+    min-width: 350px;
+    margin-bottom: 16px;
+}
+

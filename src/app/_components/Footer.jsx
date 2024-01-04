@@ -1,11 +1,12 @@
 
 'use client'
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { useTransform, useScroll, motion, useSpring, cubicBezier, circOut, easeInOut, easeIn, useInView } from "framer-motion";
 import Image from "next/image";
 import { RiFacebookFill } from "react-icons/ri";
 import { RiInstagramFill } from "react-icons/ri";
 import { BsFillEnvelopeFill } from "react-icons/bs";
+import { BookForm } from "./BookForm";
 
 
 
@@ -17,7 +18,35 @@ const Footer = () => {
         target: targetRef,
     });
 
+    const [screenDimensions, setScreenDimensions] = useState({
+        width: 0,
+        height: 0,
+      });
 
+
+      useEffect(() => {
+        console.log(screenDimensions)
+      }, [screenDimensions])
+    
+      useEffect(() => {
+        const updateDimensions = () => {
+          setScreenDimensions({
+            width: window.innerWidth,
+            height: window.innerHeight,
+          });
+        };
+    
+        // Initial dimensions
+        updateDimensions();
+    
+        // Event listener for window resize
+        window.addEventListener('resize', updateDimensions);
+    
+        // Clean up the event listener on component unmount
+        return () => {
+          window.removeEventListener('resize', updateDimensions);
+        };
+      }, []); // Empty dependency array ensures that the effect runs only once on mount
 
     const value = useTransform(scrollYProgress, [0, 1], ["0%", "-40vw"]);
     const valuex = useTransform(scrollYProgress, [0, 1], ["0%", "40vw"]);
@@ -25,15 +54,18 @@ const Footer = () => {
 
     return (
         <div className="_test">
+            <BookForm />
             <div ref={targetRef} className="footer_container">
                 <div className="footer_inner">
                     <motion.div
-                        style={{ x: value }}
+                        style={{ x: screenDimensions.width < 768 ? 0 : value }}
                         transition={{ duration: 10 }}
                         className="footer_motion"
                     >
-                        <FooterImage value={valuex} />
-                        <div className="footer_weather"></div>
+                        <FooterImage value={screenDimensions.width < 768 ? 0 : valuex} />
+                        <div className="footer_weather">
+                        <BookForm />
+                        </div>
                     </motion.div>
                 </div>
 
@@ -81,5 +113,8 @@ const FooterImage = ({ value }) => {
         </div>
     )
 }
+
+
+
 
 export default Footer;

@@ -180,6 +180,7 @@ const Item = ({ image, title }) => {
             <Image
                 src={image}
                 fill={true}
+                sizes={"800px 400px (max-width: 800px) 400px 200px"}
             />
             <span>{title.toUpperCase()}</span>
         </div>
@@ -192,6 +193,7 @@ const Item2 = ({ image, title }) => {
             <Image
                 src={image}
                 fill={true}
+                sizes={"500px 700px (max-width: 800px) 250px 350px"}
             />
             <span>{title.toUpperCase()}</span>
         </div>

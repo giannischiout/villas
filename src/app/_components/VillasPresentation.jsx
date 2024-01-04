@@ -61,7 +61,8 @@ const Card = ({ image, text }) => {
     return (
         <div className="villas_card_container">
             <div className="v_presentation_card_image_container">
-                <Image src={'/1.webp'} alt="villa1" fill={true} />
+                <Image src={'/1.webp'} alt="villa1" fill={true} sizes={"(max-width: 800px) 90%"}/>
+
             </div>
             <div className="v_presentation_card_text">
                 <div className="">
