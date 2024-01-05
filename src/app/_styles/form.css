@@ -8,6 +8,7 @@
 }
 
 
+
 .form_container {
     width: 80%;
 }
@@ -38,31 +39,51 @@
     z-index: 5;
     position: absolute;
     top: 10%;
-    right: 0;
+    left: 0;
     border-radius: 4px;
     background-color: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.059);
 }
-.book_now_input {
+
+
+
+.input {
     z-index: 4;
     width: 100%;
     display: flex;
     align-items: center;
-    border-radius: 30px;
-    padding: 10px 15px;
-    border: 1px solid var(--primary_dark);
+    padding: 5px 5px;
+    border-bottom: 1px solid var(--primary_dark);
     min-width: 350px;
     margin-bottom: 16px;
+    position: relative;
+
 }
 
-.book_now_input span,svg {
-    color: var(--primary_dark);
-    font-weight: 300;
+
+
+.input svg {
+    color: #8c7d71;
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
 }
-.book_now_input svg {
-    margin-right: 8px;
-    color: var(--primary_dark);
+.icon_input {
+    justify-content: space-between;
 }
+
+.input_text input {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    min-height: 30px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+}  
+   
 
 
 /* NUMBER OF PEOPLE INPUT */ 
@@ -120,15 +141,22 @@
 
 }
 
-.email_input {
-    z-index: 4;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    border-radius: 30px;
-    padding: 10px 15px;
-    border: 1px solid var(--primary_dark);
-    min-width: 350px;
-    margin-bottom: 16px;
-}
 
+
+
+
+.upwards {
+    /* Define styles for displaying the popup above the trigger element */
+    /* For example: */
+    position: absolute;
+    top: -300px; /* Adjust this value to position the popup */
+    /* Other styling properties */
+  }
+  
+  .downwards {
+    /* Define styles for displaying the popup below the trigger element */
+    /* For example: */
+    position: absolute;
+    top: 40px; /* Adjust this value to position the popup */
+    /* Other styling properties */
+  }

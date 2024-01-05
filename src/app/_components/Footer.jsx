@@ -7,6 +7,7 @@ import { RiFacebookFill } from "react-icons/ri";
 import { RiInstagramFill } from "react-icons/ri";
 import { BsFillEnvelopeFill } from "react-icons/bs";
 import { BookForm } from "./BookForm";
+import { IoChevronDownSharp } from "react-icons/io5";
 
 
 
@@ -54,7 +55,7 @@ const Footer = () => {
 
     return (
         <div className="_test">
-            <BookForm />
+            <BookForm width={'80%'} />
             <div ref={targetRef} className="footer_container">
                 <div className="footer_inner">
                     <motion.div
@@ -63,8 +64,9 @@ const Footer = () => {
                         className="footer_motion"
                     >
                         <FooterImage value={screenDimensions.width < 768 ? 0 : valuex} />
-                        <div className="footer_weather">
-                        <BookForm />
+                        <div className="footer_form">
+                            <div></div>
+                        <BookForm width={'60%'} />
                         </div>
                     </motion.div>
                 </div>

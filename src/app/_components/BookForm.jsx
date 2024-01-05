@@ -1,56 +1,51 @@
 
 
 "use client"
- import { useEffect, useState } from "react"
+ import { useEffect, useState, useRef } from "react"
 import { IoCalendarNumberOutline } from "react-icons/io5";
 import { IoChevronDownSharp } from "react-icons/io5";
 import { FaRegEnvelope } from "react-icons/fa6";
 import { GoCalendar } from "react-icons/go";
-
 import { format, parse } from 'date-fns';
-
+import usePopupDirection from "../_hooks/usePopUpDirection";
 
 import { DayPicker } from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
 
- 
-export function DateInput() {
-  const [date, setDate] = useState()
-  const [selected, setSelected] = useState();
-
-  return (
-      <CalendarInput />
-    //   <DayPicker
-    //   mode="single"
-    //   selected={selected}
-    //   onSelect={setSelected}
-    //   modifiersClassNames={{
-    //     selected: 'calendar_selected',
-    //     hoverRange: 'calendar_hover',
-    //   }}
-    // />
-     
-  )
-}
 
 
-
-export const BookForm = () => {
+export const BookForm = ({width}) => {
+	const calendarrefA = useRef(null)
+	const calendarrefB = useRef(null)
     const [show, setShow] = useState({
         arrival: false,
         departure: false,
     })
+	const [selectedGuests, setSelectedGuests] = useState(null)
 	const [selected, setSelect ] = useState({
 		arrival: null,
 		departure: null,
 	})
-	const [selectedGuests, setSelectedGuests] = useState(null)
-	const [email, setEmail] = useState(null)
+	const [input, setInput] = useState({
+		email: '',
+		name: '',
+
+	})
 	useEffect(() => {
 		console.log(selected.arrival)
 	}, [selected])
+
+
+	const handleState = (e) => {
+		let name = e.target.name;
+		let value = e.target.value;
+		setInput(prev => ({...prev, [name]: value}))
+	}
+	
+
+
+
     const handleShowArrival = (e) => {
-		
       setShow(prev => ({...prev, arrival: true, departure: false}))
     }
     const handleDeparture = (e) => {
@@ -75,6 +70,16 @@ export const BookForm = () => {
 		setShow(prev => ({...prev, arrival: false, departure: false}))
 	}
 
+	const closeArrival = () => {
+		setShow(prev => ({...prev, arrival: false}))
+	
+	}
+	const closeDeparture = () => {
+		setShow(prev => ({...prev, departure: false}))
+	
+	
+	}
+
 	const handleSubmit = () => {
 		console.log(selected)
 		console.log(selectedGuests)
@@ -84,15 +89,26 @@ export const BookForm = () => {
     return (
         <div className="form_container_mobile">
 
-           <div className="form_container" >
+           <div style={{width: width}}>
 			<div className="book_now_intro">
 				<span>BOOK NOW</span>
 				<p>PLEASE NOTE WE ARE CLOSED SEASONALLY FROM NOVEMBER 1ST TO MARCH 27TH.
 				WE LOOK FORWARD TO WELCOMING YOU BACK ON MARCH 28TH 2024</p>
 			</div>
-			<EmailInput
-				email={email}
-				setEmail={setEmail}
+			<Input
+				name="name"
+				type="text"
+				placeholder="Full name"
+				state={input.name}
+				handleState={handleState}
+			 />
+			<Input
+				name="email"
+				type="email"
+				placeholder="Type your email"
+				state={input.email}
+				handleState={handleState}
+				hasIcon={true}
 			 />
            <CalendarInput 
             	text="Arrival" 
@@ -100,6 +116,8 @@ export const BookForm = () => {
 				handleShow={handleShowArrival} 
 				selected={selected.arrival}
 				handleSelect={handleSelectArr}
+				handleClose={closeArrival}
+				calRef={calendarrefA}
 			/>
            <CalendarInput 
 				text="Departure"
@@ -107,6 +125,8 @@ export const BookForm = () => {
 				handleShow={handleDeparture}
 				selected={selected.departure}
 				handleSelect={handleSelectDep}
+				handleClose={closeDeparture}
+				calRef={calendarrefB}
 			/>
 			<Guests 
 			closeCalendars={closeCalendars} 
@@ -124,17 +144,44 @@ export const BookForm = () => {
 }
 
 
-const CalendarInput = ({text, date, show, handleShow, selected, handleSelect}) => {
-
+const CalendarInput = ({
+	text, 
+	date, 
+	show, 
+	handleShow, 
+	selected, 
+	handleSelect, 
+	handleClose,
+	calRef
+}) => {
+	const direction = usePopupDirection(calRef, show);
+	console.log(direction)
+	const handleClickOutside = (event) => {
+		if (calRef.current && !calRef.current.contains(event.target)) {
+			 // Close the popup
+			 handleClose()
+		}
+	  };	
+	
+	  useEffect(() => {
+		// Add event listener when the component mounts
+		document.addEventListener('mousedown', handleClickOutside);
+	
+		return () => {
+		  // Remove event listener when the component unmounts
+		  document.removeEventListener('mousedown', handleClickOutside);
+		};
+	  }, []);
    return (
-      <div className="calendar_container" >
-        <div onClick={handleShow} className="book_now_input">
+      <div  ref={calRef}  className="calendar_container" >
+        <div  onClick={handleShow} className="input icon_input">
+		<span>{selected ? selected: text}</span>
 		<GoCalendar />
-            <span>{selected ? selected: text}</span>
+           
         
       </div>
       {show ? (
-         <div className="calendar_picker">
+         <div className={`calendar_picker ${direction === 'up' ? 'upwards' : 'downwards'}`}>
          <DayPicker
              mode="single"
              selected={selected}
@@ -151,7 +198,12 @@ const CalendarInput = ({text, date, show, handleShow, selected, handleSelect}) =
 }
 
 
-const Guests = ({closeCalendars, selectedGuests, setSelectedGuests}) => {
+const Guests = ({
+	closeCalendars, 
+	selectedGuests, 
+	setSelectedGuests,
+}) => {
+	const ref = useRef(null)
 	const [show, setShow] = useState(false)
 	const guests = [1,2,3,4,5,6,7,8,9]
 	const handleInput = (num) => {
@@ -159,6 +211,21 @@ const Guests = ({closeCalendars, selectedGuests, setSelectedGuests}) => {
 		setSelectedGuests(num)
 		
 	}
+		
+	const handleClickOutside = (event) => {
+		if (ref.current && !ref.current.contains(event.target)) {
+			setShow(false)
+		}
+	  };	
+	
+	  useEffect(() => {
+		document.addEventListener('mousedown', handleClickOutside);
+	
+		return () => {
+		  document.removeEventListener('mousedown', handleClickOutside);
+		};
+	  }, []);
+
 	const Num = () => {
 		return guests.map((num, i) => {
 			return (
@@ -175,8 +242,8 @@ const Guests = ({closeCalendars, selectedGuests, setSelectedGuests}) => {
 	
 	}
 	return (
-		<div className="guests_container">
-			<div className="book_now_input" onClick={handleClick}>
+		<div ref={ref} className="guests_container">
+			<div className="input icon_input" onClick={handleClick}>
 				<span>Guests
 					<span className="guest_bold">{selectedGuests ? `: ${ selectedGuests}` : null}</span>
 				</span>
@@ -193,14 +260,26 @@ const Guests = ({closeCalendars, selectedGuests, setSelectedGuests}) => {
 }
 
 
-const EmailInput = ({email, setEmail}) => {
+const Input = ({
+	state, 
+	handleState, 
+	placeholder, 
+	type, 
+	name,
+	hasIcon,
+}) => {
 	return (
-		<div className="input_container">
-			<div className="book_now_input">
-			<FaRegEnvelope />
-				<span>your-email@gmail.com</span>
-				
-			</div>
+		<div className="input input_text" >
+			<input 
+				value={state} 
+				onChange={handleState} 
+				name={name} 
+				type={type} 
+				placeholder={placeholder} 
+			/>
+			{hasIcon ? (
+				<FaRegEnvelope />
+			) : null}
 		</div>
 	)
 }
