@@ -1,22 +1,16 @@
 'use client'
 import { useEffect, useState, useRef } from "react"
 import Image from "next/image"
-import { useAnimate, useScroll, useTransform, motion, useMotionTemplate, useMotionValue } from "framer-motion"
-const images = [
-    '/jira/jira_1.webp',
-    '/jira/jira_2.webp',
-    '/jira/jira_3.webp',
-    '/jira/jira_4.webp',
-    '/jira/jira_5.webp',
-    '/jira/jira_6.webp',
-
-]
+import { useAnimate, useScroll, useTransform, motion, useMotionTemplate, useMotionValue, useInView, useAnimation} from "framer-motion"
 
 
-const ImageSlider = () => {
+
+const ImageSlider = ({images}) => {
     const [index, setIndex] = useState(0)
     const [scope, animate] = useAnimate();
-  
+    const ref = useRef(null);
+    const isInView = useInView(ref)
+    const opacityControls = useAnimation();
     const handleNext = () => {
         setIndex(prev => (prev + 1) % images.length)
     }
@@ -42,15 +36,18 @@ const ImageSlider = () => {
             }
         )
     }, [index])
+
+ 
     return (
         <section ref={scope} onClick={handleNext} className="slider_container">
-            <div className="slider_inner">
+            <div
+             
+            className="slider_inner">
                 <div className="slider_image_container" id="slide_darker">
                     <img src={images[index]} alt="villa"  />
                 </div>
                 <div className="slider_image_container" id="slide_anime">
                     <motion.img 
-               
                     className="slider_img" src={images[(index + 1) % images.length]} alt="villa"  />
                 </div>
                 <Teaser index={index} images={images} />

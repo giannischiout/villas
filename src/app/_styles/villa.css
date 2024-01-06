@@ -40,7 +40,13 @@
     align-items: center;
     justify-content: center;
 }
-
+.v_sidebar_top p {
+    rotate: 270deg;
+    top: 50px;
+    position: relative;
+    font-size: calc(1rem + 1vw);
+    color: var(--primary_dark)
+}
 .v_sidebar_img_container {
     height: 9vw;
     position: relative;

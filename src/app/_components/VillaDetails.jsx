@@ -1,18 +1,12 @@
 'use client'
-
+import { ClipImage } from "./ClipImage"
 import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import { useAnimate, useTransform, useScroll, motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import { IoIosArrowForward } from "react-icons/io";
 import AnimatedText from "./AnimatedText"
-const facilities = [
-    'Safety Deposit Box',
-    'Storage Room',
-    'SAT-TV',
-    'Toaster',
-    'Washing Machine'
-]
+
 const views = [
     'Garden View',
     'Pool View',
@@ -21,27 +15,14 @@ const views = [
 
 ]
 
-const details = {
-    maxAdults: 6,
-    maxChildren: 3,
-    bedrooms: 3,
-    pullOutCoutch: 1,
-    squareMeters: 200,
-    bathRooms: '2 bathrooms, bathtub or shower / WC',
-    guestToilet: '1 guest toilet',
-}
-
-const roomTypes = [
-    'Gallery Couch ',
-    'Master Bedroom',
-    'Gallery Double Room'
-
-]
 
 
 
 
-export function VillaDetails() {
+
+
+
+export function VillaDetails({details}) {
     return (
         <>
             <h4 >Details</h4>
@@ -77,7 +58,7 @@ export function VillaDetails() {
 
 
 
-export function VillaFeatures() {
+export function VillaFeatures({roomTypes}) {
     const [data, setData] = useState(roomTypes)
     return (
         <div className="v_para"> 
@@ -99,8 +80,8 @@ export function VillaFeatures() {
 
 
 
-export function VillaFacilities({ image }) {
-    console.log(image)
+export function VillaFacilities({ image, facilities }) {
+    const clipRef = useRef(null);
     const targetRef = useRef(null);
     const [ref, inView, entry] = useInView({
         threshold: 0.5,
@@ -165,9 +146,7 @@ export function VillaFacilities({ image }) {
                     transition={{ duration: 2, ease: 'easeOut' }}
                     ref={ref} className="facilities_image">
                     <div>
-                        <motion.img
-                            src={image}
-                        />
+                        <ClipImage img={image} forwardRef={clipRef} duration={0.5} />
                     </div>
                 </motion.div>
             </div>

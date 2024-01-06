@@ -6,6 +6,7 @@ import { VillaFeatures, VillaDetails, VillaFacilities } from './VillaDetails';
 import ImageSlider from './ImageSlider';
 import VillasPresentation from './VillasPresentation';
 import Book from './Button';
+import { ClipImage } from './ClipImage';
 
 const Reveal  = ({children}) => {
     const ref = useRef(null);
@@ -36,53 +37,28 @@ const Reveal  = ({children}) => {
     )
 }
 
-const ClipImage = ({sidebarImg}) => {
-    const ref = useRef(null);
-    const isInView = useInView(ref);
-    const mainControls = useAnimation();
 
-    useEffect(() => {
-        if (isInView) {
-            mainControls.start('visible');
-        } else {
-            mainControls.start('hidden');
-        }
-    }, [isInView])
-    return (
-        <motion.div 
-            className='v_sidebar_img_container'
-            ref={ref}
-            initial="hidden"
-            animate={mainControls}
-            variants={{
-                hidden: { clipPath: 'inset(100% 0% 0% 0%)'},
-                visible: { clipPath: 'inset(0% 0% 0% 0%)'},
-            }}
-            transition={{ duration: 1, ease: 'anticipate' }}
-        >
-                      
-                      <Image
-                          src={sidebarImg}
-                          fill={true}
-                          sizes='100%'
-                          alt={`an image of the ioannian villa named ${name} that depictes the living room`}
-                      />
-        </motion.div>
-    )
-}
 
 
 const Villa = ({
     id,
+    title,
+    description,
     name, 
+    tag,
     sidebarImg, 
     mainImg, 
     scrollImg, 
+    details,
+    roomTypes,
+    facilities, 
+    imagesSlider,
     facilitiesImg }) => {
     const { scrollYProgress } = useScroll();
     const [scope, animate] = useAnimate();
     const isInView = useInView(scope);
     const ref = useRef(null);
+    const clipRef= useRef(null);
     const btnControls = useAnimation();
 
 
@@ -141,15 +117,15 @@ const Villa = ({
                 <div className="v_sidebar_space"></div>
                 <div className="v_sidebar">
                     <div className='v_sidebar_top'>
-                        <p>{name}</p>
+                        <p>{'villas'}</p>
                     </div>
-                    <ClipImage sidebarImg={sidebarImg} />
+                    <ClipImage img={sidebarImg} forwardRef={clipRef}/>
                 </div>
                 <div className="v_main">
                     <div className='v_main_top'>
                         <div>
                             <h1>{name.toUpperCase()}</h1>
-                            <h2>AN OASIS OF PIECE AND QUIET</h2>
+                            <h2>{tag}</h2>
                         </div>
                     </div>
                     <div className='v_main_image_container'  >
@@ -158,15 +134,12 @@ const Villa = ({
                    
                     <div className="v_main_content" >
                         <Reveal>
-                            <h3>Barefoot luxury, elevated.</h3>
+                            <h3>{title}</h3>
                             <p id="text_animated" >
-                                This beautiful villa with a private pool is located in a quiet location, 
-                                just a few minutes walk from the beach. The villa has three bedrooms, two bathrooms, a guest WC, a living room with an open, fully equipped kitchen, 
-                                a dining and living area with an open fireplace, extending onto a 
-                                large wooden deck terrace, and a workspace on the gallery.
+                                {description}
                                 </p>
-                        < VillaDetails />
-                        < VillaFeatures />
+                        < VillaDetails details={details} />
+                        < VillaFeatures roomTypes={roomTypes} />
                         </Reveal>
                         <div
                            
@@ -178,8 +151,8 @@ const Villa = ({
                 </div>
             </div>
                 <ScrollImageSticky image={scrollImg}/>
-                <VillaFacilities image={facilitiesImg} />
-                <ImageSlider />
+                <VillaFacilities image={facilitiesImg} facilities={facilities} />
+                <ImageSlider images={imagesSlider}/>
                 <section>
                 <VillasPresentation id={id} />
                 </section>
