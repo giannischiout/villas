@@ -45,7 +45,7 @@ export function VillaDetails() {
     return (
         <>
             <h4 >Details</h4>
-            <ul>
+            <ul className="v_para">
                 <li>
                     Square meters:
                     <span className="v_details"> {details.squareMeters}</span>
@@ -80,7 +80,7 @@ export function VillaDetails() {
 export function VillaFeatures() {
     const [data, setData] = useState(roomTypes)
     return (
-        <>
+        <div className="v_para"> 
             <h5>Room Features</h5>
             <ul>
                 {data.map((item, index) => {
@@ -91,7 +91,7 @@ export function VillaFeatures() {
                     )
                 })}
             </ul>
-        </>
+        </div>
     )
 }
 

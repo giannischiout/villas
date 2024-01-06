@@ -53,7 +53,7 @@
     align-items: center;
     padding: 5px 5px;
     border-bottom: 1px solid var(--primary_dark);
-    min-width: 350px;
+    min-width: 200px;
     margin-bottom: 16px;
     position: relative;
 
@@ -144,17 +144,11 @@
 
 
 .upwards {
-    /* Define styles for displaying the popup above the trigger element */
-    /* For example: */
     top: -300px; /* Adjust this value to position the popup */
-    /* Other styling properties */
   }
   
   .downwards {
-    /* Define styles for displaying the popup below the trigger element */
-    /* For example: */
     top: 40px; /* Adjust this value to position the popup */
-    /* Other styling properties */
   }
 
 

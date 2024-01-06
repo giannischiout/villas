@@ -4,12 +4,13 @@ import { useEffect, useState, useRef } from 'react';
 import { useAnimate, useScroll, useTransform, useSpring, animate, stagger, useMotionValue } from 'framer-motion';
 import { VillaFeatures, VillaDetails, VillaFacilities } from './VillaDetails';
 import ImageSlider from './ImageSlider';
-import StickyShow from './StickyShow';
-import Footer from './Footer';
+
 import Lenis from '@studio-freight/lenis';
+import VillasPresentation from './VillasPresentation';
+import Book from './Button';
+
 const Villa = ({name,sidebarImg, mainImg, scrollImg, facilitiesImg }) => {
     const { scrollYProgress } = useScroll();
-
     const [scope, animate] = useAnimate();
     
     useEffect(() => {
@@ -35,7 +36,7 @@ requestAnimationFrame(raf)
         animate('.v_main_image_container_inner', {
             opacity: [0, 1]
         }, {
-            duration: 1,
+            duration: 0.4,
             ease: 'easeIn'
         })
         animate('.v_sidebar', {
@@ -43,7 +44,7 @@ requestAnimationFrame(raf)
             y: ['1000px', '0px'],
             
         }, {
-            duration: 1,
+            duration: 0.4,
             ease: [0.6, 0.01, 0.05, 0.9]
         })
         await animate('.v_main_top', {
@@ -99,8 +100,6 @@ requestAnimationFrame(raf)
                     <div className='v_main_top'>
                         <div>
                             <h1>{name.toUpperCase()}</h1>
-                       
-
                             <h2>AN OASIS OF PIECE AND QUIET</h2>
                         </div>
                     </div>
@@ -117,14 +116,19 @@ requestAnimationFrame(raf)
                         </p>
                         < VillaDetails />
                         < VillaFeatures />
+                        <div className='v_button_container'>
+                        <Book />
+                        </div>
                     </div>
                 </div>
             </div>
                 <ScrollImageSticky image={scrollImg}/>
-
                 <VillaFacilities image={facilitiesImg} />
                 <ImageSlider />
-                <StickyShow />
+                {/* <StickyShow /> */}
+                <section>
+                <VillasPresentation  />
+                </section>
             {/* <div className=' w-full bg-red-200 h-[100vh]'>
                
 

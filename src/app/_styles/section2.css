@@ -5,7 +5,8 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 10px;
-    margin-bottom: 10%;
+    min-height: 40vh;
+    margin-top: 70px;
  
 }
 
