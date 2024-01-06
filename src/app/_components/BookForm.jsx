@@ -158,17 +158,13 @@ const CalendarInput = ({
 	console.log(direction)
 	const handleClickOutside = (event) => {
 		if (calRef.current && !calRef.current.contains(event.target)) {
-			 // Close the popup
 			 handleClose()
 		}
 	  };	
 	
 	  useEffect(() => {
-		// Add event listener when the component mounts
 		document.addEventListener('mousedown', handleClickOutside);
-	
 		return () => {
-		  // Remove event listener when the component unmounts
 		  document.removeEventListener('mousedown', handleClickOutside);
 		};
 	  }, []);
@@ -205,7 +201,9 @@ const Guests = ({
 }) => {
 	const ref = useRef(null)
 	const [show, setShow] = useState(false)
+	const direction = usePopupDirection(ref, show);
 	const guests = [1,2,3,4,5,6,7,8,9]
+	const [active, setActive] = useState(null)
 	const handleInput = (num) => {
 		setShow(prev => !prev)
 		setSelectedGuests(num)
@@ -250,7 +248,7 @@ const Guests = ({
 				<IoChevronDownSharp />
 			</div>
 			{show ? (
-				<div className="guests_dropwdown">
+				<div className={`guests_dropdown ${direction === 'up' ? 'upwards' : 'downwards'}`}>
 				<Num />
 				
 			</div>

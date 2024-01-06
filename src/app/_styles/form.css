@@ -2,7 +2,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 400px;
     padding: 80px 0;
     width: 100%;
 }
@@ -93,11 +92,10 @@
 }
 
 
-.guests_dropwdown {
+.guests_dropdown {
     overflow-y: scroll;
     position: absolute;
     width: 100%;
-    top: 100%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.059);
     z-index: 4;
     background-color: white;
@@ -148,7 +146,6 @@
 .upwards {
     /* Define styles for displaying the popup above the trigger element */
     /* For example: */
-    position: absolute;
     top: -300px; /* Adjust this value to position the popup */
     /* Other styling properties */
   }
@@ -156,7 +153,14 @@
   .downwards {
     /* Define styles for displaying the popup below the trigger element */
     /* For example: */
-    position: absolute;
     top: 40px; /* Adjust this value to position the popup */
     /* Other styling properties */
+  }
+
+
+
+  @media screen and (min-width:1000px) {
+        .form_mobile {
+            display: none;
+        }
   }

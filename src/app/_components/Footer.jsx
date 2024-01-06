@@ -55,15 +55,18 @@ const Footer = () => {
 
     return (
         <div className="_test">
-            <BookForm width={'80%'} />
+            <div className="form_mobile">
+            <BookForm width={'60%'} />
+
+            </div>
             <div ref={targetRef} className="footer_container">
                 <div className="footer_inner">
                     <motion.div
-                        style={{ x: screenDimensions.width < 768 ? 0 : value }}
+                        style={{ x: screenDimensions.width < 1000 ? 0 : value }}
                         transition={{ duration: 10 }}
                         className="footer_motion"
                     >
-                        <FooterImage value={screenDimensions.width < 768 ? 0 : valuex} />
+                        <FooterImage value={screenDimensions.width < 1000 ? 0 : valuex} />
                         <div className="footer_form">
                             <div></div>
                         <BookForm width={'60%'} />
