@@ -1,37 +1,93 @@
 'use client'
 import Image from 'next/image';
 import { useEffect, useState, useRef } from 'react';
-import { useAnimate, useScroll, useTransform, useSpring, animate, stagger, useMotionValue } from 'framer-motion';
+import { useAnimate, useScroll,  animate, useAnimation, useInView, motion } from 'framer-motion';
 import { VillaFeatures, VillaDetails, VillaFacilities } from './VillaDetails';
 import ImageSlider from './ImageSlider';
-
-import Lenis from '@studio-freight/lenis';
 import VillasPresentation from './VillasPresentation';
 import Book from './Button';
 
-const Villa = ({name,sidebarImg, mainImg, scrollImg, facilitiesImg }) => {
-    const { scrollYProgress } = useScroll();
-    const [scope, animate] = useAnimate();
-    
+const Reveal  = ({children}) => {
+    const ref = useRef(null);
+    const isInView = useInView(ref);
+    const mainControls = useAnimation();
+
     useEffect(() => {
-        const lenis = new Lenis({
-            duration: 1,
-            lerp: 0.1,
-            easing	: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        })
-
-lenis.on('scroll', (e) => {
-    console.log('lenis')
-  console.log(e)
-})
-
-function raf(time) {
-  lenis.raf(time)
-  requestAnimationFrame(raf)
+        if (isInView) {
+            mainControls.start('visible');
+        } else {
+            mainControls.start('hidden');
+        }
+    }, [isInView]);
+    return (
+        <div ref={ref} style={{position: "relative", overflow: 'hidden'}} className=''>
+            <motion.div
+                variants={{
+                    hidden: {opacity: 0},
+                    visible: {opacity: 1},
+                }}
+                initial="hidden"
+                animate={mainControls}
+                transition={{ duration: 1, delay: 0.25 }}
+            >
+                {children}
+            </motion.div>
+        </div>
+    )
 }
 
-requestAnimationFrame(raf)
-    }, [])
+const ClipImage = ({sidebarImg}) => {
+    const ref = useRef(null);
+    const isInView = useInView(ref);
+    const mainControls = useAnimation();
+
+    useEffect(() => {
+        if (isInView) {
+            mainControls.start('visible');
+        } else {
+            mainControls.start('hidden');
+        }
+    }, [isInView])
+    return (
+        <motion.div 
+            className='v_sidebar_img_container'
+            ref={ref}
+            initial="hidden"
+            animate={mainControls}
+            variants={{
+                hidden: { clipPath: 'inset(100% 0% 0% 0%)'},
+                visible: { clipPath: 'inset(0% 0% 0% 0%)'},
+            }}
+            transition={{ duration: 1, ease: 'anticipate' }}
+        >
+                      
+                      <Image
+                          src={sidebarImg}
+                          fill={true}
+                          sizes='100%'
+                          alt={`an image of the ioannian villa named ${name} that depictes the living room`}
+                      />
+        </motion.div>
+    )
+}
+
+
+const Villa = ({
+    id,
+    name, 
+    sidebarImg, 
+    mainImg, 
+    scrollImg, 
+    facilitiesImg }) => {
+    const { scrollYProgress } = useScroll();
+    const [scope, animate] = useAnimate();
+    const isInView = useInView(scope);
+    const ref = useRef(null);
+    const btnControls = useAnimation();
+
+
+ 
+
     const handleIntroAnimation = async () => {
         animate('.v_main_image_container_inner', {
             opacity: [0, 1]
@@ -76,25 +132,18 @@ requestAnimationFrame(raf)
         })
     }, [scrollYProgress])
 
-
-  
+    
+    
 
     return (
-        <div   className='villa_container' >
+        <div  ref={ref} className='villa_container' >
             <div ref={scope} className="villa_top" >
                 <div className="v_sidebar_space"></div>
                 <div className="v_sidebar">
                     <div className='v_sidebar_top'>
                         <p>{name}</p>
                     </div>
-                    <div className='v_sidebar_img_container' >
-                        <Image
-                            src={sidebarImg}
-                            fill={true}
-                            sizes='100%'
-                            alt={`an image of the ioannian villa named ${name} that depictes the living room`}
-                        />
-                    </div>
+                    <ClipImage sidebarImg={sidebarImg} />
                 </div>
                 <div className="v_main">
                     <div className='v_main_top'>
@@ -106,33 +155,34 @@ requestAnimationFrame(raf)
                     <div className='v_main_image_container'  >
                         <ImageScroll image={mainImg} />
                     </div>
-                    <div   className="v_main_content" >
-                        <h3  >Barefoot luxury, elevated.</h3>
-                        <p id="text_animated" >
-                        This beautiful villa with a private pool is located in a quiet location, 
-                        just a few minutes walk from the beach. The villa has three bedrooms, two bathrooms, a guest WC, a living room with an open, fully equipped kitchen, 
-                        a dining and living area with an open fireplace, extending onto a 
-                        large wooden deck terrace, and a workspace on the gallery.
-                        </p>
+                   
+                    <div className="v_main_content" >
+                        <Reveal>
+                            <h3>Barefoot luxury, elevated.</h3>
+                            <p id="text_animated" >
+                                This beautiful villa with a private pool is located in a quiet location, 
+                                just a few minutes walk from the beach. The villa has three bedrooms, two bathrooms, a guest WC, a living room with an open, fully equipped kitchen, 
+                                a dining and living area with an open fireplace, extending onto a 
+                                large wooden deck terrace, and a workspace on the gallery.
+                                </p>
                         < VillaDetails />
                         < VillaFeatures />
-                        <div className='v_button_container'>
-                        <Book />
+                        </Reveal>
+                        <div
+                           
+                        className='v_button_container'>
+                            <Book />
                         </div>
                     </div>
+                 
                 </div>
             </div>
                 <ScrollImageSticky image={scrollImg}/>
                 <VillaFacilities image={facilitiesImg} />
                 <ImageSlider />
-                {/* <StickyShow /> */}
                 <section>
-                <VillasPresentation  />
+                <VillasPresentation id={id} />
                 </section>
-            {/* <div className=' w-full bg-red-200 h-[100vh]'>
-               
-
-            </div> */}
         </div>
     )
 }

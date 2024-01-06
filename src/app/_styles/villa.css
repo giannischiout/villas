@@ -45,8 +45,10 @@
     height: 9vw;
     position: relative;
     width: 13.847vw;
-
 }
+
+
+
 
 .v_sidebar_img_container img {
     object-fit: cover;
@@ -168,67 +170,6 @@
 }
 
 
-.btn_back {
-    height: 40px;
-    width: 200px;
-    border-radius: 40px;
-    border: 2px solid var(--text_light);
-    position: relative;
-    transition: all 0.3s ease-in-out;
-    z-index: 2;
-}
-
-.btn_back svg {
-    position: absolute;
-    right: 9px;
-    top: 23%;
-    z-index: 5px;
-    transform: rotate(30deg);
-    font-size: 22px;
-}
-
-.btn {
-    height: 100%;
-    color: white;
-    color: var(--primary_dark);
-    width: 165px;
-    border-radius: 50px;
-    position: absolute;
-    left: 0;
-    pointer-events: none;
-}
-
-.btn button {
-    pointer-events: none;
-    width: 100%;
-    height: 100%;
-    border-radius: 40px;
-    position: absolute;
-    left: 0;
-    background-color: var(--text_light);
-}
-.btn span {
-    font-size: 1.7rem;
-    width: 100%;
-    text-align: center;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-}
-
-
-.btn_back:hover button {
-    width: 198px;
-    transition: width 0.3s ease-in-out; /* Add transition specifically for width change on hover */
-
-}
-.btn_back:hover svg {
-    color: white;
-    transform: rotate(0deg);
-    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out; /* Add transition for SVG rotation and color change */
-
-} 
 
 .sticky_img_container {
     width: 100%;
