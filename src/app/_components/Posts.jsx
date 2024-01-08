@@ -44,7 +44,7 @@ const Posts = () => {
                                 title={post.attributes.title} 
                                 description={post.attributes.shordDescription}
                                 image={post.attributes.images.data[0].attributes.url} 
-                                href=""
+                                id={post.id}
                             />
                         )
                     })}
@@ -56,11 +56,11 @@ const Posts = () => {
 }
 
 
-const Card = ({ image, description, title, date }) => {
+const Card = ({ image, description, title, date, id }) => {
     const router = useRouter();
     console.log(image)
     const onClick = () => {
-        router.push(`villas/${name.toLowerCase()}`)
+        router.push(`/posts/single/${id}`)
     }
     return (
         <div className="post_card_container">
