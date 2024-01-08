@@ -80,7 +80,7 @@ export function VillaFeatures({roomTypes}) {
 
 
 
-export function VillaFacilities({ image, facilities }) {
+export function VillaFacilities({ image, facilities, interiorSqr, outdoorSqr }) {
     const clipRef = useRef(null);
     const targetRef = useRef(null);
     const [ref, inView, entry] = useInView({
@@ -109,16 +109,17 @@ export function VillaFacilities({ image, facilities }) {
                     <div className="v_spaces_content">
                         <div>
                             <span>Interior Space</span>
-                            <p> 645 square foot</p>
+                            <p>{`${interiorSqr}sqm`}</p>
                         </div>
                         <div>
                             <span>Outdoor Space</span>
-                            <p>645 square foot</p>
+                            <p>{`${outdoorSqr}sqm`}</p>
                         </div>
                         <div>
                             <span>Views</span>
-                            <p>garden</p>
+                            <p>garden, pool, sea</p>
                         </div>
+                        
 
                     </div>
                 </div>

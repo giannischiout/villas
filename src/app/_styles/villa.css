@@ -44,7 +44,8 @@
     rotate: 270deg;
     top: 50px;
     position: relative;
-    font-size: calc(1rem + 1vw);
+    font-size: calc(1.3rem + 0.3vw);
+    letter-spacing: 3νpx;
     color: var(--primary_dark)
 }
 .v_sidebar_img_container {
@@ -79,15 +80,15 @@
 }
 
 .v_main_top div {
-    margin-left: 40px;
+    margin-left: 60px;
 }
 .v_main_top div h1{
-    font-size: calc(2rem + 2vw);
+    font-size: calc(2rem + 1vw);
     color: var(--primary_dark);
 }
 .v_main_top div h2{
     color: var(--primary);
-    font-size: calc(1rem + 1vw);
+    font-size: calc(1.6rem + 0.1vw);
 }
 
 
@@ -254,7 +255,7 @@
 }
 .v_spaces_content > div {
     margin-bottom: 20px;
-    min-width: 200px;
+    min-width: 300px;
 }
 
 

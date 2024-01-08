@@ -25,8 +25,16 @@ const details = {
     bedrooms: 3,
     pullOutCoutch: 1,
     squareMeters: 200,
+    outdoorSqr: 40,
     bathRooms: '2 bathrooms, bathtub or shower / WC',
     guestToilet: '1 guest toilet',
+    facilities: [
+        'Safety Deposit Box',
+        'Storage Room',
+        'SAT-TV',
+        'Toaster',
+        'Washing Machine'
+    ]
 }
 
 const facilities = [
@@ -59,9 +67,10 @@ export default function Page() {
             title={text.title}
             description={text.description}
             details={details}
-            facilities={facilities}
             roomTypes={roomTypes}
             imagesSlider={images}
+            outdorSqr={200}
+            interiorSqr={200}
             />
     )
 }

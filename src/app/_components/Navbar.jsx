@@ -9,7 +9,8 @@ import { BsArrowUpRight } from "react-icons/bs";
 import { useAnimate } from 'framer-motion';
 import { IoCloseOutline } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
-
+import { useRouter } from 'next/navigation'
+import { useLocale } from '../_context/useLocale';
 
 
 
@@ -30,7 +31,8 @@ const Navbar = () => {
             </div>
             <div className='grid_tagline'>
             <motion.div style={{y}}>
-                    <h1 className="tagline">Ionian Villas</h1>
+                    {/* <h1 className="tagline">Ionian Villas</h1> */}
+                    < Languages />
                 </motion.div>
             </div>
             <div className='grid_icons'>
@@ -45,18 +47,22 @@ const Navbar = () => {
 
 
 const Languages = () => {
-    const [lang, setLang] = useState('en')
+    const router = useRouter();
+    const {handleLocale, locale} = useLocale();
 
-    const handleLang = (e) => {
-        setLang(prev => prev == 'en' ? 'gr' : 'en')
-    }
+
+    useEffect(() => {
+        console.log('locale')
+        console.log(locale)
+    },[locale])
+   
     return (
         <div className='languages'>
-            <div onClick={handleLang} className={`lang ${lang == 'en' ? "lang_undeline" : null}`}>
+            <div onClick={handleLocale} className={`lang ${locale == 'en' ? "lang_undeline" : null}`}>
                 <span >English</span>
             </div>
             <div className="hor_seperator"></div>
-            <div onClick={handleLang} className={`lang ${lang == 'gr' ? "lang_undeline" : null}`} >
+            <div onClick={handleLocale} className={`lang ${locale == 'gr' ? "lang_undeline" : null}`} >
                 <span >Greek</span>
             </div>
         </div>

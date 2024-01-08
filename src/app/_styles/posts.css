@@ -1,0 +1,28 @@
+.post_card_container {
+    margin-bottom: 80px;
+    border: 2px solid var(--background);
+    padding: 10px;
+    background-color: white;
+}
+
+
+.posts_text_container {
+    padding: 20px;
+}
+
+.posts_text_container > span {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--text_dark);
+}
+
+.posts_text_container p {
+    font-size: 1.6rem;
+    max-width: 600px;
+}
+
+
+.posts_btn {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}

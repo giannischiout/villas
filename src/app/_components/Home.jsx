@@ -1,17 +1,13 @@
-'use client'
-import React, { useState } from "react";
-import { useEffect } from "react";
-import { useRef } from "react";
-import Intro from "./Intro";
 import SectionThree from "./SectionThree";
 import { SectionTwo, SectionFour, SectionFive, SectionSix} from "./SectionThree";
 import VillasPresentation from "./VillasPresentation";
+import Hero from "./Hero";
 const Home = () => {
 
   return (
     <>
         <div>
-          {/* <Intro /> */}
+          <Hero />
           <SectionTwo />
           <SectionThree />
           <SectionFour />

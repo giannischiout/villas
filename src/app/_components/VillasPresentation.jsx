@@ -1,3 +1,4 @@
+'use client'
 import { useScroll, useTransform } from "framer-motion"
 import Image from "next/image"
 import { BookNow } from "./Navbar"
