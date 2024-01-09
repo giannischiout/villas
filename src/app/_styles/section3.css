@@ -96,6 +96,11 @@
     max-width: 300px;
     color: var(--primary_dark);
   }
+
+
+  .section_three_clip_img {
+    
+  }
   
   @media screen and (max-width: 1300px) {
     

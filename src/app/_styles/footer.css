@@ -32,7 +32,7 @@
     border-top: 7px solid var(--background);
     height: 100vh;
     width: 100vw;
-    background-image: url('../../../public/footer.webp');
+    background-image: url('../../../public/intro_day.webp');
     background-size: cover;
     background-position: center;
     position:relative;

@@ -17,6 +17,7 @@
 @import './_styles/villas_presentation.css';
 @import './_styles/form.css';
 @import './_styles/posts.css';
+@import './_styles/bookmodal.css';
 
 
 @layer base {
@@ -117,7 +118,8 @@
 
 :root {
   /* colors */
-  --primary: #9b917e;
+  --primary: #9c998f;
+  /* --primary: #9b917e; */
   --secondary: #f4d5ac;
   --background: #EAE6E0;
   --background_light: #f4f2f0;
@@ -411,3 +413,4 @@ p {
   font-size: calc(3rem + 2rem);
   color: var(--primary_dark);
 }
+

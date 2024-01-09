@@ -63,8 +63,9 @@ const Hero = ({ children, sidebarImg, mainImg, tag, name }) => {
          <div ref={scope} className="villa_top" >
             <div className="v_sidebar_space"></div>
             <div className="intro_sidebar">
-                
-                <ClipImage img={'/1.webp'} forwardRef={clipRef} className={"v_sidebar_img_container"} />
+                <div className='v_sidebar_img_container'>
+                <Image src={'/1.webp'} fill={true} sizes="300px" />
+                </div>
             </div>
             <div className="v_main">
                 <div className='hero_main_top'>

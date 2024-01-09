@@ -11,12 +11,14 @@ import { IoCloseOutline } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { useRouter } from 'next/navigation'
 import { useLocale } from '../_context/useLocale';
-
-
+import NavMenu from './Menu';
+import BookNowModal from './BookNow';
+import Book from './Button';
 
 const Navbar = () => {
     const {scrollYProgress} = useScroll();
     const [clicked, setClicked] = useState(false)
+    const [modal, setModal] = useState(false)
     let y = useTransform(scrollYProgress, [0, 0.1], [0, -100, ], {stiffness: 100, damping: 100 }, stagger(5))
 
     const onClick = () => {
@@ -31,16 +33,16 @@ const Navbar = () => {
             </div>
             <div className='grid_tagline'>
             <motion.div style={{y}}>
-                    {/* <h1 className="tagline">Ionian Villas</h1> */}
                     < Languages />
                 </motion.div>
             </div>
             <div className='grid_icons'>
                 <Icons />
-                <BookNow  text="book now"/>
+                <BookNow onClick={() => setModal(prev => !prev)} text="book now"/>
             </div>
         </div>
-        
+            <NavMenu isOpen={clicked}/>
+            <BookNowModal isOpen={modal}/>
         </div>
     )
 }
@@ -72,48 +74,47 @@ const Languages = () => {
 const Burger = ({onClick, clicked}) => {
     const [scope, animate] = useAnimate()
     const handleMouseEnter = async () => {
-        animate('.burger_curtain' , {
-            scale: [0, 1],
-            backgroundColor: 'var(--primary_dark)',
+        animate(scope.current , {
+            backgroundColor: 'var(--primary)',
         
         }, {
-            ease: 'easeIn',
-            duration: 0.6
+            ease: 'easeInOut',
+            duration: 1
         })
-        // animate('svg' , {
-        //     color: 'white'
-        // })
+        animate('svg' , {
+            color: 'white'
+        })
     }
     
     const handleMouseLeave = async () => {
-        animate('.burger_curtain' , {
-            scale: [1, 0],
+        animate( scope.current, {
             backgroundColor: 'transparent',
             color: 'var(--primary_dark)'
         }, {
-            ease: 'easeOut',
+            ease: 'easeInOut',
             duration: 1
         })
-        // animate('svg' , {
-        //     color: 'var(--primary_dark)'
-        
-        // })
+        animate('svg' , {
+            color: 'var(--primary)'
+        })
+       
     }
     
 
     
 
     return (
-        <div className={`nav_burger ${clicked ? 'times' : null }`} onClick={onClick}>
+        // <div className={`nav_burger ${clicked ? 'times' : null }`} onClick={onClick}>
+        <div 
+        ref={scope} 
+        className={`nav_burger `} 
+       
+        onClick={onClick}>
             {clicked ? (
-                <div>
-                    <IoCloseOutline />
-                </div>
+                    <IoCloseOutline className='burger_times_icon'/>
                     
             ) : (
-               <div>
-                 <RxHamburgerMenu />
-                </div>
+                 <RxHamburgerMenu className='' />
             )}
         </div>
     )
@@ -140,7 +141,7 @@ const Icons = () => {
 }
 
 
- export const BookNow = ({text}) => {
+ export const BookNow = ({text, onClick}) => {
     const [scope, animate] = useAnimate()
 
     const handlMouseOver = async () => {
@@ -176,7 +177,8 @@ const Icons = () => {
     }
 
     return (
-        <div 
+        <div
+        onClick={onClick} 
         ref={scope} onMouseEnter={handlMouseOver} onMouseLeave={handleMouseLeave} className="book_now">
             <button className="book_now_inner">
             </button>

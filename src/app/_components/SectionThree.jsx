@@ -1,5 +1,5 @@
 'use client'
-import { useAnimate, useScroll, useTransform, motion } from "framer-motion";
+import { useAnimate, useScroll, useTransform, motion, useAnimation, useInView } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 
@@ -24,8 +24,18 @@ export const SectionTwo = () => {
 
 
 const SectionThree = () => {
+    const forwardRef = useRef(null);
+    const isInView = useInView(forwardRef);
+    const mainControls = useAnimation();
+    useEffect(() => {
+        if (isInView) {
+            mainControls.start('visible');
+        } else {
+            mainControls.start('hidden');
+        }
+    }, [isInView])
     return (
-        <div className="villa_section">
+        <div className="villa_section" ref={forwardRef}>
             <div className="villa_width">
                 <div className="row_one">
                     {/* <div className="row_one_image">
@@ -44,13 +54,23 @@ const SectionThree = () => {
                         <p data-scroll data-speed="0.2 ">Experience the perfect blend of comfort, nature, and captivating views during your stay at Ionian Dream Villas in Lefkada. </p>
                     </div>
                     <div className="row_three">
-                        <div className="row_three_image">
+                        <motion.div
+                            className={`row_three_image`}
+
+                            initial="hidden"
+                            animate={mainControls}
+                            variants={{
+                                hidden: { clipPath: 'inset(100% 0% 0% 0%)' },
+                                visible: { clipPath: 'inset(0% 0% 0% 0%)' },
+                            }}
+                            transition={{ duration: 1, ease: 'anticipate' }}
+                        >
                             <Image
                                 src="/3.webp"
                                 alt="Picture of the second villa"
                                 fill={true}
                             />
-                        </div>
+                        </motion.div>
                         <div className="row_three_content">
                             <p >Book your getaway today and indulge in the beauty of Agios Ioannis Bay.
                             </p>
@@ -64,26 +84,54 @@ const SectionThree = () => {
 
 
 export const SectionFour = () => {
+    const ref  = useRef(null);
+    const [scope, animate] = useAnimate();
+    const isInView = useInView({
+        ref: ref,
+        threshold: 0.5
+    });
+    useEffect(() => {
+        console.log(isInView)
+        if(isInView) {
+            console.log('in view')
+           animate(scope.current, {
+                opacity: 1,
+            }, {
+                duration: 1,
+                ease: 'easeInOut'
+            })
+        }
+    }, [isInView])
     return (
-        <section className="section_four_container">
-            <div className="section_four_col_1">
+        <div className="section_four_container" ref={ref}  >
+            <div ref={scope} className="section_four_col_1">
                 <div>
                     <span>Breathtaking Views:</span>
                     <p>
                         One of the highlights of Ionian Dream Villas is the breathtaking view of Agios Ioannis bay. Step onto your private terrace, and you'll be greeted by an awe-inspiring panorama that captures the heart and soul of Lefkada. Whether you're sipping your morning coffee or enjoying a sunset cocktail, the view from our villas will leave you spellbound.
-                       </p>
-                       <span>Immersed in Nature</span>
+                    </p>
+                    <span>Immersed in Nature</span>
                     <p>Our villas are not just a place to stay; they are an opportunity to connect with the natural beauty of Lefkada. Surrounded by verdant landscapes and fragrant local flora, Ionian Dream Villas offer a sensory experience like no other. The soothing sounds of nature, the gentle caress of the island breeze, and the scents of blooming plants create an atmosphere of tranquility and serenity.</p>
                 </div>
             </div>
-        </section>
+        </div>
     )
 }
 
 
 export const SectionFive = () => {
+    const forwardRef = useRef(null);
+    const isInView = useInView(forwardRef);
+    const mainControls = useAnimation();
+    useEffect(() => {
+        if (isInView) {
+            mainControls.start('visible');
+        } else {
+            mainControls.start('hidden');
+        }
+    }, [isInView])
     return (
-        <section className="section_five_container">
+        <section className="section_five_container" ref={forwardRef}>
             <div className="section_five_container_row_1">
                 <div className="section_five_container_row_1_left">
                     <p>RETREATS</p>
@@ -98,12 +146,22 @@ export const SectionFive = () => {
                 </div>
             </div>
             <div className="section_five_container_row_2">
-                <div>
+
+                <motion.div
+                    initial="hidden"
+                    animate={mainControls}
+                    variants={{
+                        hidden: { clipPath: 'inset(100% 0% 0% 0%)' },
+                        visible: { clipPath: 'inset(0% 0% 0% 0%)' },
+                    }}
+                    transition={{ duration: 1, ease: 'easeInOut' }}
+                >
                     <Image
-                        src={"/5.webp"}
+                        src="/5.webp"
+                        alt="Picture of the second villa"
                         fill={true}
                     />
-                </div>
+                </motion.div>
             </div>
         </section>
     )
@@ -152,7 +210,7 @@ export const SectionSix = () => {
     return (
         <section ref={targetRef} className="section_six_container">
             <div className="section_six_sticky">
-               
+
                 <motion.div style={{ x }} className="section_six_motion">
 
                     {images.map((item, index) => {
@@ -162,7 +220,7 @@ export const SectionSix = () => {
                             )
                         } else {
                             return (
-                                <Item key={index}  image={item.image} title={item.title} />
+                                <Item key={index} image={item.image} title={item.title} />
                             )
                         }
                     })

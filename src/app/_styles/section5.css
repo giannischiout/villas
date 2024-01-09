@@ -65,7 +65,7 @@
     justify-content: center;
 }
 
-.section_five_container_row_2 div {
+.section_five_container_row_2 > div {
     width: 85%;
     height: 80%;
     position: relative;
