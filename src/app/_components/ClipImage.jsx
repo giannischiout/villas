@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { useEffect, useState, useRef } from 'react';
 import { useAnimate, useScroll,  animate, useAnimation, useInView, motion } from 'framer-motion';
 
-export const ClipImage = ({img, forwardRef, duration = 1 }) => {
+export const ClipImage = ({img, forwardRef, duration = 1, className }) => {
     const isInView = useInView(forwardRef);
     const mainControls = useAnimation();
     useEffect(() => {
@@ -15,7 +15,7 @@ export const ClipImage = ({img, forwardRef, duration = 1 }) => {
     }, [isInView])
     return (
         <motion.div 
-            className='v_sidebar_img_container'
+            className={`${className}`}
             ref={forwardRef}
             initial="hidden"
             animate={mainControls}

@@ -1,39 +1,100 @@
-const { VillaIntro } = require("./Villa")
+'use client'
+import Image from 'next/image';
+import { useEffect, useState, useRef } from 'react';
+import { useAnimate, useScroll, animate, useAnimation, useInView, motion } from 'framer-motion';
+import { ClipImage } from "./ClipImage";
+import { ImageScroll } from './Villa';
+import  LetterFade  from './LetterFade';
+const Hero = ({ children, sidebarImg, mainImg, tag, name }) => {
+    const { scrollYProgress } = useScroll();
+    const [scope, animate] = useAnimate();
+    const clipRef = useRef(null);
+    const isInView = useInView(scope);
 
 
+    useEffect(() => {
 
-const Hero = () => {
+    }, [])
+    const handleIntroAnimation = async () => {
+        animate('.v_main_image_container_inner', {
+            opacity: [0, 1]
+        }, {
+            duration: 0.4,
+            ease: 'easeIn'
+        })
+        animate('.intro_sidebar', {
+            opacity: [0.6, 1],
+            y: ['1000px', '0px'],
+
+        }, {
+            duration: 0.4,
+            ease: [0.6, 0.01, 0.05, 0.9]
+        })
+        await animate('.hero_main_top', {
+            opacity: [0, 1],
+            y: ['30%', '0%'],
+
+        }, {
+            duration: 1,
+            ease: 'easeInOut'
+        })
+    }
+    useEffect(() => {
+        handleIntroAnimation()
+    }, [])
+
+
+    useEffect(() => {
+        scrollYProgress.on("change", (v) => {
+            const initialInset = { top: 2, right: 10, bottom: 0, left: 12 };
+            let scroll = v * 30;
+            const newInset = `inset(${initialInset.top - (initialInset.top * scroll)}% ${initialInset.right - (initialInset.right * scroll)}% ${initialInset.bottom - (initialInset.bottom * scroll)}% ${initialInset.left - (initialInset.left * scroll)}%)`;
+            animate('.v_main_image_container_inner', {
+                clipPath: newInset
+            }, {
+                ease: "linear",
+                duration: 0.4
+            })
+
+        })
+    }, [scrollYProgress])
     return (
-        <div className="hero_container">
-            <VillaIntro 
-            sidebarImg={'/intro.webp'} 
-            mainImg={'/intro.webp'} 
-            tag={'Ionian Dream Villas in Lefkada: Your Perfect Island Getaway'} 
-            name={'Ioanian Villas'}>
-                <h1>sefsef</h1>
-                <p>
-                Ionian Dream Villas in Lefkada: Your Perfect Island Getaway
+       <div className="villa_container">
+         <div ref={scope} className="villa_top" >
+            <div className="v_sidebar_space"></div>
+            <div className="intro_sidebar">
+                
+                <ClipImage img={'/1.webp'} forwardRef={clipRef} className={"v_sidebar_img_container"} />
+            </div>
+            <div className="v_main">
+                <div className='hero_main_top'>
+                    <div>
+                        <LetterFade word={'IONIAN DREAM VILLAS'} style='hero_title' />
+                        <h2>AGIOS IOANNIS</h2>
+                    </div>
+                </div>
+                <div className='v_main_image_container'  >
+                    <ImageScroll image={'/intro_day.webp'} />
+                </div>
+                <div className="intro_text" >
+                    <h3>Beautiful quiet villas with private pool</h3>
+                    <p>Ionian Dream Villas, a charming hotel located in Lefkada 
+                        near the captivating Agios Ioannis Bay, presents an 
+                        array of three villas, characterized by their 
+                        understated yet elegant architectural design. 
+                        Set amidst a backdrop of vibrant greenery and exotic flora, 
+                        our villas offer a tranquil oasis for your stay on this 
+                        enchanting Greek island.
+                    </p>
+                    <p>With each villa, you'll be treated to a marvelous view of the bay, a breathtaking sight that will enchant your senses. Immerse yourself in the natural beauty that surrounds Ionian Dream Villas, as you soak in the serenity and tranquility of the lush landscape.
+                    </p>
+                    <p>Experience the perfect blend of comfort, nature, and captivating views during your stay at Ionian Dream Villas in Lefkada. Book your getaway today and indulge in the beauty of Agios Ioannis Bay.</p>
+                </div>
 
-Nestled near the picturesque Agios Ioannis bay on the enchanting Lefkada Island, Ionian Dream Villas beckon you to experience the essence of this beautiful Greek island. With a focus on the serene Ag. Ioannis area, our collection of three exquisite villas boasts a simple yet charming architectural design, harmoniously blending with the lush green surroundings and indigenous flora.
-
-The Villas:
-Each villa at Ionian Dream Villas has been meticulously crafted to offer a truly memorable stay. The interiors are thoughtfully designed, providing a seamless blend of modern comfort and traditional elegance. With a range of accommodation options, including spacious living areas, fully equipped kitchens, and comfortable bedrooms, our villas cater to couples seeking a romantic retreat and families in search of an unforgettable Lefkada experience.
-
-Breathtaking Views:
-One of the highlights of Ionian Dream Villas is the breathtaking view of Agios Ioannis bay. Step onto your private terrace, and you'll be greeted by an awe-inspiring panorama that captures the heart and soul of Lefkada. Whether you're sipping your morning coffee or enjoying a sunset cocktail, the view from our villas will leave you spellbound.
-
-Immersed in Nature:
-Our villas are not just a place to stay; they are an opportunity to connect with the natural beauty of Lefkada. Surrounded by verdant landscapes and fragrant local flora, Ionian Dream Villas offer a sensory experience like no other. The soothing sounds of nature, the gentle caress of the island breeze, and the scents of blooming plants create an atmosphere of tranquility and serenity.
-
-Your Lefkada Oasis:
-Ionian Dream Villas are more than just accommodations; they are your gateway to an unforgettable Lefkada adventure. Whether you're seeking a romantic escape or a family getaway, our villas provide the perfect blend of comfort, luxury, and the untouched beauty of nature. Discover the magic of Lefkada at Ionian Dream Villas and create cherished memories that will last a lifetime.
-
-Experience the allure of Lefkada at Ionian Dream Villas. Book your stay today and let the island's splendor envelop you in its embrace.
-                </p>
-            </VillaIntro>
+            </div>
         </div>
+       </div>
     )
 }
-
 
 export default Hero;

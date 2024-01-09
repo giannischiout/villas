@@ -28,7 +28,7 @@ const SectionThree = () => {
         <div className="villa_section">
             <div className="villa_width">
                 <div className="row_one">
-                    <div className="row_one_image">
+                    {/* <div className="row_one_image">
                         <Image
                             src="/8.webp"
                             alt="Picture of the first villa"
@@ -37,11 +37,11 @@ const SectionThree = () => {
                     </div>
                     <div className="row_one_text">
                         <h2>Consept</h2>
-                    </div>
+                    </div> */}
                 </div>
                 <div className="traslated_container">
                     <div className="row_two">
-                        <p data-scroll data-speed="0.2 ">Understand chick is our design ethos and subtle details are our mantra</p>
+                        <p data-scroll data-speed="0.2 ">Experience the perfect blend of comfort, nature, and captivating views during your stay at Ionian Dream Villas in Lefkada. </p>
                     </div>
                     <div className="row_three">
                         <div className="row_three_image">
@@ -52,9 +52,7 @@ const SectionThree = () => {
                             />
                         </div>
                         <div className="row_three_content">
-                            <p >We ensure everything about your stay is immaculate, from the
-                                pillowy white Etro cotton sheets dressing your bed to the throughouly placed
-                                garden-grown herb garnishes on your plate.
+                            <p >Book your getaway today and indulge in the beauty of Agios Ioannis Bay.
                             </p>
                         </div>
                     </div>
@@ -70,11 +68,12 @@ export const SectionFour = () => {
         <section className="section_four_container">
             <div className="section_four_col_1">
                 <div>
-                    <span>Tastemakers of Understated Chic Luxury</span>
-                    <p>Sitting atop the curvaceous cliffs of Italy’s Amalfi Coast,
-                        Casa Angelina offers a sublime slice of modern minimalism on the Mediterranean, with an emphasis on barefoot luxury and top-level gastronomy.</p>
-                    <p>Sitting atop the curvaceous cliffs of Italy’s Amalfi Coast, Casa Angelina offers a sublime slice of modern minimalism on the Mediterranean, with an emphasis on barefoot luxury and top-level gastronomy.</p>
-                    <p>We work to ensure everything about your stay is true perfection, from our welcome amenities and the thoughtful turndown services to the curated dishes from our chefs and activities organized by our concierge.</p>
+                    <span>Breathtaking Views:</span>
+                    <p>
+                        One of the highlights of Ionian Dream Villas is the breathtaking view of Agios Ioannis bay. Step onto your private terrace, and you'll be greeted by an awe-inspiring panorama that captures the heart and soul of Lefkada. Whether you're sipping your morning coffee or enjoying a sunset cocktail, the view from our villas will leave you spellbound.
+                       </p>
+                       <span>Immersed in Nature</span>
+                    <p>Our villas are not just a place to stay; they are an opportunity to connect with the natural beauty of Lefkada. Surrounded by verdant landscapes and fragrant local flora, Ionian Dream Villas offer a sensory experience like no other. The soothing sounds of nature, the gentle caress of the island breeze, and the scents of blooming plants create an atmosphere of tranquility and serenity.</p>
                 </div>
             </div>
         </section>

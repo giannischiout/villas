@@ -95,7 +95,7 @@ export const VillaIntro = ({ children, sidebarImg, mainImg, tag, name }) => {
                 <div className='v_sidebar_top'>
                     <p>{'villas'}</p>
                 </div>
-                <ClipImage img={sidebarImg} forwardRef={clipRef} />
+                <ClipImage img={sidebarImg} forwardRef={clipRef} className="v_sidebar_img_container"/>
             </div>
             <div className="v_main">
                 <div className='v_main_top'>
@@ -171,19 +171,8 @@ const Villa = ({
 }
 
 
-{/* <Reveal>
-<h3>{title}</h3>
-<p id="text_animated" >
-    {description}
-    </p>
-< VillaDetails details={details} />
-< VillaFeatures roomTypes={roomTypes} />
-</Reveal>
-<div
-className='v_button_container'>
-<Book />
-</div> */}
-const ScrollImageSticky = ({ image }) => {
+
+export const ScrollImageSticky = ({ image }) => {
     const ref = useRef(null);
     const { scrollYProgress } = useScroll({
         target: ref,
@@ -229,7 +218,7 @@ const ScrollImageSticky = ({ image }) => {
 }
 
 
-const ImageScroll = ({ image }) => {
+export const ImageScroll = ({ image }) => {
 
     return (
         <div className='v_main_image_container_inner' >
