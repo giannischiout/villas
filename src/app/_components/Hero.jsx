@@ -79,15 +79,15 @@ const Hero = ({ children, sidebarImg, mainImg, tag, name }) => {
                 </div>
                 <div className="intro_text" >
                     <h3>Beautiful quiet villas with private pool</h3>
-                    <p>Ionian Dream Villas, a charming hotel located in Lefkada 
+                    <p>{`Ionian Dream Villas, a charming hotel located in Lefkada 
                         near the captivating Agios Ioannis Bay, presents an 
                         array of three villas, characterized by their 
                         understated yet elegant architectural design. 
                         Set amidst a backdrop of vibrant greenery and exotic flora, 
                         our villas offer a tranquil oasis for your stay on this 
-                        enchanting Greek island.
+                        enchanting Greek island.`}
                     </p>
-                    <p>With each villa, you'll be treated to a marvelous view of the bay, a breathtaking sight that will enchant your senses. Immerse yourself in the natural beauty that surrounds Ionian Dream Villas, as you soak in the serenity and tranquility of the lush landscape.
+                    <p>{`With each villa, you'll be treated to a marvelous view of the bay, a breathtaking sight that will enchant your senses. Immerse yourself in the natural beauty that surrounds Ionian Dream Villas, as you soak in the serenity and tranquility of the lush landscape.`}
                     </p>
                     <p>Experience the perfect blend of comfort, nature, and captivating views during your stay at Ionian Dream Villas in Lefkada. Book your getaway today and indulge in the beauty of Agios Ioannis Bay.</p>
                 </div>
