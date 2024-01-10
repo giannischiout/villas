@@ -13,7 +13,7 @@ const VillasPresentation = ({
         <section>
             <div className="v_presentation_container">
                 <div className="v_presentation_inner">
-                    <div className="presentation_top_container">
+                    {/* <div className="presentation_top_container">
                         <div className="v_presentation_top">
                             <div >
                                 <p>OUR</p>
@@ -30,16 +30,14 @@ const VillasPresentation = ({
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                     <div className="v_presentation_sticky">
                         <div className="presentation_bottom_container">
                             <div className="v_presentation_bottom">
                                 <div>
-                                    <h6>TRANQULITY</h6>
+                                    <h6>Villas</h6>
                                     <p>
-                                        Fine dining, Amalfi style.
-                                        At Casa Angelina, the rich flavors and ingredients of
-                                        Campania inspire every.
+                                    Ionian Dream Villas in Lefkada: Your Perfect Island Getaway
                                     </p>
                                 </div>
                             </div>

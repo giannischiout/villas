@@ -60,8 +60,7 @@ export function VillaDetails({details, bathroom, guestToilet}) {
 
 export function VillaFeatures({roomTypes}) {
     const [data, setData] = useState(roomTypes)
-    console.log('drgd')
-    console.log(roomTypes)
+   
     if(!roomTypes) return null
     return (
         <div className="v_para_feat"> 
@@ -94,7 +93,10 @@ export function VillaFacilities({ image, facilities, interiorSqr, outdoorSqr }) 
         threshold: 0.5,
         triggerOnce: false
     });
- 
+    useEffect(() => {
+        console.log('facilities -----------------------------------')
+        console.log(facilities)
+    }, [facilities])
     const { scrollYProgress, scrollY } = useScroll({
         target: targetRef,
         offset: ["start end", "center"]
@@ -106,6 +108,8 @@ export function VillaFacilities({ image, facilities, interiorSqr, outdoorSqr }) 
         hidden: {
         }
     };
+
+    if(!facilities) return null
     return (
         <div className="parallax_wrapper"  >
             <div className="v_spaces" >
@@ -135,24 +139,20 @@ export function VillaFacilities({ image, facilities, interiorSqr, outdoorSqr }) 
                 </div>
                 <div className="facilities_content">
                     <ul>
-                        {/* {facilities?.data.map((item, index) => {
+                        {facilities && facilities.map((item, index) => {
+                            console.log('item')
+                            console.log(item)
                             return (
                                 <li key={index}>
-                                    {item}
+                                    {item.attributes.name}
                                 </li>
                             )
-                        })} */}
+                        })}
                     </ul>
                 </div>
-                <motion.div
-                    animate={inView ? 'visible' : 'hidden'}
-                    variants={variants}
-                    transition={{ duration: 2, ease: 'easeOut' }}
-                    ref={ref} className="facilities_image">
-                    <div>
-                        <ClipImage img={image} forwardRef={clipRef} duration={0.5} />
-                    </div>
-                </motion.div>
+                <div className="facilities_image">
+                    <Image src={'/1.webp'} fill={true} sizes="80% 28vw" />
+                </div>
             </div>
         </div>
     )

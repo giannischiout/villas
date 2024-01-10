@@ -111,7 +111,9 @@ export const SectionFour = () => {
                        {` One of the highlights of Ionian Dream Villas is the breathtaking view of Agios Ioannis bay. Step onto your private terrace, and you'll be greeted by an awe-inspiring panorama that captures the heart and soul of Lefkada. Whether you're sipping your morning coffee or enjoying a sunset cocktail, the view from our villas will leave you spellbound.`}
                     </p>
                     <span>Immersed in Nature</span>
-                    <p>{`Our villas are not just a place to stay; they are an opportunity to connect with the natural beauty of Lefkada. Surrounded by verdant landscapes and fragrant local flora, Ionian Dream Villas offer a sensory experience like no other. The soothing sounds of nature, the gentle caress of the island breeze, and the scents of blooming plants create an atmosphere of tranquility and serenity.`}</p>
+                    <p>{`Our villas are not just a place to stay; they are an opportunity to connect with 
+                    the natural beauty of Lefkada. Surrounded by verdant landscapes and fragrant 
+                    local flora, Ionian Dream Villas offer a sensory experience like no other. The soothing sounds of nature, the gentle caress of the island breeze, and the scents of blooming plants create an atmosphere of tranquility and serenity.`}</p>
                 </div>
             </div>
         </div>

@@ -141,8 +141,8 @@ const Villa = ({
     guestToilet
 
 }) => {
-        console.log('deitals')
-        console.log(details)
+       
+
     return (
         <div className='villa_container' >
             <VillaIntro sidebarImg={sidebarImg} mainImg={mainImg} tag={tag} name={name} >

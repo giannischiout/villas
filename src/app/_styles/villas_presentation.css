@@ -22,7 +22,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgb(243, 241, 239);
+    background-color: rgba(243, 241, 239, 0.719);
 
 }
 .v_presentation_top {
@@ -75,7 +75,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgb(243, 241, 239);
+    background-color: rgba(243, 241, 239, 0.719);
 }
 
 
@@ -117,8 +117,6 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-
-    
 }
 
 
@@ -211,7 +209,7 @@
         transform: translateY(100px);
     }
     .v_presentation_card_image_container {
-        height: 220px;
+        height: 300px;
     }
     .v_presentation_bottom {
        
