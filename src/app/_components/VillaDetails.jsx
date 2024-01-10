@@ -29,7 +29,7 @@ export function VillaDetails({details, bathroom, guestToilet}) {
             <ul className="v_para">
                 <li>
                     Square meters:
-                    <span className="v_details"> {details?.squareMeters}</span>
+                    <span className="v_details"> {`${details?.squareMeters}`}</span>
                 </li>
                 <li>
                     Max adults:

@@ -149,7 +149,7 @@ const Villa = ({
                 <Reveal>
                     <h3>{title}</h3>
                     <p id="text_animated" >
-                        {description}
+                        {`${description}`}
                     </p>
                     < VillaDetails 
                         details={details} 

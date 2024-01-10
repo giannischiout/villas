@@ -58,7 +58,6 @@ const Posts = () => {
 
 const Card = ({ image, description, title, date, id }) => {
     const router = useRouter();
-    console.log(image)
     const onClick = () => {
         router.push(`/posts/single/${id}`)
     }
@@ -70,8 +69,8 @@ const Card = ({ image, description, title, date, id }) => {
             </div>
             <div className="posts_text_container">
                 <div className="posts_text ">
-                    <span className="v_card_title">{title}</span>
-                    <p>{description}</p>
+                    <span className="v_card_title">{`${title}`}</span>
+                    <p>{`${description}`}</p>
                 </div>
                 <div className='posts_btn'>
                 <Btn text="see more" onClick={onClick} />
