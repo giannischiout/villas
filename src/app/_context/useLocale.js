@@ -6,12 +6,15 @@ import { createContext, useContext, useState } from 'react';
 const LocaleContext = createContext();
 // Create a provider component
 export const LocaleProvider = ({ children }) => {
-  const [locale, setLocale] = useState('');
+  const [locale, setLocale] = useState('locale=en');
 
     const handleLocale = () => {
-        if(locale === 'en') {
+        console.log('sefsefsejfop')
+        if(locale === 'locale=en') {
+            console.log('heres')
             setLocale('?locale=el');
         } else {
+
             setLocale('?locale=en');
         }
     }

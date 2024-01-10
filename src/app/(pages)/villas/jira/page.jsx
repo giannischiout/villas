@@ -1,4 +1,8 @@
+'use client'
 import Villa from "@/app/_components/Villa"
+import { useLocale } from "@/app/_context/useLocale"
+import { useEffect, useState } from "react"
+import axios from 'axios'
 
 const text = {
     tag: 'AN OASIS OF PIECE AND QUIET',
@@ -19,23 +23,23 @@ const roomTypes = [
 
 ]
 
-const details = {
-    maxAdults: 6,
-    maxChildren: 3,
-    bedrooms: 3,
-    pullOutCoutch: 1,
-    squareMeters: 200,
-    outdoorSqr: 40,
-    bathRooms: '2 bathrooms, bathtub or shower / WC',
-    guestToilet: '1 guest toilet',
-    facilities: [
-        'Safety Deposit Box',
-        'Storage Room',
-        'SAT-TV',
-        'Toaster',
-        'Washing Machine'
-    ]
-}
+// const details = {
+//     maxAdults: 6,
+//     maxChildren: 3,
+//     bedrooms: 3,
+//     pullOutCoutch: 1,
+//     squareMeters: 200,
+//     outdoorSqr: 40,
+//     bathRooms: '2 bathrooms, bathtub or shower / WC',
+//     guestToilet: '1 guest toilet',
+//     facilities: [
+//         'Safety Deposit Box',
+//         'Storage Room',
+//         'SAT-TV',
+//         'Toaster',
+//         'Washing Machine'
+//     ]
+// }
 
 const facilities = [
     'Safety Deposit Box',
@@ -55,6 +59,24 @@ const images = [
 
 ]
 export default function Page() {
+    const [data, setData] = useState({})
+    const { locale } = useLocale()
+    console.log(locale)
+    useEffect(() => {
+        console.log('localedgdr')
+        console.log(locale)
+
+    }, [locale])
+
+    const handleFetch = async () => {
+        const {data} = await axios.get(`https://strapi.3v7i.com/api/villas/2?populate=details,facilities,roomtypes,bathroom`)
+        console.log(data)
+        setData(data.data)
+    }
+
+    useEffect(() => {
+        handleFetch()
+    }, [])
     return (
         <Villa 
             id="jira"
@@ -64,10 +86,14 @@ export default function Page() {
             mainImg="/jira/jira_7.webp"
             scrollImg="/jira/jira_6.webp"
             facilitiesImg="/jira/jira_6.webp"
-            title={text.title}
-            description={text.description}
-            details={details}
-            roomTypes={roomTypes}
+            title={'An oasis of piece and quiet'}
+            //API
+            description={data?.attributes?.shortDescription}
+            details={data?.attributes?.details[0]}
+            facilities={data?.attributes?.facilities}
+            bathroom={data?.attributes?.bathroom[0]}
+            guestToilet={data?.attributes?.bathroom[1]}
+            roomTypes={data?.attributes?.roomtypes}
             imagesSlider={images}
             outdorSqr={200}
             interiorSqr={200}

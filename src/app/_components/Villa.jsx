@@ -40,10 +40,13 @@ const Reveal = ({ children }) => {
 
 
 export const VillaIntro = ({ children, sidebarImg, mainImg, tag, name }) => {
-    const { scrollYProgress } = useScroll();
     const [scope, animate] = useAnimate();
     const clipRef = useRef(null);
     const isInView = useInView(scope);
+    const { scrollYProgress } = useScroll({
+        
+    });
+   
 
     const handleIntroAnimation = async () => {
         animate('.v_main_image_container_inner', {
@@ -89,7 +92,8 @@ export const VillaIntro = ({ children, sidebarImg, mainImg, tag, name }) => {
         })
     }, [scrollYProgress])
     return (
-        <div ref={scope} className="villa_top" >
+        <>
+            <div ref={scope} className="villa_top" >
             <div className="v_sidebar_space"></div>
             <div className="v_sidebar">
                 <div className='v_sidebar_top'>
@@ -113,6 +117,7 @@ export const VillaIntro = ({ children, sidebarImg, mainImg, tag, name }) => {
 
             </div>
         </div>
+        </>
     )
 }
 
@@ -126,19 +131,18 @@ const Villa = ({
     sidebarImg,
     mainImg,
     scrollImg,
+    imagesSlider,
+    facilitiesImg,
+    // API
+    facilities,
     details,
     roomTypes,
-    imagesSlider,
-    facilitiesImg
+    bathroom,
+    guestToilet
 
 }) => {
-
-
-
-
-
-
-
+        console.log('deitals')
+        console.log(details)
     return (
         <div className='villa_container' >
             <VillaIntro sidebarImg={sidebarImg} mainImg={mainImg} tag={tag} name={name} >
@@ -147,7 +151,10 @@ const Villa = ({
                     <p id="text_animated" >
                         {description}
                     </p>
-                    < VillaDetails details={details} />
+                    < VillaDetails 
+                        details={details} 
+                        bathroom={bathroom} 
+                        guestToilet={guestToilet} />
                     < VillaFeatures roomTypes={roomTypes} />
                 </Reveal>
                 <div
@@ -158,9 +165,9 @@ const Villa = ({
             <ScrollImageSticky image={scrollImg} />
             <VillaFacilities
                 image={facilitiesImg}
-                facilities={details.facilities}
-                outdoorSqr={details.outdoorSqr}
-                interiorSqr={details.interiorSqr}
+                facilities={facilities?.data}
+                outdoorSqr={details?.squareMeters}
+                interiorSqr={details?.squareMeters}
             />
             <ImageSlider images={imagesSlider} />
             <section>

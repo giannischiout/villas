@@ -14,9 +14,7 @@
     grid-template-rows: 1fr;
 }   
 
-.v_sidebar_space {
-    /* background-color: aquamarine; */
-}
+
 .v_sidebar {
     background-color: var(--background);
     width: 100%;
@@ -130,9 +128,7 @@
     max-width: 550px;
     line-height: 2;
 }
-.v_main_content li {
-    line-height: 2;
-}
+
 .v_main_content h4 {
     font-size: 3rem;
     margin-top: 30px;
@@ -148,8 +144,24 @@
     color: var(--primary_darker);
 }
 
-.v_para {
+.v_para li {
+    line-height: 2;
+}
+
+.v_para_feat {
     font-size: calc(1.5rem + 0.2vw);
+}
+
+.v_para_container {
+    line-height: 1.2;
+    margin-bottom: 10px;
+}
+.v_para_header {
+    color: var(--primary_dark);
+}
+.v_para_body {
+    font-size: 1.62rem;
+    color: var(--primary);
 }
 .v_scroll_image {
     width: 100%;

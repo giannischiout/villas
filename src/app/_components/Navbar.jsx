@@ -53,11 +53,7 @@ const Languages = () => {
     const {handleLocale, locale} = useLocale();
 
 
-    useEffect(() => {
-        console.log('locale')
-        console.log(locale)
-    },[locale])
-   
+  
     return (
         <div className='languages'>
             <div onClick={handleLocale} className={`lang ${locale == 'en' ? "lang_undeline" : null}`}>

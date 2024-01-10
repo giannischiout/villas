@@ -22,34 +22,34 @@ const views = [
 
 
 
-export function VillaDetails({details}) {
+export function VillaDetails({details, bathroom, guestToilet}) {
     return (
         <>
             <h4 >Details</h4>
             <ul className="v_para">
                 <li>
                     Square meters:
-                    <span className="v_details"> {details.squareMeters}</span>
+                    <span className="v_details"> {details?.squareMeters}</span>
                 </li>
                 <li>
                     Max adults:
-                    <span className="v_details"> {details.maxAdults}</span>
+                    <span className="v_details"> {details?.maxAduls}</span>
                 </li>
                 <li>
                     Max children:
-                    <span className="v_details"> {details.maxChildren}</span>
+                    <span className="v_details"> {details?.maxChildren}</span>
                 </li>
                 <li>
                     Bedrooms:
-                    <span className="v_details"> {details.bedrooms}</span>
+                    <span className="v_details"> {details?.bedrooms}</span>
                 </li>
                 <li>
                     Bathrooms:
-                    <span className="v_details"> {details.bathRooms}</span>
+                    <span className="v_details"> {bathroom?.description}</span>
                 </li>
                 <li>
                     Guest Toilet:
-                    <span className="v_details"> {details.guestToilet}</span>
+                    <span className="v_details"> {guestToilet?.description}</span>
                 </li>
             </ul>
         </>
@@ -60,14 +60,21 @@ export function VillaDetails({details}) {
 
 export function VillaFeatures({roomTypes}) {
     const [data, setData] = useState(roomTypes)
+    console.log('drgd')
+    console.log(roomTypes)
+    if(!roomTypes) return null
     return (
-        <div className="v_para"> 
+        <div className="v_para_feat"> 
             <h5>Room Features</h5>
             <ul>
-                {data.map((item, index) => {
+                {roomTypes && roomTypes.data.map((item, index) => {
+                    console.log('item----------------')
+                    console.log(item)
                     return (
-                        <li key={index}>
-                            {item}
+                        <li className="v_para_container" key={index}>
+                            {/* {item} */}
+                            <span className="v_para_header">{item?.attributes?.Name}</span>
+                            <p className="v_para_body">{item?.attributes?.description}</p>
                         </li>
                     )
                 })}
@@ -132,13 +139,13 @@ export function VillaFacilities({ image, facilities, interiorSqr, outdoorSqr }) 
                 </div>
                 <div className="facilities_content">
                     <ul>
-                        {facilities.map((item, index) => {
+                        {/* {facilities?.data.map((item, index) => {
                             return (
                                 <li key={index}>
                                     {item}
                                 </li>
                             )
-                        })}
+                        })} */}
                     </ul>
                 </div>
                 <motion.div

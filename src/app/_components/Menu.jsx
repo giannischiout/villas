@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import { GoArrowUpRight } from "react-icons/go";
 import { motion, stagger } from 'framer-motion';
-import BookNowModal from "./BookNow";
+
 const NavMenu = ({ isOpen }) => {
 	const staggerMenuItems = stagger(0.08);
 

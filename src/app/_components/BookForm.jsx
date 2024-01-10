@@ -2,7 +2,6 @@
 
 "use client"
  import { useEffect, useState, useRef } from "react"
-import { IoCalendarNumberOutline } from "react-icons/io5";
 import { IoChevronDownSharp } from "react-icons/io5";
 import { FaRegEnvelope } from "react-icons/fa6";
 import { GoCalendar } from "react-icons/go";
@@ -81,8 +80,7 @@ export const BookForm = ({width}) => {
 	}
 
 	const handleSubmit = () => {
-		console.log(selected)
-		console.log(selectedGuests)
+		
 
 	}
 
@@ -155,7 +153,6 @@ const CalendarInput = ({
 	calRef
 }) => {
 	const direction = usePopupDirection(calRef, show);
-	console.log(direction)
 	const handleClickOutside = (event) => {
 		if (calRef.current && !calRef.current.contains(event.target)) {
 			 handleClose()
