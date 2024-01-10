@@ -116,11 +116,7 @@ export function VillaFacilities({ image, facilities, interiorSqr, outdoorSqr }) 
                     <div className="v_spaces_content">
                         <div>
                             <span>Interior Space</span>
-                            <p>{`${interiorSqr}sqm`}</p>
-                        </div>
-                        <div>
-                            <span>Outdoor Space</span>
-                            <p>{`${outdoorSqr}sqm`}</p>
+                            <p>{`${interiorSqr} sqm`}</p>
                         </div>
                         <div>
                             <span>Views</span>
