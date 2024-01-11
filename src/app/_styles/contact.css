@@ -44,7 +44,7 @@
 }
 .maps_button {
     display: flex;
-    min-width: 150px;
+    width: 150px;
     align-items: center;
     justify-content: space-between;
     padding: 10px 20px;

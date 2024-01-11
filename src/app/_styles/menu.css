@@ -44,6 +44,7 @@
     padding: 10px;
     width: 100%;
     margin-bottom: 10px;
+    position: relative;
 }
 
 .menu_title {
@@ -61,7 +62,49 @@
    
 }
 
-.menu_content span {
+.menu_content > span {
     display: block;
     line-height: 2;
+    font-size: calc(2rem + 0.6vw);
+    letter-spacing: 2.4px;
+}
+
+.menu_background_text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: calc(6rem + 16vw);
+    color: rgba(255, 255, 255, 0.281);
+    font-weight: 500;
+}
+
+
+.menu_coordinates {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: var(--primary_dark);
+}
+
+.menu_coordinates svg {
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.menu_coordinates a {
+    position: relative;
+}
+
+.menu_coordinates a::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: #6e625977;
+    left: 0;
+    bottom: -2px;
+   
 }
