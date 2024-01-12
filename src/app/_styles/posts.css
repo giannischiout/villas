@@ -30,6 +30,6 @@
 
 /* SINGLE POST */
 .post_container {
-    background-color: rgb(243, 241, 239);
-    height: 40vh;
+   margin-top: 100px;
 }
+

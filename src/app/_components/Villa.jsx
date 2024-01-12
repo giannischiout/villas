@@ -8,7 +8,7 @@ import VillasPresentation from './VillasPresentation';
 import Book from './Button';
 import { ClipImage } from './ClipImage';
 
-const Reveal = ({ children }) => {
+export const Reveal = ({ children }) => {
     const ref = useRef(null);
     const isInView = useInView(ref);
     const mainControls = useAnimation();

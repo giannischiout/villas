@@ -30,8 +30,7 @@ export const Btn = ({text, onClick}) => {
 
 
 export const PostButton = ({id}) => {
-    console.log('id in button')
-    console.log(id)
+   
     const router = useRouter();
     const onClick = () => {
         router.push(`/single/${id}`)

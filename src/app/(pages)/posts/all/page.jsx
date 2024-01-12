@@ -9,21 +9,27 @@ const fetchPosts = async () => {
     "use server";
     const cookieStore = cookies()
     const locale = cookieStore.get('locale')
-    const url = `${process.env.API_URL}/posts?${locale.value}&populate=images`
+    console.log('locale in component')
+    console.log(locale)
+    const url = `${process.env.API_URL}/posts?${locale?.value}&populate=images`
     console.log(url)
+    
     let data = await fetch(url, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
         }
+    }, {
+        cache: 'no-cache'
     })
+
     let json = await data.json()
     return json.data;
 }
 const Page = async () => {
     const data = await fetchPosts()
-    console.log('data')
-    console.log(data)
+    // console.log('data')
+    // console.log(data)
   
     return (
         <section>
@@ -43,7 +49,7 @@ const Page = async () => {
             <div className="v_presentation_villas">
                 <div className="v_presentation_villas_inner">
                     <div>
-                        {data && data.map((post, i) => {
+                        {data.map((post, i) => {
                             return (
                                 <Card
                                     key={i}

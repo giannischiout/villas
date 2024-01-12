@@ -1,21 +1,23 @@
 'use client'
 import { createLocale } from "../actions";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
 const Languages = () => {
-    const [locale, setLocale] = useState('locale=en&?')
-  
+    const [locale, setLocale] = useState()
+    
+ 
     return (
-            <form action={() => createLocale(locale)} className="languages">
+            <div  className="languages">
                 <button 
-                    onClick={() => setLocale('locale=en')}
+                    onClick={() => createLocale('locale=en')}
                     className={locale === 'locale=en' ? 'lang_active' : ''}
                 >English</button>
                 <hr />
                 <button 
-                    onClick={() => setLocale('locale=el')}
+                    onClick={() => createLocale('locale=el')}
                     className={locale === 'locale=el' ? 'lang_active' : ''}
                 >Greek</button>
-            </form>
+            </div>
           
     )
 }

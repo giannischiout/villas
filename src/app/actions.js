@@ -5,11 +5,10 @@ import { headers } from 'next/headers';
 
 export async function createLocale(locale) {
     const headersList = headers();
-    const domain = headersList.get('host') || "";
     const fullUrl = headersList.get('referer') || "";
-    console.log('full url')
-    console.log(fullUrl);
+    console.log('---------------------------------------------------')
+    console.log('do we get the locale -----------------------')
+    console.log(locale)
     cookies().set('locale', locale)
-    revalidatePath(fullUrl)
-
+    // revalidatePath(fullUrl)
 }
