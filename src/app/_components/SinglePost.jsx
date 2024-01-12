@@ -5,15 +5,9 @@ const SinglePost = () => {
     const router = useRouter();
     const {id} = router.query;
 
+    console.log('id')
     console.log(id)
 
-    const handleFetch = async () => {
-        const { data } = await axios.get(`https://strapi.3v7i.com/api/posts/${id}`)
-        console.log(data)
-    }
-    useEffect(() => {
-        handleFetch
-    }, [])
     return (
         <div>
             <h1>SinglePost</h1>

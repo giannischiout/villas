@@ -1,5 +1,6 @@
+'use client'
 import { IoIosArrowRoundUp } from "react-icons/io";
-
+import { useRouter } from "next/navigation";
 const Book = ({normal, title}) => {
     return (
             <div className="btn_back" >
@@ -27,5 +28,17 @@ export const Btn = ({text, onClick}) => {
     )
 }
 
+
+export const PostButton = ({id}) => {
+    console.log('id in button')
+    console.log(id)
+    const router = useRouter();
+    const onClick = () => {
+        router.push(`/single/${id}`)
+    }
+    return (
+        <Btn text="see more" onClick={onClick} />
+    )
+}
 
 export default Book;

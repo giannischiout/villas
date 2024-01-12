@@ -14,7 +14,8 @@ import { useLocale } from '../_context/useLocale';
 import NavMenu from './Menu';
 import BookNowModal from './BookNow';
 import Book from './Button';
-
+import { setCookie } from "cookies-next";
+import Languages from './Locale';
 const Navbar = () => {
     const {scrollYProgress} = useScroll();
     const [clicked, setClicked] = useState(false)
@@ -48,24 +49,7 @@ const Navbar = () => {
 }
 
 
-const Languages = () => {
-    const router = useRouter();
-    const {handleLocale, locale} = useLocale();
 
-
-  
-    return (
-        <div className='languages'>
-            <div onClick={handleLocale} className={`lang ${locale == 'en' ? "lang_undeline" : null}`}>
-                <span >English</span>
-            </div>
-            <div className="hor_seperator"></div>
-            <div onClick={handleLocale} className={`lang ${locale == 'gr' ? "lang_undeline" : null}`} >
-                <span >Greek</span>
-            </div>
-        </div>
-    )
-}
 
 const Burger = ({onClick, clicked}) => {
     const [scope, animate] = useAnimate()

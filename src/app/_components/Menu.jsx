@@ -18,7 +18,7 @@ const NavMenu = ({ isOpen }) => {
 							<span>Castro Villa</span>
 							<span>Jira Villa</span>
 							<span>Milos Villa</span>
-							<span>Blog</span>
+							<span>Locations</span>
 							<span>Contact</span>
 						</div>
 						<div className="menu_coordinates">

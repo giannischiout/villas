@@ -17,6 +17,7 @@
     "axios": "^1.6.5",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
+    "cookies-next": "^4.1.0",
     "date-fns": "^3.0.6",
     "framer-motion": "^10.16.16",
     "gsap": "^3.12.4",

@@ -102,9 +102,9 @@
     justify-content: center;
 }
 
-.lang_underline {
-    border-bottom: 1px solid var(--primary);
-}
+
+
+
 
 .icon_container {
     display: flex;
@@ -114,27 +114,29 @@
 }
 
 
-
-
-
 /* LANGUAGES  */
 .languages {
     display: grid;
-    max-width: 120px;
-    grid-template-columns: 1fr 2px 1fr;
+    /* background-color: rgb(224, 212, 212); */
+    grid-template-columns: 1fr 1px 1fr;
     grid-template-rows: 1fr;
-    gap: 10px;
+    column-gap: 30px;
     width: 100%;
     color: var(--primary);
-   
 }
 
-.lang {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+
+.languages hr {
     height: 100%;
+    width: 1px;
+    background-color: var(--primary); 
 }
+
+.lang_active {
+    border-bottom: 1px solid var(--primary);
+}
+
 
 .hor_seperator {
     display: flex;
