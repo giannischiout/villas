@@ -1,9 +1,15 @@
 'use client'
+import { useState } from "react";
 import { IoIosArrowRoundUp } from "react-icons/io";
 import { useRouter } from "next/navigation";
-const Book = ({normal, title}) => {
+import BookNowModal from "./BookNow";
+const Book = ({normal, title, hasCloseBtn}) => {
+    const [modal, setModal] = useState(false);
+    console.log('has close')
+    console.log(hasCloseBtn)
     return (
-            <div className="btn_back" >
+           <>
+             <div onClick={() => setModal(prev => !prev)} className="btn_back" >
             <div className="btn">
                 <button >
                 </button>
@@ -11,6 +17,8 @@ const Book = ({normal, title}) => {
             </div>
             <IoIosArrowRoundUp />
             </div>
+            <BookNowModal hasCloseBtn={hasCloseBtn} setIsOpen={setModal} isOpen={modal}/>
+           </>
           
     )
 }

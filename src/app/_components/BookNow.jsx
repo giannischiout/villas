@@ -3,7 +3,7 @@
 'use client'
 import { useEffect } from "react";
 import { BookForm } from "./BookForm"
-const BookNowModal = ({isOpen}) => {
+const BookNowModal = ({isOpen, hasCloseBtn, setIsOpen}) => {
     const handleScroll = () => {
 		document.body.style.overflow = isOpen ? 'hidden' : 'auto';
 	};
@@ -19,8 +19,10 @@ const BookNowModal = ({isOpen}) => {
     return (
        <>
         {isOpen ? (
+           
              <div className="book_modal">
-             <BookForm  />
+                 <button>close</button>
+             <BookForm  hasCloseBtn={ hasCloseBtn} setIsOpen={setIsOpen}  />
          </div>
         ) : null}
        </>

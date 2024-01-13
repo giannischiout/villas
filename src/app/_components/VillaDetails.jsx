@@ -115,7 +115,7 @@ export function VillaFacilities({ image, facilities, interiorSqr, outdoorSqr }) 
             <div className="v_spaces" >
                 <div className="v_spaces_inner">
                     <div className="v_spaces_header">
-                        <AnimatedText text="SPACES" />
+                        <AnimatedText text="SPACES" className="v_spaces_animated_text" />
                     </div>
                     <div className="v_spaces_content">
                         <div>

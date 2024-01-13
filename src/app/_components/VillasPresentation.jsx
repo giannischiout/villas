@@ -13,29 +13,12 @@ const VillasPresentation = ({
         <section>
             <div className="v_presentation_container">
                 <div className="v_presentation_inner">
-                    {/* <div className="presentation_top_container">
-                        <div className="v_presentation_top">
-                            <div >
-                                <p>OUR</p>
-                                <h5>VILLAS</h5>
-                            </div>
-                            <div >
-                                <div className="v_presentation_image_container">
-                                    <Image src={'/1.webp'} alt="villa1" fill={true} />
-                                </div>
-                                <div>
-                                    <p>
-
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div> */}
+                 
                     <div className="v_presentation_sticky">
                         <div className="presentation_bottom_container">
                             <div className="v_presentation_bottom">
                                 <div>
-                                    <h6>Villas</h6>
+                                    <h6>Explore more villas</h6>
                                     <p>
                                     Ionian Dream Villas in Lefkada: Your Perfect Island Getaway
                                     </p>

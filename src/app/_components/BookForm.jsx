@@ -13,7 +13,8 @@ import 'react-day-picker/dist/style.css';
 
 
 
-export const BookForm = ({width}) => {
+export const BookForm = ({width, hasCloseBtn = false, setIsOpen}) => {
+	
 	const calendarrefA = useRef(null)
 	const calendarrefB = useRef(null)
     const [show, setShow] = useState({
@@ -86,7 +87,6 @@ export const BookForm = ({width}) => {
 
     return (
         <div className="form_container_mobile">
-
            <div style={{width: width}}>
 			<div className="book_now_intro">
 				<span>BOOK NOW</span>
@@ -131,9 +131,15 @@ export const BookForm = ({width}) => {
 			selectedGuests={selectedGuests} 
 			setSelectedGuests={setSelectedGuests} 
 			/>
-			<div>
+			<div className="form_button_container">
 			   <button onClick={handleSubmit} className="submit_btn">SUBMIT</button>
+				{hasCloseBtn  && (
+					<button className="close_button" onClick={() => setIsOpen(prev => !prev)}>
+						close
+					</button>
+				)}
 		   </div>
+		  
            </div>
 
           

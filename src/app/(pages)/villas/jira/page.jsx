@@ -1,53 +1,10 @@
-'use client'
 import Villa from "@/app/_components/Villa"
-import { useLocale } from "@/app/_context/useLocale"
-import { useEffect, useState } from "react"
-import axios from 'axios'
-
-const text = {
-    tag: 'AN OASIS OF PIECE AND QUIET',
-    title: "Barefoot luxury, elevated",
-    description: `This beautiful villa with a private pool is located in a quiet location, 
-    just a few minutes walk from the beach. The villa has three bedrooms, two bathrooms, a guest WC, a living room with an open, fully equipped kitchen, 
-    a dining and living area with an open fireplace, extending onto a 
-    large wooden deck terrace, and a workspace on the gallery.`
-    
-}
 
 
 
-const roomTypes = [
-    'Gallery Couch ',
-    'Master Bedroom',
-    'Gallery Double Room'
 
-]
+const tag = 'AN OASIS OF PIECE AND QUIET'
 
-// const details = {
-//     maxAdults: 6,
-//     maxChildren: 3,
-//     bedrooms: 3,
-//     pullOutCoutch: 1,
-//     squareMeters: 200,
-//     outdoorSqr: 40,
-//     bathRooms: '2 bathrooms, bathtub or shower / WC',
-//     guestToilet: '1 guest toilet',
-//     facilities: [
-//         'Safety Deposit Box',
-//         'Storage Room',
-//         'SAT-TV',
-//         'Toaster',
-//         'Washing Machine'
-//     ]
-// }
-
-const facilities = [
-    'Safety Deposit Box',
-    'Storage Room',
-    'SAT-TV',
-    'Toaster',
-    'Washing Machine'
-]
 
 const images = [
     '/jira/jira_1.webp',
@@ -58,36 +15,36 @@ const images = [
     '/jira/jira_6.webp',
 
 ]
-export default function Page() {
-    const [data, setData] = useState({})
-    const { locale } = useLocale()
-    console.log(locale)
-    useEffect(() => {
-        console.log('localedgdr')
-        console.log(locale)
 
-    }, [locale])
-
-    const handleFetch = async () => {
-        const {data} = await axios.get(`https://strapi.3v7i.com/api/villas/2?populate=details,facilities,roomtypes,bathroom`)
-        console.log(data)
-        setData(data.data)
-    }
-
-    useEffect(() => {
-        handleFetch()
-    }, [])
+const getData = async () => {
+    let url = `${process.env.API_URL}/villas/2?populate=details,facilities,roomtypes,bathroom`
+    const res = await fetch(url, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+        },
+    
+    });
+    let json = await res.json();
+    return json.data;
+}
+export default async function Page() {
+    const data = await getData()
+    console.log('----------------------------------- dataaa')
+    console.log('----------------------------------- dataaa')
+    console.log(data)
+   
     return (
         <Villa 
             id="jira"
-            tag={text.tag}
+            tag={tag}
             name="jira" 
             sidebarImg="/jira/jira_1.webp"
             mainImg="/jira/jira_7.webp"
             scrollImg="/jira/jira_6.webp"
             facilitiesImg="/jira/jira_6.webp"
             title={'An oasis of piece and quiet'}
-            //API
             description={data?.attributes?.shortDescription}
             details={data?.attributes?.details[0]}
             facilities={data?.attributes?.facilities}

@@ -123,9 +123,10 @@
     background-color: var(--primary_dark);
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 10px 10px;
+    font-size: 16px;
     border-radius: 50px;
-    min-width: 150px;
+    width: 150px;
     transition: all 0.3s ease-in-out;
 }
 
@@ -151,8 +152,23 @@
     top: 40px; /* Adjust this value to position the popup */
   }
 
+.form_button_container {
+    margin-top: 20px;
+}
 
+  .close_button {
+    cursor: pointer;
+    color: var(--primary_dark);
+    font-size: 2rem;
+    width: 150px;
+    border-radius: 50px;
+    margin-left: 10px;
+    border: 1px solid var(--primary_dark);
+    color: var(--primary_dark);
+    padding: 10px 10px;
+    font-size: 16px;
 
+  }
   @media screen and (min-width:1000px) {
         .form_mobile {
             display: none;

@@ -25,16 +25,12 @@ const fetchPosts = async (postId) => {
     return json.data;
 }
 
-export default async function Page({ params, searchParams }) {
-    console.log('params')
-    console.log(params.id)
+export default async function Page({ params}) {
+ 
     const data = await fetchPosts(params.id)
     const image = data?.attributes?.images.data[0].attributes.url;
     const date = data?.attributes?.createdAt.split('T')[0];
-    console.log('image')
-    console.log(image)
-    console.log('data')
-    console.log(data)
+    
     return (
         <section className="post_container">
             <div className="single_post_top"></div>

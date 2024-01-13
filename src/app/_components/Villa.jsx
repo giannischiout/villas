@@ -97,7 +97,7 @@ export const VillaIntro = ({ children, sidebarImg, mainImg, tag, name }) => {
             <div className="v_sidebar_space"></div>
             <div className="v_sidebar">
                 <div className='v_sidebar_top'>
-                    <p>{'villas'}</p>
+                    <p>{'VILLAS'}</p>
                 </div>
                 <ClipImage img={sidebarImg} forwardRef={clipRef} className="v_sidebar_img_container"/>
             </div>
@@ -159,7 +159,7 @@ const Villa = ({
                 </Reveal>
                 <div
                     className='v_button_container'>
-                    <Book />
+                    <Book hasCloseBtn={true} />
                 </div>
             </VillaIntro>
             <ScrollImageSticky image={scrollImg} />
