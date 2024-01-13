@@ -1,12 +1,8 @@
 'use client'
-import { useEffect } from "react";
-import { GoArrowUpRight } from "react-icons/go";
-import { motion, stagger } from 'framer-motion';
+
 import { FaMapMarkerAlt } from "react-icons/fa";
-import { useRouter } from "next/navigation";
 import Link from 'next/link';
 const NavMenu = ({ isOpen, setIsOpen }) => {
-	const router = useRouter();
 	const coordinates = `${38.828126301276285},${20.67299302578312}`;
 
 	const handleClose = () => {
@@ -21,7 +17,7 @@ const NavMenu = ({ isOpen, setIsOpen }) => {
 							<Link onClick={handleClose} href={`/villas/castro`}>CASTRO VILLA</Link>
 							<Link  onClick={handleClose} href={`/villas/jira`}>JIRA VILLA</Link>
 							<Link  onClick={handleClose} href={`/villas/milos`}>MILOS VILLA</Link>
-							<Link  onClick={handleClose} href={`/post/all`}>AREAS OF INTEREST</Link>
+							<Link  onClick={handleClose} href={`/posts/all`}>AREAS OF INTEREST</Link>
 							<Link  onClick={handleClose} href={`/location`}>LOCATIONS</Link>
 						</div>
 						<div className="menu_coordinates">
