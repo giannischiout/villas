@@ -33,7 +33,7 @@ export const PostButton = ({id}) => {
    
     const router = useRouter();
     const onClick = () => {
-        router.push(`/single/${id}`)
+        router.push(`/posts/single/${id}`)
     }
     return (
         <Btn text="see more" onClick={onClick} />

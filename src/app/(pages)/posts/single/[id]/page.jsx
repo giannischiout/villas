@@ -1,7 +1,9 @@
 import { VillaIntro } from "@/app/_components/Villa"
 import { Reveal } from "@/app/_components/Villa"
 import { cookies } from 'next/headers'
-
+import Image from "next/image"
+import Link from 'next/link';
+import { GoArrowUpRight } from 'react-icons/go';
 
 const fetchPosts = async (postId) => {
     "use server";
@@ -9,7 +11,8 @@ const fetchPosts = async (postId) => {
     const locale = cookieStore.get('locale')
     console.log('locale in server component')
     console.log(locale)
-    const url = `${process.env.API_URL}/posts?${locale?.value}&populate=images&id=${postId}`
+    // const url = `${process.env.API_URL}/posts?${locale?.value}&populate=images&id=${postId}`
+    const url = `${process.env.API_URL}/posts/${postId}?populate=images`
     console.log(url)
     let data = await fetch(url, {
         method: 'GET',
@@ -22,23 +25,56 @@ const fetchPosts = async (postId) => {
 }
 
 export default async function Page({ params, searchParams }) {
-    // console.log('params')
-    // console.log(params.id)
-    // const data = await fetchPosts(params.id)
-    // console.log('data')
-    // console.log(data)
+    console.log('params')
+    console.log(params.id)
+    const data = await fetchPosts(params.id)
+    const image = data?.attributes?.images.data[0].attributes.url;
+    const date = data?.attributes?.createdAt.split('T')[0];
+    console.log('image')
+    console.log(image)
+    console.log('data')
+    console.log(data)
     return (
-        <div className="post_container">
-            <VillaIntro sidebarImg={'/1.webp'} mainImg={'/1.webp'} tag={'this is the tag'} name={'blog post name'} >
-                <Reveal>
-                    <h3>{'title'}</h3>
-                    <p id="text_animated" >
-                        {`${'desc'}`}
-                    </p>
+        <section className="post_container">
+            <div className="single_post_top"></div>
+            <div className="single_post_main">
+                <div className="single_post_main_inner">
+                    <div className="single_image">
+                        <Image
+                            src={`${process.env.BASE_URL}${image}`}
+                            fill={true}
+                            sizes="100% 600px"
+                        />
+                    </div>
+                    <div className="single_content">
+                        <div className="single_details">
+                            <span>{date}</span>
+                            <span>{data?.attributes.type}</span>
+                        </div>
+                        <h1>{data?.attributes?.title}</h1>
+                        <div>
+                            <span className="single_distance">{data?.attributes.distance}</span>
+                        </div>
+                        <p className="single_description">{data?.attributes?.longDescription}</p>
+                        <div className="single_actions">
+                        <PostMapLink latt={data?.attributes?.lattitude} long={data?.attributes?.londtitude} />
+                        <button className="single_btn all_posts"> all posts</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section >
+    )
+}
 
-                </Reveal>
-               
-            </VillaIntro>
-        </div>
+
+
+export const PostMapLink = ({ latt, long }) => {
+    const coordinates = `${latt},${long}`;
+    return (
+        <Link className="single_btn single_gps_btn" href={`https://www.google.com/maps?q=${coordinates}`} target='blank'>
+        google maps
+        <GoArrowUpRight />
+    </Link>
     )
 }

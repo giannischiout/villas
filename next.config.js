@@ -1,7 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        domains: ["https://strapi.3v7i.com/", "strapi.3v7i.com"]
+        remotePatterns: [
+            {
+              protocol: 'https',
+              hostname: 'strapi.3v7i.com',
+              port: '',
+            //   pathname: '/my-bucket/**',
+            },
+          ],
     }
 }
 

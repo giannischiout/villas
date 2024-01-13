@@ -15,4 +15,17 @@ const MapLink = () => {
     )
 }
 
+
+export const PostMapLinlk = ({latt, long}) => {
+    const coordinates = `${latt},${long}`;
+
+    <Link href={`https://www.google.com/maps?q=${coordinates}`} target='blank' className="maps_button">
+        google maps
+    <GoArrowUpRight />
+</Link>
+}
+
+
+
+
 export default MapLink;
