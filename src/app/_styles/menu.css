@@ -59,14 +59,19 @@
     line-height: 2rem;
     font-size: 3rem;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
    
 }
 
-.menu_content > span {
+.menu_content > a {
     display: block;
     line-height: 2;
     font-size: calc(2rem + 0.6vw);
     letter-spacing: 2.4px;
+    cursor: pointer;
 }
 
 .menu_background_text {
@@ -90,14 +95,18 @@
 }
 
 .menu_coordinates svg {
-    margin-bottom: 10px;
-    font-size: 20px;
+    margin-bottom: 15px;
+    font-size: calc(2rem + 0.4vw);
 }
 
 .menu_coordinates a {
+    font-size: calc(2rem + 0.4vw);
     position: relative;
+   
 }
-
+.click_to_open {
+    color: var(--primary)
+}
 .menu_coordinates a::before {
     content: "";
     position: absolute;

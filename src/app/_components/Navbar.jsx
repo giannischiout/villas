@@ -42,7 +42,7 @@ const Navbar = () => {
                 <BookNow onClick={() => setModal(prev => !prev)} text="book now"/>
             </div>
         </div>
-            <NavMenu isOpen={clicked}/>
+            <NavMenu isOpen={clicked} setIsOpen={setClicked}/>
             <BookNowModal isOpen={modal}/>
         </div>
     )

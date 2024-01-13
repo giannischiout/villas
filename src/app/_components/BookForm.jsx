@@ -14,7 +14,6 @@ import 'react-day-picker/dist/style.css';
 
 
 export const BookForm = ({width, hasCloseBtn = false, setIsOpen}) => {
-	
 	const calendarrefA = useRef(null)
 	const calendarrefB = useRef(null)
     const [show, setShow] = useState({

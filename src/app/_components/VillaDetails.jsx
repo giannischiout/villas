@@ -7,13 +7,6 @@ import { useInView } from "react-intersection-observer"
 import { IoIosArrowForward } from "react-icons/io";
 import AnimatedText from "./AnimatedText"
 
-const views = [
-    'Garden View',
-    'Pool View',
-    'Sea View ',
-    'Sunset View',
-
-]
 
 
 
@@ -59,7 +52,6 @@ export function VillaDetails({details, bathroom, guestToilet}) {
 
 
 export function VillaFeatures({roomTypes}) {
-    const [data, setData] = useState(roomTypes)
    
     if(!roomTypes) return null
     return (
@@ -67,8 +59,7 @@ export function VillaFeatures({roomTypes}) {
             <h5>Room Features</h5>
             <ul>
                 {roomTypes && roomTypes.data.map((item, index) => {
-                    console.log('item----------------')
-                    console.log(item)
+                    
                     return (
                         <li className="v_para_container" key={index}>
                             {/* {item} */}
@@ -93,10 +84,7 @@ export function VillaFacilities({ image, facilities, interiorSqr, outdoorSqr }) 
         threshold: 0.5,
         triggerOnce: false
     });
-    useEffect(() => {
-        console.log('facilities -----------------------------------')
-        console.log(facilities)
-    }, [facilities])
+   
     const { scrollYProgress, scrollY } = useScroll({
         target: targetRef,
         offset: ["start end", "center"]
@@ -140,8 +128,7 @@ export function VillaFacilities({ image, facilities, interiorSqr, outdoorSqr }) 
                 <div className="facilities_content">
                     <ul>
                         {facilities && facilities.map((item, index) => {
-                            console.log('item')
-                            console.log(item)
+                           
                             return (
                                 <li key={index}>
                                     {item.attributes.name}
