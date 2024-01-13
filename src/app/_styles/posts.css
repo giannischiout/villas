@@ -84,7 +84,7 @@
 }
 .single_content h1 {
     line-height:1.2;
-    font-size: calc(2rem + 1vw);
+    font-size: calc(2rem + 0.5vw);
     color: var(--primary_dark);
     margin-bottom: 4px;
 }

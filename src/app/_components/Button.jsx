@@ -40,4 +40,13 @@ export const PostButton = ({id}) => {
     )
 }
 
+
+export const RedirectButton = ({href}) => {
+    const router = useRouter();
+    const onClick = () => {
+        router.push(href)
+    }
+    return (
+    <button onClick={onClick} className="single_btn all_posts"> all posts</button>    )
+}
 export default Book;

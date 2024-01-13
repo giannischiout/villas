@@ -1,3 +1,4 @@
+import { RedirectButton } from "@/app/_components/Button";
 import { VillaIntro } from "@/app/_components/Villa"
 import { Reveal } from "@/app/_components/Villa"
 import { cookies } from 'next/headers'
@@ -41,7 +42,7 @@ export default async function Page({ params, searchParams }) {
                 <div className="single_post_main_inner">
                     <div className="single_image">
                         <Image
-                            src={`${process.env.BASE_URL}${image}`}
+                            src={`${process.env.BASE_API_URL}${image}`}
                             fill={true}
                             sizes="100% 600px"
                         />
@@ -57,8 +58,8 @@ export default async function Page({ params, searchParams }) {
                         </div>
                         <p className="single_description">{data?.attributes?.longDescription}</p>
                         <div className="single_actions">
-                        <PostMapLink latt={data?.attributes?.lattitude} long={data?.attributes?.londtitude} />
-                        <button className="single_btn all_posts"> all posts</button>
+                        <PostMapLink latt={data?.attributes?.lattitude} long={data?.attributes?.londitude} />
+                        <RedirectButton href="/posts/all" />
                         </div>
                     </div>
                 </div>
