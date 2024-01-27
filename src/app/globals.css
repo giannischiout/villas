@@ -365,7 +365,6 @@ p {
 
 .intro_text p {
   line-height: 2;
-  max-width: 600px;
   margin-bottom:24px;
 }
 
@@ -384,15 +383,12 @@ p {
   color: var(--primary_dark);
 }
 .intro_text h3 {
-  font-size: calc(2rem + 1.2vw);
+  font-size: calc(3rem + 4vw);
   color: var(--primary_dark);
-  margin-bottom: 20px;
+  line-height: 1;
+  margin-bottom: 40px;
 }
 
-.intro_text p {
-  font-size: calc(1.5rem + 0.2vw);
-  color: var(--primary_dark)
-}
 
 
 

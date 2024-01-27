@@ -56,7 +56,7 @@ const Card = ({ image, people, sqr, name }) => {
     const router = useRouter();
 
     const onClick = () => {
-        router.push(`/${name.toLowerCase()}`)
+        router.push(`/villas/${name.toLowerCase()}`)
     }
     return (
         <div className="villas_card_container">

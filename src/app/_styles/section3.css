@@ -56,14 +56,18 @@
   }
   .row_two {
     display: flex;
+    justify-content: center;
     align-items: center;
     width: 100%;
-    height: 350px;
-   
+    height: 400px;
+    padding: 4%;
   }
   .row_two p {
-    max-width: 280px;
-    margin-left: calc(17.5vw + 20px);
+    text-align: center;
+    max-width: 1400px;
+    font-size: calc(3rem + 1vw);
+    /* max-width: 280px; */
+    /* margin-left: calc(17.5vw + 20px); */
     color: var(--primary_dark)
   }
   

@@ -5,6 +5,8 @@ import { cookies } from 'next/headers'
 import Image from "next/image"
 import Link from 'next/link';
 import { GoArrowUpRight } from 'react-icons/go';
+import { RxArrowRight } from "react-icons/rx";
+import { RxArrowLeft } from "react-icons/rx";
 
 const fetchPosts = async (postId) => {
     "use server";
@@ -30,18 +32,34 @@ export default async function Page({ params}) {
     const data = await fetchPosts(params.id)
     const image = data?.attributes?.images.data[0].attributes.url;
     const date = data?.attributes?.createdAt.split('T')[0];
-    
+    const images = data?.attributes?.images.data.map(item => {
+       
+        return {
+            url: item.attributes.url
+        }
+    });
     return (
         <section className="post_container">
             <div className="single_post_top"></div>
             <div className="single_post_main">
                 <div className="single_post_main_inner">
                     <div className="single_image">
-                        <Image
-                            src={`${process.env.BASE_API_URL}${image}`}
-                            fill={true}
-                            sizes="100% 600px"
-                        />
+                       {images?.map((image, index) => {
+                            console.log('image')
+                            console.log(image)
+                            return (
+                                    //   <Image alt={'gallery images'} src={`${process.env.BASE_API_URL}${image.attributes.url}`} layout="fill" objectFit="cover" />
+                                      <Image key={index} alt={'gallery images'} src={`${process.env.BASE_API_URL}${image.url}`} layout="fill" objectFit="cover" />
+                            )
+                       })}
+                         <div className="single_post_slider_buttons">
+                            <button>
+                                <RxArrowLeft />
+                            </button>
+                            <button>
+                                <RxArrowLeft />
+                            </button>
+                         </div>
                     </div>
                     <div className="single_content">
                         <div className="single_details">
