@@ -5,6 +5,7 @@ import { useAnimate, useScroll, animate, useAnimation, useInView, motion } from 
 import { ClipImage } from "./ClipImage";
 import { ImageScroll } from './Villa';
 import  LetterFade  from './LetterFade';
+import SlideShow from './SlideShow';
 const Hero = ({ children, sidebarImg, mainImg, tag, name }) => {
     const { scrollYProgress } = useScroll();
     const [scope, animate] = useAnimate();
@@ -13,7 +14,6 @@ const Hero = ({ children, sidebarImg, mainImg, tag, name }) => {
 
 
     useEffect(() => {
-
     }, [])
     const handleIntroAnimation = async () => {
         animate('.v_main_image_container_inner', {
@@ -44,6 +44,8 @@ const Hero = ({ children, sidebarImg, mainImg, tag, name }) => {
     }, [])
 
 
+
+
     useEffect(() => {
         scrollYProgress.on("change", (v) => {
             const initialInset = { top: 2, right: 10, bottom: 0, left: 12 };
@@ -58,6 +60,7 @@ const Hero = ({ children, sidebarImg, mainImg, tag, name }) => {
 
         })
     }, [scrollYProgress])
+
     return (
        <div className="villa_container">
          <div ref={scope} className="villa_top" >
@@ -78,7 +81,7 @@ const Hero = ({ children, sidebarImg, mainImg, tag, name }) => {
                     <ImageScroll image={'/intro_day.webp'} />
                 </div>
                 <div className="intro_text" >
-                    <h3>Beautiful quiet villas with private pool</h3>
+                    <h3>BEAUTIFUL QUIET VILLAS WITH PRIVATE POOL</h3>
                     <p>{`Ionian Dream Villas, a charming hotel located in Lefkada 
                         near the captivating Agios Ioannis Bay, presents an 
                         array of three villas, characterized by their 

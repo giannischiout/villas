@@ -5,7 +5,7 @@
     align-items: center;
     justify-content: center;
     position: relative;
-    height: 300vh;
+    height: 220vh;
     width: 100%;
 }
 
@@ -14,37 +14,15 @@
     width: 100%;
     height: 100%;
     position: relative;
-    
-}
-
-.presentation_top_container {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(243, 241, 239, 0.719);
-
-}
-.v_presentation_top {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-template-rows: 1fr;
-    padding-top: 50px;
-    width: 80%;
-    
-}
-
-.v_presentation_top > div:nth-child(1) {
-    height: 100%;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     justify-content: center;
 }
-.v_presentation_top > div:nth-child(2) {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-}
+
+
+
+
 
 .v_presentation_image_container {
     width: 250px;
@@ -52,62 +30,45 @@
     position: relative;
 }
 
-.v_presentation_image_container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
 
-
-
-.v_presentation_top > div:nth-child(1) p {
-  font-size: calc(1.8rem + 0.8rem);
-  color: var(--text_dark)
-}
-.v_presentation_top > div:nth-child(1) h5 {
-    line-height: 0.8;
-  font-size: calc(3rem + 4em);
-  color: var(--primary_dark)
-}
-
-.presentation_bottom_container {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(243, 241, 239, 0.719);
-}
 
 
 .v_presentation_sticky {
-  position: sticky;
-  top: 0;
-
-}
-.v_presentation_bottom {
-    display: grid;
-    width: 80%;
-    grid-template-columns: 2fr 1fr;
-    grid-template-rows: 1fr;
-    min-height: 50vh;
+    width: 100%;
     position: sticky;
     top: 0;
+
+}
+
+
+.v_presentation_top {
+    width: 100%;
+    background-color: rgba(243, 241, 239, 0.719);
+    height: 50vh;
+    display: flex;
     align-items: center;
+    justify-content: center;
 }
 
+.v_presentation_top > div {
+    width: 80%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    height: 60%;
 
-.v_presentation_bottom > div {
-    grid-column: 2/ span 1;
 }
-.v_presentation_bottom > div p {
-    width: 300px;
-    color: var(--primary_dark)
 
-}
-.v_presentation_bottom > div h6 {
-    font-size: calc(1.8rem + 1rem);
+.v_presentation_header span {
+    font-size: calc(1rem + 2rem);
     color: var(--primary_dark);
-    margin-bottom: 30px;
+    font-weight: 500;
+    font-family: 'Bona Nova', serif;
+}
+.v_presentation_header p {
+    font-size: calc(2rem + 5rem);
+    color: var(--primary_dark);
     font-weight: 500;
     font-family: 'Bona Nova', serif;
 }
@@ -121,28 +82,58 @@
 }
 
 
-.v_presentation_villas_inner {
-    width: 80%;
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-template-rows: 1fr;
-}
-.v_presentation_villas_inner > div:nth-child(1) {
-   margin-right: 10%;
-   transform: translateY(-300px);
+.v_presentation_container {
+    width: 100%;
 }
 
+#v_presentation_villa_1 {
+    width: 100%;
+}
+
+.v_presentations_villas {
+    width: 80%;
+    margin: auto auto;
+    display: flex;
+    flex-direction: column;
+    z-index: 5;
+}
+
+
+.card1 {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 100px;
+  }
+
+  .card2 {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-bottom: 100px;
+  }
+  .card3 {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 100px;
+  }
+
+ 
 
 .villas_card_container {
-    margin-bottom: 120px;
     border: 2px solid var(--background);
     padding: 10px;
+    max-width: 900px;
+    width: 100%;
     background-color: white;
 }
 
 .v_presentation_card_image_container {
     width: 100%;
-    height: 500px;
+    height: 400px;
     position: relative;
 }
 .v_presentation_card_image_container img {

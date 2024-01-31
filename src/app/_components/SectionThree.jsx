@@ -54,7 +54,8 @@ const SectionThree = () => {
                         <p data-scroll data-speed="0.2 ">Experience the perfect blend of comfort, nature, and captivating views during your stay at Ionian Dream Villas in Lefkada. </p>
                     </div>
                     <div className="row_three">
-                        <motion.div
+                       <div>
+                       <motion.div
                             className={`row_three_image`}
 
                             initial="hidden"
@@ -72,9 +73,12 @@ const SectionThree = () => {
                             />
                         </motion.div>
                         <div className="row_three_content">
-                            <p >Book your getaway today and indulge in the beauty of Agios Ioannis Bay.
-                            </p>
+                            <div className="book_getaway">
+                            <p >Book your getaway today and indulge in the beauty of Agios Ioannis Bay.</p>
+                            </div>
+                          
                         </div>
+                       </div>
                     </div>
                 </div>
             </div>

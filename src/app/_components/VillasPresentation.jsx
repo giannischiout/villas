@@ -13,26 +13,23 @@ const VillasPresentation = ({
         <section>
             <div className="v_presentation_container">
                 <div className="v_presentation_inner">
-                 
                     <div className="v_presentation_sticky">
-                        <div className="presentation_bottom_container">
-                            <div className="v_presentation_bottom">
-                                <div>
-                                    <h6>Explore more villas</h6>
-                                    <p>
-                                    Ionian Dream Villas in Lefkada: Your Perfect Island Getaway
-                                    </p>
-                                </div>
+                        <div className="v_presentation_top">
+                            <div className="v_presentation_header">
+                                <span>CHOOSE ONE OF</span>
+                                <p>OUR VILLAS</p>
                             </div>
+                           
                         </div>
+                     
                     </div>
-                    <div className="v_presentation_villas">
-                        <div className="v_presentation_villas_inner">
-                            <div>
-                                {id =="castro" ? (
+                    <div className="v_presentations_villas">
+                       <div className="card1">
+                       {id =="castro" ? (
                                    null
                                 ) : (
                                     <Card 
+                                    id="v_presentation_villa_1"
                                     name="Castro" 
                                     image="pres_castro.webp" 
                                     people={9} 
@@ -40,10 +37,14 @@ const VillasPresentation = ({
                                     href=""
                                 />
                                 )}
-                                {id=="jira"  ? null : <Card  name="Jira" image="pres_jira.webp" people={9} sqr="140" />}
-                                {id=="milos" ? null : <Card  name="Milos" image="pres_milos.webp" people={9} sqr="140"/>}
-                            </div>
-                        </div>
+                       </div>
+                       <div className="card2">
+                       {id=="jira"  ? null : <Card  name="Jira" image="pres_jira.webp" people={9} sqr="140" />}
+                       </div>
+                       <div className="card3">
+                       {id=="milos" ? null : <Card  name="Milos" image="pres_milos.webp" people={9} sqr="140"/>}
+                       </div>
+                        
                     </div>
                 </div>
             </div>
@@ -52,16 +53,16 @@ const VillasPresentation = ({
 }
 
 
-const Card = ({ image, people, sqr, name }) => {
+const Card = ({ image, people, sqr, name, id }) => {
     const router = useRouter();
 
     const onClick = () => {
         router.push(`/villas/${name.toLowerCase()}`)
     }
     return (
-        <div className="villas_card_container">
+        <div  className="villas_card_container">
             <div className="v_presentation_card_image_container">
-                <Image src={`/${image}`} alt="villa1" fill={true} sizes={"(max-width: 800px) 90%"}/>
+                <Image src={`/${image}`} alt="villa1" fill={true} sizes={"(max-width: 800px) 90%"} />
 
             </div>
             <div className="v_presentation_card_text">
@@ -70,7 +71,7 @@ const Card = ({ image, people, sqr, name }) => {
                     <p>{`${people} people`}</p>
                     <p>{`${sqr}`}</p>
                 </div>
-                <Btn text="see more"  onClick={onClick}/>
+                <Btn text="see more" onClick={onClick} />
 
             </div>
         </div>

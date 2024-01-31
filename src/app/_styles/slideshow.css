@@ -1,0 +1,96 @@
+.slideshow {
+    height: 90vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.slideshow img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    position: absolute;
+}
+
+.slideshow_inner {
+    z-index: 10;
+    width: 80%;
+     height: 100%;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+
+
+.slideshow_left {
+    width: 50%;
+    height: 100%;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 20px;
+  
+}
+.slideshow_left p {
+    margin-top: 5%;
+      font-size: calc(2rem + 0.8vw);
+}
+.slideshow_left span {
+      font-size: calc(1rem + 0.5vw);
+}
+
+.slideshow_right {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.home_post_circle {
+    background-color: var(--primary_dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translate(-100px, -120px);
+    cursor: pointer;
+   
+}
+.home_post_circle span {
+    max-width: 180px;
+    font-size: calc(1rem + 0.5vw);
+    z-index: 2;
+    color: white;
+    text-align: center;
+}
+
+.home_post_circle::before {
+    content: "";
+    background-color: var(--primary_dark);
+    border-radius: 50%;
+    position: absolute;
+    width: 280px;
+    height: 280px;
+}
+
+.btn_container {
+    margin-top: 10px;
+    display: flex;
+}
+.btn_container button {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    border: 1px solid white;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn_container button svg {
+    font-size: 22px;
+}

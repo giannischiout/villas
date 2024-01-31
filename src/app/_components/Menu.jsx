@@ -2,6 +2,8 @@
 
 import { FaMapMarkerAlt } from "react-icons/fa";
 import Link from 'next/link';
+
+
 const NavMenu = ({ isOpen, setIsOpen }) => {
 	const coordinates = `${38.828126301276285},${20.67299302578312}`;
 
