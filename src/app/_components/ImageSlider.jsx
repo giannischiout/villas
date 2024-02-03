@@ -13,10 +13,10 @@ const ImageSlider = ({images}) => {
     const opacityControls = useAnimation();
     const handleNext = () => {
         setIndex(prev => (prev + 1) % images.length)
+        handleAnimate()
     }
-  
-
-    useEffect(() => {
+    
+    const handleAnimate = () => {
         animate("#slide_anime", {
             clipPath: ["polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)", "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"]
         },
@@ -26,16 +26,29 @@ const ImageSlider = ({images}) => {
                 duration: 0.4,
             }
         )
-        animate(".slider_img", {
-            scale: [1.1, 1],
-        },
-            {   
-                ease: 'linear',
-                duration: 2,
-                delay: 0.2
-            }
-        )
-    }, [index])
+    
+    }
+
+    // useEffect(() => {
+    //     animate("#slide_anime", {
+    //         clipPath: ["polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)", "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"]
+    //     },
+    //         {
+    //             // ease: [0.6, 0.05, -0.01, 0.9],
+    //             ease: 'easeInOut',
+    //             duration: 0.4,
+    //         }
+    //     )
+    //     // animate(".slider_img", {
+    //     //     scale: [1.1, 1],
+    //     // },
+    //     //     {   
+    //     //         ease: 'linear',
+    //     //         duration: 2,
+    //     //         delay: 0.2
+    //     //     }
+    //     // )
+    // }, [index])
 
  
     return (
@@ -48,7 +61,7 @@ const ImageSlider = ({images}) => {
                 </div>
                 <div className="slider_image_container" id="slide_anime">
                     <motion.img 
-                    className="slider_img" src={images[(index + 1) % images.length]} alt="villa"  />
+                    className="slider_img" src={ images[(index + 1) % images.length]} alt="villa"  />
                 </div>
                 <Teaser index={index} images={images} />
             </div>
@@ -74,7 +87,6 @@ const Teaser = ({ images, index }) => {
                     fill={true}
                 />
             </div>
-            <div className="space space_bottom"></div>
         </div>
     )
 }

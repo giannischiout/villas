@@ -151,11 +151,11 @@ const Villa = ({
                     <p id="text_animated" >
                         {`${description}`}
                     </p>
-                    < VillaDetails 
+                    {/* < VillaDetails 
                         details={details} 
                         bathroom={bathroom} 
                         guestToilet={guestToilet} />
-                    < VillaFeatures roomTypes={roomTypes} />
+                    < VillaFeatures roomTypes={roomTypes} /> */}
                 </Reveal>
                 <div
                     className='v_button_container'>

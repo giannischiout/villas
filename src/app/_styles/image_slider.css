@@ -40,17 +40,17 @@
     object-fit: cover;
     height: 100%;
     width: 100%;
-    scale: 1.1;
+    /* scale: 1.1; */
 }
 
 .teaser_container {
     width: 300px;
     display: grid;
-    grid-template-rows: 40px 120px 40px;
+    grid-template-rows: 40px 140px ;
     grid-template-columns: 1fr;
     position: absolute;
-    bottom: -40px;
-    right: 20%;
+    bottom: 0;
+    right: 0;
 }
 
 .teaser_image {

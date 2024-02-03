@@ -55,29 +55,29 @@ const SectionThree = () => {
                     </div>
                     <div className="row_three">
                        <div>
-                       <motion.div
-                            className={`row_three_image`}
+                        <motion.div
+                                className={`row_three_image`}
 
-                            initial="hidden"
-                            animate={mainControls}
-                            variants={{
-                                hidden: { clipPath: 'inset(100% 0% 0% 0%)' },
-                                visible: { clipPath: 'inset(0% 0% 0% 0%)' },
-                            }}
-                            transition={{ duration: 1, ease: 'anticipate' }}
-                        >
-                            <Image
-                                src="/3.webp"
-                                alt="Picture of the second villa"
-                                fill={true}
-                            />
-                        </motion.div>
-                        <div className="row_three_content">
-                            <div className="book_getaway">
-                            <p >Book your getaway today and indulge in the beauty of Agios Ioannis Bay.</p>
+                                initial="hidden"
+                                animate={mainControls}
+                                variants={{
+                                    hidden: { clipPath: 'inset(100% 0% 0% 0%)' },
+                                    visible: { clipPath: 'inset(0% 0% 0% 0%)' },
+                                }}
+                                transition={{ duration: 1, ease: 'anticipate' }}
+                            >
+                                <Image
+                                    src="/3.webp"
+                                    alt="Picture of the second villa"
+                                    fill={true}
+                                />
+                            </motion.div>
+                            <div className="row_three_content">
+                                <div className="book_getaway">
+                                <p >Book your getaway today and indulge in the beauty of Agios Ioannis Bay.</p>
+                                </div>
+                            
                             </div>
-                          
-                        </div>
                        </div>
                     </div>
                 </div>
