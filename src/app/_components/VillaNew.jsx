@@ -106,6 +106,14 @@ const VillaNew = ({ data }) => {
         handleIntroAnimation()
     }, [])
 
+    const images = [
+        '/1.webp',
+        '/10.webp',
+        '/3.webp',
+        '/4.webp',
+        '/5.webp',
+        '/5.webp',
+    ]
 
     useEffect(() => {
         scrollYProgress.on("change", (v) => {
@@ -234,6 +242,21 @@ const VillaNew = ({ data }) => {
             </div>
             <div className='villa_slider'>
             <ImageSlider images={imagesSlider} />
+            </div>
+            <div className="room_gallery_container">
+                <h2>ROOMS</h2>
+                <div className='gallery_container'>
+                    {images.map((img, index) => {
+                        return (
+                            <div className='room_image'>
+                                <img
+                                    src={img} 
+                                    alt='villa image'
+                                />
+                            </div>
+                        )
+                    })}
+                </div>
             </div>
           
             {/* <ScrollImageSticky image={scrollImg} />
