@@ -8,6 +8,16 @@ import VillasPresentation from './VillasPresentation';
 import Book from './Button';
 import { ClipImage } from './ClipImage';
 import { FaPerson } from "react-icons/fa6";
+import { ImagesDialog } from './ImagesDialog';
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+  } from "@/components/ui/dialog"
+
 
 export const Reveal = ({ children }) => {
     const ref = useRef(null);
@@ -58,15 +68,33 @@ const VillaNew = ({ data }) => {
     const roomTypes = data?.attributes?.roomtypes.data
     const views = data?.attributes?.views.data
     const bathrooms = data?.attributes?.bathroom
-    const sliderImgs = data?.attributes?.interiorImages.data
-    function getImages() {
+    const sliderImgs = data?.attributes?.interiorImages.data;
+    const roomsImages = data?.attributes?.roomImages.data;
+
+    function calculateProportionalWidth(originalWidth, originalHeight, targetHeight) {
+    return (originalWidth / originalHeight) * targetHeight;
+}
+    function getImages(sliderImgs) {
         let images = []
         sliderImgs.map((img) => {
             images.push(`${process.env.NEXT_PUBLIC_BASE_API_URL}${img.attributes.url}`)
         })
         return images
     }
-    const imagesSlider = getImages()
+
+    function getImagesWidthProportions(sliderImgs) {
+        let images = []
+        sliderImgs.map((img) => {
+            images.push({
+                src: `${process.env.NEXT_PUBLIC_BASE_API_URL}${img.attributes.url}`,
+                width: calculateProportionalWidth(img.attributes.width, img.attributes.height, 400)
+            })
+        })
+        return images
+    }
+    const imagesSlider = getImages(sliderImgs);
+    const roomsSlider = getImagesWidthProportions(roomsImages);
+    console.log('roomsSlider', roomsSlider)
     // hooks:
     const [scope, animate] = useAnimate();
     const clipRef = useRef(null);
@@ -106,14 +134,7 @@ const VillaNew = ({ data }) => {
         handleIntroAnimation()
     }, [])
 
-    const images = [
-        '/1.webp',
-        '/10.webp',
-        '/3.webp',
-        '/4.webp',
-        '/5.webp',
-        '/5.webp',
-    ]
+ 
 
     useEffect(() => {
         scrollYProgress.on("change", (v) => {
@@ -240,36 +261,7 @@ const VillaNew = ({ data }) => {
 
                 </div>
             </div>
-            <div className='villa_slider'>
-            <ImageSlider images={imagesSlider} />
-            </div>
-            <div className="room_gallery_container">
-                <h2>ROOMS</h2>
-                <div className='gallery_container'>
-                    {images.map((img, index) => {
-                        return (
-                            <div className='room_image'>
-                                <img
-                                    src={img} 
-                                    alt='villa image'
-                                />
-                            </div>
-                        )
-                    })}
-                </div>
-            </div>
-          
-            {/* <ScrollImageSticky image={scrollImg} />
-            <VillaFacilities
-                image={facilitiesImg}
-                facilities={facilities?.data}
-                outdoorSqr={details?.squareMeters}
-                interiorSqr={details?.squareMeters}
-            />
-            <ImageSlider images={imagesSlider} />
-            <section>
-                <VillasPresentation id={id} />
-            </section> */}
+         
         </div>
 
     )
