@@ -54,7 +54,6 @@ const ImageSlider = ({images}) => {
     return (
         <section ref={scope} onClick={handleNext} className="slider_container">
             <div
-             
             className="slider_inner">
                 <div className="slider_image_container" id="slide_darker">
                     <img src={images[index]} alt="villa"  />

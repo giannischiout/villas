@@ -103,7 +103,7 @@
     flex-shrink: 0;
     display: block;
     margin: 10px;
-  
+    position: relative;
 }
 .room_image img {
     height: 100%;
@@ -147,8 +147,21 @@
 .gallery_arrow_next {
     right: 2px;
 }
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1400px) {
+ 
+    .slider_container {
+        height: 60vh;
+    }
 
+   
+
+}
+@media screen and (max-width: 1200px) {
+    .villa_slider {
+        width: 100%;
+        margin: auto auto;
+        overflow: hidden;
+    }
     .slider_container {
         height: 80vh;
     }
@@ -163,14 +176,26 @@
 }
 
 @media screen and (max-width: 1000px) {
-    .slider_container {
-        height: 65vh;
 
+    .gallery_container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
+    .slider_container {
+        height: 50vh;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--background_light);
+    }
+    
+
 
     .slider_inner {
-        height: 60%;
-        width: 80%;
+        height: 80%;
+        width: 85%;
         position: relative;
 
     }
@@ -187,6 +212,6 @@
     }
 
     .space {
-        font-size: 1.2  rem;
+        font-size: 1.2rem;
     }
 }
