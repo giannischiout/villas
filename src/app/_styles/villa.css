@@ -357,6 +357,9 @@ we want to change the grid so that it reflects the width of the burger div */
         width: 100%;
         height: 40vh;
     }
+
+
+  
     
     .sticky_img_container {
         height: 100%;
@@ -407,6 +410,9 @@ we want to change the grid so that it reflects the width of the burger div */
     }
 }
 
+
+
+
 @media screen and (max-width: 900px) {
     .villa_attributes {
         grid-template-columns: 1fr;
@@ -416,6 +422,12 @@ we want to change the grid so that it reflects the width of the burger div */
 
     #villa_book_now {
         display: none;
+    }
+    .villa_info {
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: 1fr;
+        row-gap: 30px;
     }
 }
 

@@ -2,7 +2,7 @@ import Villa from "@/app/_components/Villa"
 import VillaNew from "@/app/_components/VillaNew"
 import ImageSlider from "@/app/_components/ImageSlider"
 import { RoomSlider } from "@/app/_components/RoomSlider"
-
+import AllVillas from "@/app/_components/AllVillas"
 const getData = async (id) => {
     let url = `${process.env.API_URL}/villas/${id}?populate=details,facilities,roomtypes,bathroom,images,views,interiorImages,roomImages `
     const res = await fetch(url, {
@@ -20,6 +20,8 @@ export default async function Page({ params }) {
     const data = await getData(params.id)
     const sliderImgs = data?.attributes?.interiorImages.data;
     const roomsImages = data?.attributes?.roomImages.data;
+    const description = data?.attributes?.shortDescription;
+    
 
     function calculateProportionalWidth(originalWidth, originalHeight, targetHeight) {
         return (originalWidth / originalHeight) * targetHeight;
@@ -53,6 +55,10 @@ export default async function Page({ params }) {
                 <ImageSlider images={imagesSlider} />
             </div>
             <RoomSlider images={roomsSlider} />
+            {/* <AllVillas 
+                description={description}
+                title={data?.attributes?.title}
+            /> */}
         </>
 
     )

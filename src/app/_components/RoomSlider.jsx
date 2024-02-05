@@ -8,35 +8,27 @@ export function RoomSlider({images}) {
     const [isOpen, setIsOpen] = useState(false)
     const [startIndex, setStartIndex] = useState(0);
     const imagesPerPage = 4;
+  
+
+    
     const showNextImages = () => {
-        if (startIndex + imagesPerPage < images.length) {
-            setStartIndex(startIndex + 1);
-        }
+            if(startIndex == images.length - imagesPerPage) {
+                return;
+            }
+            setStartIndex(prev => prev + 1);
     };
 
     const showPrevImages = () => {
-        if (startIndex - imagesPerPage >= 0) {
-            setStartIndex(startIndex - 1);
-        }
+        if(startIndex == 0) return;
+        setStartIndex(prev => prev - 1 );
     };
-    // const handleScroll = () => {
-	// 	document.body.style.overflow = isOpen ? 'hidden' : 'auto';
-	// };
-
-	// // Add or remove event listener on component mount/unmount
-	// useEffect(() => {
-    //     console.log('is open')
-    //     console.log(isOpen)
-	// 	handleScroll();
-	// 	return () => {
-	// 		document.body.style.overflow = 'auto';
-	// 	};
-	// }, [isOpen]);
+    
+   
     return (
         <div className="room_gallery_container">
                 <h2>ROOMS</h2>
         <div className='gallery_container'>
-            <button onClick={showPrevImages} className="gallery_arrow gallery_arrow_back">
+            <button style={startIndex == 0 ? {backgroundColor: 'rgb(233, 226, 226)'} : null} onClick={showPrevImages} className="gallery_arrow gallery_arrow_back">
                 <IoIosArrowBack />
             </button>
             {images.slice(startIndex, startIndex + imagesPerPage).map((img, index) => (
@@ -49,7 +41,7 @@ export function RoomSlider({images}) {
                         />
                     </div>
                 ))}
-            <button  onClick={showNextImages} className="gallery_arrow gallery_arrow_next">
+            <button  style={startIndex == images.length - imagesPerPage ? {backgroundColor: 'rgb(233, 226, 226)'} : null} onClick={showNextImages} className="gallery_arrow gallery_arrow_next">
                 <IoIosArrowForward />
             </button>
         </div>

@@ -1,0 +1,97 @@
+.allvillas_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.allvillas_inner {
+    width: 85%;
+    height: 100%;
+}
+
+
+.allvillas_header {
+    font-size: calc(4rem + 3vw);
+    color: var(--background);
+    margin-bottom: 20px;
+
+}
+
+.single_villa {
+    width: 100%;
+    display: flex;
+    /* make dynamic */
+    /* align-items: start; */
+    margin-bottom: 400px;
+
+}
+
+.single_villa > div {
+    width: 50%;
+    min-width: 500px;
+    background-color: red;
+    position: relative;
+}
+
+.villa_img {
+    width: 100%;
+    height: 600px;
+    position: relative;
+    
+}
+
+.villa_img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}  
+
+.single_villa_description {
+    background-color: #eae6e0;
+    width: 650px;
+    position: absolute;
+    bottom: -200px;
+    right: -380px;
+    display: flex;
+    padding: 40px;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.single_villa_description h3 {
+    font-size: calc(2rem + 1.4vw);
+    color: white;
+    font-family: 'Bona Nova', serif;
+}
+
+.single_villa_description p {
+    font-size: calc(1rem + 0.3vw);
+    line-height: 1.6;
+    color: var(--primary_dark);
+    margin-bottom: 20px;
+}
+
+.single_villa_description > div {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-end;
+    /* border-radius: 50%; */
+
+}
+
+.single_villa_description div button {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: var(--primary_dark);
+    color: white;
+
+}
+
+
+@media screen and (max-width: 1300px) {
+   
+}
