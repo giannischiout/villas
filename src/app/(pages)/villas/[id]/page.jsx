@@ -18,8 +18,7 @@ const getData = async (id) => {
 
     });
     let json = await res.json();
-    // console.log('wtf')
-    // console.log(json.data[1].attributes.interiorImages.data[0])
+ 
 
     let title = json.data[id].attributes.title;
     const otherVillasData = json.data.filter(villa => villa.attributes.title !== title);
@@ -30,7 +29,6 @@ const getData = async (id) => {
         };
     });
 
-    // console.log(titlesAndDescriptions)
 
     return {
         data: json.data[id],

@@ -52,7 +52,7 @@ const VillaNew = ({ data }) => {
     const roomTypes = data?.attributes?.roomtypes.data
     const views = data?.attributes?.views.data
     const bathrooms = data?.attributes?.bathroom
-
+    // HOOKS
     const [scope, animate] = useAnimate();
     const clipRef = useRef(null);
 
@@ -171,7 +171,6 @@ const VillaNew = ({ data }) => {
                             <div className='room_features'>
                                 <span>Rooms</span>
                                 {roomTypes && roomTypes.map((room, index) => {
-                                    {console.log('room', JSON.stringify(room))}
                                     return (
                                         <div key={index} className='room_feature'>
                                             <div className='room_icon'>
