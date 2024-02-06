@@ -2,21 +2,9 @@
 import Image from 'next/image';
 import { useEffect, useState, useRef } from 'react';
 import { useAnimate, useScroll, animate, useAnimation, useInView, motion } from 'framer-motion';
-import { VillaFeatures, VillaDetails, VillaFacilities } from './VillaDetails';
-import ImageSlider from './ImageSlider';
-import VillasPresentation from './VillasPresentation';
 import Book from './Button';
 import { ClipImage } from './ClipImage';
 import { FaPerson } from "react-icons/fa6";
-import { ImagesDialog } from './ImagesDialog';
-import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger,
-  } from "@/components/ui/dialog"
 
 
 export const Reveal = ({ children }) => {
@@ -64,40 +52,13 @@ const VillaNew = ({ data }) => {
     const roomTypes = data?.attributes?.roomtypes.data
     const views = data?.attributes?.views.data
     const bathrooms = data?.attributes?.bathroom
-    const sliderImgs = data?.attributes?.interiorImages.data;
-    const roomsImages = data?.attributes?.roomImages.data;
 
-    function calculateProportionalWidth(originalWidth, originalHeight, targetHeight) {
-    return (originalWidth / originalHeight) * targetHeight;
-}
-    function getImages(sliderImgs) {
-        let images = []
-        sliderImgs.map((img) => {
-            images.push(`${process.env.NEXT_PUBLIC_BASE_API_URL}${img.attributes.url}`)
-        })
-        return images
-    }
-
-    function getImagesWidthProportions(sliderImgs) {
-        let images = []
-        sliderImgs.map((img) => {
-            images.push({
-                src: `${process.env.NEXT_PUBLIC_BASE_API_URL}${img.attributes.url}`,
-                width: calculateProportionalWidth(img.attributes.width, img.attributes.height, 400)
-            })
-        })
-        return images
-    }
-    const imagesSlider = getImages(sliderImgs);
-    const roomsSlider = getImagesWidthProportions(roomsImages);
     const [scope, animate] = useAnimate();
     const clipRef = useRef(null);
 
 
     const isInView = useInView(scope);
-    const { scrollYProgress } = useScroll({
-
-    });
+    const { scrollYProgress } = useScroll({});
 
 
     const handleIntroAnimation = async () => {

@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-const AllVillas = ({ description, title, data }) => {
+const AllVillas = ({  data }) => {
 
     return (
         <div className="allvillas_container ">
@@ -10,7 +10,7 @@ const AllVillas = ({ description, title, data }) => {
                 <VillaRight description={data[1]?.description} title={data[1]?.title} />
                 {data[2] ?
                 (
-                    <Villa description={description} title={title} />
+                    <Villa description={data[3]?.description} title={data[3]?.title} />
                 ) : null}
             </div>
         </div>
@@ -19,8 +19,7 @@ const AllVillas = ({ description, title, data }) => {
 
 
 
-const Villa = ({ description, title, justify }) => {
-
+const Villa = ({ description, title }) => {
     return (
         <div className="single_villa_item">
             <div className='sv_column_1'>
@@ -38,7 +37,7 @@ const Villa = ({ description, title, justify }) => {
         </div>
     )
 }
-const VillaRight = ({ description, title, justify }) => {
+const VillaRight = ({ description, title }) => {
 
     return (
         <div className="single_villa_item_right">

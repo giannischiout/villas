@@ -18,7 +18,8 @@ const getData = async (id) => {
 
     });
     let json = await res.json();
-
+    // console.log('wtf')
+    // console.log(json.data[1].attributes.interiorImages.data[0])
 
     let title = json.data[id].attributes.title;
     const otherVillasData = json.data.filter(villa => villa.attributes.title !== title);
@@ -29,41 +30,47 @@ const getData = async (id) => {
         };
     });
 
-    console.log(titlesAndDescriptions)
-  
+    // console.log(titlesAndDescriptions)
+
     return {
         data: json.data[id],
         otherVillas: titlesAndDescriptions
     };
 }
 export default async function Page({ params }) {
-   
-    const {data, otherVillas} = await getData(params.id)
-  
-    const sliderImgs = data?.attributes?.interiorImages.data;
+
+    const { data, otherVillas } = await getData(params.id)
+
+    const sliderImgs = data?.attributes?.interiorImages?.data;
+    console.log(sliderImgs)
     const roomsImages = data?.attributes?.roomImages.data;
     const description = data?.attributes?.shortDescription;
-    
+
 
     function calculateProportionalWidth(originalWidth, originalHeight, targetHeight) {
         return (originalWidth / originalHeight) * targetHeight;
     }
     function getImages(sliderImgs) {
-        let images = []
-        sliderImgs.map((img) => {
-            images.push(`${process.env.NEXT_PUBLIC_BASE_API_URL}${img.attributes.url}`)
-        })
-        return images
+        let images = [];
+        if (sliderImgs && sliderImgs.length) {
+            sliderImgs.forEach((img) => {
+                images.push(`${process.env.NEXT_PUBLIC_BASE_API_URL}${img.attributes.url}`);
+            });
+        }
+        return images;
     }
+
 
     function getImagesWidthProportions(sliderImgs) {
         let images = []
-        sliderImgs.map((img) => {
-            images.push({
-                src: `${process.env.NEXT_PUBLIC_BASE_API_URL}${img.attributes.url}`,
-                width: calculateProportionalWidth(img.attributes.width, img.attributes.height, 400)
-            })
-        })
+        if (sliderImgs && sliderImgs.length) {
+            sliderImgs.forEach((img) => {
+                images.push({
+                    src: `${process.env.NEXT_PUBLIC_BASE_API_URL}${img.attributes.url}`,
+                    width: calculateProportionalWidth(img.attributes.width, img.attributes.height, 400),
+                });
+            });
+        }
         return images
     }
     const imagesSlider = getImages(sliderImgs);
@@ -77,7 +84,7 @@ export default async function Page({ params }) {
                 <ImageSlider images={imagesSlider} />
             </div>
             <RoomSlider images={roomsSlider} />
-            <AllVillas 
+            <AllVillas
                 data={otherVillas}
                 description={description}
                 title={data?.attributes?.title}
