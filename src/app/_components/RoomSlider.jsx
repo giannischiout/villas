@@ -9,7 +9,7 @@ export function RoomSlider({images}) {
     const [isOpen, setIsOpen] = useState(false)
     const [startIndex, setStartIndex] = useState(0);
     const [imagesPerPage, setImagesPerPage] = useState(4);
-    const [width, setWidth] = useState(window.innerWidth);
+    const [width, setWidth] = useState();
 
     useEffect(() => {
       // Function to update width when the window is resized

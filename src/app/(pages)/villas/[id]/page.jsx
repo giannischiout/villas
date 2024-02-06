@@ -55,10 +55,10 @@ export default async function Page({ params }) {
                 <ImageSlider images={imagesSlider} />
             </div>
             <RoomSlider images={roomsSlider} />
-            {/* <AllVillas 
+            <AllVillas 
                 description={description}
                 title={data?.attributes?.title}
-            /> */}
+            />
         </>
 
     )

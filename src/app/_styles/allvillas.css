@@ -3,6 +3,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
+    margin-bottom: 200px;
 }
 
 .allvillas_inner {
@@ -15,83 +16,211 @@
     font-size: calc(4rem + 3vw);
     color: var(--background);
     margin-bottom: 20px;
-
 }
 
-.single_villa {
-    width: 100%;
+
+/* NEW STYLES */
+.single_villa_item {
+    display: grid;
+    grid-template-columns: 70% 30%;
+    grid-template-rows: 800px 450px;
+}
+
+
+
+.sv_column_1 {
     display: flex;
-    /* make dynamic */
-    /* align-items: start; */
-    margin-bottom: 400px;
-
-}
-
-.single_villa > div {
-    width: 50%;
-    min-width: 500px;
-    background-color: red;
+    height: 100%;
+    grid-row: 1 / span 1;
     position: relative;
 }
 
-.villa_img {
-    width: 100%;
-    height: 600px;
-    position: relative;
-    
-}
 
-.villa_img img {
+.sv_column_1 img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-}  
-
-.single_villa_description {
-    background-color: #eae6e0;
-    width: 650px;
-    position: absolute;
-    bottom: -200px;
-    right: -380px;
-    display: flex;
-    padding: 40px;
-    flex-direction: column;
-    align-items: center;
 
 }
+.sv_column_2 {
+    transform: translate(-300px, -220px);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 30px;
+    grid-row: 2 / 3; /* Update this line */
+    grid-column: 2 / 3;
+    width: 650px;
+    background-color: #eae6e0;
+    color: white
+}
 
-.single_villa_description h3 {
+
+.sv_card_header {
     font-size: calc(2rem + 1.4vw);
     color: white;
     font-family: 'Bona Nova', serif;
 }
 
-.single_villa_description p {
-    font-size: calc(1rem + 0.3vw);
+.sv_card_para {
+    font-size: calc(1rem + 0.32vw);
     line-height: 1.6;
     color: var(--primary_dark);
     margin-bottom: 20px;
 }
-
-.single_villa_description > div {
+.sv_booknow_container {
     display: flex;
     width: 100%;
     align-items: center;
     justify-content: flex-end;
-    /* border-radius: 50%; */
-
 }
 
-.single_villa_description div button {
+.sv_book_now {
+    width: 100%;
     width: 120px;
     height: 120px;
     border-radius: 50%;
     background-color: var(--primary_dark);
     color: white;
-
 }
 
+/* RIGHT DESIGN */
+.single_villa_item_right {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    grid-template-rows: 800px 450px;
+}
+
+
+
+/* NOW THE IMAGE COLUMN: */
+.sv_right_col_2 {
+    position: relative;
+    grid-column: 2 / span 1;
+}
+.sv_right_col_1 {
+    position: relative;
+    grid-column: 1 / span 1;
+    grid-row: 2 / span 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 30px;
+    width: 650px;
+    background-color: #eae6e0;
+    color: white;
+    transform: translate(200px, -220px);
+    z-index: 2;
+}
+
+@media screen and (max-width: 1500px) {
+    .sv_right_col_1 {
+        transform: translate(20px, -220px);
+    }
+    
+}
+
+.sv_right_col_2 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
 @media screen and (max-width: 1300px) {
+    .single_villa_item {
+        display: grid;
+        grid-template-columns: 80% 1fr;
+        grid-template-rows: 500px 400px;
+      
+    }
+    .single_villa_item_right {
+        display: grid;
+        grid-template-columns: 20% 80%;
+        grid-template-rows: 500px 450px;
+    }
+
+   .sv_column_2 {
+        transform: translate(-500px, -220px);
+    }
    
+    
 }
+@media screen and (max-width: 1000px) {
+    .single_villa_item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin-bottom: -100px;
+      
+    }
+    .single_villa_item_right {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    
+    .sv_column_1 {
+        height: 500px;
+        display: flex;
+        width: 100%;
+    }
+    
+  
+    .sv_column_2 {
+        width: 450px;
+        transform: translate(0, -200px);
+        height: 100%;
+    }
+ 
+  
+    .sv_right_col_2 {
+        height: 500px;
+        width: 100%;
+        order: 1;
+
+    }
+    .sv_right_col_1 {
+        order: 2;
+        width: 450px;
+        display: flex;
+        align-items: center;
+        transform: translate(0, -200px);
+
+    }
+    .sv_book_now {
+        width: 100%;
+        width: 100px;
+        height: 100px;
+        font-size: 14px;
+        border-radius: 50%;
+        background-color: var(--primary_dark);
+        color: white;
+    }
+    
+}
+@media screen and (max-width: 600px) {
+    .sv_column_2 {
+        width: 100%;
+    }
+    .sv_right_col_1 {
+        width: 100%;
+    }
+
+    .sv_column_2 > div button  {
+        width: 100%;
+        width: 100px;
+        height: 100px;
+        font-size: 14px;
+        border-radius: 50%;
+        background-color: var(--primary_dark);
+        color: white;
+    }
+    
+}
+
