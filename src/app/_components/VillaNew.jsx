@@ -201,7 +201,7 @@ const VillaNew = ({ data }) => {
                                     <div>
                                         {bathrooms.map((bathroom, index) => {
                                             return (
-                                                <p kye={index}  className='bathroom_item'>{bathroom.description}</p>
+                                                <p key={index}  className='bathroom_item'>{bathroom.description}</p>
                                             )
                                         })}
                                     </div>
