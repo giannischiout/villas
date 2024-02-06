@@ -29,26 +29,7 @@ const ImageSlider = ({images}) => {
     
     }
 
-    // useEffect(() => {
-    //     animate("#slide_anime", {
-    //         clipPath: ["polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)", "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"]
-    //     },
-    //         {
-    //             // ease: [0.6, 0.05, -0.01, 0.9],
-    //             ease: 'easeInOut',
-    //             duration: 0.4,
-    //         }
-    //     )
-    //     // animate(".slider_img", {
-    //     //     scale: [1.1, 1],
-    //     // },
-    //     //     {   
-    //     //         ease: 'linear',
-    //     //         duration: 2,
-    //     //         delay: 0.2
-    //     //     }
-    //     // )
-    // }, [index])
+   
 
  
     return (

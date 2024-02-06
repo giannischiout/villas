@@ -54,14 +54,10 @@ export const Reveal = ({ children }) => {
 
 
 const VillaNew = ({ data }) => {
-    console.log('dataaaaaaaaaa')
-    console.log(data)
-    //data:
     const sidebarImg = `${process.env.NEXT_PUBLIC_BASE_API_URL}${data?.attributes?.images.data[0].attributes?.url}`
     const mainImg = `${process.env.NEXT_PUBLIC_BASE_API_URL}${data?.attributes?.images.data[1].attributes?.url}`
     const name = data?.attributes?.title
     const tag = data?.attributes?.tag
-    const title = data?.attributes?.title
     const description = data?.attributes?.shortDescription
     const details = data?.attributes?.details[0]
     const facilites = data?.attributes?.facilities.data
@@ -94,8 +90,6 @@ const VillaNew = ({ data }) => {
     }
     const imagesSlider = getImages(sliderImgs);
     const roomsSlider = getImagesWidthProportions(roomsImages);
-    console.log('roomsSlider', roomsSlider)
-    // hooks:
     const [scope, animate] = useAnimate();
     const clipRef = useRef(null);
 
@@ -218,7 +212,7 @@ const VillaNew = ({ data }) => {
                                 {roomTypes && roomTypes.map((room, index) => {
                                     {console.log('room', JSON.stringify(room))}
                                     return (
-                                        <div className='room_feature'>
+                                        <div key={index} className='room_feature'>
                                             <div className='room_icon'>
                                                 <FaPerson />
                                                 <FaPerson />
@@ -237,7 +231,7 @@ const VillaNew = ({ data }) => {
                                     <div>   
                                         {views.map((view, index) => {
                                             return (
-                                                <p  className='view_item'>{view.attributes.name}</p>
+                                                <p key={index} className='view_item'>{view.attributes.name}</p>
                                             )
                                         })}
                                     </div>
@@ -247,7 +241,7 @@ const VillaNew = ({ data }) => {
                                     <div>
                                         {bathrooms.map((bathroom, index) => {
                                             return (
-                                                <p  className='bathroom_item'>{bathroom.description}</p>
+                                                <p kye={index}  className='bathroom_item'>{bathroom.description}</p>
                                             )
                                         })}
                                     </div>

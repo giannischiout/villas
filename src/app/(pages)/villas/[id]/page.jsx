@@ -3,8 +3,12 @@ import VillaNew from "@/app/_components/VillaNew"
 import ImageSlider from "@/app/_components/ImageSlider"
 import { RoomSlider } from "@/app/_components/RoomSlider"
 import AllVillas from "@/app/_components/AllVillas"
+import { cookies } from 'next/headers'
 const getData = async (id) => {
-    let url = `${process.env.API_URL}/villas/${id}?populate=details,facilities,roomtypes,bathroom,images,views,interiorImages,roomImages `
+    const cookieStore = cookies()
+    const locale = cookieStore.get('locale')
+    console.log(locale)
+    let url = `${process.env.API_URL}/villas?${locale.value}&populate=details,facilities,roomtypes,bathroom,images,views,interiorImages,roomImages `
     const res = await fetch(url, {
         method: 'GET',
         headers: {
@@ -14,10 +18,28 @@ const getData = async (id) => {
 
     });
     let json = await res.json();
-    return json.data;
+
+
+    let title = json.data[id].attributes.title;
+    const otherVillasData = json.data.filter(villa => villa.attributes.title !== title);
+    const titlesAndDescriptions = otherVillasData.map(villa => {
+        return {
+            title: villa.attributes.title,
+            description: villa.attributes.shortDescription,
+        };
+    });
+
+    console.log(titlesAndDescriptions)
+  
+    return {
+        data: json.data[id],
+        otherVillas: titlesAndDescriptions
+    };
 }
 export default async function Page({ params }) {
-    const data = await getData(params.id)
+   
+    const {data, otherVillas} = await getData(params.id)
+  
     const sliderImgs = data?.attributes?.interiorImages.data;
     const roomsImages = data?.attributes?.roomImages.data;
     const description = data?.attributes?.shortDescription;
@@ -56,6 +78,7 @@ export default async function Page({ params }) {
             </div>
             <RoomSlider images={roomsSlider} />
             <AllVillas 
+                data={otherVillas}
                 description={description}
                 title={data?.attributes?.title}
             />

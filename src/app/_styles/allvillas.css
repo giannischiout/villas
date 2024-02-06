@@ -22,6 +22,8 @@
 /* NEW STYLES */
 .single_villa_item {
     display: grid;
+    width: 100%;
+    margin-bottom: -100px;
     grid-template-columns: 70% 30%;
     grid-template-rows: 800px 450px;
 }
@@ -50,7 +52,7 @@
     justify-content: center;
     flex-direction: column;
     padding: 30px;
-    grid-row: 2 / 3; /* Update this line */
+    grid-row: 2 / 3;
     grid-column: 2 / 3;
     width: 650px;
     background-color: #eae6e0;
@@ -91,6 +93,7 @@
     display: grid;
     grid-template-columns: 30% 70%;
     grid-template-rows: 800px 450px;
+    margin-bottom: -100px;
 }
 
 
@@ -163,6 +166,8 @@
         align-items: center;
         justify-content: center;
         flex-direction: column;
+        margin-bottom: -100px;
+      
     }
     
     .sv_column_1 {
@@ -201,6 +206,7 @@
         border-radius: 50%;
         background-color: var(--primary_dark);
         color: white;
+        color: red;
     }
     
 }

@@ -1,13 +1,17 @@
 import Image from 'next/image';
 
-const AllVillas = ({ description, title }) => {
+const AllVillas = ({ description, title, data }) => {
 
     return (
         <div className="allvillas_container ">
             <div className="allvillas_inner">
                 <p className="allvillas_header">EXPLORE MORE</p>
-                <Villa description={description} title={title} />
-                <VillaRight description={description} title={title} />
+                <Villa description={data[0]?.description} title={data[0]?.title} />
+                <VillaRight description={data[1]?.description} title={data[1]?.title} />
+                {data[2] ?
+                (
+                    <Villa description={description} title={title} />
+                ) : null}
             </div>
         </div>
     )
@@ -18,7 +22,7 @@ const AllVillas = ({ description, title }) => {
 const Villa = ({ description, title, justify }) => {
 
     return (
-        <div className=" single_villa_item">
+        <div className="single_villa_item">
             <div className='sv_column_1'>
                 <Image src="/1.webp" alt="villa" fill />
             </div>

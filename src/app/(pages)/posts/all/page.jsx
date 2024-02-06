@@ -9,8 +9,7 @@ const fetchPosts = async () => {
     "use server";
     const cookieStore = cookies()
     const locale = cookieStore.get('locale')
-    console.log('locale in component')
-    console.log(locale)
+   
     const url = `${process.env.API_URL}/posts?${locale?.value}&populate=images`
     console.log(url)
     
