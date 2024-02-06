@@ -67,7 +67,7 @@ const Page = async () => {
 }
 
 
-const Card = ({ image, description, title, date, id, loading }) => {
+export const Card = ({ image, description, title, date, id, loading }) => {
   
     return (
         <div className="post_card_container">
