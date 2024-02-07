@@ -30,24 +30,14 @@ const Page = async () => {
   
   
     return (
-        <section>
-            <div className="v_presentation_sticky">
-                <div className="presentation_bottom_container">
-                    <div className="v_presentation_bottom">
-                        <div>
-                            <h6>Locations</h6>
-                            <p>
-                                Dive into the sun-soaked realm of Lefkada, where each sandy stretch and turquoise bay tells a
-                                story of natural splendor and coastal bliss.
-                            </p>
-                        </div>
-                    </div>
-                </div>
+        <section className="posts_container">
+            <div className='posts_top'></div>
+            <div className='posts_header'>
+                <h1>BLOG POSTS</h1>
             </div>
-            <div className="v_presentation_villas">
-                <div className="v_presentation_villas_inner">
-                    <div>
-                        {data.map((post, i) => {
+            <div className='posts_inner'>
+           
+            {data.map((post, i) => {
                             return (
                                 <Card
                                     key={i}
@@ -58,9 +48,9 @@ const Page = async () => {
                                 />
                             )
                         })}
-                    </div>
-                </div>
             </div>
+                      
+          
         </section>
     )
 }
