@@ -68,3 +68,23 @@
 .contact_logo {
     margin-top: 40px;
 }
+
+
+@media screen and (max-width: 1200px) {
+    .contact {
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        color: #a09d98;
+    }
+    .contact_info {
+        width: 100%;
+    }
+    .contact_maps {
+        width: 100%;
+        height: 100%;
+
+    }
+    
+}
