@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { GoArrowUpRight } from 'react-icons/go';
 import PostMiniGallery from "@/app/_components/PostMiniGallery";
 import { PostButton } from '@/app/_components/Button';
-
+import Map from "@/app/_components/Map";
 const fetchPosts = async (postId) => {
     "use server";
     const cookieStore = cookies()
@@ -47,7 +47,6 @@ const fetchAll = async () => {
 }
 
 export default async function Page({ params }) {
-
     const data = await fetchPosts(params.id)
     const allData = await fetchAll()
     const image = data?.attributes?.images.data[0].attributes.url;
@@ -58,19 +57,26 @@ export default async function Page({ params }) {
         }
     });
 
-
+    const location = {
+        lat: 37.7749, // Replace with your desired latitude
+        lng: -122.4194, // Replace with your desired longitude
+      };
     return (
         <section className="post_container">
             <div className="single_post_top"></div>
             <div className="single_post_main">
                 <div className="single_post_main_inner">
                     <div className="single_image">
-                        <Image 
+                      
+                            <Image 
+                            priority={true}
                             alt={'gallery images'} 
                             src={`${process.env.BASE_API_URL}${image}`} 
                             fill 
                             
                         />
+                       
+                        
                     </div>
                     <div className="single_post_grid">
                         <div className="single_content">
@@ -90,7 +96,9 @@ export default async function Page({ params }) {
                         </div>
                         <div className="single_post_maps">
 
-                            <div className="single_maps"></div>
+                            <div className="single_maps">
+                                <Map location={location} />
+                            </div>
                         </div>
                     </div>
                     <div className="other_posts">
