@@ -110,3 +110,37 @@
     background-color: var(--primary_dark);
     color: white;
   }
+
+
+
+  @media screen and (max-width: 1350px) {
+    .price_list > div {
+     
+        grid-template-columns: 1fr 1fr; /* Full width on mobile */
+        grid-template-rows: auto auto; /* Two rows with automatic height */
+        grid-template-areas:
+          "first-col first-col"
+          "second-col third-col";
+    }
+    .price_list-first-column {
+        margin-bottom: 50px;
+    }
+}
+
+  @media screen and (max-width: 800px) {
+    .price_list > div {
+        grid-template-columns: 1fr ; /* Full width on mobile */
+        grid-template-rows: auto auto auto; /* Two rows with automatic height */
+        grid-template-areas:
+          "first-col"
+          "second-col"
+          "third-col";
+    }
+    .price_list-first-column {
+        margin-bottom: 50px;
+    }
+    .price_list-third-column {
+        margin-top: 50px;
+        justify-content: flex-start;
+    }
+}
