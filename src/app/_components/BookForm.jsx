@@ -132,11 +132,7 @@ export const BookForm = ({width, hasCloseBtn = false, setIsOpen}) => {
 			/>
 			<div className="form_button_container">
 			   <button onClick={handleSubmit} className="submit_btn">SUBMIT</button>
-				{hasCloseBtn  && (
-					<button className="close_button" onClick={() => setIsOpen(prev => !prev)}>
-						close
-					</button>
-				)}
+				
 		   </div>
 		  
            </div>

@@ -1,0 +1,112 @@
+.pricelist_container {
+    width: 100%;
+    /* height: 100vh; */
+    margin-top: 100px;
+    margin-bottom: 100px;
+ 
+}
+
+.price_list_intro {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+
+}
+.price_list_intro h1 {
+    font-size: calc(2rem + 2vw);
+    color: #bab7b0;
+    margin-top: 10px;
+}
+.price_list {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 70px 0;
+}
+
+.price_list > div {
+    width: 80%;
+    display: grid;
+    grid-template-columns: 50% 25% 25% ; /* Three equal columns */
+    grid-template-rows: 1fr ;
+    grid-template-areas:
+      "first-col second-col third-col"
+      "first-col  second-col third-col";
+}
+
+.price_list-header {
+    margin-bottom: 10px;
+    grid-area: header;
+    color: var(--primary_dark);
+    padding: 2px;
+    font-size: 30px;
+  }
+
+  .price_list-first-column {
+    grid-area: first-col;
+  }
+  .price_list-second-column {
+    grid-area: second-col;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+
+  .price_list-third-column {
+    grid-area:  third-col;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .price_list-first-column > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .price_list-first-column div div {
+    border-bottom: 1px solid var(--primary_dark);
+    display: flex;
+    max-width: 500px;
+    justify-content: space-between;
+    padding: 10px;
+    align-items: center;
+    font-size: 15px;
+  }
+
+  .price_list-first-column .price {
+        font-weight: 600;
+        color: var(--primary_dark);
+  }
+
+
+  .price_list-second-column div {
+    margin-bottom: 5px;
+    font-size: 15px;
+  }
+  .special_terms {
+    margin-bottom: 20px;
+    font-size: 18px;
+    color: rgb(169, 159, 159);
+  }
+
+  .terms_price {
+    font-weight: 600;
+    margin-left: 8px;
+    color: var(--primary_dark);
+  }
+
+  .price_list_book {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: var(--primary_dark);
+    color: white;
+  }

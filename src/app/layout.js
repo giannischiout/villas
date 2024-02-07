@@ -6,6 +6,7 @@ import Navbar from './_components/Navbar'
 import Footer from './_components/Footer'
 import SmoothScrolling from './_hooks/smoothScrolling'
 import { LocaleProvider } from './_context/useLocale'
+import { ModalProvider } from './_context/useModal'
 import FooterNew from './_components/FooterNew'
 const bonaNova = Bona_Nova({ subsets: ['latin'], weight: ['400', '700'], variable: "--font_bona_nova" })
 const mont = Montserrat({
@@ -24,12 +25,16 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`$${bonaNova.variant}  ${mont.variable}`}>
         <LocaleProvider>
-          <SmoothScrolling>
-            <Navbar />
-            {children}
-            <FooterNew />
-          </SmoothScrolling>
+          <ModalProvider>
+            <SmoothScrolling>
+              <Navbar />
+              {children}
+              <FooterNew />
+            </SmoothScrolling>
+          </ModalProvider>
         </LocaleProvider>
+        
+         
 
       </body>
     </html>
