@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { useEffect, useState, useRef } from 'react';
 import { useAnimate, useScroll, animate, useAnimation, useInView, motion } from 'framer-motion';
 import { ClipImage } from "./ClipImage";
-import { ImageScroll } from './Villa';
+// import { ImageScroll } from './Villa';
 import  LetterFade  from './LetterFade';
 import SlideShow from './SlideShow';
 const Hero = ({ children, sidebarImg, mainImg, tag, name }) => {
@@ -78,7 +78,15 @@ const Hero = ({ children, sidebarImg, mainImg, tag, name }) => {
                     </div>
                 </div>
                 <div className='v_main_image_container'  >
-                    <ImageScroll image={'/intro_day.webp'} />
+                <div className='v_main_image_container_inner' >
+            <Image
+                alt="an image of the interior of the ioannian villa"
+                src={'/intro_day.webp'}
+                sizes={'100%'}
+                fill={true}
+            />
+        </div>
+                    {/* <ImageScroll image={'/intro_day.webp'} /> */}
                 </div>
                 <div className="intro_text" >
                     <h3>BEAUTIFUL QUIET VILLAS WITH PRIVATE POOL</h3>

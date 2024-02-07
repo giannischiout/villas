@@ -50,30 +50,29 @@ export function RoomSlider({images}) {
     
    
     return (
-        <div className="room_gallery_container">
-                <h2>ROOMS</h2>
-        <div className='gallery_container'>
-            <button style={startIndex == 0 ? {backgroundColor: 'rgb(233, 226, 226)'} : null} onClick={showPrevImages} className="gallery_arrow gallery_arrow_back">
-                <IoIosArrowBack />
-            </button>
-            {images.slice(startIndex, startIndex + imagesPerPage).map((img, index) => (
-                    <div key={index} onClick={() => setIsOpen(true)} className='room_image' style={{width: img.width, height: '400px'}}>
-                        <Image
-                            fill
-                            src={img.src}
-                            alt='room images'
-                        />
-                    </div>
-                ))}
-            <button  style={startIndex == images.length - imagesPerPage ? {backgroundColor: 'rgb(233, 226, 226)'} : null} onClick={showNextImages} className="gallery_arrow gallery_arrow_next">
-                <IoIosArrowForward />
-            </button>
-        </div>
-        {/* {isOpen ? (
-                <div className='dialog_image'>
-                    aaawd
-                </div>
-            ) : null} */}
-        </div>
+        <>
+            {images.length ? (
+                  <div className="room_gallery_container">
+                  <h2>ROOMS</h2>
+          <div className='gallery_container'>
+              <button style={startIndex == 0 ? {backgroundColor: 'rgb(233, 226, 226)'} : null} onClick={showPrevImages} className="gallery_arrow gallery_arrow_back">
+                  <IoIosArrowBack />
+              </button>
+              {images.slice(startIndex, startIndex + imagesPerPage).map((img, index) => (
+                      <div key={index} onClick={() => setIsOpen(true)} className='room_image' style={{width: img.width, height: '400px'}}>
+                          <Image
+                              fill
+                              src={img.src}
+                              alt='room images'
+                          />
+                      </div>
+                  ))}
+              <button  style={startIndex == images.length - imagesPerPage ? {backgroundColor: 'rgb(233, 226, 226)'} : null} onClick={showNextImages} className="gallery_arrow gallery_arrow_next">
+                  <IoIosArrowForward />
+              </button>
+          </div>
+          </div>
+            ) : null}
+        </>
     )
 }

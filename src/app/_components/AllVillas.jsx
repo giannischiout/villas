@@ -1,12 +1,12 @@
 import Image from 'next/image';
 
 const AllVillas = ({  data }) => {
-
+    console.log('the fuck is worng with the data')
+    console.log(data)
     return (
         <div className="allvillas_container ">
             <div className="allvillas_inner">
-                <p className="allvillas_header">EXPLORE MORE</p>
-                <Villa description={data[0]?.description} title={data[0]?.title} />
+                <Villa description={data[0]?.description} title={data[0]?.title}  />
                 <VillaRight description={data[1]?.description} title={data[1]?.title} />
                 {data[2] ?
                 (
@@ -25,6 +25,7 @@ const Villa = ({ description, title }) => {
             <div className='sv_column_1'>
                 <Image src="/1.webp" alt="villa" fill />
             </div>
+           
             <div className='sv_column_2'>
                 <h3 className='sv_card_header'>{title}</h3>
                 <p className='sv_card_para'>
@@ -37,6 +38,7 @@ const Villa = ({ description, title }) => {
         </div>
     )
 }
+
 const VillaRight = ({ description, title }) => {
 
     return (

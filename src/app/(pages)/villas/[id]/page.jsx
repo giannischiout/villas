@@ -1,4 +1,3 @@
-import Villa from "@/app/_components/Villa"
 import VillaNew from "@/app/_components/VillaNew"
 import ImageSlider from "@/app/_components/ImageSlider"
 import { RoomSlider } from "@/app/_components/RoomSlider"
@@ -20,7 +19,7 @@ const getData = async (id) => {
     let json = await res.json();
  
 
-    let title = json.data[id].attributes.title;
+    let title = json.data[id]?.attributes?.title;
     const otherVillasData = json.data.filter(villa => villa.attributes.title !== title);
     const titlesAndDescriptions = otherVillasData.map(villa => {
         return {
@@ -40,7 +39,6 @@ export default async function Page({ params }) {
     const { data, otherVillas } = await getData(params.id)
 
     const sliderImgs = data?.attributes?.interiorImages?.data;
-    console.log(sliderImgs)
     const roomsImages = data?.attributes?.roomImages.data;
     const description = data?.attributes?.shortDescription;
 
@@ -73,6 +71,7 @@ export default async function Page({ params }) {
     }
     const imagesSlider = getImages(sliderImgs);
     const roomsSlider = getImagesWidthProportions(roomsImages);
+    const details = data?.attributes?.details[0]
 
     return (
         <>
@@ -82,10 +81,10 @@ export default async function Page({ params }) {
                 <ImageSlider images={imagesSlider} />
             </div>
             <RoomSlider images={roomsSlider} />
+            <p className="allvillas_header">EXPLORE MORE</p>
             <AllVillas
+                details={details}
                 data={otherVillas}
-                description={description}
-                title={data?.attributes?.title}
             />
         </>
 

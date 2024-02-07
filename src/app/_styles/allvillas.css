@@ -1,3 +1,9 @@
+/* MAIN PAGE */
+.allvillas_page_container {
+    margin-top: 100px;
+}
+
+
 .allvillas_container {
     display: flex;
     align-items: center;
@@ -9,13 +15,14 @@
 .allvillas_inner {
     width: 85%;
     height: 100%;
+    margin-top: 50px;
 }
 
 
 .allvillas_header {
     font-size: calc(4rem + 3vw);
     color: var(--background);
-    margin-bottom: 20px;
+    transform: translateX(7.5%);
 }
 
 
@@ -98,7 +105,7 @@
 
 
 
-/* NOW THE IMAGE COLUMN: */
+/*  THE IMAGE COLUMN: */
 .sv_right_col_2 {
     position: relative;
     grid-column: 2 / span 1;
@@ -120,6 +127,11 @@
     z-index: 2;
 }
 
+
+.sv_room_details {
+    position: absolute;
+    bottom: -50px;
+}
 @media screen and (max-width: 1500px) {
     .sv_right_col_1 {
         transform: translate(20px, -220px);

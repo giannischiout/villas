@@ -48,6 +48,7 @@ const VillaNew = ({ data }) => {
     const tag = data?.attributes?.tag
     const description = data?.attributes?.shortDescription
     const details = data?.attributes?.details[0]
+    console.log(details)
     const facilites = data?.attributes?.facilities.data
     const roomTypes = data?.attributes?.roomtypes.data
     const views = data?.attributes?.views.data
@@ -118,7 +119,7 @@ const VillaNew = ({ data }) => {
                 <div className="v_main">
                     <div className='v_main_top'>
                         <div>
-                            <h1>{name.toUpperCase()}</h1>
+                            <h1>{name?.toUpperCase()}</h1>
                             <h2>{tag}</h2>
                         </div>
                     </div>
@@ -134,16 +135,20 @@ const VillaNew = ({ data }) => {
 
                                 </div>
                                 <div>
-                                    <p>{details['maxAduls']}</p>
-                                    <span>{'Max Adults'}</span>
+                                    <p>{details['bedrooms']}</p>
+                                    <span>{'Bedrooms'}</span>
                                 </div>
                                 <div>
-                                    <p>{details['maxAduls']}</p>
-                                    <span>{'Max Adults'}</span>
+                                    <p>{details['maxChildren']}</p>
+                                    <span>{'Max Children'}</span>
                                 </div>
                                 <div>
-                                    <p>{details['maxAduls']}</p>
-                                    <span>{'Max Adults'}</span>
+                                    <p>{details['squareMeters']}</p>
+                                    <span>{'Square Meters'}</span>
+                                </div>
+                                <div>
+                                    <p>{details['pullOutCouch']}</p>
+                                    <span>{'Pull Out Couch'}</span>
                                 </div>
 
                             </div>
