@@ -27,8 +27,7 @@ const fetchPosts = async () => {
 }
 const Page = async () => {
     const data = await fetchPosts()
-    // console.log('data')
-    // console.log(data)
+  
   
     return (
         <section>
@@ -66,8 +65,7 @@ const Page = async () => {
     )
 }
 
-
-export const Card = ({ image, description, title, date, id, loading }) => {
+ const Card = ({ image, description, title, date, id, loading }) => {
   
     return (
         <div className="post_card_container">

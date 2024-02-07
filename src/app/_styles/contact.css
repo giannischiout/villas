@@ -1,62 +1,70 @@
-.location_container {
-    height: calc(100vh - 100px);
+.contact_container {
+    margin-top: 150px;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 100px;
-
+    margin-bottom: 100px;
 }
 
-.location_inner {
+.contact {
     width: 80%;
-    height: 80%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
-    gap: 10px;
-}
-.location_maps {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    background-color: var(--background);
     display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    position: relative;
-}
-
-.location_maps  div:first-child p {
-    font-size: calc(4rem + 2vw);
-    line-height: 1.2;
-    color: white;
-}
-
-.location_photo {
-    width: 100%;
-    background-image: url('../../../public/1.webp');
-    background-size: cover;
     height: 100%;
-    position: relative;
-   
-}
-.maps_button {
-    display: flex;
-    width: 150px;
-    align-items: center;
     justify-content: space-between;
-    padding: 10px 20px;
-    background-color: white;
-    border-radius: 30px;
-    color: var(--primary)
+    color: #a09d98;
+}
+.contact_info {
+    width: 50%;
+    height: 100%;
 }
 
+.contact_info h1 {
+    font-size: calc(2rem + 1vw);
+    color: var(--primary_dark);
+    margin-bottom: 20px;
+    display: inline;
+    border-bottom: 1px solid var(--primary_dark);
+   
 
-.location_coordinates {
-    position: absolute;
-    left: 2%;
-    bottom: 2%;
-    color: var(--primary_dark)
+}
+.contact_info h1 {
+    font-size: calc(2rem + 1vw);
+    color: var(--primary_dark);
+    margin-bottom: 20px;
+    display: inline;
+    border-bottom: 1px solid var(--primary_dark);
+   
+
+}
+.contact_maps {
+    width:50%;
+    background-color: aqua;
+    height: 100%;
+}
+
+.contact_header {
+    margin-bottom: 80px;
+
+}
+
+.contact_details {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+    margin-top: 40px;
+}
+
+.contact_details_title {
+    font-size: calc(1.5rem + 0.5vw);
+    color: var(--primary_dark);
+    margin-bottom: 10px;
+}
+
+.contact_details_body {
+    font-size: calc(1.4rem + 0.2vw);
+}
+
+.contact_logo {
+    margin-top: 40px;
 }
