@@ -20,7 +20,7 @@ const getData = async () => {
         return {
             title: villa.attributes.title,
             description: villa.attributes.shortDescription,
-            details: villa.attributes.details
+            details: villa.attributes.details[0]
         };
     });
 
@@ -32,7 +32,7 @@ const Page = async () => {
     const data = await getData();
     return (
         <div className="allvillas_page_container ">
-            <AllVillas data={data}/>
+            <AllVillas data={data} hasDetails={true}/>
         </div>
     )
 }

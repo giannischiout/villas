@@ -145,7 +145,47 @@
     object-fit: cover;
 }
 
+.allvillas_details {
+    position: absolute;
+    bottom: -70px;
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 20px;
+    left: 0;
+}
+.allvillas_details_right {
+    position: absolute;
+    bottom: -70px;
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 20px;
+    right: 0;
+}
+.allvillas_details > div {
+   text-align: center;
+   color: var(--primary_dark);
+}
+
+.allvillas_details > div p {
+    font-weight: 600;
+}
+.allvillas_details_right > div {
+   text-align: center;
+   color: var(--primary_dark);
+}
+
+.allvillas_details_right > div p {
+    font-weight: 600;
+}
+
+
 @media screen and (max-width: 1300px) {
+
+
     .single_villa_item {
         display: grid;
         grid-template-columns: 80% 1fr;
@@ -165,6 +205,12 @@
     
 }
 @media screen and (max-width: 1000px) {
+    .allvillas_details {
+        display: none;
+    }
+    .allvillas_details_right {
+        display: none;
+    }
     .single_villa_item {
         display: flex;
         align-items: center;
