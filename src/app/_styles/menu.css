@@ -10,9 +10,6 @@
     left: 0;
     background-color: var(--background);
     z-index: 200;
-    /* display: grid;
-    grid-template-rows: 70px 1fr;
-    grid-template-columns: 1fr; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -69,7 +66,7 @@
 .menu_content > a {
     display: block;
     line-height: 2;
-    font-size: calc(2rem + 0.6vw);
+    font-size: calc(2rem + 1.2vw);
     letter-spacing: 2.4px;
     cursor: pointer;
 }
@@ -78,10 +75,10 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -43%);
     font-size: calc(6rem + 16vw);
     color: rgba(255, 255, 255, 0.281);
-    font-weight: 500;
+    font-weight: 300;
 }
 
 
