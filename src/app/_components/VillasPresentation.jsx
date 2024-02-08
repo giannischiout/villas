@@ -25,24 +25,22 @@ const VillasPresentation = ({
                     </div>
                     <div className="v_presentations_villas">
                        <div className="card1">
-                       {id =="castro" ? (
-                                   null
-                                ) : (
+                       
                                     <Card 
-                                    id="v_presentation_villa_1"
+                                    // id="v_presentation_villa_1"
+                                    id={0}
                                     name="Castro" 
                                     image="pres_castro.webp" 
                                     people={9} 
                                     sqr="140"
                                     href=""
                                 />
-                                )}
                        </div>
                        <div className="card2">
-                       {id=="jira"  ? null : <Card  name="Jira" image="pres_jira.webp" people={9} sqr="140" />}
+                      <Card  name="Jira" image="pres_jira.webp" people={9} sqr="140" id={1} />
                        </div>
                        <div className="card3">
-                       {id=="milos" ? null : <Card  name="Milos" image="pres_milos.webp" people={9} sqr="140"/>}
+                       <Card  name="Milos" image="pres_milos.webp" people={9} sqr="140" id={2}/>
                        </div>
                         
                     </div>
@@ -57,7 +55,7 @@ const Card = ({ image, people, sqr, name, id }) => {
     const router = useRouter();
 
     const onClick = () => {
-        router.push(`/villas/${name.toLowerCase()}`)
+        router.push(`/villas/${id}`)
     }
     return (
         <div  className="villas_card_container">
