@@ -151,6 +151,15 @@
       width: 90%;
       margin: 0;
     }
+
+    .book_getaway::before {
+      content: "";
+      background-color: var(--primary_dark);
+      border-radius: 50%;
+      position: absolute;
+      width: 200px;
+      height: 200px;
+    }
  
    
   }

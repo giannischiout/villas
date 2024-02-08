@@ -120,9 +120,10 @@
     /* background-color: rgb(224, 212, 212); */
     grid-template-columns: 1fr 1px 1fr;
     grid-template-rows: 1fr;
-    column-gap: 30px;
+    column-gap: 10px;
     width: 100%;
     color: var(--primary);
+    margin-left: 40px;
 }
 
 

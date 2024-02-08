@@ -51,7 +51,6 @@
 }
 
 .home_post_circle {
-    background-color: var(--primary_dark);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -93,4 +92,45 @@
 
 .btn_container button svg {
     font-size: 22px;
+}
+
+
+@media screen and (max-width: 1000px) {
+    .slideshow {
+        height: 50vh;
+      
+    }
+    .slideshow_inner {
+        
+        flex-direction: column;
+        align-items: flex-start;
+    }   
+    .home_post_circle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: translate(0px, 0px);
+        cursor: pointer;
+       
+    }
+    
+    .home_post_circle::before {
+        content: "";
+        background-color: var(--primary_dark);
+        border-radius: 50%;
+        position: absolute;
+        width: 180px;
+        height: 180px;
+    }
+    .slideshow_left {
+        width: 100%;
+        align-items: center;
+        justify-content: flex-start 
+    }
+    .slideshow_right {
+        width: 100%;
+        align-items: center;
+        justify-content: flex-start;
+       
+    }
 }
