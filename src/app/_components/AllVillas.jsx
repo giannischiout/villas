@@ -1,5 +1,5 @@
 import Image from 'next/image';
-
+import BookCircle from './BookCircle';
 const AllVillas = ({  data }) => {
     console.log('the fuck is worng with the data')
     console.log(data)
@@ -32,7 +32,7 @@ const Villa = ({ description, title }) => {
                     {description}
                 </p>
                 <div className='sv_booknow_container'>
-                    <button className='sv_book_now'>Book now</button>
+                    <BookCircle />
                 </div>
             </div>
         </div>
@@ -49,7 +49,7 @@ const VillaRight = ({ description, title }) => {
                     {description}
                 </p>
                 <div className='sv_booknow_container'>
-                    <button className='sv_book_now'>Book now</button>
+                    <BookCircle />
                 </div>
             </div>
             <div  className='sv_right_col_2'>
