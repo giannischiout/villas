@@ -20,12 +20,12 @@ const Page = () => {
                             maria@ionian-dream-villas.com
                         </p>
                         <p className="contact_details_body">
-                            <span>Email: </span>
-                            maria@ionian-dream-villas.com
+                            <span>Phone: </span>
+                            +30 26450 26111
                         </p>
                         <p className="contact_details_body">
-                            <span>Email: </span>
-                            maria@ionian-dream-villas.com
+                            <span>Mobile: </span>
+                            +30 69 32637171
                         </p>
                     </div>
                     <div className="contact_details">
