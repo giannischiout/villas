@@ -17,6 +17,7 @@ const NavMenu = ({ isOpen, setIsOpen }) => {
 							<Link onClick={handleClose} href={`/`}>HOME</Link>
 							<Link  onClick={handleClose} href={`/allvillas`}>VILLAS</Link>
 							<Link  onClick={handleClose} href={`/posts/all`}>WHAT TO DO</Link>
+							<Link  onClick={handleClose} href={`/pricelist`}>PRICE LIST</Link>
 							<Link  onClick={handleClose} href={`/contact`}>CONTACT</Link>
 						</div>
 					</div>
