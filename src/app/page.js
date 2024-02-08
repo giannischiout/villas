@@ -1,7 +1,10 @@
 
 import Home from './_components/Home'
 import { cookies } from 'next/headers'
-
+import Hero from './_components/Hero';
+import {  SectionThree, SectionFour, SectionFive } from './_components/SectionThree';
+import VillasPresentation from './_components/VillasPresentation';
+import SlideShow from './_components/SlideShow';
 const fetchPosts = async () => {
   "use server";
   const cookieStore = cookies()
@@ -27,12 +30,16 @@ const fetchPosts = async () => {
 
 export default async function Page() {
   const posts = await fetchPosts()
-  // cookies().set('locale', 'locale=en')
 
   
   return (
         <div>
-          <Home posts={posts} />
+            <Hero />
+          <SectionThree />
+          <SectionFour />
+          <SectionFive />
+          <SlideShow posts={posts}/>
+          <VillasPresentation />
         </div>
   )
 }

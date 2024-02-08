@@ -23,7 +23,7 @@ export const SectionTwo = () => {
 
 
 
-const SectionThree = () => {
+export const SectionThree = () => {
     const forwardRef = useRef(null);
     const isInView = useInView(forwardRef);
     const mainControls = useAnimation();
@@ -38,24 +38,15 @@ const SectionThree = () => {
         <div className="villa_section" ref={forwardRef}>
             <div className="villa_width">
                 <div className="row_one">
-                    {/* <div className="row_one_image">
-                        <Image
-                            src="/8.webp"
-                            alt="Picture of the first villa"
-                            fill={true}
-                        />
-                    </div>
-                    <div className="row_one_text">
-                        <h2>Consept</h2>
-                    </div> */}
+
                 </div>
                 <div className="traslated_container">
                     <div className="row_two">
                         <p data-scroll data-speed="0.2 ">Experience the perfect blend of comfort, nature, and captivating views during your stay at Ionian Dream Villas in Lefkada. </p>
                     </div>
                     <div className="row_three">
-                       <div>
-                        <motion.div
+                        <div>
+                            <motion.div
                                 className={`row_three_image`}
 
                                 initial="hidden"
@@ -74,11 +65,11 @@ const SectionThree = () => {
                             </motion.div>
                             <div className="row_three_content">
                                 <div className="book_getaway">
-                                <p >Book your getaway today and indulge in the beauty of Agios Ioannis Bay.</p>
+                                    <p >Book your getaway today and indulge in the beauty of Agios Ioannis Bay.</p>
                                 </div>
-                            
+
                             </div>
-                       </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -88,7 +79,7 @@ const SectionThree = () => {
 
 
 export const SectionFour = () => {
-    const ref  = useRef(null);
+    const ref = useRef(null);
     const [scope, animate] = useAnimate();
     const isInView = useInView({
         ref: ref,
@@ -96,9 +87,9 @@ export const SectionFour = () => {
     });
     useEffect(() => {
         console.log(isInView)
-        if(isInView) {
+        if (isInView) {
             console.log('in view')
-           animate(scope.current, {
+            animate(scope.current, {
                 opacity: 1,
             }, {
                 duration: 1,
@@ -108,16 +99,20 @@ export const SectionFour = () => {
     }, [isInView])
     return (
         <div className="section_four_container" ref={ref}  >
-            <div ref={scope} className="section_four_col_1">
+            <div ref={scope} className="section_four_inner">
                 <div>
-                    <span>Breathtaking Views:</span>
-                    <p>
-                       {` One of the highlights of Ionian Dream Villas is the breathtaking view of Agios Ioannis bay. Step onto your private terrace, and you'll be greeted by an awe-inspiring panorama that captures the heart and soul of Lefkada. Whether you're sipping your morning coffee or enjoying a sunset cocktail, the view from our villas will leave you spellbound.`}
-                    </p>
-                    <span>Immersed in Nature</span>
-                    <p>{`Our villas are not just a place to stay; they are an opportunity to connect with 
+                    <div>
+                        <span className="header">Breathtaking Views:</span>
+                        <p>
+                            {` One of the highlights of Ionian Dream Villas is the breathtaking view of Agios Ioannis bay. Step onto your private terrace, and you'll be greeted by an awe-inspiring panorama that captures the heart and soul of Lefkada. Whether you're sipping your morning coffee or enjoying a sunset cocktail, the view from our villas will leave you spellbound.`}
+                        </p>
+                    </div>
+                    <div>
+                        <span className="header">Immersed in Nature</span>
+                        <p>{`Our villas are not just a place to stay; they are an opportunity to connect with 
                     the natural beauty of Lefkada. Surrounded by verdant landscapes and fragrant 
                     local flora, Ionian Dream Villas offer a sensory experience like no other. The soothing sounds of nature, the gentle caress of the island breeze, and the scents of blooming plants create an atmosphere of tranquility and serenity.`}</p>
+                    </div>
                 </div>
             </div>
         </div>
