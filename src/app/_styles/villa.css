@@ -102,9 +102,29 @@
     width: 100%;
     position: relative;
     overflow: hidden;
-    position: relative;
-    clip-path: inset(0% 10% 0% 12%);
-    opacity: 0;
+}
+
+.hero_slider_buttons {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 50%;
+    left: 2%;
+    width: 96%;
+    transform: translateY(-50%);
+}
+
+
+.hero_slider_buttons button {
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--primary_dark);
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 .v_main_image img {

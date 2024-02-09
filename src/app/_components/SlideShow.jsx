@@ -1,30 +1,31 @@
 
 'use client'
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import {useRouter} from "next/navigation"
 import Image from "next/image"
+import axios from "axios"
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-
 const SlideShow = ({posts}) => {
-   
+  
     const [current, setCurrent] = useState(0)
-    const [postId, setPostId] = useState(1)
+
     const router = useRouter()
     const nextImage = () => {
         setCurrent((current + 1) % posts.length);
-        console.log(posts[current].id)
       };
     
       const prevImage = () => {
         setCurrent((current - 1 + posts.length) % posts.length);
       };
+       
+     
     return (
         <div className="slideshow">
             <Image 
                 src={`${process.env.NEXT_PUBLIC_BASE_API_URL}${posts[current].attributes.images.data[0].attributes.url}`}
                 fill
                 alt="lefkada's island places to see"
-                sizes="100vw"
+                sizes="100%"
             />
             <div className="slideshow_inner">
                 <div className="slideshow_left">
