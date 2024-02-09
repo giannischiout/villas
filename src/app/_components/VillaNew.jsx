@@ -5,6 +5,7 @@ import { useAnimate, useScroll, animate, useAnimation, useInView, motion } from 
 import Book from './Button';
 import { ClipImage } from './ClipImage';
 import { FaPerson } from "react-icons/fa6";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 
 export const Reveal = ({ children }) => {
@@ -38,10 +39,25 @@ export const Reveal = ({ children }) => {
 
 
 
+const images = [
+    '/intro_day.webp',
+    '/2.webp',
+    '/3.webp',
+    '/4.webp',
+]
 
 
 
 const VillaNew = ({ data }) => {
+    const [current, setCurrent] = useState(0);
+
+    const prevImage = () => {
+        setCurrent(prev => (prev + 1) % images.length)
+    }
+
+    const nextImage = () => {
+        setCurrent(prev => (prev - 1 + images.length) % images.length)
+    }
     const sidebarImg = `${process.env.NEXT_PUBLIC_BASE_API_URL}${data?.attributes?.images.data[0].attributes?.url}`
     const mainImg = `${process.env.NEXT_PUBLIC_BASE_API_URL}${data?.attributes?.images.data[1].attributes?.url}`
     const name = data?.attributes?.title
@@ -69,6 +85,12 @@ const VillaNew = ({ data }) => {
             duration: 0.4,
             ease: 'easeIn'
         })
+        await animate('.v_main_image_container', {
+            opacity: [0, 1],
+        }, {
+            duration: 1,
+            ease: 'easeInOut'
+        })
         animate('.v_sidebar', {
             opacity: [0.6, 1],
             y: ['1000px', '0px'],
@@ -92,20 +114,7 @@ const VillaNew = ({ data }) => {
 
  
 
-    useEffect(() => {
-        scrollYProgress.on("change", (v) => {
-            const initialInset = { top: 2, right: 10, bottom: 0, left: 12 };
-            let scroll = v * 30;
-            const newInset = `inset(${initialInset.top - (initialInset.top * scroll)}% ${initialInset.right - (initialInset.right * scroll)}% ${initialInset.bottom - (initialInset.bottom * scroll)}% ${initialInset.left - (initialInset.left * scroll)}%)`;
-            animate('.v_main_image_container_inner', {
-                clipPath: newInset
-            }, {
-                ease: "linear",
-                duration: 0.4
-            })
-
-        })
-    }, [scrollYProgress])
+   
     return (
         <div className='villa_container' >
             <div ref={scope} className="villa_top" >
@@ -124,7 +133,24 @@ const VillaNew = ({ data }) => {
                         </div>
                     </div>
                     <div className='v_main_image_container'  >
-                        <ImageScroll image={mainImg} />
+                        <div className='v_main_image_container_inner' >
+                            <Image
+                                alt="an image of the interior of the ioannian villa"
+                                src={images[current]}
+                                sizes={'100%'}
+                                fill={true}
+                            />
+                            <div className='hero_slider_buttons'>
+                                <button  onClick={prevImage}>
+                                    <IoIosArrowBack />
+                                </button>
+                                <button onClick={nextImage}>
+                                    <IoIosArrowForward />
+                                </button>
+                            </div>
+                          
+                        </div>
+                        {/* <ImageScroll image={'/intro_day.webp'} /> */}
                     </div>
                     <div className="v_main_content" >
                         <div className='villa_attributes'>
