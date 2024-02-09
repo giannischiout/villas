@@ -6,11 +6,11 @@ const AllVillas = ({ data, hasDetails = false }) => {
     return (
         <div className="allvillas_container ">
             <div className="allvillas_inner">
-                <Villa description={data[0]?.description} title={data[0]?.title} details={data[0].details} />
-                <VillaRight description={data[1]?.description} title={data[1]?.title} details={data[1].details} />
+                <Villa description={data[0]?.description} title={data[0]?.title} details={data[0].details} hasDetails={hasDetails} />
+                <VillaRight description={data[1]?.description} title={data[1]?.title} details={data[1].details}  hasDetails={hasDetails} />
                 {data[2] ?
                     (
-                        <Villa description={data[3]?.description} title={data[3]?.title} details={data[2].details} />
+                        <Villa description={data[3]?.description} title={data[3]?.title} details={data[2].details}  hasDetails={hasDetails} />
                     ) : null}
             </div>
         </div>
@@ -19,34 +19,36 @@ const AllVillas = ({ data, hasDetails = false }) => {
 
 
 
-const Villa = ({ description, title, details }) => {
+const Villa = ({ description, title, details, hasDetails }) => {
     console.log(details)
     return (
         <div className="single_villa_item">
             <div className='sv_column_1'>
                 <Image src="/1.webp" alt="villa" fill />
-                <div className='allvillas_details'>
+                {hasDetails ? (
+                    <div className='allvillas_details'>
                     <div>
-                        <p>{details['maxAduls']}</p>
+                        <p>{details?.maxAduls}</p>
                         <span>{'Max Adults'}</span>
                     </div>
                     <div>
-                        <p>{details['bedrooms']}</p>
+                        <p>{details?.bedrooms}</p>
                         <span>{'Bedrooms'}</span>
                     </div>
                     <div>
-                        <p>{details['maxChildren']}</p>
+                        <p>{details?.maxChildren}</p>
                         <span>{'Max Children'}</span>
                     </div>
                     <div>
-                        <p>{details['squareMeters']}</p>
+                        <p>{details?.squareMeters}</p>
                         <span>{'Square Meters'}</span>
                     </div>
                     <div>
-                        <p>{details['pullOutCouch']}</p>
+                        <p>{details?.pullOutCouch}</p>
                         <span>{'Pull Out Couch'}</span>
                     </div>
                 </div>
+                ) : null}
             </div>
 
             <div className='sv_column_2'>
@@ -62,7 +64,7 @@ const Villa = ({ description, title, details }) => {
     )
 }
 
-const VillaRight = ({ description, title, details }) => {
+const VillaRight = ({ description, title, details, hasDetails }) => {
 
     return (
         <div className="single_villa_item_right">
@@ -77,28 +79,30 @@ const VillaRight = ({ description, title, details }) => {
             </div>
             <div className='sv_right_col_2'>
                 <Image src="/1.webp" alt="villa" fill />
-                <div className='allvillas_details_right'>
-                    <div>
-                        <p>{details['maxAduls']}</p>
-                        <span>{'Max Adults'}</span>
-                    </div>
-                    <div>
-                        <p>{details['bedrooms']}</p>
-                        <span>{'Bedrooms'}</span>
-                    </div>
-                    <div>
-                        <p>{details['maxChildren']}</p>
-                        <span>{'Max Children'}</span>
-                    </div>
-                    <div>
-                        <p>{details['squareMeters']}</p>
-                        <span>{'Square Meters'}</span>
-                    </div>
-                    <div>
-                        <p>{details['pullOutCouch']}</p>
-                        <span>{'Pull Out Couch'}</span>
-                    </div>
-                </div>
+                {hasDetails ? (
+                      <div className='allvillas_details_right'>
+                      <div>
+                          <p>{details?.maxAduls}</p>
+                          <span>{'Max Adults'}</span>
+                      </div>
+                      <div>
+                          <p>{details?.bedrooms}</p>
+                          <span>{'Bedrooms'}</span>
+                      </div>
+                      <div>
+                          <p>{details?.maxChildren}</p>
+                          <span>{'Max Children'}</span>
+                      </div>
+                      <div>
+                          <p>{details?.squareMeters}</p>
+                          <span>{'Square Meters'}</span>
+                      </div>
+                      <div>
+                          <p>{details?.pullOutCouch}</p>
+                          <span>{'Pull Out Couch'}</span>
+                      </div>
+                  </div>
+                ) : null}
             </div>
 
         </div>
