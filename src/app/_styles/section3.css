@@ -116,6 +116,7 @@
     justify-content: center;
     width: 100%;
     transform: translateY(-100px);
+    cursor: pointer;
   }
   
   .book_getaway p {

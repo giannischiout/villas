@@ -2,7 +2,7 @@
 import { useAnimate, useScroll, useTransform, motion, useAnimation, useInView } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
-
+import { useModal } from "../_context/useModal";
 
 
 
@@ -13,6 +13,8 @@ export const SectionThree = ({data}) => {
     const forwardRef = useRef(null);
     const isInView = useInView(forwardRef);
     const mainControls = useAnimation();
+    const { modalOpen, openModal, closeModal } = useModal();
+
     useEffect(() => {
         if (isInView) {
             mainControls.start('visible');
@@ -50,7 +52,7 @@ export const SectionThree = ({data}) => {
                                 />
                             </motion.div>
                             <div className="row_three_content">
-                                <div className="book_getaway">
+                                <div onClick={openModal} className="book_getaway">
                                     <p >Book your getaway today and indulge in the beauty of Agios Ioannis Bay.</p>
                                 </div>
 
