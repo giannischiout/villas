@@ -10,5 +10,4 @@ export async function createLocale(locale) {
     console.log('do we get the locale -----------------------')
     console.log(locale)
     cookies().set('locale', locale)
-    // revalidatePath(fullUrl)
 }

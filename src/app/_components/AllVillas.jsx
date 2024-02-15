@@ -6,11 +6,11 @@ const AllVillas = ({ data, hasDetails = false }) => {
     return (
         <div className="allvillas_container ">
             <div className="allvillas_inner">
-                <Villa description={data[0]?.description} title={data[0]?.title} details={data[0].details} hasDetails={hasDetails} />
-                <VillaRight description={data[1]?.description} title={data[1]?.title} details={data[1].details}  hasDetails={hasDetails} />
+                <Villa description={data[0]?.description} title={data[0]?.title} details={data[0]?.details} hasDetails={hasDetails} />
+                <VillaRight description={data[1]?.description} title={data[1]?.title} details={data[1]?.details}  hasDetails={hasDetails} />
                 {data[2] ?
                     (
-                        <Villa description={data[3]?.description} title={data[3]?.title} details={data[2].details}  hasDetails={hasDetails} />
+                        <Villa description={data[3]?.description} title={data[3]?.title} details={data[2]?.details}  hasDetails={hasDetails} />
                     ) : null}
             </div>
         </div>

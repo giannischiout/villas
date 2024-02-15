@@ -9,10 +9,20 @@ import SlideShow from './SlideShow';
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 const images = [
-    '/intro_day.webp',
-    '/2.webp',
-    '/3.webp',
-    '/4.webp',
+    '/slider/1.webp',
+    '/slider/2.webp',
+    '/slider/3.webp',
+    '/slider/4.webp',
+    '/slider/5.webp',
+    '/slider/6.webp',
+    '/slider/7.webp',
+    '/slider/8.webp',
+    '/slider/9.webp',
+    '/slider/10.webp',
+    '/slider/11.webp',
+    '/slider/12.webp',
+    '/slider/13.webp',
+    '/slider/14.webp',
 ]
 
 

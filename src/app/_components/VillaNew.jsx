@@ -59,12 +59,10 @@ const VillaNew = ({ data }) => {
         setCurrent(prev => (prev - 1 + images.length) % images.length)
     }
     const sidebarImg = `${process.env.NEXT_PUBLIC_BASE_API_URL}${data?.attributes?.images.data[0].attributes?.url}`
-    const mainImg = `${process.env.NEXT_PUBLIC_BASE_API_URL}${data?.attributes?.images.data[1].attributes?.url}`
     const name = data?.attributes?.title
     const tag = data?.attributes?.tag
     const description = data?.attributes?.shortDescription
     const details = data?.attributes?.details[0]
-    console.log(details)
     const facilites = data?.attributes?.facilities.data
     const roomTypes = data?.attributes?.roomtypes.data
     const views = data?.attributes?.views.data
@@ -150,30 +148,29 @@ const VillaNew = ({ data }) => {
                             </div>
                           
                         </div>
-                        {/* <ImageScroll image={'/intro_day.webp'} /> */}
                     </div>
                     <div className="v_main_content" >
                         <div className='villa_attributes'>
                             <div id="villa_attr_details">
                                 <div>
-                                    <p>{details['maxAduls']}</p>
+                                    <p>{details?.maxAduls}</p>
                                     <span>{'Max Adults'}</span>
 
                                 </div>
                                 <div>
-                                    <p>{details['bedrooms']}</p>
+                                    <p>{details?.bedrooms}</p>
                                     <span>{'Bedrooms'}</span>
                                 </div>
                                 <div>
-                                    <p>{details['maxChildren']}</p>
+                                    <p>{details?.maxChildren}</p>
                                     <span>{'Max Children'}</span>
                                 </div>
                                 <div>
-                                    <p>{details['squareMeters']}</p>
+                                    <p>{details?.squareMeters}</p>
                                     <span>{'Square Meters'}</span>
                                 </div>
                                 <div>
-                                    <p>{details['pullOutCouch']}</p>
+                                    <p>{details?.pullOutCouch}</p>
                                     <span>{'Pull Out Couch'}</span>
                                 </div>
 
@@ -189,10 +186,10 @@ const VillaNew = ({ data }) => {
                             <div className='villa_facilities'>
                                 <span>Facilities</span>
                                 <div>
-                                {facilites.map((facility, index) => {
+                                {facilites && facilites.map((facility, index) => {
                                     return (
                                         <div className='facility_item' key={index}>
-                                            <p>{facility.attributes.name}</p>
+                                            <p>{facility?.attributes?.name}</p>
                                         </div>
                                     )
                                     })}
@@ -220,7 +217,7 @@ const VillaNew = ({ data }) => {
                                 <div className='room_views'>
                                     <span className='room_title'>Views</span>
                                     <div>   
-                                        {views.map((view, index) => {
+                                        {views && views.map((view, index) => {
                                             return (
                                                 <p key={index} className='view_item'>{view.attributes.name}</p>
                                             )
@@ -230,7 +227,7 @@ const VillaNew = ({ data }) => {
                                 <div className='room_bathrooms'>
                                     <span  className='room_title'>Bathrooms / WC</span>
                                     <div>
-                                        {bathrooms.map((bathroom, index) => {
+                                        {bathrooms && bathrooms.map((bathroom, index) => {
                                             return (
                                                 <p key={index}  className='bathroom_item'>{bathroom.description}</p>
                                             )
@@ -254,57 +251,57 @@ const VillaNew = ({ data }) => {
 
 
 
-export const ScrollImageSticky = ({ image }) => {
-    const ref = useRef(null);
-    const { scrollYProgress } = useScroll({
-        target: ref,
-        offset: ["end end", "start start"]
-    });
+// export const ScrollImageSticky = ({ image }) => {
+//     const ref = useRef(null);
+//     const { scrollYProgress } = useScroll({
+//         target: ref,
+//         offset: ["end end", "start start"]
+//     });
 
 
 
-    useEffect(() => {
-        scrollYProgress.on("change", (v) => {
-            console.log('v', v)
-            const scroll = (v * 15);
-            animate('.sticky_img_container', {
-                clipPath: `inset(${scroll}%)`
-            }, {
-                ease: "linear",
-                duration: 0.4
-            })
-        })
-    }, [])
-    return (
-        <div ref={ref} className='v_scroll_image'>
+//     useEffect(() => {
+//         scrollYProgress.on("change", (v) => {
+//             console.log('v', v)
+//             const scroll = (v * 15);
+//             animate('.sticky_img_container', {
+//                 clipPath: `inset(${scroll}%)`
+//             }, {
+//                 ease: "linear",
+//                 duration: 0.4
+//             })
+//         })
+//     }, [])
+//     return (
+//         <div ref={ref} className='v_scroll_image'>
           
-            <div className='v_scroll_image_inner'>
-                <div className='sticky_img_container'>
-                    <Image
-                        alt='villa image'
-                        src={image}
-                        fill={true}
-                    />
-                </div>
-            </div>
-        </div>
-    )
-}
+//             <div className='v_scroll_image_inner'>
+//                 <div className='sticky_img_container'>
+//                     <Image
+//                         alt='villa image'
+//                         src={image}
+//                         fill={true}
+//                     />
+//                 </div>
+//             </div>
+//         </div>
+//     )
+// }
 
 
-export const ImageScroll = ({ image }) => {
+// export const ImageScroll = ({ image }) => {
 
-    return (
-        <div className='v_main_image_container_inner' >
-            <Image
-                alt="an image of the interior of the ioannian villa"
-                src={image}
-                sizes={'100%'}
-                fill={true}
-            />
-        </div>
-    );
-}
+//     return (
+//         <div className='v_main_image_container_inner' >
+//             <Image
+//                 alt="an image of the interior of the ioannian villa"
+//                 src={image}
+//                 sizes={'100%'}
+//                 fill={true}
+//             />
+//         </div>
+//     );
+// }
 
 
 

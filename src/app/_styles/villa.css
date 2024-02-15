@@ -6,6 +6,24 @@
     flex-direction: column;
 }
 
+.villas_no_data {
+    height: 100vh;
+    width: 100%;
+    background-color: var(--background);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.villas_no_data > div {
+    background-color: white;
+    padding: 20px;
+    border-radius: 6px;
+    border: 1px solid var(--primary_dark);
+    display: flex;
+    flex-direction: column;
+}
+
+
 .villa_top {
     height: 100%;
     width: 100%;

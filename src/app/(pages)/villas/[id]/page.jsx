@@ -73,20 +73,35 @@ export default async function Page({ params }) {
     const roomsSlider = getImagesWidthProportions(roomsImages);
     const details = data?.attributes?.details[0]
 
+    console.log(data)
+    console.log('slider images')
+    console.log(sliderImgs)
+    console.log('room images')
+
+    console.log(roomsImages)
     return (
-        <>
-            <VillaNew data={data}
-            />
-            <div className='villa_slider'>
-                <ImageSlider images={imagesSlider} />
+        <div>
+           {data && sliderImgs && roomsImages ? (
+            <>
+                 <VillaNew data={data}/>
+             <div className='villa_slider'>
+                 <ImageSlider images={imagesSlider} />
+             </div>
+             <RoomSlider images={roomsSlider} />
+             <p className="allvillas_header">EXPLORE MORE</p>
+             <AllVillas
+                 details={details}
+                 data={otherVillas}
+             />
+            </>
+           ) : (
+            <div className="villas_no_data">
+                <div>
+                <p>try again with different locale.</p>
+                </div>
             </div>
-            <RoomSlider images={roomsSlider} />
-            <p className="allvillas_header">EXPLORE MORE</p>
-            <AllVillas
-                details={details}
-                data={otherVillas}
-            />
-        </>
+           )}
+        </div>
 
     )
 }

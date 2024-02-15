@@ -9,8 +9,7 @@ const ImageSlider = ({images}) => {
     const [index, setIndex] = useState(0)
     const [scope, animate] = useAnimate();
     const ref = useRef(null);
-    const isInView = useInView(ref)
-    const opacityControls = useAnimation();
+ 
     const handleNext = () => {
         setIndex(prev => (prev + 1) % images.length)
         handleAnimate()
@@ -37,11 +36,11 @@ const ImageSlider = ({images}) => {
             <div
             className="slider_inner">
                 <div className="slider_image_container" id="slide_darker">
-                    <img src={images[index]} alt="villa"  />
+                    <Image src={images[index]} alt="villa" sizes="100%" fill={true} />
                 </div>
                 <div className="slider_image_container" id="slide_anime">
-                    <motion.img 
-                    className="slider_img" src={ images[(index + 1) % images.length]} alt="villa"  />
+                    <Image
+                    className="slider_img" src={ images[(index + 1) % images.length]} alt="villa" fill  />
                 </div>
                 <Teaser index={index} images={images} />
             </div>

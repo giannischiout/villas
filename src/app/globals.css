@@ -22,6 +22,7 @@
 @import './_styles/footer_new.css';
 @import './_styles/allvillas.css';
 @import './_styles/pricelist.css';
+@import './_styles/error.css';
 
 
 @layer base {
