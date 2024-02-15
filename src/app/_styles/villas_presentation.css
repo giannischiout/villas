@@ -5,7 +5,7 @@
     align-items: center;
     justify-content: center;
     position: relative;
-    height: 220vh;
+    /* height: 220vh; */
     width: 100%;
     margin-top: 2%;
 }
@@ -146,8 +146,6 @@
     background-color: white;
     display: flex;
     align-items: center;
-    /* justify-content: center; */
-    /* flex-direction: column; */
     justify-content: space-between;
     padding: 30px;
 }
@@ -184,16 +182,14 @@
 
 @media screen and (max-width: 1280px) {
     .v_presentation_card_image_container {
-        height: 300px;
+        height: 250px;
     }
 }
 @media screen and (max-width: 1100px) {
     .v_presentation_sticky {
         position: sticky;
       }
-    .v_presentation_top {
-        padding-top: 100px;
-    }
+    
     .v_presentation_villas_inner {
         width: 100%;
     }
@@ -234,9 +230,7 @@
         grid-template-rows: 1fr;
     }
 
-    .v_presentation_top > div:nth-child(1) h5 {
-        font-size: 4rem;
-    }
+   
 
     .v_presentation_bottom > div p {
         margin-top: 100px;
@@ -245,7 +239,35 @@
 
     .v_presentation_card_text {
         padding: 20px;
+        flex-direction: column;
     }
+
+    .v_presentation_card_text div:nth-child(1) {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .v_presentation_card_text div:nth-child(2) {
+        width: 100%;
+    }
+    .v_presentation_header p {
+        font-size: calc(2rem + 3rem);
+       
+    }
+    .v_presentation_top {
+        height: 40vh;
+    
+    }
+    .v_presentation_top {
+        height: 40vh;
+    
+    }
+    .v_presentation_top > div {
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: column;
+        height: 100%;
+    }
+    
 }
 
 

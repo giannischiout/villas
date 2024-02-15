@@ -68,7 +68,7 @@ const Card = ({ image, people, sqr, name, id }) => {
                 <div className="">
                     <span className="v_card_title">{name}</span>
                     <p>{`${people} people`}</p>
-                    <p>{`${sqr}`}</p>
+                    <p>{`${sqr} sqm`}</p>
                 </div>
                 <Btn text="see more" onClick={onClick} />
 

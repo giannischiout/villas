@@ -184,7 +184,12 @@
 
 
 @media screen and (max-width: 1300px) {
-
+    .allvillas_details {
+        display: none;
+    }
+    .allvillas_details_right {
+        display: none;
+    }
 
     .single_villa_item {
         display: grid;
