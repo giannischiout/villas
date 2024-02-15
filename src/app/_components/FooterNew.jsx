@@ -6,9 +6,9 @@ const FooterNew = () => {
             <div>
                 <div>
                     <span>IOANIAN DREAM VILLAS</span>
-                    <Link href={"#"}>Terms and conditions</Link>
-                    <Link href={"#"}>Privacy Settings</Link>
-                    <Link href={"#"}>Cookies Policy</Link>
+                    <Link href={"/policy/terms"}>Terms and conditions</Link>
+                    <Link href={"/policy/disclaimer"}>Privacy Settings</Link>
+                    <Link href={"/policy/cookie-policy"}>Cookies Policy</Link>
                 </div>
             </div>
         </div>

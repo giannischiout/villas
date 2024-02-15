@@ -23,6 +23,7 @@
 @import './_styles/allvillas.css';
 @import './_styles/pricelist.css';
 @import './_styles/error.css';
+@import './_styles/policy.css';
 
 
 @layer base {

@@ -3,7 +3,6 @@
 import { Inter, Quattrocento, Yellowtail, Montserrat, Bona_Nova } from 'next/font/google'
 import './globals.css'
 import Navbar from './_components/Navbar'
-import Footer from './_components/Footer'
 import SmoothScrolling from './_hooks/smoothScrolling'
 import { LocaleProvider } from './_context/useLocale'
 import { ModalProvider } from './_context/useModal'
