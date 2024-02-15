@@ -4,26 +4,12 @@ import Image from "next/image";
 import { useEffect, useRef } from "react";
 
 
-export const SectionTwo = () => {
-    return (
-        <section className="section_two_container">
-            <div className="section_two_col_1">
-                <div>
-                    <span>Tastemakers of Understated Chic Luxury</span>
-                    <p>{`Sitting atop the curvaceous cliffs of Italy’s Amalfi Coast,
-                        Casa Angelina offers a sublime slice of modern minimalism on the Mediterranean, with an emphasis on barefoot luxury and top-level gastronomy.`}</p>
-                    <p>{`Sitting atop the curvaceous cliffs of Italy’s Amalfi Coast, Casa Angelina offers a sublime slice of modern minimalism on the Mediterranean, with an emphasis on barefoot luxury and top-level gastronomy.`}</p>
-                    <p>{`We work to ensure everything about your stay is true perfection, from our welcome amenities and the thoughtful turndown services to the curated dishes from our chefs and activities organized by our concierge.`}</p>
-                </div>
-            </div>
-        </section>
-    )
-}
 
 
 
 
-export const SectionThree = () => {
+
+export const SectionThree = ({data}) => {
     const forwardRef = useRef(null);
     const isInView = useInView(forwardRef);
     const mainControls = useAnimation();
@@ -42,7 +28,7 @@ export const SectionThree = () => {
                 </div>
                 <div className="traslated_container">
                     <div className="row_two">
-                        <p data-scroll data-speed="0.2 ">Experience the perfect blend of comfort, nature, and captivating views during your stay at Ionian Dream Villas in Lefkada. </p>
+                        <p >{data[1].attributes.moto} </p>
                     </div>
                     <div className="row_three">
                         <div>
@@ -78,7 +64,7 @@ export const SectionThree = () => {
 }
 
 
-export const SectionFour = () => {
+export const SectionFour = ({data}) => {
     const ref = useRef(null);
     const [scope, animate] = useAnimate();
     const isInView = useInView({
@@ -102,16 +88,14 @@ export const SectionFour = () => {
             <div ref={scope} className="section_four_inner">
                 <div>
                     <div>
-                        <span className="header">Breathtaking Views:</span>
+                        <span className="header">{data[2].attributes.title}</span>
                         <p>
-                            {` One of the highlights of Ionian Dream Villas is the breathtaking view of Agios Ioannis bay. Step onto your private terrace, and you'll be greeted by an awe-inspiring panorama that captures the heart and soul of Lefkada. Whether you're sipping your morning coffee or enjoying a sunset cocktail, the view from our villas will leave you spellbound.`}
+                        {data[2].attributes.moto}
                         </p>
                     </div>
                     <div>
-                        <span className="header">Immersed in Nature</span>
-                        <p>{`Our villas are not just a place to stay; they are an opportunity to connect with 
-                    the natural beauty of Lefkada. Surrounded by verdant landscapes and fragrant 
-                    local flora, Ionian Dream Villas offer a sensory experience like no other. The soothing sounds of nature, the gentle caress of the island breeze, and the scents of blooming plants create an atmosphere of tranquility and serenity.`}</p>
+                        <span className="header">{data[3].attributes.title}</span>
+                        <p>{data[3].attributes.moto}</p>
                     </div>
                 </div>
             </div>

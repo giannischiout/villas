@@ -26,11 +26,9 @@ const images = [
 ]
 
 
-const Hero = ({ children, sidebarImg, mainImg, tag, name }) => {
-    const { scrollYProgress } = useScroll();
+const Hero = ({ data, description, title}) => {
     const [scope, animate] = useAnimate();
-    const clipRef = useRef(null);
-    const isInView = useInView(scope);
+
     const [current, setCurrent] = useState(0);
 
     const prevImage = () => {
@@ -111,18 +109,10 @@ const Hero = ({ children, sidebarImg, mainImg, tag, name }) => {
                         {/* <ImageScroll image={'/intro_day.webp'} /> */}
                     </div>
                     <div className="intro_text" >
-                        <h3>BEAUTIFUL QUIET VILLAS WITH PRIVATE POOL</h3>
-                        <p>{`Ionian Dream Villas, a charming hotel located in Lefkada 
-                        near the captivating Agios Ioannis Bay, presents an 
-                        array of three villas, characterized by their 
-                        understated yet elegant architectural design. 
-                        Set amidst a backdrop of vibrant greenery and exotic flora, 
-                        our villas offer a tranquil oasis for your stay on this 
-                        enchanting Greek island.`}
+                        <h3>{data[0].attributes.moto}</h3>
+                        <p>{description}
                         </p>
-                        <p>{`With each villa, you'll be treated to a marvelous view of the bay, a breathtaking sight that will enchant your senses. Immerse yourself in the natural beauty that surrounds Ionian Dream Villas, as you soak in the serenity and tranquility of the lush landscape.`}
-                        </p>
-                        <p>Experience the perfect blend of comfort, nature, and captivating views during your stay at Ionian Dream Villas in Lefkada. Book your getaway today and indulge in the beauty of Agios Ioannis Bay.</p>
+                        <p>{data[1].attributes.moto}</p>
                     </div>
 
                 </div>

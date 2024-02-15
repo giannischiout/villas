@@ -28,7 +28,7 @@ const fetchPosts = async () => {
 const Page = async () => {
     const data = await fetchPosts()
   
-  
+    console.log(data[0].attributes?.images.data)
     return (
         <section className="posts_container">
             <div className='posts_top'></div>
