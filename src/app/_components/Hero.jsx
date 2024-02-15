@@ -43,7 +43,6 @@ const Hero = ({ data, description, title}) => {
 
         animate('.intro_sidebar', {
             opacity: [0.6, 1],
-            y: ['1000px', '0px'],
 
         }, {
             duration: 0.4,

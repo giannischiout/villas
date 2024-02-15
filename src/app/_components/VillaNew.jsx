@@ -72,9 +72,7 @@ const VillaNew = ({ data }) => {
     const clipRef = useRef(null);
 
 
-    const isInView = useInView(scope);
-    const { scrollYProgress } = useScroll({});
-
+ 
 
     const handleIntroAnimation = async () => {
         animate('.v_main_image_container_inner', {

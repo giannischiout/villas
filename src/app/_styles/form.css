@@ -3,11 +3,19 @@
     justify-content: center;
     align-items: center;
     padding: 80px 0;
-    width: 100%;
+    width: 50%;
 }
 
 
+.text_area {
+    width: 100%;
+    background-color: transparent;
+    padding: 10px;
+}
 
+.text_area:focus {
+    outline: none;
+}
 .form_container {
     width: 80%;
 }
@@ -51,16 +59,19 @@
     width: 100%;
     display: flex;
     align-items: center;
-    padding: 5px 5px;
-    border-bottom: 1px solid var(--primary_dark);
+    padding: 10px;
+    border: 1px solid var(--primary_dark);
     min-width: 200px;
+    border-radius: 5px;
     margin-bottom: 16px;
     position: relative;
 
 }
 
-
-
+.input:focus-within {
+    outline: none; /* Remove default focus outline on the div */
+    border: 1px solid #0b0b0b; /* Change the border color and width */
+  }
 .input svg {
     color: #8c7d71;
     position: absolute;
@@ -123,6 +134,18 @@
     background-color: var(--primary_dark);
     color: white;
     border: none;
+    padding: 10px 10px;
+    font-size: 16px;
+    border-radius: 50px;
+    width: 150px;
+    transition: all 0.3s ease-in-out;
+}
+
+.close_btn {
+    background-color: transparent;
+    color: var(--primary_dark);
+    border: 2px solid var(--primary_dark);
+    margin-left: 15px;
     padding: 10px 10px;
     font-size: 16px;
     border-radius: 50px;

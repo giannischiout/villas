@@ -21,8 +21,7 @@ const BookNowModal = ({ isOpen, hasCloseBtn, setIsOpen }) => {
         <>
             {modalOpen ? (
                 <div className="book_modal">
-                    <button onClick={closeModal}>close</button>
-                    <BookForm hasCloseBtn={hasCloseBtn} setIsOpen={setIsOpen} />
+                    <BookForm  handleClose={closeModal} />
                 </div>
             ) : null}
         </>
