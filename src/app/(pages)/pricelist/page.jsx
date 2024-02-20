@@ -1,6 +1,30 @@
 import Image from 'next/image';
 import BookCircle from '@/app/_components/BookCircle';
-const Page = () => {
+import { cookies } from 'next/headers';
+
+const fetchPrices = async () => {
+    "use server";
+    const cookieStore = cookies()
+    const locale = cookieStore.get('locale')
+   
+    const url = `${process.env.API_URL}/pricings?${locale?.value}&populate=*`
+    
+    let data = await fetch(url, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }, {
+        cache: 'no-cache'
+    })
+
+    let json = await data.json()
+
+    return json.data;
+}
+const Page = async () => {
+    const data = await fetchPrices()
+    console.log(data)
     return (
         <div className="pricelist_container">
             <div className='price_list_intro'>

@@ -90,7 +90,6 @@ export const BookForm = ({ width, handleClose }) => {
 			villa: 'JIRA',
 			sitemap_exclude: true
 
-
 		}
 		console.log(formData)
 		const {data} = await axios.post("https://strapi.3v7i.com/api/booking-rqs", {

@@ -1,10 +1,36 @@
 import Map from "@/app/_components/Map";
 import Image from 'next/image';
-const Page = () => {
+import { cookies } from "next/headers";
+
+const fetchContact = async () => {
+    "use server";
+    const cookieStore = cookies()
+    const locale = cookieStore.get('locale')
+   
+    const url = `${process.env.API_URL}/hotel?${locale?.value}&populate=hotelcontact`
+    
+    let data = await fetch(url, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }, {
+        cache: 'no-cache'
+    })
+
+    let json = await data.json()
+
+    return json.data;
+}
+const Page = async () => {
     const location = {
         lat: 37.7749, // Replace with your desired latitude
         lng: -122.4194, // Replace with your desired longitude
       };
+
+      const data = await fetchContact()
+      const hcontact = data?.attributes.hotelcontact
+      console.log(data?.attributes.hotelcontact)
 
     return (
         <div className="contact_container">
@@ -13,46 +39,26 @@ const Page = () => {
                    <div className="contact_header">
                    <h1>CONTACT INFORMATION</h1>
                    </div>
+                   {hcontact?.map((contact, index) => {
+                        return (
+                            <div className="contact_details">
+                            <p className="contact_details_title">{contact.name}</p>
+                            <p className="contact_details_body">
+                                <span>Email: </span>
+                                {contact.email}
+                            </p>
+                            <p className="contact_details_body">
+                                <span>Phone: </span>
+                                {contact.phoneNumber}
+                            </p>
+                            <p className="contact_details_body">
+                                <span>Mobile: </span>
+                                {contact.mobileNumber}
+                            </p>
+                        </div>
+                        )
+                   })}
                     <div className="contact_details">
-                        <p className="contact_details_title">OFFICE</p>
-                        <p className="contact_details_body">
-                            <span>Email: </span>
-                            maria@ionian-dream-villas.com
-                        </p>
-                        <p className="contact_details_body">
-                            <span>Phone: </span>
-                            +30 26450 26111
-                        </p>
-                        <p className="contact_details_body">
-                            <span>Mobile: </span>
-                            +30 69 32637171
-                        </p>
-                    </div>
-                    <div className="contact_details">
-                        <p className="contact_details_title">{`CONTACT & BOOKING`}</p>
-                        <p className="contact_details_body">
-                            <span>Email: </span>
-                            maria@ionian-dream-villas.com
-                        </p>
-                        <p className="contact_details_body">
-                            <span>Phone: </span>
-                            +30 26450 26111
-                        </p>
-                    </div>
-                    <div className="contact_details">
-                        <p className="contact_details_title">{`GERMANY OFFICE`}</p>
-                        <p className="contact_details_body">
-                            <span>Email: </span>
-                            maria@ionian-dream-villas.com
-                        </p>
-                        <p className="contact_details_body">
-                            <span>Phone:</span>
-                            +49 89 81302853
-                        </p>
-                        <p className="contact_details_body">
-                            <span>Mobile:</span>
-                            +49 172 6162438
-                        </p>
                         <div className="contact_logo">
                             <Image src="/logovillas.png" alt="logovillas" width={150} height={80} />
                         </div>
