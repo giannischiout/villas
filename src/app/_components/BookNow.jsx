@@ -4,7 +4,7 @@
 import { useEffect } from "react";
 import { BookForm } from "./BookForm"
 import { useModal } from "../_context/useModal";
-const BookNowModal = ({ isOpen, hasCloseBtn, setIsOpen }) => {
+const BookNowModal = ({ isOpen}) => {
     const { modalOpen, openModal, closeModal } = useModal();
     const handleScroll = () => {
         document.body.style.overflow = isOpen ? 'hidden' : 'auto';

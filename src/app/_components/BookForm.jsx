@@ -16,6 +16,7 @@ import 'react-day-picker/dist/style.css';
 export const BookForm = ({ width, handleClose }) => {
 	const calendarrefA = useRef(null)
 	const calendarrefB = useRef(null)
+	const [data, setData] = useState(null)
 	const [show, setShow] = useState({
 		arrival: false,
 		departure: false,
@@ -41,8 +42,25 @@ export const BookForm = ({ width, handleClose }) => {
 	}
 
 
-
-
+	const handleFetch = async () => {
+			const url = `${process.env.API_URL}/hotel?&populate=hotelcontact`
+			let data = await fetch(url, {
+				method: 'GET',
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			}, {
+				cache: 'no-cache'
+			})
+		
+			let json = await data.json()
+			console.log('book now data')
+			console.log(json)
+			setData(json)
+	}
+	useEffect(() => {
+		handleFetch()
+	}, [])
 	const handleShowArrival = (e) => {
 		setShow(prev => ({ ...prev, arrival: true, departure: false }))
 	}
