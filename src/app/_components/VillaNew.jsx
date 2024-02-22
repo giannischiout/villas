@@ -160,10 +160,6 @@ const VillaNew = ({ data }) => {
                                     <span>{'Bedrooms'}</span>
                                 </div>
                                 <div>
-                                    <p>{details?.maxChildren}</p>
-                                    <span>{'Max Children'}</span>
-                                </div>
-                                <div>
                                     <p>{details?.squareMeters}</p>
                                     <span>{'Square Meters'}</span>
                                 </div>

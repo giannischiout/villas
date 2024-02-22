@@ -85,7 +85,8 @@ const getData = async () => {
   let newdata = json.data.map(villa => {
     return {
       title: villa.attributes.title,
-      details: villa.attributes.details[0]
+      details: villa.attributes.details[0],
+      id: villa.id
     }
   });
   return newdata;
@@ -95,7 +96,6 @@ export default async function Page() {
   const motos = await fetchMoto();
   const data = await fetchData()
   const villas = await getData()
-  console.log(villas)
   let description = data.attributes.hotelshortdescription;
   let title = data.attributes.hotelname;
 

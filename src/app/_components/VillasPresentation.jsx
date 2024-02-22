@@ -7,7 +7,6 @@ import Book from "./Button"
 import { Btn } from "./Button"
 import BookCircle from "./BookCircle"
 const VillasPresentation = ({ villas }) => {
-    console.log(villas)
     return (
         <section>
             <div className="v_presentation_container">
@@ -26,20 +25,19 @@ const VillasPresentation = ({ villas }) => {
                         <div className="card1">
 
                             <Card
-                                id={0}
+                                id={villas[0].id}
                                 name={villas[0].title}
                                 image="pres_castro.webp"
                                 people={villas[0].details.maxAduls}
                                 sqr={villas[0].details.squareMeters}
                                 bedrooms={villas[0].details.bedrooms}
                                 pullOutCouch={villas[0].details.pullOutCouch}
-                                href=""
                             />
                         </div>
                         <div className="card2">
                             <Card
+                                id={villas[1].id}
                                 image="pres_jira.webp"
-                                
                                 name={villas[1].title}
                                 people={villas[1].details.maxAduls}
                                 sqr={villas[1].details.squareMeters}
@@ -49,7 +47,7 @@ const VillasPresentation = ({ villas }) => {
                         </div>
                         <div className="card3">
                             <Card 
-                                id={2} 
+                                id={villas[2].id} 
                                 image="pres_milos.webp" 
                                 name={villas[2].title}
                                 people={villas[2].details.maxAduls}

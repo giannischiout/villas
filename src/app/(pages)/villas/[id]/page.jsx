@@ -6,7 +6,6 @@ import { cookies } from 'next/headers'
 const getData = async (id) => {
     const cookieStore = cookies()
     const locale = cookieStore.get('locale')
-    console.log(locale)
     let url = `${process.env.API_URL}/villas?${locale?.value}&populate=details,facilities,roomtypes,bathroom,images,views,interiorImages,roomImages `
     const res = await fetch(url, {
         method: 'GET',
@@ -17,20 +16,21 @@ const getData = async (id) => {
 
     });
     let json = await res.json();
- 
-
-    let title = json.data[id]?.attributes?.title;
-    const otherVillasData = json.data.filter(villa => villa.attributes.title !== title);
-    const titlesAndDescriptions = otherVillasData.map(villa => {
+  
+    let villa = json.data.find(villa => villa.id == id);
+    //CREATE THE DATA FOR THE REMAINING VILLAS CARDS:
+    const otherVillasData = json.data.filter(otherVilla =>otherVilla.id !== parseInt(id));
+    const titlesAndDescriptions = otherVillasData.map((villa) => {
         return {
             title: villa.attributes.title,
             description: villa.attributes.shortDescription,
+            id: villa.id
         };
     });
 
 
     return {
-        data: json.data[id],
+        data: villa,
         otherVillas: titlesAndDescriptions
     };
 }
@@ -40,7 +40,7 @@ export default async function Page({ params }) {
 
     const sliderImgs = data?.attributes?.interiorImages?.data;
     const roomsImages = data?.attributes?.roomImages.data;
-    const description = data?.attributes?.shortDescription;
+    // const description = data?.attributes?.shortDescription;
 
 
     function calculateProportionalWidth(originalWidth, originalHeight, targetHeight) {
@@ -76,7 +76,6 @@ export default async function Page({ params }) {
    
     return (
         <div>
-           {data && sliderImgs && roomsImages ? (
             <>
                  <VillaNew data={data}/>
              <div className='villa_slider'>
@@ -89,13 +88,7 @@ export default async function Page({ params }) {
                  data={otherVillas}
              />
             </>
-           ) : (
-            <div className="villas_no_data">
-                <div>
-                <p>try again with different locale.</p>
-                </div>
-            </div>
-           )}
+        
         </div>
 
     )

@@ -16,11 +16,12 @@ const getData = async () => {
     });
     let json = await res.json();
  
-    const titlesAndDescriptions = json.data.map(villa => {
+    const titlesAndDescriptions = json.data.map((villa, index) => {
         return {
             title: villa.attributes.title,
             description: villa.attributes.shortDescription,
-            details: villa.attributes.details[0]
+            details: villa.attributes.details[0],
+            id: villa.id
         };
     });
 
