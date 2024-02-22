@@ -22,9 +22,6 @@ export const BookForm = ({ width, handleClose, dates }) => {
 		departure: false,
 	})
 
-	console.log('we have the dates')
-	console.log(dates)
-	const [selectedGuests, setSelectedGuests] = useState(null)
 	const [selected, setSelect] = useState({
 		arrival: null,
 		departure: null,
@@ -38,7 +35,6 @@ export const BookForm = ({ width, handleClose, dates }) => {
 
 
 	const handleState = (e) => {
-		console.log(e.target)
 		let name = e.target.name;
 		let value = e.target.value;
 		setInput(prev => ({ ...prev, [name]: value }))
@@ -57,8 +53,6 @@ export const BookForm = ({ width, handleClose, dates }) => {
 			})
 		
 			let json = await data.json()
-			console.log('book now data')
-			console.log(json)
 			setData(json)
 	}
 	useEffect(() => {
@@ -110,21 +104,18 @@ export const BookForm = ({ width, handleClose, dates }) => {
 			sitemap_exclude: true
 
 		}
-		console.log(formData)
 		const {data} = await axios.post("https://strapi.3v7i.com/api/booking-rqs", {
 			data: formData
 		})
-		console.log(data)
 	}
 
 	return (
 		<div className="form_container_mobile">
-			<div style={{ width: width }}>
+			<div>
 				<div className="book_now_intro">
 					<span>BOOK NOW</span>
 					<div className="book_available_dates">
-						<span>Opening Date: {dates.opening} -</span>
-						<span>Closing Date: {dates.closing	}</span>
+						<span>We look forward to welcoming you back on {dates.opening}</span>
 					</div>
 				</div>
 				<Input

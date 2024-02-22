@@ -245,58 +245,5 @@ const VillaNew = ({ data }) => {
 
 
 
-// export const ScrollImageSticky = ({ image }) => {
-//     const ref = useRef(null);
-//     const { scrollYProgress } = useScroll({
-//         target: ref,
-//         offset: ["end end", "start start"]
-//     });
-
-
-
-//     useEffect(() => {
-//         scrollYProgress.on("change", (v) => {
-//             console.log('v', v)
-//             const scroll = (v * 15);
-//             animate('.sticky_img_container', {
-//                 clipPath: `inset(${scroll}%)`
-//             }, {
-//                 ease: "linear",
-//                 duration: 0.4
-//             })
-//         })
-//     }, [])
-//     return (
-//         <div ref={ref} className='v_scroll_image'>
-          
-//             <div className='v_scroll_image_inner'>
-//                 <div className='sticky_img_container'>
-//                     <Image
-//                         alt='villa image'
-//                         src={image}
-//                         fill={true}
-//                     />
-//                 </div>
-//             </div>
-//         </div>
-//     )
-// }
-
-
-// export const ImageScroll = ({ image }) => {
-
-//     return (
-//         <div className='v_main_image_container_inner' >
-//             <Image
-//                 alt="an image of the interior of the ioannian villa"
-//                 src={image}
-//                 sizes={'100%'}
-//                 fill={true}
-//             />
-//         </div>
-//     );
-// }
-
-
 
 export default VillaNew;

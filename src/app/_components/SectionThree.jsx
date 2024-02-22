@@ -74,9 +74,7 @@ export const SectionFour = ({data}) => {
         threshold: 0.5
     });
     useEffect(() => {
-        console.log(isInView)
         if (isInView) {
-            console.log('in view')
             animate(scope.current, {
                 opacity: 1,
             }, {

@@ -23,7 +23,6 @@ const Navbar = ({dates}) => {
 
     
     const onClick = () => {
-        console.log('clcik')
         setClicked(prev => !prev)
     }
     return (
