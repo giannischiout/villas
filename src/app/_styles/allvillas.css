@@ -23,6 +23,7 @@
     font-size: calc(4rem + 3vw);
     color: var(--background);
     transform: translateX(7.5%);
+    margin-top: 50px;
 }
 
 

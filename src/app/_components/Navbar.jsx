@@ -9,13 +9,16 @@ import { BsArrowUpRight } from "react-icons/bs";
 import { useAnimate } from 'framer-motion';
 import { IoCloseOutline } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
-
+import { useCookies } from 'next-client-cookies';
 import NavMenu from './Menu';
 import BookNowModal from './BookNow';
 import Languages from './Locale';
 import { useModal } from '../_context/useModal';
+import { text } from "@/translations";
 const Navbar = ({dates}) => {
     const { toggleModal } = useModal();
+    const cookies = useCookies();
+    const locale = cookies.get('locale');
     const {scrollYProgress} = useScroll();
     const [clicked, setClicked] = useState(false)
     const [modal, setModal] = useState(false)
@@ -38,7 +41,7 @@ const Navbar = ({dates}) => {
             </div>
             <div className='grid_icons'>
                 <Icons />
-                <BookNow onClick={toggleModal} text="book now"/>
+                <BookNow onClick={toggleModal} text={'sefsefs'}/>
             </div>
         </div>
             <NavMenu isOpen={clicked} setIsOpen={setClicked}/>

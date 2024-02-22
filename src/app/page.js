@@ -98,8 +98,8 @@ export default async function Page() {
   const motos = await fetchMoto();
   const data = await fetchData()
   const villas = await getData()
-  let description = data.attributes.hotelshortdescription;
-  let title = data.attributes.hotelname;
+  let description = data?.attributes.hotelshortdescription;
+  let title = data?.attributes.hotelname;
 
 
   

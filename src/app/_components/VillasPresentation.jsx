@@ -7,6 +7,7 @@ import Book from "./Button"
 import { Btn } from "./Button"
 import { text } from "@/translations"
 import { useCookies } from 'next-client-cookies';
+import { mapID, reverseMapID } from "@/lib/mapIds"
 
 
 const VillasPresentation = ({ villas }) => {
@@ -76,8 +77,10 @@ const Card = ({ image, people, sqr, name, id, bedrooms, pullOutCouch }) => {
     const router = useRouter();
     const cookies = useCookies();
     const locale = cookies.get('locale');
+    
     const onClick = () => {
-        router.push(`/villas/${id}`)
+        let _id = reverseMapID(id)
+        router.push(`/villas/${_id}`)
     }
     return (
         <div className="villas_card_container">

@@ -47,8 +47,8 @@ export default async function RootLayout({ children }) {
   const data = await fetchData()
  
   let dates = {
-    opening: data.attributes.openingDate,
-    closing: data.attributes.closingDate
+    opening: data?.attributes?.openingDate,
+    closing: data?.attributes?.closingDate
   }
   return (
     <html lang="en">

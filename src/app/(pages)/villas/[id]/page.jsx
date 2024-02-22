@@ -3,6 +3,12 @@ import ImageSlider from "@/app/_components/ImageSlider"
 import { RoomSlider } from "@/app/_components/RoomSlider"
 import AllVillas from "@/app/_components/AllVillas"
 import { cookies } from 'next/headers'
+import { mapID } from "@/lib/mapIds"
+
+//When we switch to the greek languages the ids change and we can not longer find the data from the post
+//the apis villas returns an array of three objects. We need to find() the correct data with the id, but the ids change
+
+
 const getData = async (id) => {
     const cookieStore = cookies()
     const locale = cookieStore.get('locale')
@@ -16,8 +22,12 @@ const getData = async (id) => {
 
     });
     let json = await res.json();
-  
-    let villa = json.data.find(villa => villa.id == id);
+    // console.log('json')
+    // console.log(json.data[0].attributes)
+    let newid = mapID(id, locale?.value)
+    console.log('newid')
+    console.log(newid)
+    let villa = json.data.find(villa => villa.id == newid);
     //CREATE THE DATA FOR THE REMAINING VILLAS CARDS:
     const otherVillasData = json.data.filter(otherVilla =>otherVilla.id !== parseInt(id));
     const titlesAndDescriptions = otherVillasData.map((villa) => {
@@ -37,8 +47,12 @@ const getData = async (id) => {
 export default async function Page({ params }) {
 
     const { data, otherVillas } = await getData(params.id)
+    // console.log('sefsoeijfsofiesofjsfejsiofjoij')
+    // console.log(data)
 
     const sliderImgs = data?.attributes?.interiorImages?.data;
+    // console.log('SLIDER IMAGES')
+    // console.log(sliderImgs)
     const roomsImages = data?.attributes?.roomImages.data;
     // const description = data?.attributes?.shortDescription;
 
@@ -70,6 +84,9 @@ export default async function Page({ params }) {
         return images
     }
     const imagesSlider = getImages(sliderImgs);
+    console.log(imagesSlider)
+    // console.log(sliderImgs)
+   
     const roomsSlider = getImagesWidthProportions(roomsImages);
     const details = data?.attributes?.details[0]
 
@@ -81,7 +98,7 @@ export default async function Page({ params }) {
              <div className='villa_slider'>
                  <ImageSlider images={imagesSlider} />
              </div>
-             <RoomSlider images={roomsSlider} />
+             {/* <RoomSlider images={roomsSlider} /> */}
              <p className="allvillas_header">EXPLORE MORE</p>
              <AllVillas
                  details={details}

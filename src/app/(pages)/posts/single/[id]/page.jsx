@@ -7,6 +7,9 @@ import { GoArrowUpRight } from 'react-icons/go';
 import PostMiniGallery from "@/app/_components/PostMiniGallery";
 import { PostButton } from '@/app/_components/Button';
 import Map from "@/app/_components/Map";
+import { text } from "@/translations";
+import { revalidatePath } from 'next/cache'
+
 const fetchPosts = async (postId) => {
     "use server";
     const cookieStore = cookies()
@@ -29,7 +32,7 @@ const fetchAll = async () => {
     "use server";
     const cookieStore = cookies()
     const locale = cookieStore.get('locale')
-   
+
     const url = `${process.env.API_URL}/posts?${locale?.value}&populate=images`
     console.log(url)
     
@@ -48,6 +51,9 @@ const fetchAll = async () => {
 
 export default async function Page({ params }) {
     const data = await fetchPosts(params.id)
+    const cookieStore = cookies()
+    const locale = cookieStore.get('locale')
+   
     const allData = await fetchAll()
     const image = data?.attributes?.images.data[0].attributes.url;
     const date = data?.attributes?.createdAt.split('T')[0];
@@ -102,7 +108,7 @@ export default async function Page({ params }) {
                         </div>
                     </div>
                     <div className="other_posts">
-                        <h3>OTHER LOCATIONS</h3>
+                        <h3>{text[locale?.value]?.otherLocation}</h3>
                         <div className="other_posts_grid">
                         {allData.map((post, i) => {
                             if(post.id == params.id) return;
@@ -128,7 +134,6 @@ export default async function Page({ params }) {
 
 
 const Card = ({ image, description, title, date, id, loading }) => {
-  
     return (
         <div className="post_card_container">
             <div className="v_presentation_card_image_container other_posts_img">

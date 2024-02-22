@@ -18,6 +18,12 @@ export const text = {
         sqm: 'Square Meters',
         bedrooms: 'Bedrooms',
         pullOutCouch: 'Pull Out Couch',
+        bookNowMessage: 'We look forward to welcoming you back on',
+        seeMore: 'see more',
+        allPosts: 'all posts',
+        otherLocation: 'OTHER LOCATIONS',
+        bookNow: 'book now',
+        bookNow2: 'book now'
     },
     'locale=el': {
         menuHome: 'ΑΡΧΙΚΗ',
@@ -38,5 +44,11 @@ export const text = {
         sqm: 'Τετρ. Μέτρα',
         bedrooms: 'Δωμάτια',
         pullOutCouch: 'Καναπές Κρεβάτι',
+        bookNowMessage: 'Ανυπομονούμε να σας καλωσορίσουμε ξανά στις',
+        seeMore: 'Περισσότερα',
+        allPosts: 'όλες οι δημοσιεύσεις',
+        otherLocation: 'ΑΛΛΕΣ ΤΟΠΟΘΕΣΙΕΣ',
+        bookNow: 'Κράτηση τώρα',
+        bookNow2: 'Κράτηση'
     }
 }

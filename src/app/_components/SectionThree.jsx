@@ -54,7 +54,7 @@ export const SectionThree = ({data}) => {
                             </motion.div>
                             <div className="row_three_content">
                                 <div onClick={openModal} className="book_getaway">
-                                    <p >{text[locale].btn1}.</p>
+                                    <p >{text[locale]?.btn1}.</p>
                                 </div>
 
                             </div>

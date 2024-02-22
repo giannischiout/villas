@@ -58,7 +58,7 @@ const VillaNew = ({ data }) => {
     const nextImage = () => {
         setCurrent(prev => (prev - 1 + images.length) % images.length)
     }
-    const sidebarImg = `${process.env.NEXT_PUBLIC_BASE_API_URL}${data?.attributes?.images.data[0].attributes?.url}`
+    const sidebarImg = `${process.env.NEXT_PUBLIC_BASE_API_URL}${data?.attributes?.images.data[0].attributes?.url}` || '/intro_day.webp'
     const name = data?.attributes?.title
     const tag = data?.attributes?.tag
     const description = data?.attributes?.shortDescription
@@ -67,10 +67,11 @@ const VillaNew = ({ data }) => {
     const roomTypes = data?.attributes?.roomtypes.data
     const views = data?.attributes?.views.data
     const bathrooms = data?.attributes?.bathroom
+    console.log('bathrooms')
+    console.log(bathrooms)
     // HOOKS
     const [scope, animate] = useAnimate();
-    const clipRef = useRef(null);
-
+    const clipRef = useRef(null)
 
  
 
@@ -119,7 +120,7 @@ const VillaNew = ({ data }) => {
                     <div className='v_sidebar_top'>
                         <p>{'VILLAS'}</p>
                     </div>
-                    <ClipImage img={sidebarImg} forwardRef={clipRef} className="v_sidebar_img_container" />
+                    {/* <ClipImage img={sidebarImg} forwardRef={clipRef} className="v_sidebar_img_container" /> */}
                 </div>
                 <div className="v_main">
                     <div className='v_main_top'>

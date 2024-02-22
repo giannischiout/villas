@@ -10,10 +10,14 @@ import usePopupDirection from "../_hooks/usePopUpDirection";
 import axios from "axios";
 import { DayPicker } from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
+import { useCookies } from 'next-client-cookies';
+import {text} from "@/translations"
 
 
 
 export const BookForm = ({ width, handleClose, dates }) => {
+	const cookies = useCookies();
+    const locale = cookies.get('locale');
 	const calendarrefA = useRef(null)
 	const calendarrefB = useRef(null)
 	const [data, setData] = useState(null)
@@ -96,17 +100,25 @@ export const BookForm = ({ width, handleClose, dates }) => {
 		let formData = {
 			Name: input.name,
 			email: input.email,
-			arrivalDate: selected.arrival,
-			departureDate: selected.departure,
+			arivalDate: selected.arrival.toString(),
+			departureDate: selected.departure.toString(),
 			contactPhone: input.phone,
 			specialRequest: input.message,
-			villa: 'JIRA',
+			villa: 1,
 			sitemap_exclude: true
 
 		}
-		const {data} = await axios.post("https://strapi.3v7i.com/api/booking-rqs", {
-			data: formData
+		const resp = await fetch('https://strapi.3v7i.com/api/booking-rqs', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				data: formData
+			})
 		})
+		const data = await resp.json()
+		console.log(data) 
 	}
 
 	return (
@@ -115,7 +127,7 @@ export const BookForm = ({ width, handleClose, dates }) => {
 				<div className="book_now_intro">
 					<span>BOOK NOW</span>
 					<div className="book_available_dates">
-						<span>We look forward to welcoming you back on {dates.opening}</span>
+						<span>{text[locale].bookNowMessage} {dates.opening}</span>
 					</div>
 				</div>
 				<Input

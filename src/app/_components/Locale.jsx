@@ -2,29 +2,39 @@
 import { createLocale } from "../actions";
 import { useCookies } from 'next-client-cookies';
 import { useEffect } from 'react';
+import { useRouter } from 'next/navigation'
+
 import { text } from "@/translations";
 const Languages = () => {
     const cookies = useCookies();
+    const router = useRouter();
     const locale = cookies.get('locale');
     useEffect(() => {
         if (!locale) {
             createLocale('locale=en')
         }
     }, [])
+    const handleEn = () => {
+        createLocale('locale=en')
+
+    }
+    const handleEl = () => {
+        createLocale('locale=el')
+    }
     return (
         <div className="languages">
             <button
-                onClick={() => createLocale('locale=en')}
+                onClick={handleEn}
                 className={locale === 'locale=en' ? 'lang_active' : ''}
             >
-                {text[locale].localeBtnEn}
+                {text[locale]?.localeBtnEn}
             </button>
             <hr />
             <button
-                onClick={() => createLocale('locale=el')}
+                onClick={handleEl}
                 className={locale === 'locale=el' ? 'lang_active' : ''}
             >
-                  {text[locale].localeBtnEl}
+                  {text[locale]?.localeBtnEl}
             </button>
         </div>
 
