@@ -14,7 +14,12 @@ const Map = ({ location, height }) => {
   };
 
   return (
-    <LoadScript googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}>
+    <LoadScript 
+    loadingElement={<div style={{ height: '100%' }} />}
+    googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}
+    onLoad={() => console.log('Google Maps loaded successfully')}
+
+    >
       <GoogleMap mapContainerStyle={mapContainerStyle} center={center} zoom={15}>
         <Marker position={center} />
       </GoogleMap>

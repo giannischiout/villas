@@ -19,14 +19,41 @@ export const metadata = {
 
 }
 
-export default function RootLayout({ children }) {
+const fetchData = async () => {
+  "use server";
+  const url = `${process.env.API_URL}/hotel?populate=*`
+  console.log(url)
+ 
+
+
+  
+  let data = await fetch(url, {
+      method: 'GET',
+      headers: {
+          'Content-Type': 'application/json'
+      }
+  }, {
+      cache: 'no-cache'
+  })
+
+  let json = await data.json()
+  return json.data;
+}
+export default async function RootLayout({ children }) {
+
+  const data = await fetchData()
+ 
+  let dates = {
+    opening: data.attributes.openingDate,
+    closing: data.attributes.closingDate
+  }
   return (
     <html lang="en">
       <body className={`$${bonaNova.variant}  ${mont.variable}`}>
         <LocaleProvider>
           <ModalProvider>
             <SmoothScrolling>
-              <Navbar />
+              <Navbar  dates={dates}/>
               {children}
               <FooterNew />
             </SmoothScrolling>

@@ -73,12 +73,7 @@ export default async function Page({ params }) {
     const roomsSlider = getImagesWidthProportions(roomsImages);
     const details = data?.attributes?.details[0]
 
-    console.log(data)
-    console.log('slider images')
-    console.log(sliderImgs)
-    console.log('room images')
-
-    console.log(roomsImages)
+   
     return (
         <div>
            {data && sliderImgs && roomsImages ? (

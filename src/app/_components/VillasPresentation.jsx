@@ -6,10 +6,8 @@ import { useRouter } from "next/navigation"
 import Book from "./Button"
 import { Btn } from "./Button"
 import BookCircle from "./BookCircle"
-const VillasPresentation = ({
-    id
-}) => {
-
+const VillasPresentation = ({ villas }) => {
+    console.log(villas)
     return (
         <section>
             <div className="v_presentation_container">
@@ -20,30 +18,47 @@ const VillasPresentation = ({
                                 <span>CHOOSE ONE OF</span>
                                 <p>OUR VILLAS</p>
                             </div>
-                           
+
                         </div>
-                     
+
                     </div>
                     <div className="v_presentations_villas">
-                       <div className="card1">
-                       
-                                    <Card 
-                                    // id="v_presentation_villa_1"
-                                    id={0}
-                                    name="Castro" 
-                                    image="pres_castro.webp" 
-                                    people={9} 
-                                    sqr="140"
-                                    href=""
+                        <div className="card1">
+
+                            <Card
+                                id={0}
+                                name={villas[0].title}
+                                image="pres_castro.webp"
+                                people={villas[0].details.maxAduls}
+                                sqr={villas[0].details.squareMeters}
+                                bedrooms={villas[0].details.bedrooms}
+                                pullOutCouch={villas[0].details.pullOutCouch}
+                                href=""
+                            />
+                        </div>
+                        <div className="card2">
+                            <Card
+                                image="pres_jira.webp"
+                                
+                                name={villas[1].title}
+                                people={villas[1].details.maxAduls}
+                                sqr={villas[1].details.squareMeters}
+                                bedrooms={villas[1].details.bedrooms}
+                                pullOutCouch={villas[1].details.pullOutCouch}
+                            />
+                        </div>
+                        <div className="card3">
+                            <Card 
+                                id={2} 
+                                image="pres_milos.webp" 
+                                name={villas[2].title}
+                                people={villas[2].details.maxAduls}
+                                sqr={villas[2].details.squareMeters}
+                                bedrooms={villas[2].details.bedrooms}
+                                pullOutCouch={villas[2].details.pullOutCouch}
                                 />
-                       </div>
-                       <div className="card2">
-                      <Card  name="Jira" image="pres_jira.webp" people={9} sqr="140" id={1} />
-                       </div>
-                       <div className="card3">
-                       <Card  name="Milos" image="pres_milos.webp" people={9} sqr="140" id={2}/>
-                       </div>
-                        
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -52,14 +67,14 @@ const VillasPresentation = ({
 }
 
 
-const Card = ({ image, people, sqr, name, id }) => {
+const Card = ({ image, people, sqr, name, id, bedrooms, pullOutCouch }) => {
     const router = useRouter();
 
     const onClick = () => {
         router.push(`/villas/${id}`)
     }
     return (
-        <div  className="villas_card_container">
+        <div className="villas_card_container">
             <div className="v_presentation_card_image_container">
                 <Image src={`/${image}`} alt="villa1" fill={true} sizes={"(max-width: 800px) 90%"} />
 
@@ -67,8 +82,10 @@ const Card = ({ image, people, sqr, name, id }) => {
             <div className="v_presentation_card_text">
                 <div className="">
                     <span className="v_card_title">{name}</span>
-                    <p>{`${people} people`}</p>
-                    <p>{`${sqr} sqm`}</p>
+                    <p>{`Max Adults: ${people}`}</p>
+                    <p>{`Square Meters ${sqr}`}</p>
+                    <p>{`bedrooms ${bedrooms}`}</p>
+                    <p>{`Pullout Couch ${pullOutCouch}`}</p>
                 </div>
                 <Btn text="see more" onClick={onClick} />
 

@@ -14,7 +14,7 @@ import NavMenu from './Menu';
 import BookNowModal from './BookNow';
 import Languages from './Locale';
 import { useModal } from '../_context/useModal';
-const Navbar = () => {
+const Navbar = ({dates}) => {
     const { toggleModal } = useModal();
     const {scrollYProgress} = useScroll();
     const [clicked, setClicked] = useState(false)
@@ -43,7 +43,7 @@ const Navbar = () => {
             </div>
         </div>
             <NavMenu isOpen={clicked} setIsOpen={setClicked}/>
-            <BookNowModal isOpen={modal}/>
+            <BookNowModal isOpen={modal} dates={dates}/>
         </div>
     )
 }

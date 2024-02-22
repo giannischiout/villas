@@ -23,6 +23,7 @@
     "cookies-next": "^4.1.0",
     "date-fns": "^3.0.6",
     "framer-motion": "^10.16.16",
+    "google-map-react": "^2.2.1",
     "gsap": "^3.12.4",
     "locomotive-scroll": "^4.1.4",
     "lucide-react": "^0.294.0",
@@ -37,7 +38,8 @@
     "sharp": "^0.33.2",
     "tailwind-merge": "^2.2.0",
     "tailwindcss-animate": "^1.0.7",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "zustand": "^4.5.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",

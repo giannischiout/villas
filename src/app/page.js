@@ -69,11 +69,33 @@ const fetchData = async () => {
   return json.data;
 }
 
+const getData = async () => {
+  const cookieStore = cookies()
+  const locale = cookieStore.get('locale')
+  let url = `${process.env.API_URL}/villas?${locale?.value}&populate=details,facilities,roomtypes,bathroom,images,views,interiorImages,roomImages `
+  const res = await fetch(url, {
+      method: 'GET',
+      headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+      },
 
+  });
+  let json = await res.json();
+  let newdata = json.data.map(villa => {
+    return {
+      title: villa.attributes.title,
+      details: villa.attributes.details[0]
+    }
+  });
+  return newdata;
+}
 export default async function Page() {
   const posts = await fetchPosts()
   const motos = await fetchMoto();
   const data = await fetchData()
+  const villas = await getData()
+  console.log(villas)
   let description = data.attributes.hotelshortdescription;
   let title = data.attributes.hotelname;
 
@@ -86,7 +108,7 @@ export default async function Page() {
           <SectionFour  data={motos} />
           <SectionFive  data={motos} />
           <SlideShow posts={posts}/>
-          <VillasPresentation />
+          <VillasPresentation villas={villas}/>
         </div>
   )
 }

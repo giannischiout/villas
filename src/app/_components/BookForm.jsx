@@ -13,7 +13,7 @@ import 'react-day-picker/dist/style.css';
 
 
 
-export const BookForm = ({ width, handleClose }) => {
+export const BookForm = ({ width, handleClose, dates }) => {
 	const calendarrefA = useRef(null)
 	const calendarrefB = useRef(null)
 	const [data, setData] = useState(null)
@@ -21,6 +21,9 @@ export const BookForm = ({ width, handleClose }) => {
 		arrival: false,
 		departure: false,
 	})
+
+	console.log('we have the dates')
+	console.log(dates)
 	const [selectedGuests, setSelectedGuests] = useState(null)
 	const [selected, setSelect] = useState({
 		arrival: null,
@@ -82,9 +85,7 @@ export const BookForm = ({ width, handleClose }) => {
 	}
 
 
-	const closeCalendars = () => {
-		setShow(prev => ({ ...prev, arrival: false, departure: false }))
-	}
+	
 
 	const closeArrival = () => {
 		setShow(prev => ({ ...prev, arrival: false }))
@@ -121,8 +122,10 @@ export const BookForm = ({ width, handleClose }) => {
 			<div style={{ width: width }}>
 				<div className="book_now_intro">
 					<span>BOOK NOW</span>
-					<p>PLEASE NOTE WE ARE CLOSED SEASONALLY FROM NOVEMBER 1ST TO MARCH 27TH.
-						WE LOOK FORWARD TO WELCOMING YOU BACK ON MARCH 28TH 2024</p>
+					<div className="book_available_dates">
+						<span>Opening Date: {dates.opening} -</span>
+						<span>Closing Date: {dates.closing	}</span>
+					</div>
 				</div>
 				<Input
 					name="name"
