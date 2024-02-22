@@ -23,7 +23,13 @@ export const text = {
         allPosts: 'all posts',
         otherLocation: 'OTHER LOCATIONS',
         bookNow: 'book now',
-        bookNow2: 'book now'
+        bookNow2: 'book now',
+        rooms: 'rooms',
+        bathrooms: 'bathrooms / wc',
+        facilities: 'facilities',
+        views: 'Θέα',
+        interior: 'INTERIORS',
+        explore: 'EXPLOR MORE',
     },
     'locale=el': {
         menuHome: 'ΑΡΧΙΚΗ',
@@ -49,6 +55,12 @@ export const text = {
         allPosts: 'όλες οι δημοσιεύσεις',
         otherLocation: 'ΑΛΛΕΣ ΤΟΠΟΘΕΣΙΕΣ',
         bookNow: 'Κράτηση τώρα',
-        bookNow2: 'Κράτηση'
+        bookNow2: 'Κράτηση',
+        rooms: 'Δωμάτια',
+        bathrooms: 'WC',
+        facilities: 'Παροχές',
+        views: 'Θέα',
+        interiors: 'ΕΣΩΤΕΡΙΚΟΙ ΧΩΡΟΙ',
+        explore: 'ΕΞΕΡΕΥΝΗΣΤΕ ΠΕΡΙΣΣΟΤΕΡΟ'
     }
 }

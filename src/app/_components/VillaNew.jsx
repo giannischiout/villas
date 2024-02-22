@@ -6,8 +6,8 @@ import Book from './Button';
 import { ClipImage } from './ClipImage';
 import { FaPerson } from "react-icons/fa6";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-
-
+import { text } from '@/translations';
+import { useCookies } from 'next-client-cookies';
 export const Reveal = ({ children }) => {
     const ref = useRef(null);
     const isInView = useInView(ref);
@@ -50,7 +50,8 @@ const images = [
 
 const VillaNew = ({ data }) => {
     const [current, setCurrent] = useState(0);
-
+    const cookies = useCookies();
+    const locale = cookies.get('locale');
     const prevImage = () => {
         setCurrent(prev => (prev + 1) % images.length)
     }
@@ -153,20 +154,19 @@ const VillaNew = ({ data }) => {
                             <div id="villa_attr_details">
                                 <div>
                                     <p>{details?.maxAduls}</p>
-                                    <span>{'Max Adults'}</span>
-
+                                    <span>{text[locale].maxAdults}</span>
                                 </div>
                                 <div>
                                     <p>{details?.bedrooms}</p>
-                                    <span>{'Bedrooms'}</span>
+                                    <span>{text[locale].bedrooms}</span>
                                 </div>
                                 <div>
                                     <p>{details?.squareMeters}</p>
-                                    <span>{'Square Meters'}</span>
+                                    <span>{text[locale].sqm}</span>
                                 </div>
                                 <div>
                                     <p>{details?.pullOutCouch}</p>
-                                    <span>{'Pull Out Couch'}</span>
+                                    <span>{text[locale].pullOutCouch}</span>
                                 </div>
 
                             </div>
@@ -179,7 +179,7 @@ const VillaNew = ({ data }) => {
                         </div>
                         <div className='villa_info'>
                             <div className='villa_facilities'>
-                                <span>Facilities</span>
+                                <span>{text[locale].facilities}</span>
                                 <div>
                                 {facilites && facilites.map((facility, index) => {
                                     return (
@@ -192,7 +192,7 @@ const VillaNew = ({ data }) => {
                               
                             </div>
                             <div className='room_features'>
-                                <span>Rooms</span>
+                                <span>{text[locale].rooms}</span>
                                 {roomTypes && roomTypes.map((room, index) => {
                                     return (
                                         <div key={index} className='room_feature'>
@@ -210,7 +210,7 @@ const VillaNew = ({ data }) => {
                             </div>
                             <div className='room_feat_right'>
                                 <div className='room_views'>
-                                    <span className='room_title'>Views</span>
+                                    <span className='room_title'>{text[locale].views}</span>
                                     <div>   
                                         {views && views.map((view, index) => {
                                             return (
@@ -220,7 +220,7 @@ const VillaNew = ({ data }) => {
                                     </div>
                                 </div>
                                 <div className='room_bathrooms'>
-                                    <span  className='room_title'>Bathrooms / WC</span>
+                                    <span  className='room_title'>{text[locale].bathrooms}</span>
                                     <div>
                                         {bathrooms && bathrooms.map((bathroom, index) => {
                                             return (
@@ -232,10 +232,9 @@ const VillaNew = ({ data }) => {
                             </div>
                         </div>
                         <div >
-                            <p className='interiors_header'>INTERIORS</p>
+                            <p className='interiors_header'>{text[locale].interiors}</p>
                         </div>
                     </div>
-
                 </div>
             </div>
          

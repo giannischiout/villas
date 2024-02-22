@@ -41,7 +41,7 @@ const Navbar = ({dates}) => {
             </div>
             <div className='grid_icons'>
                 <Icons />
-                <BookNow onClick={toggleModal} text={'sefsefs'}/>
+                <BookNow onClick={toggleModal} text={text[locale].bookNow2}/>
             </div>
         </div>
             <NavMenu isOpen={clicked} setIsOpen={setClicked}/>
@@ -55,38 +55,8 @@ const Navbar = ({dates}) => {
 
 const Burger = ({onClick, clicked}) => {
     const [scope, animate] = useAnimate()
-    const handleMouseEnter = async () => {
-        animate(scope.current , {
-            backgroundColor: 'var(--primary)',
-        
-        }, {
-            ease: 'easeInOut',
-            duration: 1
-        })
-        animate('svg' , {
-            color: 'white'
-        })
-    }
-    
-    const handleMouseLeave = async () => {
-        animate( scope.current, {
-            backgroundColor: 'transparent',
-            color: 'var(--primary_dark)'
-        }, {
-            ease: 'easeInOut',
-            duration: 1
-        })
-        animate('svg' , {
-            color: 'var(--primary)'
-        })
-       
-    }
-    
-
-    
 
     return (
-        // <div className={`nav_burger ${clicked ? 'times' : null }`} onClick={onClick}>
         <div 
         ref={scope} 
         className={`nav_burger `} 
@@ -134,7 +104,7 @@ const Icons = () => {
                 duration: 0.3
             })
             animate('#book_icon', {
-                color: 'white'
+                color: '#ffffff'
             }, {
                 ease: 'easeInOut',
             })

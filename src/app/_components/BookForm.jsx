@@ -21,6 +21,7 @@ export const BookForm = ({ width, handleClose, dates }) => {
 	const calendarrefA = useRef(null)
 	const calendarrefB = useRef(null)
 	const [data, setData] = useState(null)
+	const [responseBook, setResponseBooking] = useState(null)
 	const [show, setShow] = useState({
 		arrival: false,
 		departure: false,
@@ -46,18 +47,9 @@ export const BookForm = ({ width, handleClose, dates }) => {
 
 
 	const handleFetch = async () => {
-			const url = `${process.env.API_URL}/hotel?&populate=hotelcontact`
-			let data = await fetch(url, {
-				method: 'GET',
-				headers: {
-					'Content-Type': 'application/json'
-				}
-			}, {
-				cache: 'no-cache'
-			})
-		
-			let json = await data.json()
-			setData(json)
+			const url = `${process.env.NEXT_PUBLIC_BASE_API_UR}/api/hotel?&populate=hotelcontact`
+			let {data}= await axios.get(url)
+			setData(data)
 	}
 	useEffect(() => {
 		handleFetch()
@@ -96,18 +88,18 @@ export const BookForm = ({ width, handleClose, dates }) => {
 	}
 
 	const handleSubmit = async () => {
-
 		let formData = {
 			Name: input.name,
 			email: input.email,
 			arivalDate: selected.arrival.toString(),
 			departureDate: selected.departure.toString(),
-			contactPhone: input.phone,
+			contactPhone: input.phone.toString(),
 			specialRequest: input.message,
 			villa: 1,
 			sitemap_exclude: true
 
 		}
+
 		const resp = await fetch('https://strapi.3v7i.com/api/booking-rqs', {
 			method: 'POST',
 			headers: {
@@ -179,20 +171,13 @@ export const BookForm = ({ width, handleClose, dates }) => {
 					handleClose={closeDeparture}
 					calRef={calendarrefB}
 				/>
-				{/* <Guests
-					closeCalendars={closeCalendars}
-					selectedGuests={selectedGuests}
-					setSelectedGuests={setSelectedGuests}
-				/> */}
 				<div className="form_button_container">
 					<button onClick={handleSubmit} className="submit_btn">SUBMIT</button>
 					<button onClick={handleClose} className="close_btn">CLOSE</button>
-
 				</div>
-
+				<div>
+				</div>
 			</div>
-
-
 		</div>
 	)
 }
