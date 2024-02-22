@@ -5,8 +5,14 @@ import { BookNow } from "./Navbar"
 import { useRouter } from "next/navigation"
 import Book from "./Button"
 import { Btn } from "./Button"
-import BookCircle from "./BookCircle"
+import { text } from "@/translations"
+import { useCookies } from 'next-client-cookies';
+
+
 const VillasPresentation = ({ villas }) => {
+    const cookies = useCookies();
+    const locale = cookies.get('locale');
+   
     return (
         <section>
             <div className="v_presentation_container">
@@ -14,8 +20,9 @@ const VillasPresentation = ({ villas }) => {
                     <div className="v_presentation_sticky">
                         <div className="v_presentation_top">
                             <div className="v_presentation_header">
-                                <span>CHOOSE ONE OF</span>
-                                <p>OUR VILLAS</p>
+                                {/* choose on of our villas */}
+                                <span>{text[locale].t1}</span>
+                                <p>{text[locale].t2}</p>
                             </div>
 
                         </div>
@@ -67,7 +74,8 @@ const VillasPresentation = ({ villas }) => {
 
 const Card = ({ image, people, sqr, name, id, bedrooms, pullOutCouch }) => {
     const router = useRouter();
-
+    const cookies = useCookies();
+    const locale = cookies.get('locale');
     const onClick = () => {
         router.push(`/villas/${id}`)
     }
@@ -80,10 +88,10 @@ const Card = ({ image, people, sqr, name, id, bedrooms, pullOutCouch }) => {
             <div className="v_presentation_card_text">
                 <div className="">
                     <span className="v_card_title">{name}</span>
-                    <p>{`Max Adults: ${people}`}</p>
-                    <p>{`Square Meters ${sqr}`}</p>
-                    <p>{`bedrooms ${bedrooms}`}</p>
-                    <p>{`Pullout Couch ${pullOutCouch}`}</p>
+                    <p>{`${text[locale].maxAdults} ${people}`}</p>
+                    <p>{`${text[locale].sqm} ${sqr}`}</p>
+                    <p>{`${text[locale].bedrooms} ${bedrooms}`}</p>
+                    <p>{`${text[locale].pullOutCouch} ${pullOutCouch}`}</p>
                 </div>
                 <Btn text="see more" onClick={onClick} />
 

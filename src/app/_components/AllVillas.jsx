@@ -3,6 +3,8 @@ import BookCircle from './BookCircle';
 import { redirect } from 'next/navigation'
 import { Villa, VillaRight } from './SingleVIllaCard';
 const AllVillas = ({ data, hasDetails = false }) => {
+
+    
     return (
         <div className="allvillas_container ">
             <div className="allvillas_inner">

@@ -3,8 +3,8 @@ import { useAnimate, useScroll, useTransform, motion, useAnimation, useInView } 
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { useModal } from "../_context/useModal";
-
-
+import {text} from "@/translations"
+import { useCookies } from 'next-client-cookies';
 
 
 
@@ -13,7 +13,9 @@ export const SectionThree = ({data}) => {
     const forwardRef = useRef(null);
     const isInView = useInView(forwardRef);
     const mainControls = useAnimation();
-    const { modalOpen, openModal, closeModal } = useModal();
+    const { openModal } = useModal();
+    const cookies = useCookies();
+    const locale = cookies.get('locale');
 
     useEffect(() => {
         if (isInView) {
@@ -30,13 +32,12 @@ export const SectionThree = ({data}) => {
                 </div>
                 <div className="traslated_container">
                     <div className="row_two">
-                        <p >{data[1].attributes.moto} </p>
+                        <p >{data[1]?.attributes?.moto} </p>
                     </div>
                     <div className="row_three">
                         <div>
                             <motion.div
                                 className={`row_three_image`}
-
                                 initial="hidden"
                                 animate={mainControls}
                                 variants={{
@@ -53,7 +54,7 @@ export const SectionThree = ({data}) => {
                             </motion.div>
                             <div className="row_three_content">
                                 <div onClick={openModal} className="book_getaway">
-                                    <p >Book your getaway today and indulge in the beauty of Agios Ioannis Bay.</p>
+                                    <p >{text[locale].btn1}.</p>
                                 </div>
 
                             </div>
@@ -67,6 +68,8 @@ export const SectionThree = ({data}) => {
 
 
 export const SectionFour = ({data}) => {
+    const cookies = useCookies();
+    const locale = cookies.get('locale');
     const ref = useRef(null);
     const [scope, animate] = useAnimate();
     const isInView = useInView({
@@ -88,14 +91,14 @@ export const SectionFour = ({data}) => {
             <div ref={scope} className="section_four_inner">
                 <div>
                     <div>
-                        <span className="header">{data[2].attributes.title}</span>
+                        <span className="header">{data[2]?.attributes?.title}</span>
                         <p>
-                        {data[2].attributes.moto}
+                        {data[2]?.attributes?.moto}
                         </p>
                     </div>
                     <div>
-                        <span className="header">{data[3].attributes.title}</span>
-                        <p>{data[3].attributes.moto}</p>
+                        <span className="header">{data[3]?.attributes?.title}</span>
+                        <p>{data[3]?.attributes?.moto}</p>
                     </div>
                 </div>
             </div>
@@ -105,6 +108,8 @@ export const SectionFour = ({data}) => {
 
 
 export const SectionFive = () => {
+    const cookies = useCookies();
+    const locale = cookies.get('locale');
     const forwardRef = useRef(null);
     const isInView = useInView(forwardRef);
     const mainControls = useAnimation();
@@ -119,7 +124,8 @@ export const SectionFive = () => {
         <section className="section_five_container" ref={forwardRef}>
             <div className="section_five_container_row_1">
                 <div className="section_five_container_row_1_left">
-                    <p>RETREATS</p>
+                    <span>{text[locale].text3}</span>
+                    <p>{text[locale].text4}</p>
                 </div>
                 <div className="section_five_container_row_1_right">
                     <div>

@@ -172,7 +172,7 @@ body {
 body {
   font-size: var(--font-normal);
   /* font-family: var(--font-qautrocento); */
-  font-family: var(--font-mont);
+  font-family: var(-font_noto);
 }
 
 button:focus {
@@ -414,10 +414,11 @@ p {
 }
 
 .intro_text h3 {
-  font-size: calc(3rem + 4vw);
+  font-size: calc(3rem + 3vw);
   color: var(--primary_dark);
-  line-height: 1;
+  line-height: 1.1;
   margin-bottom: 40px;
+  font-weight: 400;
 }
 
 
@@ -460,6 +461,7 @@ p {
     font-size: 3rem;
     line-height: 1.4;
     margin-bottom: 30px;
+    
   }
 
 }

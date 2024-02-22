@@ -3,10 +3,12 @@
 import { useEffect, useState } from "react"
 import {useRouter} from "next/navigation"
 import Image from "next/image"
-import axios from "axios"
+import { useCookies } from 'next-client-cookies';
+import { text } from "@/translations"
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 const SlideShow = ({posts}) => {
-  
+    const cookies = useCookies();
+    const locale = cookies.get('locale');
     const [current, setCurrent] = useState(0)
 
     const router = useRouter()
@@ -46,7 +48,7 @@ const SlideShow = ({posts}) => {
                 </div>
                 <div className="slideshow_right" onClick={() =>router.push(`/posts/single/${posts[current].id}`)}>
                         <div className="home_post_circle">
-                            <span>LEARN MORE ABOUT LEFKADAS ISLANDS</span>
+                            <span>{text[locale].postBtn}</span>
                         </div>
                 </div>
             </div>

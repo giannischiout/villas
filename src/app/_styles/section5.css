@@ -17,7 +17,6 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    /* background-color: aquamarine; */
     
 }
 .section_five_container_row_1_right {
@@ -46,12 +45,8 @@
     color: var(--background);
     font-weight: 300;
 }
-.section_five_container_row_1_left p::before {
-    position: absolute;
-    content: "PRIVATE";
-    font-size: 4rem;
-    right: 0;
-    top: -40px;
+.section_five_container_row_1_left span {
+    text-align: right;
     color: var(--primary_dark)
 }
 

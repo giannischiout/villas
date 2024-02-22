@@ -3,7 +3,7 @@ import { SectionTwo, SectionFour, SectionFive, SectionSix} from "./SectionThree"
 import VillasPresentation from "./VillasPresentation";
 import Hero from "./Hero";
 import SlideShow from "./SlideShow";
-const Home = ({posts}) => {
+const Home = ({posts, locale}) => {
 
  
 
@@ -11,9 +11,9 @@ const Home = ({posts}) => {
     <>
         <div>
           <Hero />
-          <SectionThree />
-          <SectionFour />
-          <SectionFive />
+          <SectionThree locale={locale}/>
+          <SectionFour  locale={locale}/>
+          <SectionFive  locale={locale} />
           <SlideShow posts={posts}/>
           <VillasPresentation />
         </div>
