@@ -18,23 +18,3 @@ export function mapID(id, locale) {
 
     return _id;
 }
-export function reverseMapID(id, locale) {
-    if (locale === 'locale=el') {
-        return id;
-    }
-
-    let _id;
-    switch (parseInt(id)) {
-        case 4:
-            _id = 1;
-            break;
-        case 5:
-            _id = 2;
-            break;
-        case 6:
-            _id = 3;
-            break;
-    }
-
-    return _id;
-}

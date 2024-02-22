@@ -33,7 +33,7 @@ const VillasPresentation = ({ villas }) => {
                         <div className="card1">
 
                             <Card
-                                id={villas[0].id}
+                                id={1}
                                 name={villas[0].title}
                                 image="pres_castro.webp"
                                 people={villas[0].details.maxAduls}
@@ -44,7 +44,7 @@ const VillasPresentation = ({ villas }) => {
                         </div>
                         <div className="card2">
                             <Card
-                                id={villas[1].id}
+                                id={2}
                                 image="pres_jira.webp"
                                 name={villas[1].title}
                                 people={villas[1].details.maxAduls}
@@ -55,7 +55,7 @@ const VillasPresentation = ({ villas }) => {
                         </div>
                         <div className="card3">
                             <Card 
-                                id={villas[2].id} 
+                                id={3} 
                                 image="pres_milos.webp" 
                                 name={villas[2].title}
                                 people={villas[2].details.maxAduls}
@@ -79,8 +79,7 @@ const Card = ({ image, people, sqr, name, id, bedrooms, pullOutCouch }) => {
     const locale = cookies.get('locale');
     
     const onClick = () => {
-        let _id = reverseMapID(id)
-        router.push(`/villas/${_id}`)
+        router.push(`/villas/${id}`)
     }
     return (
         <div className="villas_card_container">
