@@ -12,7 +12,11 @@ import { mapID, reverseMapID } from "@/lib/mapIds"
 
 const VillasPresentation = ({ villas }) => {
     const cookies = useCookies();
+<<<<<<< HEAD
     const locale = cookies.get('locale') || 'locale=en';
+=======
+    const locale = cookies.get('locale');
+>>>>>>> parent of 5757991 (contact page complete)
    
     return (
         <section>
@@ -76,7 +80,11 @@ const VillasPresentation = ({ villas }) => {
 const Card = ({ image, people, sqr, name, id, bedrooms, pullOutCouch }) => {
     const router = useRouter();
     const cookies = useCookies();
+<<<<<<< HEAD
     const locale = cookies.get('locale') || 'locale=en';
+=======
+    const locale = cookies.get('locale');
+>>>>>>> parent of 5757991 (contact page complete)
     
     const onClick = () => {
         router.push(`/villas/${id}`)

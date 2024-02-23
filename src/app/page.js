@@ -106,7 +106,7 @@ export default async function Page() {
   return (
         <div>
             <Hero data={motos} description={description} title={title} />
-          <SectionThree  data={motos}  />
+          <SectionThree  data={motos} locale={locale} />
           <SectionFour  data={motos} />
           <SectionFive  data={motos} />
           <SlideShow posts={posts}/>

@@ -10,6 +10,7 @@ export const Villa = ({ description, title, details, hasDetails, id }) => {
    
     const cookies = useCookies();
     const locale = cookies.get('locale')  || 'locale=en';
+
     return (
         <div className="single_villa_item">
             <div className='sv_column_1'>
@@ -52,7 +53,7 @@ export const Villa = ({ description, title, details, hasDetails, id }) => {
 export const VillaRight = ({ description, title, details, hasDetails, id }) => {
     const router = useRouter();
     const cookies = useCookies();
-    const locale = cookies.get('locale');
+    const locale = cookies.get('locale') || 'locale=en';
     return (
         <div className="single_villa_item_right">
             <div onClick={() => router.push(`/villas/${id}`)} className='sv_right_col_1'>

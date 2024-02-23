@@ -32,7 +32,10 @@ export const text = {
         views: 'Θέα',
         interior: 'INTERIORS',
         explore: 'EXPLOR MORE',
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of 5757991 (contact page complete)
     },
     'locale=el': {
         menuHome: 'ΑΡΧΙΚΗ',
@@ -64,6 +67,10 @@ export const text = {
         facilities: 'Παροχές',
         views: 'Θέα',
         interiors: 'ΕΣΩΤΕΡΙΚΟΙ ΧΩΡΟΙ',
+<<<<<<< HEAD
 
+=======
+        explore: 'ΕΞΕΡΕΥΝΗΣΤΕ ΠΕΡΙΣΣΟΤΕΡΟ'
+>>>>>>> parent of 5757991 (contact page complete)
     }
 }
