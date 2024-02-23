@@ -111,7 +111,7 @@ export const SectionFour = ({data}) => {
 
 export const SectionFive = () => {
     const cookies = useCookies();
-    const locale = cookies.get('locale');
+    const locale = cookies.get('locale') || 'locale=en';
     const forwardRef = useRef(null);
     const isInView = useInView(forwardRef);
     const mainControls = useAnimation();

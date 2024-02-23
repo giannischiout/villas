@@ -215,7 +215,7 @@ export const BookForm = ({ width, handleClose, dates }) => {
 
 const ChooseVilla = ({ handleShow, show, handleState, input }) => {
 	const cookies = useCookies();
-	const locale = cookies.get('locale');
+	const locale = cookies.get('locale') || 'locale=en';
 	const [choise, setChoise] = useState(text[locale].chooseVilla )
 	const handleClick = (id, name) => {
 		setChoise(name)

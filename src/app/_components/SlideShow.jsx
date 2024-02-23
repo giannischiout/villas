@@ -8,7 +8,7 @@ import { text } from "@/translations"
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 const SlideShow = ({posts}) => {
     const cookies = useCookies();
-    const locale = cookies.get('locale');
+    const locale = cookies.get('locale') || 'locale=en';
     const [current, setCurrent] = useState(0)
 
     const router = useRouter()

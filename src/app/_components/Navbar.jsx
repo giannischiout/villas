@@ -18,11 +18,7 @@ import { text } from "@/translations";
 const Navbar = ({dates}) => {
     const { toggleModal } = useModal();
     const cookies = useCookies();
-<<<<<<< HEAD
     const locale = cookies.get('locale')  || 'locale=en';
-=======
-    const locale = cookies.get('locale');
->>>>>>> parent of 5757991 (contact page complete)
     const {scrollYProgress} = useScroll();
     const [clicked, setClicked] = useState(false)
     const [modal, setModal] = useState(false)
