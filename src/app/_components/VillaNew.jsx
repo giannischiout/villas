@@ -47,6 +47,7 @@ const images = [
 ]
 
 
+
 const VillaNew = ({ data }) => {
     const [current, setCurrent] = useState(0);
     const cookies = useCookies();

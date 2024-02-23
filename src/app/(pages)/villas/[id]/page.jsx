@@ -1,5 +1,6 @@
 import VillaNew from "@/app/_components/VillaNew"
 import ImageSlider from "@/app/_components/ImageSlider"
+import { RoomSlider } from "@/app/_components/RoomSlider"
 import AllVillas from "@/app/_components/AllVillas"
 import { cookies } from 'next/headers'
 import { mapID } from "@/lib/mapIds"
