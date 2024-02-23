@@ -77,7 +77,7 @@ const Hero = ({ data, description, title}) => {
                 <div className="v_sidebar_space"></div>
                 <div className="intro_sidebar">
                     <div className='v_sidebar_img_container'>
-                        <Image src={'/1.webp'} fill={true} sizes="300px" />
+                        <Image src={'/1.webp'} fill={true} sizes="300px" alt="A villa in Lefkada to book your vacations" />
                     </div>
                 </div>
                 <div className="v_main">

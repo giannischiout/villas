@@ -3,7 +3,7 @@ import BookCircle from './BookCircle';
 import { redirect } from 'next/navigation'
 import { Villa, VillaRight } from './SingleVIllaCard';
 const AllVillas = ({ data, hasDetails = false }) => {
-
+    console.log(data[2])
     
     return (
         <div className="allvillas_container ">
@@ -12,7 +12,7 @@ const AllVillas = ({ data, hasDetails = false }) => {
                 <VillaRight description={data[1]?.description} title={data[1]?.title} details={data[1]?.details}  hasDetails={hasDetails} id={2} />
                 {data[2] ?
                     (
-                        <Villa description={data[3]?.description} title={data[3]?.title} details={data[2]?.details}  hasDetails={hasDetails} id={3}/>
+                        <Villa description={data[2]?.description} title={data[2]?.title} details={data[2]?.details}  hasDetails={hasDetails} id={3}/>
                     ) : null}
             </div>
         </div>

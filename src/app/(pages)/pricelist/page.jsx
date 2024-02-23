@@ -79,7 +79,7 @@ const PriceCard = ({ title, backColor, dates, pricingTerms }) => {
                 </div>
                 <div className="price_list-second-column">
                     
-                    <p className="special_terms">SPECIAL TERMS</p>
+                    <p className="special_terms">{text[locale].specialTerms}</p>
                     {pricingTerms.map((term, index) => {
                         return (
                             <div key={index}>

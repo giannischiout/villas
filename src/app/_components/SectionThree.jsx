@@ -50,6 +50,8 @@ export const SectionThree = ({data}) => {
                                     src="/3.webp"
                                     alt="Picture of the second villa"
                                     fill={true}
+                                    sizes={"500px 700px (max-width: 800px) 250px 350px"}
+
                                 />
                             </motion.div>
                             <div className="row_three_content">
@@ -132,6 +134,8 @@ export const SectionFive = () => {
                         <Image
                             src={"/6.webp"}
                             fill={true}
+                            sizes={"500px 700px (max-width: 800px) 250px 350px"}
+                            alt="Picture of the second villa"
                         />
                     </div>
                 </div>
@@ -151,6 +155,7 @@ export const SectionFive = () => {
                         src="/5.webp"
                         alt="Picture of the second villa"
                         fill={true}
+                        sizes={"500px 700px (max-width: 800px) 250px 350px"}
                     />
                 </motion.div>
             </div>
@@ -230,6 +235,7 @@ const Item = ({ image, title }) => {
                 src={image}
                 fill={true}
                 sizes={"800px 400px (max-width: 800px) 400px 200px"}
+                alt="Picture of the exterior of the villas"
             />
             <span>{title.toUpperCase()}</span>
         </div>

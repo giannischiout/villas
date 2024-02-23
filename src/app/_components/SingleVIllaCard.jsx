@@ -7,6 +7,8 @@ import { text } from "@/translations";
 import { useCookies } from 'next-client-cookies';
 
 export const Villa = ({ description, title, details, hasDetails, id }) => {
+    console.log('single description')
+    console.log(description)
     const cookies = useCookies();
     const locale = cookies.get('locale') || 'locale=en';
     return (
@@ -38,7 +40,7 @@ export const Villa = ({ description, title, details, hasDetails, id }) => {
             <Link href={`/villas/${id}`} className='sv_column_2'>
                 <h3 className='sv_card_header'>{title}</h3>
                 <p className='sv_card_para'>
-                    {description ? description : 'No content found'}
+                    {description}
                 </p>
                 <div className='sv_booknow_container'>
                     <BookCircle />

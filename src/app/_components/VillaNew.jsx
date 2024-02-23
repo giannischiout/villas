@@ -120,7 +120,7 @@ const VillaNew = ({ data }) => {
                     <div className='v_sidebar_top'>
                         <p>{'VILLAS'}</p>
                     </div>
-                    {/* <ClipImage img={sidebarImg} forwardRef={clipRef} className="v_sidebar_img_container" /> */}
+                    <ClipImage img={sidebarImg} forwardRef={clipRef} className="v_sidebar_img_container" />
                 </div>
                 <div className="v_main">
                     <div className='v_main_top'>

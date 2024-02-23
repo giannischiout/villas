@@ -50,7 +50,7 @@ const getData = async (id) => {
     //CREATE THE DATA FOR THE REMAINING VILLAS CARDS:
     let newid = mapID(id, locale?.value)
     let villa = json.data.find(villa => villa.id == newid);
-    const otherVillasData = json.data.filter(otherVilla =>otherVilla.id !== parseInt(id));
+    const otherVillasData = json.data.filter(otherVilla =>otherVilla.id !== parseInt(newid));
     const titlesAndDescriptions = otherVillasData.map((villa) => {
         return {
             title: villa.attributes.title,
@@ -71,7 +71,8 @@ export default async function Page({ params }) {
     const { data, otherVillas } = await getData(params.id)
     const sliderImgs = data?.attributes?.interiorImages?.data;
     const roomsImages = data?.attributes?.roomImages.data;
-
+    console.log('other villas')
+    console.log( otherVillas)
 
   
     const imagesSlider = getImages(sliderImgs);

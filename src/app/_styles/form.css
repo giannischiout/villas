@@ -75,7 +75,7 @@
 .input svg {
     color: #8c7d71;
     position: absolute;
-    right: 5px;
+    right: 10px;
     top: 50%;
     transform: translateY(-50%);
 }
@@ -85,16 +85,25 @@
 
 .input_text input {
     width: 100%;
-    padding: 0;
+    padding: 5px;
     margin: 0;
     height: 100%;
-    min-height: 30px;
+    /* min-height: 30px; */
     background-color: transparent;
     border: none;
     outline: none;
 }  
    
+.choosevilla {
+    background-color: transparent;
+    padding: 10px;
+    cursor: pointer;
 
+}
+.choosevilla p {
+    font-size: 16px;
+
+}
 
 /* NUMBER OF PEOPLE INPUT */ 
 .guests_container {
@@ -191,6 +200,33 @@
     padding: 10px 10px;
     font-size: 16px;
 
+  }
+  .choosevilla_container {
+    position: relative;
+  }
+
+  .villa_dropdown {
+    position: absolute;
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.059);
+    z-index: 4;
+    background-color: white;
+    overflow-y: scroll;
+    border-radius: 5px;
+    padding: 10px;
+  }
+  .villa_item {
+    padding: 5px;
+    cursor: pointer;
+  }
+
+  .response_booking {
+    background-color: white;
+    border: 1px solid var(--primary_dark);
+    padding: 10px;
+    margin-top: 40px;
+    display: block;
+    border-radius: 5px;
   }
   @media screen and (min-width:1000px) {
         .form_mobile {

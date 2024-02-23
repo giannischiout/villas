@@ -1,3 +1,5 @@
+import { fail } from "assert";
+
 export const text = {
     'locale=en': {
         menuHome: 'HOME',
@@ -22,7 +24,7 @@ export const text = {
         seeMore: 'see more',
         allPosts: 'all posts',
         otherLocation: 'OTHER LOCATIONS',
-        bookNow: 'book now',
+        bookNow: 'Book Now',
         bookNow2: 'book now',
         rooms: 'rooms',
         bathrooms: 'bathrooms / wc',
@@ -34,10 +36,24 @@ export const text = {
         from: 'from',
         to: 'to',
         priceList: 'Price List',
+        specialTerms: 'Special Terms',
         //CONTACT PAGE:
         contactInfo: 'CONTACT INFORMATION',
         phone: 'Phone',
         mobile: 'Mobile',
+        //BOOK NOW MODAL:
+        chooseVilla: 'Choose Villa',
+        arrival: 'Arrival',
+        departure: 'Departure',
+        typeMessage: 'Type your message',
+        placeholderPhone: 'Type your mobile phone',
+        placeholderEmail: 'Type your email',
+        placeholderName: 'Full name',
+        thankYou: 'hank you for your request, we will get back to you as soon as possible!',
+        allFields: 'Please fill all fields',
+        failed: 'Failed try again later',
+        submit: 'Submit',
+        close: 'Close',
     },
     'locale=el': {
         menuHome: 'ΑΡΧΙΚΗ',
@@ -70,13 +86,28 @@ export const text = {
         views: 'Θέα',
         interiors: 'ΕΣΩΤΕΡΙΚΟΙ ΧΩΡΟΙ',
         explore: 'ΕΞΕΡΕΥΝΗΣΤΕ ΠΕΡΙΣΣΟΤΕΡΟ',
+        //PRICE LIST PAGE:
         from: 'Aπό',
         to: 'Έως',
         priceList: 'Λίστα Τιμών',
+        specialTerms: 'Ειδικοί Όροι',
         //CONTACT PAGE:
         contactInfo: 'ΣΤΟΙΧΕΙΑ ΕΠΙΚΟΙΝΩΝΙΑΣ',
         phone: 'Τηλέφωνο',
         mobile: 'Κινητό',
+        //BOOK NOW MODAL:
+        chooseVilla: 'Επιλέξτε Βίλα',
+        typeMessage: 'Πληκτρολογήστε το μήνυμά σας',
+        arrival: 'Άφιξη',
+        submit: 'Υποβολή',
+        close: 'Κλείσιμο',
+        placeholderEmail: 'Πληκτρολογήστε το email σας',
+        placeholderPhone: 'Πληκτρολογήστε το κινητό σας',
+        placeholderName: 'Πληκτρολογήστε το ονοματεπώνυμό σας',
+        departure: 'Αναχώρηση',
+        thankYou: 'Ευχαριστούμε για το αίτημά σας, θα επικοινωνήσουμε μαζί σας το συντομότερο δυνατόν!',
+        allFields: 'Παρακαλώ συμπληρώστε όλα τα πεδία',
+        failed: 'Απέτυχε προσπαθήστε ξανά αργότερα',
 
     }
 }

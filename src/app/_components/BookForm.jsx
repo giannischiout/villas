@@ -5,19 +5,20 @@ import { useEffect, useState, useRef } from "react"
 import { IoChevronDownSharp } from "react-icons/io5";
 import { FaRegEnvelope } from "react-icons/fa6";
 import { GoCalendar } from "react-icons/go";
-import { format, parse } from 'date-fns';
+import { format, parse, set } from 'date-fns';
 import usePopupDirection from "../_hooks/usePopUpDirection";
 import axios from "axios";
 import { DayPicker } from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
 import { useCookies } from 'next-client-cookies';
-import {text} from "@/translations"
-
+import { text } from "@/translations"
+import { useRouter } from "next/navigation";
 
 
 export const BookForm = ({ width, handleClose, dates }) => {
 	const cookies = useCookies();
-    const locale = cookies.get('locale');
+	const router = useRouter();
+	const locale = cookies.get('locale');
 	const calendarrefA = useRef(null)
 	const calendarrefB = useRef(null)
 	const [data, setData] = useState(null)
@@ -25,6 +26,7 @@ export const BookForm = ({ width, handleClose, dates }) => {
 	const [show, setShow] = useState({
 		arrival: false,
 		departure: false,
+		chooseVilla: false,
 	})
 
 	const [selected, setSelect] = useState({
@@ -36,9 +38,23 @@ export const BookForm = ({ width, handleClose, dates }) => {
 		name: '',
 		phone: '',
 		message: '',
+		villa: {
+			id: 1,
+			name: 'Castro'
+		}
 	})
+	const handleFetch = async () => {
+		const url = `${process.env.NEXT_PUBLIC_BASE_API_URL}/api/hotel?&populate=hotelcontact`
+		let { data } = await axios.get(url)
+		setData(data)
+	}
+	useEffect(() => {
+		handleFetch()
+	}, [])
 
-
+	const handleVillaId = (id, name) => {
+		setInput(prev => ({ ...prev, villa: { id: id, name: name } }))
+	  }
 	const handleState = (e) => {
 		let name = e.target.name;
 		let value = e.target.value;
@@ -46,19 +62,15 @@ export const BookForm = ({ width, handleClose, dates }) => {
 	}
 
 
-	const handleFetch = async () => {
-			const url = `${process.env.NEXT_PUBLIC_BASE_API_UR}/api/hotel?&populate=hotelcontact`
-			let {data}= await axios.get(url)
-			setData(data)
-	}
-	useEffect(() => {
-		handleFetch()
-	}, [])
+
 	const handleShowArrival = (e) => {
 		setShow(prev => ({ ...prev, arrival: true, departure: false }))
 	}
 	const handleDeparture = (e) => {
 		setShow(prev => ({ ...prev, arrival: false, departure: true }))
+	}
+	const handleShowVilla = (e) => {
+		setShow(prev => ({ ...prev, arrival: false, departure: false, chooseVilla: !prev.chooseVilla }))
 	}
 
 	const handleSelectArr = (e) => {
@@ -75,7 +87,7 @@ export const BookForm = ({ width, handleClose, dates }) => {
 	}
 
 
-	
+
 
 	const closeArrival = () => {
 		setShow(prev => ({ ...prev, arrival: false }))
@@ -88,6 +100,10 @@ export const BookForm = ({ width, handleClose, dates }) => {
 	}
 
 	const handleSubmit = async () => {
+		if(!selected.arrival || !selected.departure || !input.name || !input.email || !input.phone || !input.villa.id) {
+			setResponseBooking(text[locale].allFields)
+			return;
+		}
 		let formData = {
 			Name: input.name,
 			email: input.email,
@@ -95,11 +111,11 @@ export const BookForm = ({ width, handleClose, dates }) => {
 			departureDate: selected.departure.toString(),
 			contactPhone: input.phone.toString(),
 			specialRequest: input.message,
-			villa: 1,
+			villa: input.villa.id,
 			sitemap_exclude: true
 
 		}
-
+		console.log(formData)
 		const resp = await fetch('https://strapi.3v7i.com/api/booking-rqs', {
 			method: 'POST',
 			headers: {
@@ -110,14 +126,21 @@ export const BookForm = ({ width, handleClose, dates }) => {
 			})
 		})
 		const data = await resp.json()
-		console.log(data) 
+		console.log(data)
+		if (data) {
+			setResponseBooking(text[locale].thankYou)
+			router.push('/')
+		} else {
+			setResponseBooking(text[locale].failed)
+
+		}
 	}
 
 	return (
 		<div className="form_container_mobile">
 			<div>
 				<div className="book_now_intro">
-					<span>BOOK NOW</span>
+					<span>{text[locale].bookNow}</span>
 					<div className="book_available_dates">
 						<span>{text[locale].bookNowMessage} {dates.opening}</span>
 					</div>
@@ -125,14 +148,14 @@ export const BookForm = ({ width, handleClose, dates }) => {
 				<Input
 					name="name"
 					type="text"
-					placeholder="Full name"
+					placeholder={text[locale].placeholderName}
 					state={input.name}
 					handleState={handleState}
 				/>
 				<Input
 					name="email"
 					type="email"
-					placeholder="Type your email"
+					placeholder={text[locale].placeholderEmail}
 					state={input.email}
 					handleState={handleState}
 					hasIcon={true}
@@ -140,7 +163,7 @@ export const BookForm = ({ width, handleClose, dates }) => {
 				<Input
 					name="phone"
 					type="tel"
-					placeholder="Type your mobile phone"
+					placeholder={text[locale].placeholderPhone}
 					state={input.phone}
 					handleState={handleState}
 					hasIcon={true}
@@ -149,12 +172,12 @@ export const BookForm = ({ width, handleClose, dates }) => {
 					name="message"
 					rows={4}
 					className="text_area"
-					placeholder="Type your message"
+					placeholder={text[locale].typeMessage}
 					state={input.message}
 					handleState={handleState}
 				/>
 				<CalendarInput
-					text="Arrival"
+					text={text[locale].arrival}
 					show={show.arrival}
 					handleShow={handleShowArrival}
 					selected={selected.arrival}
@@ -163,7 +186,7 @@ export const BookForm = ({ width, handleClose, dates }) => {
 					calRef={calendarrefA}
 				/>
 				<CalendarInput
-					text="Departure"
+					text={text[locale].departure}
 					show={show.departure}
 					handleShow={handleDeparture}
 					selected={selected.departure}
@@ -171,17 +194,57 @@ export const BookForm = ({ width, handleClose, dates }) => {
 					handleClose={closeDeparture}
 					calRef={calendarrefB}
 				/>
+				<ChooseVilla
+					handleShow={handleShowVilla}
+					show={show.chooseVilla}
+					handleState={handleVillaId}
+					input={input.villa.name}
+				/>
 				<div className="form_button_container">
-					<button onClick={handleSubmit} className="submit_btn">SUBMIT</button>
-					<button onClick={handleClose} className="close_btn">CLOSE</button>
+					<button onClick={handleSubmit} className="submit_btn">{text[locale].submit}</button>
+					<button onClick={handleClose} className="close_btn">{text[locale].close}</button>
 				</div>
 				<div>
+					{responseBook ? <span className="response_booking">{responseBook}</span> : null}
 				</div>
 			</div>
 		</div>
 	)
 }
 
+
+const ChooseVilla = ({ handleShow, show, handleState, input }) => {
+	const cookies = useCookies();
+	const locale = cookies.get('locale');
+	const [choise, setChoise] = useState(text[locale].chooseVilla )
+	const handleClick = (id, name) => {
+		setChoise(name)
+		handleState(id, name)
+		handleShow()
+
+	}
+	return (
+		<div className="choosevilla_container">
+			<div onClick={handleShow} className="input choosevilla" >
+				<p>{choise}</p>
+				<IoChevronDownSharp />
+			</div>
+			{show ? (
+				<div className="villa_dropdown">
+					<div onClick={() => handleClick(1,' Castro')} className="villa_item">
+						<span>Castro</span>
+					</div>
+					<div onClick={() => handleClick(2, 'Jira')} className="villa_item">
+						<span>Jira</span>
+					</div>
+					<div onClick={() => handleClick(3, 'Milos')} className="villa_item">
+						<span>Milos</span>
+					</div>
+				</div>
+			) : null}
+		</div>
+	)
+}
 
 const CalendarInput = ({
 	text,
@@ -326,12 +389,12 @@ const TextArea = ({
 	name,
 	rows
 }) => {
-	
+
 	return (
 		<div className="input input_textarea">
 			<textarea
 				className="text_area"
-				
+
 				value={state}
 				onChange={handleState}
 				name={name}
