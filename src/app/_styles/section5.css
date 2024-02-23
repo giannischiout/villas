@@ -1,0 +1,124 @@
+.section_five_container {
+   width: 100%;
+   display: flex;
+   align-items: center;
+   flex-direction: column;
+}
+
+
+.section_five_container_row_1 {
+    width: 85%;
+    height: 300px;
+    display: flex;
+}
+
+.section_five_container_row_1_left {
+    font-size: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    
+}
+.section_five_container_row_1_right {
+    display: flex;
+    width: 100%;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+
+/* IMAGE DIV */
+.section_five_container_row_1_right div {
+    width: 300px;
+    height: 300px;
+    transform: translateY(50px);
+    position: relative;
+}
+.section_five_container_row_1_right div img {
+    object-fit: cover;
+}
+
+.section_five_container_row_1_left p {
+    font-size: calc(2rem + 7vw);
+    line-height: 0.8;
+    position: relative;
+    color: var(--background);
+    font-weight: 300;
+}
+.section_five_container_row_1_left span {
+    text-align: right;
+    color: var(--primary_dark)
+}
+
+.section_five_container_row_2 {
+    background-color:aqua ;
+    height: 100vh;
+    width: 100%;
+    background-color: var(--background);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.section_five_container_row_2 > div {
+    width: 85%;
+    height: 80%;
+    position: relative;
+}
+
+.section_five_container_row_2 div img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+
+
+@media screen and (max-width: 1100px) {
+    .section_five_container_row_1_right div {
+        width: 250px;
+        height: 250px;
+      
+    }
+    .section_five_container_row_2 {
+        height: 70vh;
+    }
+    .section_five_container_row_2 div {
+        width: 85%;
+        height: 70%;
+        position: relative;
+    }
+}
+@media screen and (max-width: 800px) {
+    .section_five_container_row_1 {
+        width: 100%;
+        display: flex;
+        height: 15vh;
+    }
+    .section_five_container_row_1_right div {
+        display: none;
+      
+    }
+
+    
+}
+@media screen and (max-width: 600px) {
+    .section_five_container_row_1 {
+        width: 95%;
+        display: flex;
+    }
+    .section_five_container_row_1_right div {
+        width: 180px;
+        height: 180px;
+      
+    }
+    .section_five_container_row_2 {
+        height: 50vh;
+    }
+    .section_five_container_row_2 div {
+        width: 85%;
+        height: 60%;
+        position: relative;
+    }
+}

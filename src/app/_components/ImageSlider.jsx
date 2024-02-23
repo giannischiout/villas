@@ -1,61 +1,66 @@
 'use client'
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import Image from "next/image"
-import { useAnimate } from "framer-motion"
-const images = [
-    '/jira/jira_1.webp',
-    '/jira/jira_2.webp',
-    '/jira/jira_3.webp',
-    '/jira/jira_4.webp',
-    '/jira/jira_5.webp',
-    '/jira/jira_6.webp',
-    
+import { useAnimate, useScroll, useTransform, motion, useMotionTemplate, useMotionValue, useInView, useAnimation} from "framer-motion"
+
+
+const fallBackImages = [
+    '/1.webp',
+    '/2.webp',
+    '/3.webp',
+    '/4.webp',
+    '/5.webp',
 ]
 
 
-const ImageSlider = () => {
-    const [index, setIndex]= useState(0)
+const ImageSlider = ({images}) => {
+    let _images = images ? images : fallBackImages;
+    console.log(_images)
+    const [index, setIndex] = useState(0)
     const [scope, animate] = useAnimate();
+    const ref = useRef(null);
+  
     const handleNext = () => {
-        setIndex(prev => (prev + 1) % images.length )
+        setIndex(prev => (prev + 1) % images.length)
+        handleAnimate()
     }
-
-    useEffect(() => {
-        console.log(index)
-        if(index === 0) return
-        animate(".slider_image_container", {
+    
+    const handleAnimate = () => {
+        animate("#slide_anime", {
             clipPath: ["polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)", "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"]
         },
-        {
-            // ease: [0.6, 0.05, -0.01, 0.9],
-            ease: 'linear',
-            duration: 0.6,
-        }
+            {
+                // ease: [0.6, 0.05, -0.01, 0.9],
+                ease: 'easeInOut',
+                duration: 0.4,
+            }
         )
-        animate(".slider_img", {
-           scale: [1.1, 1],
-        },
-        {
-           duration: 1.3,
-        }
-        )
-    }, [index])
+    
+    }
+
+   
+
+ 
     return (
-        <div ref={scope} onClick={handleNext} className="slider_container">
-            <div className="slider_absolute">
-                    <Image src={images[index]} alt="villa" fill={true} sizes="100%" priority/>
+        <section ref={scope} onClick={handleNext} className="slider_container">
+            <div
+            className="slider_inner">
+                <div className="slider_image_container" id="slide_darker">
+                    <Image src={_images[index]} alt="villa" sizes="100%" fill={true} />
+                </div>
+                <div className="slider_image_container" id="slide_anime">
+                    <Image
+                    className="slider_img" src={ _images[(index + 1) % _images.length]} alt="villa" fill  />
+                </div>
+                <Teaser index={index} images={_images} />
             </div>
-            <div className="slider_image_container">
-                    <Image className="slider_img"  src={images[(index + 1) % images.length]} alt="villa" fill={true} sizes="100%" priority/>
-            </div>
-            <Teaser index={index} images={images} />
-        </div>
+        </section>
     )
 }
 
 
 
-const Teaser = ({images, index}) => {
+const Teaser = ({ images, index }) => {
     const newIndex = (index + 2) % images.length
     return (
         <div className="teaser_container">
@@ -63,7 +68,7 @@ const Teaser = ({images, index}) => {
                 <p>{`${index + 1}  / ${images.length}`}</p>
                 <p>coming next</p>
             </div>
-            <div  className="teaser_image">
+            <div className="teaser_image">
                 <Image
                     src={images[newIndex]}
                     alt="villa"
@@ -71,7 +76,6 @@ const Teaser = ({images, index}) => {
                     fill={true}
                 />
             </div>
-            <div className="space space_bottom"></div>
         </div>
     )
 }

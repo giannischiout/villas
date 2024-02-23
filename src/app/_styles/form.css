@@ -1,0 +1,235 @@
+.form_container_mobile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 0;
+    width: 50%;
+}
+
+
+.text_area {
+    width: 100%;
+    background-color: transparent;
+    padding: 10px;
+}
+
+.text_area:focus {
+    outline: none;
+}
+.form_container {
+    width: 80%;
+}
+
+.book_now_intro {
+    margin-bottom: 16px;
+}
+.book_now_intro span {
+    font-size: 3rem;
+    font-weight: 300;
+    color: var(--primary_dark);
+    margin-bottom: 16px;
+}
+.book_now_intro p {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--primary_dark);
+    margin-bottom: 16px;
+    line-height: 1.8;
+}
+
+.calendar_container {
+    position: relative;
+}
+
+
+.calendar_picker {
+    z-index: 5;
+    position: absolute;
+    top: 10%;
+    left: 0;
+    border-radius: 4px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.059);
+}
+
+
+
+.input {
+    z-index: 4;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid var(--primary_dark);
+    min-width: 200px;
+    border-radius: 5px;
+    margin-bottom: 16px;
+    position: relative;
+
+}
+
+.input:focus-within {
+    outline: none; /* Remove default focus outline on the div */
+    border: 1px solid #0b0b0b; /* Change the border color and width */
+  }
+.input svg {
+    color: #8c7d71;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.icon_input {
+    justify-content: space-between;
+}
+
+.input_text input {
+    width: 100%;
+    padding: 5px;
+    margin: 0;
+    height: 100%;
+    /* min-height: 30px; */
+    background-color: transparent;
+    border: none;
+    outline: none;
+}  
+   
+.choosevilla {
+    background-color: transparent;
+    padding: 10px;
+    cursor: pointer;
+
+}
+.choosevilla p {
+    font-size: 16px;
+
+}
+
+/* NUMBER OF PEOPLE INPUT */ 
+.guests_container {
+    padding: 2px;
+    position: relative;
+}
+
+
+.guests_dropdown {
+    overflow-y: scroll;
+    position: absolute;
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.059);
+    z-index: 4;
+    background-color: white;
+   
+}
+
+.guests_item {
+    padding: 5px 16px;
+    cursor: pointer;
+}
+
+.guests_item:hover {
+    background-color: var(--primary);
+}
+
+.guests_item:hover span {
+    color: white;
+}
+
+.guest_bold {
+    font-weight: 700;
+}
+
+.submit_btn {
+    background-color: var(--primary_dark);
+    color: white;
+    border: none;
+    padding: 10px 10px;
+    font-size: 16px;
+    border-radius: 50px;
+    width: 150px;
+    transition: all 0.3s ease-in-out;
+}
+
+.close_btn {
+    background-color: transparent;
+    color: var(--primary_dark);
+    border: 2px solid var(--primary_dark);
+    margin-left: 15px;
+    padding: 10px 10px;
+    font-size: 16px;
+    border-radius: 50px;
+    width: 150px;
+    transition: all 0.3s ease-in-out;
+}
+
+.submit_btn:hover {
+    background-color: var(--primary);
+}
+
+.submit_btn:active {
+    transform: scale(0.9);
+    
+
+}
+
+
+
+
+
+.upwards {
+    top: -300px; /* Adjust this value to position the popup */
+  }
+  
+  .downwards {
+    top: 40px; /* Adjust this value to position the popup */
+  }
+
+.form_button_container {
+    margin-top: 20px;
+}
+
+  .close_button {
+    cursor: pointer;
+    color: var(--primary_dark);
+    font-size: 2rem;
+    width: 150px;
+    border-radius: 50px;
+    margin-left: 10px;
+    border: 1px solid var(--primary_dark);
+    color: var(--primary_dark);
+    padding: 10px 10px;
+    font-size: 16px;
+
+  }
+  .choosevilla_container {
+    position: relative;
+  }
+
+  .villa_dropdown {
+    position: absolute;
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.059);
+    z-index: 4;
+    background-color: white;
+    overflow-y: scroll;
+    border-radius: 5px;
+    padding: 10px;
+  }
+  .villa_item {
+    padding: 5px;
+    cursor: pointer;
+  }
+
+  .response_booking {
+    background-color: white;
+    border: 1px solid var(--primary_dark);
+    padding: 10px;
+    margin-top: 40px;
+    display: block;
+    border-radius: 5px;
+  }
+  @media screen and (min-width:1000px) {
+        .form_mobile {
+            display: none;
+        }
+  }

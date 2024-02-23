@@ -1,0 +1,38 @@
+
+.section_four_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.section_four_inner {
+    width: 70%;
+    padding: 50px 0;
+}
+
+
+.section_four_inner div:nth-child(1) {
+}
+.section_four_inner div:nth-child(2) {
+    margin-top: 8%;
+    margin-bottom: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+    justify-content: flex-end;
+}
+
+.section_four_inner .header {
+    background-color: var(--primary_dark);
+    font-size: calc(1rem + 1vw);
+    color: white;
+    padding: 8px;
+   
+}
+
+.section_four_inner p {
+    margin: 20px 0 50px 0;
+
+}

@@ -1,0 +1,35 @@
+.error_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    background-color: var(--background);
+}
+
+
+.error_card {
+    background-color: white;
+    border: 1px solid var(--primary_dark);
+    padding: 20px;
+}
+
+.error_card h2 {
+    font-size: 20px;
+    color: var(--primary_dark)
+}
+
+.error_card p {
+    max-width: 600px;
+    font-size: 16px;
+    margin: 5px;
+}
+.try_again {
+    background-color: var(--background);
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: var(--primary_dark);
+}

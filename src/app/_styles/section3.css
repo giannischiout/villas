@@ -1,0 +1,207 @@
+
+.villa_section {
+    background-color: #f3f4f5;
+    width: 100%;
+    /* margin-top: 150px; */
+    transform: translateY(-100px);
+    
+  }
+  
+  .villa_width {
+    width: 90%;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    
+  }
+  
+  .row_one {
+    display: flex;
+    height: 250px;
+    align-items: center;
+    transform: translateY(-150px);
+    width: 100%;
+  } 
+  
+  
+  .row_one_image {
+      min-width: 250px;
+      min-height: 250px;
+      position: relative;
+  }
+  .row_one_image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+  }
+
+  .row_one_text {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+
+  }
+  
+  .row_one h2 {
+    font-size: calc(2rem + 2vw);
+  
+    letter-spacing: 3px;
+    margin-left: 20px;
+  }
+  
+  .traslated_container {
+    transform: translateY(-100px);
+  }
+  .row_two {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 400px;
+    padding: 4%;
+  }
+  .row_two p {
+    text-align: center;
+    max-width: 1600px;
+    line-height: 1.2;
+    font-size: calc(2rem + 2.4vw);
+    /* max-width: 280px; */
+    /* margin-left: calc(17.5vw + 20px); */
+      color: #bab1b1;
+  }
+  
+  .row_three {
+      display: flex;
+      width: 100%;
+      height: 80vh;
+      align-items: center;
+      justify-content: center;
+  }
+  
+  .row_three > div {
+    height: 700px;
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+  }
+  .row_three_image{
+    position: relative;
+    flex-direction: center;
+    width: 65%;
+    height: 700px;
+    margin-left: calc(3vw + 20px);
+  }
+  .row_three_image img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+  
+  .row_three_content {
+    width: 35%;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    margin-left: 3%;
+  }
+
+
+
+  .book_getaway {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    transform: translateY(-100px);
+    cursor: pointer;
+  }
+  
+  .book_getaway p {
+    width: 170px;
+    color: white;
+    z-index: 2;
+    font-size: calc(1.1rem + 0.2vw);
+    text-align: center;
+
+  
+  }
+  
+  .book_getaway::before {
+    content: "";
+    background-color: var(--primary_dark);
+    border-radius: 50%;
+    position: absolute;
+    width: 280px;
+    height: 280px;
+  }
+
+
+  
+ 
+
+  @media  screen and (max-width: 1079px) {
+    .row_three > div {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .row_three_image {
+      width: 90%;
+      margin: 0;
+    }
+
+    .book_getaway::before {
+      content: "";
+      background-color: var(--primary_dark);
+      border-radius: 50%;
+      position: absolute;
+      width: 200px;
+      height: 200px;
+    }
+ 
+   
+  }
+  
+  @media  screen and (max-width: 800px) {
+    .row_three_content p {
+      padding-top: 0;
+      
+    }
+   
+    .row_two {
+      height: 250px;
+      justify-content: center;
+    }
+
+    .row_one_text {
+      height: 50px;
+    }
+
+    .row_one {
+      height: 200px;
+      width: 200px;
+      transform: translateY(-100px);
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+    .row_one_image {
+      min-width: 200px;
+      min-height: 200px;
+      position: relative;
+  }
+   
+  
+    .row_two p {
+     
+      margin-left: 0;
+    }
+  }
+  
+ 
+  
+  
+ 
+  

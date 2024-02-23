@@ -1,68 +1,76 @@
 .slider_container {
     height: 100vh;
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--background_light);
+}
+
+.slider_inner {
+    height: 100%;
+    width: 100%;
     position: relative;
-    top: 0;
-    left: 0;
+
 }
 
 .slider_image_container {
     height: 100%;
     width: 100%;
-
+    left: 0;
+    top: 0;
     overflow: hidden;
     position: absolute;
-
 }
 
-.slider_absolute {
+#slide_darker {
     position: absolute;
-    top: 0;
-    left: 0;
+}
+
+#slide_darker::before {
+    content: "";
+    position: absolute;
     height: 100%;
     width: 100%;
+    opacity: 50%;
 
 }
+
 
 .slider_image_container img {
     object-fit: cover;
     height: 100%;
     width: 100%;
-  
+    /* scale: 1.1; */
 }
 
 .teaser_container {
-    width: 400px;
-    height: 300px;
+    width: 300px;
     display: grid;
-    grid-template-rows: 40px 220px 40px;
+    grid-template-rows: 40px 140px ;
     grid-template-columns: 1fr;
     position: absolute;
-    bottom: 0px;
-    right: 20%;
+    bottom: 0;
+    right: 0;
 }
 
 .teaser_image {
     position: relative;
     overflow: hidden;
 }
+
 .teaser_image img {
     height: 100%;
     width: 100%;
     object-fit: cover;
 
 }
-/* .slider_image_opacity {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    opacity: 89%;
 
-} */
 
 .loader_image {
     opacity: 50%;
 }
+
 .space {
     background-color: var(--background);
 }
@@ -71,4 +79,140 @@
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+}
+
+.room_gallery_container {
+    width: 85%;
+    margin: auto auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+.room_gallery_container h2 {
+    font-size: calc(4rem + 3vw);
+    color: var(--background);
+    text-align: end;
+}
+
+.gallery_container {
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    
+}
+.room_image {
+    flex-shrink: 0;
+    display: block;
+    margin: 10px;
+    position: relative;
+}
+.room_image img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;;
+}
+
+.dialog_image {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.856);
+}
+
+
+/* ROOM GALLERY BUTTONS  */
+.gallery_arrow {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    color: var(--primary_dark);
+    border-radius: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--primary_dark);
+    cursor: pointer;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.065);
+    z-index: 100;
+}
+
+.gallery_arrow_back {
+    left: 2px;
+    
+}
+.gallery_arrow_next {
+    right: 2px;
+}
+@media screen and (max-width: 1400px) {
+ 
+    .slider_container {
+        height: 60vh;
+    }
+
+   
+
+}
+@media screen and (max-width: 1200px) {
+    .villa_slider {
+        width: 100%;
+        margin: auto auto;
+        overflow: hidden;
+    }
+    .slider_container {
+        height: 80vh;
+    }
+
+    .slider_inner {
+        height: 70%;
+        width: 80%;
+        position: relative;
+
+    }
+
+}
+
+@media screen and (max-width: 1000px) {
+
+    .gallery_container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .slider_container {
+        height: 50vh;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--background_light);
+    }
+    
+
+
+    .slider_inner {
+        height: 80%;
+        width: 85%;
+        position: relative;
+
+    }
+
+
+    .teaser_container {
+        width: 160px;
+        display: grid;
+        grid-template-rows: 30px 110px 30px;
+        grid-template-columns: 1fr;
+        position: absolute;
+        bottom: -30px;
+        right: 10%;
+    }
+
+    .space {
+        font-size: 1.2rem;
+    }
 }

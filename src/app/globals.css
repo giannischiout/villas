@@ -5,6 +5,124 @@
 @import './_styles/villa.css';
 @import './_styles/lenis.css';
 @import './_styles/image_slider.css';
+@import './_styles/sticky_show.css';
+@import './_styles/footer.css';
+@import './_styles/menu.css';
+@import './_styles/section2.css';
+@import './_styles/section3.css';
+@import './_styles/section4.css';
+@import './_styles/section5.css';
+@import './_styles/section6.css';
+@import './_styles/villas_presentation.css';
+@import './_styles/form.css';
+@import './_styles/posts.css';
+@import './_styles/bookmodal.css';
+@import './_styles/contact.css';
+@import './_styles/slideshow.css';
+@import './_styles/footer_new.css';
+@import './_styles/allvillas.css';
+@import './_styles/pricelist.css';
+@import './_styles/error.css';
+@import './_styles/policy.css';
+
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.rdp {
+  --rdp-cell-size: 40px;
+  /* Size of the day cells. */
+  --rdp-caption-font-size: 18px;
+  /* Font size for the caption labels. */
+  --rdp-background-color: var(--background);
+  /* Background color for the hovered/focused elements. */
+  --rdp-accent-color-dark: #3003e1;
+  /* Accent color for the background of selected days (to use in dark-mode). */
+  --rdp-background-color-dark: #180270;
+  /* Background color for the hovered/focused elements (to use in dark-mode). */
+  --rdp-outline: 2px solid pink;
+  /* Outline border for focused elements */
+  --rdp-outline-selected: 3px solid var(--rdp-accent-color);
+  /* Outline border for focused _and_ selected elements */
+  --rdp-selected-color: #fff;
+  /* Color of selected day text */
+}
+
+.calendar_selected {
+  background-color: var(--background);
+  color: var(--primary_darker)
+}
 
 * {
   margin: 0;
@@ -13,22 +131,17 @@
 
 }
 
-html {
-  font-size: 62.5%;
-}
-body {
-  font-family: 'Roboto', sans-serif;
-  font-size: var(--font-normal);
-}
-
 :root {
   /* colors */
-  --primary: #9b917e;
+  --primary: #9c998f;
+  /* --primary: #9b917e; */
   --secondary: #f4d5ac;
   --background: #EAE6E0;
+  --background_light: #f4f2f0;
   --primary_dark: #6e6259;
   --primary_darker: #594e46;
   --text_dark: #988F87;
+  --text_light: #d7d2cb;
   /* fonts */
   --font-xs: 1.2em;
   --font-small: 1.4em;
@@ -42,7 +155,28 @@ body {
   --font-xl4: 2.8em;
   --font-xl5: 3.5em;
   --font-xl6: 4em;
- 
+
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: initial !important;
+}
+
+html,
+body {
+  min-height: 100%;
+  height: auto;
+}
+
+body {
+  font-size: var(--font-normal);
+  /* font-family: var(--font-qautrocento); */
+  font-family: var(-font_noto);
+}
+
+button:focus {
+  outline: none;
 }
 
 h1 {
@@ -50,5 +184,284 @@ h1 {
   line-height: 0.9;
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
 
 
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--background);
+  border-radius: 6px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+
+.map-container {
+  height: 100%;
+  width: 100%;
+}
+
+p {
+  font-size: calc(1.5rem + 0.2vw);
+}
+
+
+.curtain_dark {
+  background-color: var(--primary_dark);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 4;
+}
+
+
+
+.btn_back {
+  height: 40px;
+  width: 200px;
+  border-radius: 40px;
+  border: 2px solid var(--text_light);
+  position: relative;
+  transition: all 0.3s ease-in-out;
+  z-index: 2;
+}
+
+
+
+.btn_back svg {
+  position: absolute;
+  right: 9px;
+  top: 23%;
+  z-index: 5px;
+  transform: rotate(30deg);
+  font-size: 22px;
+}
+
+.btn {
+  height: 100%;
+  color: white;
+  color: var(--primary_dark);
+  width: 165px;
+  border-radius: 50px;
+  position: absolute;
+  left: 0;
+  pointer-events: none;
+}
+
+.btn button {
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  border-radius: 40px;
+  position: absolute;
+  left: 0;
+  background-color: var(--text_light);
+}
+
+.btn span {
+  font-size: 1.7rem;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* SMALLER */
+.btn_back_small:hover button {
+  width: 198px;
+  transition: width 0.3s ease-in-out;
+  /* Add transition specifically for width change on hover */
+
+}
+
+.btn_back_small:hover svg {
+  color: white;
+  transform: rotate(0deg);
+  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+  /* Add transition for SVG rotation and color change */
+
+}
+
+.btn_back_small {
+  height: 40px;
+  width: 160px;
+  border-radius: 40px;
+  border: 2px solid var(--text_light);
+  position: relative;
+  transition: all 0.3s ease-in-out;
+  z-index: 2;
+}
+
+
+
+.btn_back_small svg {
+  position: absolute;
+  right: 9px;
+  top: 23%;
+  z-index: 5px;
+  transform: rotate(30deg);
+  font-size: 22px;
+}
+
+.btn_small {
+  height: 100%;
+  color: var(--primary_dark);
+  width: 120px;
+  border-radius: 50px;
+  position: absolute;
+  left: 0;
+  pointer-events: none;
+}
+
+.btn_small button {
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  border-radius: 40px;
+  position: absolute;
+  left: 0;
+  background-color: var(--text_light);
+}
+
+.btn_small span {
+  font-size: 1.7rem;
+  color: var(--primary_dark);
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+.btn_back_small:hover button {
+  width: 159px;
+  transition: width 0.3s ease-in-out;
+  /* Add transition specifically for width change on hover */
+
+}
+
+.btn_back_small:hover svg {
+  color: white;
+  transform: rotate(0deg);
+  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+  /* Add transition for SVG rotation and color change */
+}
+
+.hero_container {
+  margin-top: 100px;
+  flex-direction: column;
+}
+
+
+.intro_text {
+  padding: 6%;
+  margin-bottom: 100px;
+  color: var(--primary_dark);
+  font-size: calc(2rem);
+}
+
+
+
+.intro_text p {
+  line-height: 2;
+  margin-bottom: 24px;
+}
+
+.hero_main_top {
+  height: 20vh;
+  transform: translateY(30%);
+  opacity: 0;
+  display: flex;
+  align-items: center;
+}
+
+.hero_main_top>div {
+  margin-left: 60px;
+  line-height: 1.2;
+}
+
+.hero_main_top h2 {
+  color: var(--primary_dark);
+}
+
+.intro_text h3 {
+  font-size: calc(3rem + 3vw);
+  color: var(--primary_dark);
+  line-height: 1.1;
+  margin-bottom: 40px;
+  font-weight: 400;
+}
+
+
+
+
+.intro_sidebar {
+  background-color: var(--background);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  /* transform: translateY(1000px); */
+  flex-direction: column;
+  justify-content: flex-end;
+  z-index: 2;
+  position: relative;
+
+}
+
+
+.hero_title {
+  font-size: calc(3rem + 2rem);
+  color: var(--primary_dark);
+}
+
+
+@media screen and (max-width: 900px) {
+  .hero_title {
+    font-size: 28px;
+  }
+
+  .hero_main_top {
+    height: 10vh;
+    transform: translateY(30%);
+    opacity: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  .intro_text h3 {
+    font-size: 3rem;
+    line-height: 1.4;
+    margin-bottom: 30px;
+    
+  }
+
+}
