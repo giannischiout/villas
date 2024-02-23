@@ -92,6 +92,8 @@ const getData = async () => {
   return newdata;
 }
 export default async function Page() {
+  const cookieStore = cookies()
+  const locale = cookieStore.get('locale')
   const posts = await fetchPosts()
   const motos = await fetchMoto();
   const data = await fetchData()
@@ -104,7 +106,7 @@ export default async function Page() {
   return (
         <div>
             <Hero data={motos} description={description} title={title} />
-          <SectionThree  data={motos}  />
+          <SectionThree  data={motos} locale={locale} />
           <SectionFour  data={motos} />
           <SectionFive  data={motos} />
           <SlideShow posts={posts}/>

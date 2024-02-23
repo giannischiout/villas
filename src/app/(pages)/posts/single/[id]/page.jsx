@@ -8,6 +8,8 @@ import PostMiniGallery from "@/app/_components/PostMiniGallery";
 import { PostButton } from '@/app/_components/Button';
 import Map from "@/app/_components/Map";
 import { text } from "@/translations";
+import { revalidatePath } from 'next/cache'
+
 const fetchPosts = async (postId) => {
     "use server";
     const cookieStore = cookies()
@@ -50,7 +52,7 @@ const fetchAll = async () => {
 export default async function Page({ params }) {
     const data = await fetchPosts(params.id)
     const cookieStore = cookies()
-    const locale = cookieStore.get('locale').value || 'locale=en'
+    const locale = cookieStore.get('locale')
    
     const allData = await fetchAll()
     const image = data?.attributes?.images.data[0].attributes.url;
@@ -61,12 +63,10 @@ export default async function Page({ params }) {
         }
     });
 
-    //I GOT THE DATa IN REVERSE FROM THE POST: LAT SHOULD BE LNG AND LNG SHOULD BE LAT:
     const location = {
-        lng: parseFloat( data?.attributes?.londitude),
-        lat: parseFloat(data?.attributes?.lattitude),
+        lat: 37.7749, // Replace with your desired latitude
+        lng: -122.4194, // Replace with your desired longitude
       };
-      
     return (
         <section className="post_container">
             <div className="single_post_top"></div>
@@ -108,7 +108,7 @@ export default async function Page({ params }) {
                         </div>
                     </div>
                     <div className="other_posts">
-                        <h3>{text[locale]?.otherLocation}</h3>
+                        <h3>{text[locale?.value]?.otherLocation}</h3>
                         <div className="other_posts_grid">
                         {allData.map((post, i) => {
                             if(post.id == params.id) return;

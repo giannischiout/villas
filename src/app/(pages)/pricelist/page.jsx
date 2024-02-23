@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import BookCircle from '@/app/_components/BookCircle';
 import { cookies } from 'next/headers';
-import { text } from '@/translations';
+
 const fetchPrices = async () => {
     "use server";
     const cookieStore = cookies()
@@ -24,8 +24,9 @@ const fetchPrices = async () => {
 }
 const Page = async () => {
     const data = await fetchPrices()
-    const cookieStore = cookies()
-    const locale = cookieStore.get('locale').value || 'locale=en';
+    // console.log(data)
+    // console.log(data[0].attributes.pricePerVilaPerWeek)
+    // console.log(data[0].attributes.pricingTerms)
     const dates = data.map((item) => {
         return {
             from: item.attributes.fromDate,
@@ -47,7 +48,7 @@ const Page = async () => {
         <div className="pricelist_container">
             <div className='price_list_intro'>
                 <Image src="/logovillas.png" alt="logovillas" width={150} height={80} />
-                <h1>{text[locale].priceList}</h1>
+                <h1>PRICE LIST</h1>
             </div>
             <PriceCard title="Castro" backColor={"#f7f6f5"} dates={dates}  pricingTerms={pricingTerms[0]} />
             <PriceCard title="Jira" backColor={"#ffffff"} dates={dates} pricingTerms={pricingTerms[1]} />
@@ -59,8 +60,6 @@ const Page = async () => {
 
 
 const PriceCard = ({ title, backColor, dates, pricingTerms }) => {
-    const cookieStore = cookies()
-    const locale = cookieStore.get('locale')?.value || 'locale=en';
     return (
         <div className="price_list" style={{ backgroundColor: backColor }}>
             <div>
@@ -70,7 +69,7 @@ const PriceCard = ({ title, backColor, dates, pricingTerms }) => {
                         {dates.map((date, index) => {
                             return (
                                 <div key={index}>
-                                    <span>{`${text[locale].from}: ${date.from} ${text[locale].to}: ${date.to}`}</span>
+                                    <span>{`From: ${date.from} to: ${date.to}`}</span>
                                     <span className="price">{`€${date.price}`}</span>
                                 </div>
                             )

@@ -32,6 +32,7 @@ export const text = {
         views: 'Θέα',
         interior: 'INTERIORS',
         explore: 'EXPLOR MORE',
+<<<<<<< HEAD
         //PRICE LIST PAGE:
         from: 'from',
         to: 'to',
@@ -54,6 +55,8 @@ export const text = {
         failed: 'Failed try again later',
         submit: 'Submit',
         close: 'Close',
+=======
+>>>>>>> parent of 5757991 (contact page complete)
     },
     'locale=el': {
         menuHome: 'ΑΡΧΙΚΗ',
@@ -85,6 +88,7 @@ export const text = {
         facilities: 'Παροχές',
         views: 'Θέα',
         interiors: 'ΕΣΩΤΕΡΙΚΟΙ ΧΩΡΟΙ',
+<<<<<<< HEAD
         explore: 'ΕΞΕΡΕΥΝΗΣΤΕ ΠΕΡΙΣΣΟΤΕΡΟ',
         //PRICE LIST PAGE:
         from: 'Aπό',
@@ -109,5 +113,8 @@ export const text = {
         allFields: 'Παρακαλώ συμπληρώστε όλα τα πεδία',
         failed: 'Απέτυχε προσπαθήστε ξανά αργότερα',
 
+=======
+        explore: 'ΕΞΕΡΕΥΝΗΣΤΕ ΠΕΡΙΣΣΟΤΕΡΟ'
+>>>>>>> parent of 5757991 (contact page complete)
     }
 }

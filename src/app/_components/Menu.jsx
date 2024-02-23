@@ -5,7 +5,7 @@ import { useCookies } from 'next-client-cookies';
 import { text } from '@/translations';
 const NavMenu = ({ isOpen, setIsOpen }) => {
 	const cookies = useCookies();
-    const locale = cookies.get('locale') || 'locale=en';
+    const locale = cookies.get('locale');
 	const handleClose = () => {
 		setIsOpen(prev => !prev)
 	}

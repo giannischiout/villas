@@ -206,6 +206,7 @@
 .single_maps {
     width: 500px;
     height: 500px;
+    background-color: beige;
     margin-top: 100px;
 }
 .single_gps_btn {
