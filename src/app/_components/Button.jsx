@@ -8,7 +8,7 @@ import { text } from "@/translations";
 const Book = ({normal, title, hasCloseBtn}) => {
     const { modalOpen, openModal, closeModal } = useModal();
     const cookies = useCookies();
-    const locale = cookies.get('locale');
+    const locale = cookies.get('locale')  || 'locale=en';
     return (
            <>
              <div onClick={openModal} className="btn_back" >
@@ -40,7 +40,7 @@ export const Btn = ({text, onClick}) => {
 
 export const PostButton = ({id}) => {
     const cookies = useCookies();
-    const locale = cookies.get('locale');
+    const locale = cookies.get('locale')  || 'locale=en';
     const router = useRouter();
     const onClick = () => {
         router.push(`/posts/single/${id}`)

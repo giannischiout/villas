@@ -8,7 +8,7 @@ import { text } from "@/translations";
 const Languages = () => {
     const cookies = useCookies();
     const router = useRouter();
-    const locale = cookies.get('locale');
+    const locale = cookies.get('locale')  || 'locale=en';
     useEffect(() => {
         if (!locale) {
             createLocale('locale=en')

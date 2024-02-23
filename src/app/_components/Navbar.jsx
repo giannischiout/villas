@@ -18,7 +18,7 @@ import { text } from "@/translations";
 const Navbar = ({dates}) => {
     const { toggleModal } = useModal();
     const cookies = useCookies();
-    const locale = cookies.get('locale');
+    const locale = cookies.get('locale')  || 'locale=en';
     const {scrollYProgress} = useScroll();
     const [clicked, setClicked] = useState(false)
     const [modal, setModal] = useState(false)

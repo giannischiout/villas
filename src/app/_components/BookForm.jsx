@@ -18,7 +18,7 @@ import { useRouter } from "next/navigation";
 export const BookForm = ({ width, handleClose, dates }) => {
 	const cookies = useCookies();
 	const router = useRouter();
-	const locale = cookies.get('locale');
+	const locale = cookies.get('locale')  || 'locale=en';
 	const calendarrefA = useRef(null)
 	const calendarrefB = useRef(null)
 	const [data, setData] = useState(null)

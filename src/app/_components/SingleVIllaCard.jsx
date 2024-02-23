@@ -7,11 +7,9 @@ import { text } from "@/translations";
 import { useCookies } from 'next-client-cookies';
 
 export const Villa = ({ description, title, details, hasDetails, id }) => {
-    console.log('single description')
-    console.log(description)
+   
     const cookies = useCookies();
-    const locale = cookies.get('locale');
-    const router = useRouter();
+    const locale = cookies.get('locale')  || 'locale=en';
     return (
         <div className="single_villa_item">
             <div className='sv_column_1'>

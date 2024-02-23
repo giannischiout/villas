@@ -51,7 +51,7 @@ const images = [
 const VillaNew = ({ data }) => {
     const [current, setCurrent] = useState(0);
     const cookies = useCookies();
-    const locale = cookies.get('locale');
+    const locale = cookies.get('locale') || 'locale=en';
     const prevImage = () => {
         setCurrent(prev => (prev + 1) % images.length)
     }
