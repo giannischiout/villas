@@ -12,8 +12,8 @@ import { mapID, reverseMapID } from "@/lib/mapIds"
 
 const VillasPresentation = ({ villas }) => {
     const cookies = useCookies();
-    const locale = cookies.get('locale');
-   
+    const locale = cookies.get('locale') || 'locale=en';
+
     return (
         <section>
             <div className="v_presentation_container">
@@ -54,15 +54,15 @@ const VillasPresentation = ({ villas }) => {
                             />
                         </div>
                         <div className="card3">
-                            <Card 
-                                id={3} 
-                                image="pres_milos.webp" 
+                            <Card
+                                id={3}
+                                image="pres_milos.webp"
                                 name={villas[2].title}
                                 people={villas[2].details.maxAduls}
                                 sqr={villas[2].details.squareMeters}
                                 bedrooms={villas[2].details.bedrooms}
                                 pullOutCouch={villas[2].details.pullOutCouch}
-                                />
+                            />
                         </div>
 
                     </div>
@@ -76,8 +76,8 @@ const VillasPresentation = ({ villas }) => {
 const Card = ({ image, people, sqr, name, id, bedrooms, pullOutCouch }) => {
     const router = useRouter();
     const cookies = useCookies();
-    const locale = cookies.get('locale');
-    
+    const locale = cookies.get('locale') || 'locale=en';
+
     const onClick = () => {
         router.push(`/villas/${id}`)
     }
@@ -95,7 +95,7 @@ const Card = ({ image, people, sqr, name, id, bedrooms, pullOutCouch }) => {
                     <p>{`${text[locale].bedrooms} ${bedrooms}`}</p>
                     <p>{`${text[locale].pullOutCouch} ${pullOutCouch}`}</p>
                 </div>
-                <Btn text="see more" onClick={onClick} />
+                <Btn text={text[locale].seeMore} onClick={onClick} />
 
             </div>
         </div>

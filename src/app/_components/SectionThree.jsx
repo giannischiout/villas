@@ -15,7 +15,7 @@ export const SectionThree = ({data}) => {
     const mainControls = useAnimation();
     const { openModal } = useModal();
     const cookies = useCookies();
-    const locale = cookies.get('locale');
+    const locale = cookies.get('locale') || 'locale=en';
 
     useEffect(() => {
         if (isInView) {
@@ -54,7 +54,7 @@ export const SectionThree = ({data}) => {
                             </motion.div>
                             <div className="row_three_content">
                                 <div onClick={openModal} className="book_getaway">
-                                    <p >{text[locale]?.btn1}.</p>
+                                    <p >{text[locale].btn1}</p>
                                 </div>
 
                             </div>
@@ -69,7 +69,7 @@ export const SectionThree = ({data}) => {
 
 export const SectionFour = ({data}) => {
     const cookies = useCookies();
-    const locale = cookies.get('locale');
+    const locale = cookies.get('locale') || 'locale=en';
     const ref = useRef(null);
     const [scope, animate] = useAnimate();
     const isInView = useInView({
@@ -109,7 +109,7 @@ export const SectionFour = ({data}) => {
 
 export const SectionFive = () => {
     const cookies = useCookies();
-    const locale = cookies.get('locale');
+    const locale = cookies.get('locale') || 'locale=en';
     const forwardRef = useRef(null);
     const isInView = useInView(forwardRef);
     const mainControls = useAnimation();
@@ -124,8 +124,8 @@ export const SectionFive = () => {
         <section className="section_five_container" ref={forwardRef}>
             <div className="section_five_container_row_1">
                 <div className="section_five_container_row_1_left">
-                    <span>{text[locale].text3}</span>
-                    <p>{text[locale].text4}</p>
+                    <span>{text[locale]?.text3}</span>
+                    <p>{text[locale]?.text4}</p>
                 </div>
                 <div className="section_five_container_row_1_right">
                     <div>

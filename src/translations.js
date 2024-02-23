@@ -30,6 +30,14 @@ export const text = {
         views: 'Θέα',
         interior: 'INTERIORS',
         explore: 'EXPLOR MORE',
+        //PRICE LIST PAGE:
+        from: 'from',
+        to: 'to',
+        priceList: 'Price List',
+        //CONTACT PAGE:
+        contactInfo: 'CONTACT INFORMATION',
+        phone: 'Phone',
+        mobile: 'Mobile',
     },
     'locale=el': {
         menuHome: 'ΑΡΧΙΚΗ',
@@ -61,6 +69,14 @@ export const text = {
         facilities: 'Παροχές',
         views: 'Θέα',
         interiors: 'ΕΣΩΤΕΡΙΚΟΙ ΧΩΡΟΙ',
-        explore: 'ΕΞΕΡΕΥΝΗΣΤΕ ΠΕΡΙΣΣΟΤΕΡΟ'
+        explore: 'ΕΞΕΡΕΥΝΗΣΤΕ ΠΕΡΙΣΣΟΤΕΡΟ',
+        from: 'Aπό',
+        to: 'Έως',
+        priceList: 'Λίστα Τιμών',
+        //CONTACT PAGE:
+        contactInfo: 'ΣΤΟΙΧΕΙΑ ΕΠΙΚΟΙΝΩΝΙΑΣ',
+        phone: 'Τηλέφωνο',
+        mobile: 'Κινητό',
+
     }
 }

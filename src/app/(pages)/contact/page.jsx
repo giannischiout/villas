@@ -1,6 +1,7 @@
 import Map from "@/app/_components/Map";
 import Image from 'next/image';
 import { cookies } from "next/headers";
+import { text } from "@/translations";
 
 const fetchContact = async () => {
     "use server";
@@ -23,20 +24,24 @@ const fetchContact = async () => {
     return json.data;
 }
 const Page = async () => {
-    const location = {
-        lat: 37.7749, // Replace with your desired latitude
-        lng: -122.4194, // Replace with your desired longitude
-    };
+   
 
     const data = await fetchContact()
     const hcontact = data?.attributes.hotelcontact
+ 
+    const location = {
+        lng: parseFloat(data.attributes.longitude), // Replace with your desired latitude
+        lat: parseFloat(data.attributes.latitude), // Replace with your desired longitude
+    };
 
+    const cookieStore = cookies()
+    const locale = cookieStore.get('locale').value || 'locale=en'
     return (
         <div className="contact_container">
             <div className="contact">
                 <div className="contact_info">
                     <div className="contact_header">
-                        <h1>CONTACT INFORMATION</h1>
+                        <h1>{text[locale].contactInfo}</h1>
                     </div>
                     {hcontact?.map((contact, index) => {
                         return (
@@ -47,11 +52,11 @@ const Page = async () => {
                                     {contact.email}
                                 </p>
                                 <p className="contact_details_body">
-                                    <span>Phone: </span>
+                                    <span>{text[locale].phone}: </span>
                                     {contact.phoneNumber}
                                 </p>
                                 <p className="contact_details_body">
-                                    <span>Mobile: </span>
+                                    <span>{text[locale].mobile}: </span>
                                     {contact.mobileNumber}
                                 </p>
                             </div>
