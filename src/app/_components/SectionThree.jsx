@@ -16,6 +16,7 @@ export const SectionThree = ({data}) => {
     const { openModal } = useModal();
     const cookies = useCookies();
     const locale = cookies.get('locale') || 'locale=en';
+    console.log(locale)
 
     useEffect(() => {
         if (isInView) {
@@ -71,7 +72,7 @@ export const SectionThree = ({data}) => {
 
 export const SectionFour = ({data}) => {
     const cookies = useCookies();
-    const locale = cookies.get('locale');
+    const locale = cookies.get('locale') || 'locale=en';
     const ref = useRef(null);
     const [scope, animate] = useAnimate();
     const isInView = useInView({
