@@ -15,7 +15,7 @@ export const SectionThree = ({data}) => {
     const mainControls = useAnimation();
     const { openModal } = useModal();
     const cookies = useCookies();
-    const locale = cookies.get('locale');
+    const locale = cookies.get('locale') || 'locale=en';
 
     useEffect(() => {
         if (isInView) {

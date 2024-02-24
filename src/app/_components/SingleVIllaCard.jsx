@@ -88,7 +88,6 @@ export const VillaRight = ({ description, title, details, hasDetails, id }) => {
                     </div>
                 ) : null}
             </div>
-
         </div>
     )
 }

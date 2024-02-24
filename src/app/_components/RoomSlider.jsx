@@ -1,6 +1,5 @@
 
 'use client'
-import { set } from 'date-fns';
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
