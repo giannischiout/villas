@@ -126,8 +126,8 @@ export const SectionFive = () => {
         <section className="section_five_container" ref={forwardRef}>
             <div className="section_five_container_row_1">
                 <div className="section_five_container_row_1_left">
-                    <span>{text[locale].text3}</span>
-                    <p>{text[locale].text4}</p>
+                    <span>{text[locale]?.text3}</span>
+                    <p>{text[locale]?.text4}</p>
                 </div>
                 <div className="section_five_container_row_1_right">
                     <div>

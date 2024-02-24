@@ -71,19 +71,19 @@ export const VillaRight = ({ description, title, details, hasDetails, id }) => {
                     <div className='allvillas_details_right'>
                         <div>
                             <p>{details?.maxAduls}</p>
-                            <span>{text[locale].maxAdults}</span>
+                            <span>{text[locale]?.maxAdults}</span>
                         </div>
                         <div>
                             <p>{details?.bedrooms}</p>
-                            <span>{text[locale].bedrooms}</span>
+                            <span>{text[locale]?.bedrooms}</span>
                         </div>
                         <div>
                             <p>{details?.squareMeters}</p>
-                            <span>{text[locale].sqm}</span>
+                            <span>{text[locale]?.sqm}</span>
                         </div>
                         <div>
                             <p>{details?.pullOutCouch}</p>
-                            <span>{text[locale].pullOutCouch}</span>
+                            <span>{text[locale]?.pullOutCouch}</span>
                         </div>
                     </div>
                 ) : null}
