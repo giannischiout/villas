@@ -16,17 +16,19 @@ import Languages from './Locale';
 import { useModal } from '../_context/useModal';
 import { text } from "@/translations";
 const Navbar = ({dates}) => {
-    const { toggleModal } = useModal();
+    const { toggleModal, closeModal } = useModal();
     const cookies = useCookies();
     const locale = cookies.get('locale')  || 'locale=en';
     const {scrollYProgress} = useScroll();
     const [clicked, setClicked] = useState(false)
-    const [modal, setModal] = useState(false)
+    const [modal, setModal,] = useState(false)
     let y = useTransform(scrollYProgress, [0, 0.1], [0, -100, ], {stiffness: 100, damping: 100 }, stagger(5))
 
     
     const onClick = () => {
         setClicked(prev => !prev)
+        closeModal()
+
     }
     return (
         <div>

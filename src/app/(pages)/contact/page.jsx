@@ -23,14 +23,14 @@ const fetchContact = async () => {
     return json.data;
 }
 const Page = async () => {
-    const location = {
-        lat: 37.7749, // Replace with your desired latitude
-        lng: -122.4194, // Replace with your desired longitude
-    };
+   
 
     const data = await fetchContact()
     const hcontact = data?.attributes.hotelcontact
-
+    const location = {
+        lng: parseFloat(data.attributes.longitude), // Replace with your desired latitude
+        lat: parseFloat(data.attributes.latitude), // Replace with your desired longitude
+    };
     return (
         <div className="contact_container">
             <div className="contact">

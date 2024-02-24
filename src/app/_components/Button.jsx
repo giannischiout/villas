@@ -54,7 +54,7 @@ export const PostButton = ({id}) => {
 export const RedirectButton = ({href}) => {
     const router = useRouter();
     const cookies = useCookies();
-    const locale = cookies.get('locale');
+    const locale = cookies.get('locale') || 'locale=en';
     const onClick = () => {
         router.push(href)
     }

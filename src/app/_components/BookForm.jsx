@@ -12,9 +12,11 @@ import 'react-day-picker/dist/style.css';
 import { useCookies } from 'next-client-cookies';
 import { text } from "@/translations"
 import { useRouter } from "next/navigation";
-
+import { useModal } from "../_context/useModal";
 
 export const BookForm = ({ width, handleClose, dates }) => {
+	const { modalOpen, closeModal } = useModal();
+
 	const cookies = useCookies();
 	const router = useRouter();
 	const locale = cookies.get('locale')  || 'locale=en';
@@ -128,6 +130,7 @@ export const BookForm = ({ width, handleClose, dates }) => {
 		console.log(data)
 		if (data) {
 			setResponseBooking(text[locale].thankYou)
+			closeModal();
 			router.push('/')
 		} else {
 			setResponseBooking(text[locale].failed)
