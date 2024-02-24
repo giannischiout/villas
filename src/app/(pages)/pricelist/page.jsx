@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import BookCircle from '@/app/_components/BookCircle';
 import { cookies } from 'next/headers';
-
+import { text } from '@/translations';
 const fetchPrices = async () => {
     "use server";
     const cookieStore = cookies()
@@ -24,9 +24,9 @@ const fetchPrices = async () => {
 }
 const Page = async () => {
     const data = await fetchPrices()
-    // console.log(data)
-    // console.log(data[0].attributes.pricePerVilaPerWeek)
-    // console.log(data[0].attributes.pricingTerms)
+    const cookieStore = cookies()
+    const locale = cookieStore.get('locale')?.value || 'locale=en'
+    
     const dates = data.map((item) => {
         return {
             from: item.attributes.fromDate,
@@ -60,6 +60,8 @@ const Page = async () => {
 
 
 const PriceCard = ({ title, backColor, dates, pricingTerms }) => {
+    const cookieStore = cookies()
+    const locale = cookieStore.get('locale')?.value || 'locale=en'
     return (
         <div className="price_list" style={{ backgroundColor: backColor }}>
             <div>

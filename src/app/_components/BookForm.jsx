@@ -3,9 +3,8 @@
 "use client"
 import { useEffect, useState, useRef } from "react"
 import { IoChevronDownSharp } from "react-icons/io5";
-import { FaRegEnvelope } from "react-icons/fa6";
 import { GoCalendar } from "react-icons/go";
-import { format, parse, set } from 'date-fns';
+import { format,  } from 'date-fns';
 import usePopupDirection from "../_hooks/usePopUpDirection";
 import axios from "axios";
 import { DayPicker } from 'react-day-picker';
@@ -18,7 +17,7 @@ import { useRouter } from "next/navigation";
 export const BookForm = ({ width, handleClose, dates }) => {
 	const cookies = useCookies();
 	const router = useRouter();
-	const locale = cookies.get('locale');
+	const locale = cookies.get('locale')  || 'locale=en';
 	const calendarrefA = useRef(null)
 	const calendarrefB = useRef(null)
 	const [data, setData] = useState(null)
@@ -215,7 +214,7 @@ export const BookForm = ({ width, handleClose, dates }) => {
 
 const ChooseVilla = ({ handleShow, show, handleState, input }) => {
 	const cookies = useCookies();
-	const locale = cookies.get('locale');
+	const locale = cookies.get('locale') || 'locale=en';
 	const [choise, setChoise] = useState(text[locale].chooseVilla )
 	const handleClick = (id, name) => {
 		setChoise(name)

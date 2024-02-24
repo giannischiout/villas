@@ -1,7 +1,6 @@
 'use client'
 import { useModal } from "../_context/useModal"
 import { useCookies } from 'next-client-cookies';
-import { useRouter } from 'next/navigation'
 import { text } from "@/translations";
 const BookCircle = ({}) => {
 

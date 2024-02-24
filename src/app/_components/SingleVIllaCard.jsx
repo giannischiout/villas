@@ -7,11 +7,10 @@ import { text } from "@/translations";
 import { useCookies } from 'next-client-cookies';
 
 export const Villa = ({ description, title, details, hasDetails, id }) => {
-    console.log('single description')
-    console.log(description)
+   
     const cookies = useCookies();
-    const locale = cookies.get('locale');
-    const router = useRouter();
+    const locale = cookies.get('locale')  || 'locale=en';
+
     return (
         <div className="single_villa_item">
             <div className='sv_column_1'>
@@ -54,7 +53,7 @@ export const Villa = ({ description, title, details, hasDetails, id }) => {
 export const VillaRight = ({ description, title, details, hasDetails, id }) => {
     const router = useRouter();
     const cookies = useCookies();
-    const locale = cookies.get('locale');
+    const locale = cookies.get('locale') || 'locale=en';
     return (
         <div className="single_villa_item_right">
             <div onClick={() => router.push(`/villas/${id}`)} className='sv_right_col_1'>
@@ -72,24 +71,23 @@ export const VillaRight = ({ description, title, details, hasDetails, id }) => {
                     <div className='allvillas_details_right'>
                         <div>
                             <p>{details?.maxAduls}</p>
-                            <span>{text[locale].maxAdults}</span>
+                            <span>{text[locale]?.maxAdults}</span>
                         </div>
                         <div>
                             <p>{details?.bedrooms}</p>
-                            <span>{text[locale].bedrooms}</span>
+                            <span>{text[locale]?.bedrooms}</span>
                         </div>
                         <div>
                             <p>{details?.squareMeters}</p>
-                            <span>{text[locale].sqm}</span>
+                            <span>{text[locale]?.sqm}</span>
                         </div>
                         <div>
                             <p>{details?.pullOutCouch}</p>
-                            <span>{text[locale].pullOutCouch}</span>
+                            <span>{text[locale]?.pullOutCouch}</span>
                         </div>
                     </div>
                 ) : null}
             </div>
-
         </div>
     )
 }

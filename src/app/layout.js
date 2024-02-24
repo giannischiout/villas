@@ -4,7 +4,6 @@ import {  Bona_Nova, Noto_Sans_JP  } from 'next/font/google'
 import './globals.css'
 import Navbar from './_components/Navbar'
 import SmoothScrolling from './_hooks/smoothScrolling'
-import { LocaleProvider } from './_context/useLocale'
 import { ModalProvider } from './_context/useModal'
 import FooterNew from './_components/FooterNew'
 import { CookiesProvider } from 'next-client-cookies/server';
@@ -50,7 +49,6 @@ export default async function RootLayout({ children }) {
     <html lang="en">
       <body className={`$${bonaNova.variant}  ${noto.variable}`}>
       <CookiesProvider>
-        <LocaleProvider>
           <ModalProvider>
             <SmoothScrolling>
               <Navbar  dates={dates}/>
@@ -58,10 +56,7 @@ export default async function RootLayout({ children }) {
               <FooterNew />
             </SmoothScrolling>
           </ModalProvider>
-        </LocaleProvider>
         </CookiesProvider >
-         
-
       </body>
     </html>
   )

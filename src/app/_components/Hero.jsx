@@ -2,10 +2,7 @@
 import Image from 'next/image';
 import { useEffect, useState, useRef } from 'react';
 import { useAnimate, useScroll, animate, useAnimation, useInView, motion } from 'framer-motion';
-import { ClipImage } from "./ClipImage";
-// import { ImageScroll } from './Villa';
 import LetterFade from './LetterFade';
-import SlideShow from './SlideShow';
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 const images = [
