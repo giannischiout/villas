@@ -67,6 +67,8 @@ export default async function Page({ params }) {
         lng: parseFloat( data?.attributes?.londitude),
         lat: parseFloat(data?.attributes?.lattitude),
       };
+
+      console.log(location)
     return (
         <section className="post_container">
             <div className="single_post_top"></div>
