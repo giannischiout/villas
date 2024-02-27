@@ -467,6 +467,9 @@ we want to change the grid so that it reflects the width of the burger div */
 
 
 @media screen and (max-width: 900px) {
+    .v_main_top {
+        margin-top: 70px;
+    }
     .villa_container {
         width: 100%;
        margin-top: 0;

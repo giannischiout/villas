@@ -164,7 +164,9 @@
       transform: translateY(0px);
       cursor: pointer;
     }
-    
+    .row_three {
+      height: auto;
+  }
    
   }
   
@@ -187,10 +189,7 @@
       
     }
    
-    .row_two {
-      height: 250px;
-      justify-content: center;
-    }
+    
 
     .row_one_text {
       height: 50px;
@@ -209,12 +208,14 @@
       position: relative;
   }
 
+
     .row_three_image {
       height: 350px;
     }
   
     .row_two p {
       margin-left: 0;
+      padding-bottom: 20px;
     }
 
    

@@ -448,10 +448,10 @@ p {
   }
 
   .hero_main_top {
-    transform: translateY(30%);
     opacity: 0;
     display: flex;
     align-items: center;
+    margin-top: 70px;
   }
 
   .intro_text h3 {
