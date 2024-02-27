@@ -28,10 +28,7 @@ export const SectionThree = ({data}) => {
     return (
         <div className="villa_section" ref={forwardRef}>
             <div className="villa_width">
-                <div className="row_one">
-
-                </div>
-                <div className="traslated_container">
+                <div >
                     <div className="row_two">
                         <p >{data[1]?.attributes?.moto} </p>
                     </div>

@@ -22,7 +22,7 @@ const SlideShow = ({posts}) => {
        
      
     return (
-        <div className="slideshow">
+        <div className="slideshow" onClick={() =>router.push(`/posts/single/${posts[current].id}`)}>
             <Image 
                 src={`${process.env.NEXT_PUBLIC_BASE_API_URL}${posts[current].attributes.images.data[0].attributes.url}`}
                 fill

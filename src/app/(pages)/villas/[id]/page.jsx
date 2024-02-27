@@ -67,7 +67,7 @@ const getData = async (id) => {
 }
 export default async function Page({ params }) {
     const cookieStore = cookies()
-    const locale = cookieStore.get('locale')
+    const locale = cookieStore.get('locale')?.value || 'locale=en'
     const { data, otherVillas } = await getData(params.id)
     const sliderImgs = data?.attributes?.interiorImages?.data;
     const roomsImages = data?.attributes?.roomImages.data;
@@ -88,7 +88,7 @@ export default async function Page({ params }) {
                  <ImageSlider images={imagesSlider} />
              </div>
              {/* <RoomSlider images={roomsSlider} /> */}
-             <p className="allvillas_header">{text[locale?.value].explore}</p>
+             <p className="allvillas_header">{text[locale].explore}</p>
              <AllVillas
                  details={details}
                  data={otherVillas}

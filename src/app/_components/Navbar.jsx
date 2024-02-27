@@ -15,16 +15,16 @@ import BookNowModal from './BookNow';
 import Languages from './Locale';
 import { useModal } from '../_context/useModal';
 import { text } from "@/translations";
-const Navbar = ({dates}) => {
+const Navbar = ({ dates }) => {
     const { toggleModal, closeModal } = useModal();
     const cookies = useCookies();
-    const locale = cookies.get('locale')  || 'locale=en';
-    const {scrollYProgress} = useScroll();
+    const locale = cookies.get('locale') || 'locale=en';
+    const { scrollYProgress } = useScroll();
     const [clicked, setClicked] = useState(false)
     const [modal, setModal,] = useState(false)
-    let y = useTransform(scrollYProgress, [0, 0.1], [0, -100, ], {stiffness: 100, damping: 100 }, stagger(5))
+    let y = useTransform(scrollYProgress, [0, 0.1], [0, -100,], { stiffness: 100, damping: 100 }, stagger(5))
 
-    
+
     const onClick = () => {
         setClicked(prev => !prev)
         closeModal()
@@ -32,22 +32,24 @@ const Navbar = ({dates}) => {
     }
     return (
         <div>
-             <div className="navbar_container">
-            <div className='grid_burger'>
+            <div className="nav">
+               
+                <div className="nav_burger_container">
                 < Burger onClick={onClick} clicked={clicked} />
+                </div>
+                <div className="nav_main">
+                    <motion.div className="nav_languages" style={{ y }}>
+                        < Languages />
+                    </motion.div>
+                    <div className="nav_actions">
+                    <Icons />
+                    <BookNow onClick={toggleModal} text={text[locale].bookNow2}/>
+                    </div>
+                </div>
             </div>
-            <div className='grid_tagline'>
-            <motion.div style={{y}}>
-                    < Languages />
-                </motion.div>
-            </div>
-            <div className='grid_icons'>
-                <Icons />
-                <BookNow onClick={toggleModal} text={text[locale].bookNow2}/>
-            </div>
-        </div>
-            <NavMenu isOpen={clicked} setIsOpen={setClicked}/>
-            <BookNowModal isOpen={modal} dates={dates}/>
+
+            <NavMenu isOpen={clicked} setIsOpen={setClicked} />
+            <BookNowModal isOpen={modal} dates={dates} />
         </div>
     )
 }
@@ -55,20 +57,20 @@ const Navbar = ({dates}) => {
 
 
 
-const Burger = ({onClick, clicked}) => {
+const Burger = ({ onClick, clicked }) => {
     const [scope, animate] = useAnimate()
 
     return (
-        <div 
-        ref={scope} 
-        className={`nav_burger `} 
-       
-        onClick={onClick}>
+        <div
+            ref={scope}
+            className={`nav_burger `}
+
+            onClick={onClick}>
             {clicked ? (
-                    <IoCloseOutline className='burger_times_icon'/>
-                    
+                <IoCloseOutline className='burger_times_icon' />
+
             ) : (
-                 <RxHamburgerMenu className='' />
+                <RxHamburgerMenu className='' />
             )}
         </div>
     )
@@ -76,18 +78,18 @@ const Burger = ({onClick, clicked}) => {
 
 const Icons = () => {
 
-   const {scrollYProgress} = useScroll();
-    let y = useTransform(scrollYProgress, [0, 0.1], [0, -100, ], {stiffness: 100, damping: 100 }, stagger(5))
+    const { scrollYProgress } = useScroll();
+    let y = useTransform(scrollYProgress, [0, 0.1], [0, -100,], { stiffness: 100, damping: 100 }, stagger(5))
 
     return (
         <div className="icons" >
-            <motion.div className="icon" style={{y}}>
+            <motion.div className="icon" style={{ y }}>
                 <RiFacebookFill />
             </motion.div>
-            <motion.div className="icon" style={{y}}>
+            <motion.div className="icon" style={{ y }}>
                 <RiInstagramFill />
             </motion.div>
-            <motion.div className="icon" style={{y}}>
+            <motion.div className="icon" style={{ y }}>
                 <BsFillEnvelopeFill />
             </motion.div>
         </div>
@@ -95,22 +97,22 @@ const Icons = () => {
 }
 
 
- export const BookNow = ({text, onClick}) => {
+export const BookNow = ({ text, onClick }) => {
     const [scope, animate] = useAnimate()
 
     const handlMouseOver = async () => {
-            animate('.book_now_inner', {
-                width: '100%'
-            }, {
-                ease: 'linear',
-                duration: 0.3
-            })
-            animate('#book_icon', {
-                color: '#ffffff'
-            }, {
-                ease: 'easeInOut',
-            })
-       
+        animate('.book_now_inner', {
+            width: '100%'
+        }, {
+            ease: 'linear',
+            duration: 0.3
+        })
+        animate('#book_icon', {
+            color: '#ffffff'
+        }, {
+            ease: 'easeInOut',
+        })
+
     }
 
     const handleMouseLeave = async () => {
@@ -132,8 +134,8 @@ const Icons = () => {
 
     return (
         <div
-        onClick={onClick} 
-        ref={scope} onMouseEnter={handlMouseOver} onMouseLeave={handleMouseLeave} className="book_now">
+            onClick={onClick}
+            ref={scope} onMouseEnter={handlMouseOver} onMouseLeave={handleMouseLeave} className="book_now">
             <button className="book_now_inner">
             </button>
             <span>{text}</span>
