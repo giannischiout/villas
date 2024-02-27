@@ -12,10 +12,8 @@ import 'react-day-picker/dist/style.css';
 import { useCookies } from 'next-client-cookies';
 import { text } from "@/translations"
 import { useRouter } from "next/navigation";
-import { useModal } from "../_context/useModal";
 
 export const BookForm = ({ width, handleClose, dates }) => {
-	const { modalOpen, closeModal } = useModal();
 
 	const cookies = useCookies();
 	const router = useRouter();
@@ -116,7 +114,6 @@ export const BookForm = ({ width, handleClose, dates }) => {
 			sitemap_exclude: true
 
 		}
-		console.log(formData)
 		const resp = await fetch('https://strapi.3v7i.com/api/booking-rqs', {
 			method: 'POST',
 			headers: {
@@ -127,10 +124,8 @@ export const BookForm = ({ width, handleClose, dates }) => {
 			})
 		})
 		const data = await resp.json()
-		console.log(data)
 		if (data) {
 			setResponseBooking(text[locale].thankYou)
-			closeModal();
 			router.push('/')
 		} else {
 			setResponseBooking(text[locale].failed)
@@ -139,8 +134,7 @@ export const BookForm = ({ width, handleClose, dates }) => {
 	}
 
 	return (
-		<div className="form_container_mobile">
-			<div>
+			<div className="bookform_container">
 				<div className="book_now_intro">
 					<span>{text[locale].bookNow}</span>
 					<div className="book_available_dates">
@@ -204,13 +198,12 @@ export const BookForm = ({ width, handleClose, dates }) => {
 				/>
 				<div className="form_button_container">
 					<button onClick={handleSubmit} className="submit_btn">{text[locale].submit}</button>
-					<button onClick={handleClose} className="close_btn">{text[locale].close}</button>
+					<button onClick={() => router.back()} className="close_btn">{text[locale].close}</button>
 				</div>
 				<div>
 					{responseBook ? <span className="response_booking">{responseBook}</span> : null}
 				</div>
 			</div>
-		</div>
 	)
 }
 

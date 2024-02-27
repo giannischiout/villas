@@ -1,5 +1,4 @@
 'use client'
-import { Menu } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useScroll, useTransform, motion, animate, stagger } from 'framer-motion';
 import { RiFacebookFill } from "react-icons/ri";
@@ -11,10 +10,10 @@ import { IoCloseOutline } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { useCookies } from 'next-client-cookies';
 import NavMenu from './Menu';
-import BookNowModal from './BookNow';
 import Languages from './Locale';
 import { useModal } from '../_context/useModal';
 import { text } from "@/translations";
+import { useRouter } from 'next/navigation';
 const Navbar = ({ dates }) => {
     const { toggleModal, closeModal } = useModal();
     const cookies = useCookies();
@@ -49,7 +48,7 @@ const Navbar = ({ dates }) => {
             </div>
 
             <NavMenu isOpen={clicked} setIsOpen={setClicked} />
-            <BookNowModal isOpen={modal} dates={dates} />
+            {/* <BookNowModal isOpen={modal} dates={dates} /> */}
         </div>
     )
 }
@@ -99,7 +98,7 @@ const Icons = () => {
 
 export const BookNow = ({ text, onClick }) => {
     const [scope, animate] = useAnimate()
-
+    const router = useRouter()
     const handlMouseOver = async () => {
         animate('.book_now_inner', {
             width: '100%'
@@ -134,7 +133,7 @@ export const BookNow = ({ text, onClick }) => {
 
     return (
         <div
-            onClick={onClick}
+            onClick={() => router.push('/booknow')}
             ref={scope} onMouseEnter={handlMouseOver} onMouseLeave={handleMouseLeave} className="book_now">
             <button className="book_now_inner">
             </button>

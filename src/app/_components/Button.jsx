@@ -5,13 +5,14 @@ import { useModal } from "../_context/useModal";
 import { useCookies } from 'next-client-cookies';
 import { text } from "@/translations";
 
-const Book = ({normal, title, hasCloseBtn}) => {
+const Book = ({}) => {
     const { modalOpen, openModal, closeModal } = useModal();
+    const router = useRouter();
     const cookies = useCookies();
     const locale = cookies.get('locale')  || 'locale=en';
     return (
            <>
-             <div onClick={openModal} className="btn_back" >
+             <div onClick={() => router.push('/booknow') } className="btn_back" >
             <div className="btn">
                 <button >
                 </button>
