@@ -386,6 +386,11 @@
         height: 250px;
         width: 250px;
     }
+
+    .posts_inner {
+        width: 90%;
+        transform: translateY(-200px);
+    }
    
 }
 @media screen and (max-width: 900px) {
