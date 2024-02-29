@@ -35,7 +35,7 @@ function getImagesWidthProportions(sliderImgs) {
 
 const getData = async (id) => {
     const cookieStore = cookies()
-    const locale = cookieStore.get('locale')
+    const locale = cookieStore.get('locale') || 'locale=en' 
     let url = `${process.env.API_URL}/villas?${locale?.value}&populate=details,facilities,roomtypes,bathroom,images,views,interiorImages,roomImages `
     const res = await fetch(url, {
         method: 'GET',
@@ -46,10 +46,15 @@ const getData = async (id) => {
 
     });
     let json = await res.json();
-   
+    console.log('json');
+    console.log(json)
     //CREATE THE DATA FOR THE REMAINING VILLAS CARDS:
     let newid = mapID(id, locale?.value)
+    console.log('newid')
+    console.log(newid)
     let villa = json.data.find(villa => villa.id == newid);
+    console.log('villa')
+    console.log(villa)
     const otherVillasData = json.data.filter(otherVilla =>otherVilla.id !== parseInt(newid));
     const titlesAndDescriptions = otherVillasData.map((villa) => {
         return {
@@ -69,6 +74,10 @@ export default async function Page({ params }) {
     const cookieStore = cookies()
     const locale = cookieStore.get('locale')?.value || 'locale=en'
     const { data, otherVillas } = await getData(params.id)
+    console.log('params id ')
+    console.log(params.id)
+    console.log('data')
+    console.log(data)
     const sliderImgs = data?.attributes?.interiorImages?.data;
     const roomsImages = data?.attributes?.roomImages.data;
     console.log('other villas')

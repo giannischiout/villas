@@ -1,5 +1,7 @@
 export function mapID(id, locale) {
-    if (locale === 'locale=en') {
+    console.log('local in mapID')
+    console.log(locale)
+    if (locale === 'locale=en' || locale == undefined) {
         return id;
     }
 
