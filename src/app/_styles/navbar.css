@@ -1,41 +1,47 @@
 
-.navbar_container {
-    display: grid;
-    grid-template-columns: 7.5vw minmax(140px, 13.4vw) 1fr ;
-    grid-template-rows: 70px;
+
+.nav {
     position: fixed;
     top: 0;
     left: 0;
+    display: flex;
     width: 100%;
-    user-select: none;
+    padding:20px;
     z-index: 99999;
-    padding-top: 10px;
-
 }
 
-.grid_burger {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-}
-.grid_tagline {
+.nav_burger_container {
+    width: 6%;
+    min-width: 60px;
+    margin-right: 20px;
+    z-index: 99999;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
-
-.grid_icons {
+.nav_main {
+    flex: 1;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
 }
-.navbar_left > div {
+
+
+.nav_actions {
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
+.nav_languages {
+    display: flex;
+    align-items: center;
+}
+
+
+
+
+
 
 
 
@@ -60,15 +66,6 @@
     font-size: 24px;
 }
 
-.burger_curtain {
-    position: absolute;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-}
 
 
 .line {
@@ -117,16 +114,20 @@
 /* LANGUAGES  */
 .languages {
     display: grid;
-    /* background-color: rgb(224, 212, 212); */
-    grid-template-columns: 1fr 1px 1fr;
+    grid-template-columns: 80px 2px 80px;
     grid-template-rows: 1fr;
     column-gap: 10px;
     width: 100%;
     color: var(--primary);
-    margin-left: 40px;
+    position: relative;
+    align-items: center;
 }
 
+.languages button {
+    width: 70px;
+    padding-bottom: 4px;
 
+}
 
 .languages hr {
     height: 100%;
@@ -135,7 +136,7 @@
 }
 
 .lang_active {
-    border-bottom: 1px solid var(--primary);
+    border-bottom: 1px solid var(--primary_dark);
 }
 
 
@@ -232,14 +233,32 @@
 
 
 @media screen and (max-width: 958px) {
-    .navbar_container {
-        display: grid;
-        /* padding: 20px; */
-        grid-template-columns:  70px  minmax(140px, 13.4vw) 1fr ;
-        
-    
-    }
+   
     .icons {
         display: none;
     }
+}
+
+@media screen and (max-width: 700px) {
+    .grid_tagline {
+        display: none;
+    }
+    .grid_burger {
+        display: flex;
+        align-items: center;
+        justify-content:flex-start;
+    }
+    .navbar_container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding: 20px;
+    }
+    .languages {
+        display: none;
+    }
+
+    .book_now {
+        margin-right: 20px;
+    }
+    
 }

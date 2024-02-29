@@ -67,7 +67,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    
+   
    
 }
 
@@ -205,8 +205,6 @@
 }
 .single_maps {
     width: 500px;
-    height: 500px;
-    background-color: beige;
     margin-top: 100px;
 }
 .single_gps_btn {
@@ -241,8 +239,8 @@
 .single_post_gallery {
     width: 350px;
     height: 220px;
-   position: relative;
-   border-radius: 5px;
+    position: relative;
+    border-radius: 5px;
 }
 .single_post_gallery img {
     border-radius: 5px;
@@ -330,7 +328,7 @@
         background-color: rgba(243, 241, 239, 0.719);
     }
     .single_post_main_inner {
-        width: 90%;
+        width: 100%;
     }
     .single_btn {
         width: 100%;
@@ -369,7 +367,7 @@
         padding: 30px;
     }
     .single_post_main_inner {
-        width: 95%;
+        width: 98%;
     }
     .single_btn {
         width: 100%;
@@ -388,11 +386,19 @@
         height: 250px;
         width: 250px;
     }
+
+    .posts_inner {
+        width: 90%;
+        transform: translateY(-200px);
+    }
    
 }
 @media screen and (max-width: 900px) {
+    .posts_top {
+        margin-top: 80px;
+    }
     .single_post_grid {
-        grid-template-columns: 1fr;
+        display: block;
 
     }
 
@@ -420,5 +426,11 @@
     .other_posts_grid {
         grid-template-columns: 1fr;
     }
+    .post_container {
+        margin-top: 100px;
+       
+       
+    }
+    
 }
 

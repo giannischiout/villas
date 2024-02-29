@@ -3,7 +3,7 @@ export const text = {
         menuHome: 'HOME',
         menuVillas: 'VILLAS',
         menuWhatToDo: 'WHAT TO DO',
-        menuContact: 'CONCTACT',
+        menuContact: 'CONTACT',
         menuPriceList: 'PRICE LIST',
         button: 'Book your getaway today and indulge in the beauty of Agios Ioannis Bay.',
         localeBtnEl: 'Greek',

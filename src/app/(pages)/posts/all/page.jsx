@@ -8,7 +8,7 @@ import Image from "next/image"
 const fetchPosts = async () => {
     "use server";
     const cookieStore = cookies()
-    const locale = cookieStore.get('locale')
+    const locale = cookieStore.get('locale') || 'locale=en'
    
     const url = `${process.env.API_URL}/posts?${locale?.value}&populate=images`
     

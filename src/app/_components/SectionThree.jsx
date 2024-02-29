@@ -5,6 +5,7 @@ import { useEffect, useRef } from "react";
 import { useModal } from "../_context/useModal";
 import {text} from "@/translations"
 import { useCookies } from 'next-client-cookies';
+import { useRouter } from "next/navigation";
 
 
 
@@ -13,9 +14,10 @@ export const SectionThree = ({data}) => {
     const forwardRef = useRef(null);
     const isInView = useInView(forwardRef);
     const mainControls = useAnimation();
-    const { openModal } = useModal();
+    const router = useRouter()
     const cookies = useCookies();
     const locale = cookies.get('locale') || 'locale=en';
+    console.log(locale)
 
     useEffect(() => {
         if (isInView) {
@@ -27,10 +29,7 @@ export const SectionThree = ({data}) => {
     return (
         <div className="villa_section" ref={forwardRef}>
             <div className="villa_width">
-                <div className="row_one">
-
-                </div>
-                <div className="traslated_container">
+                <div >
                     <div className="row_two">
                         <p >{data[1]?.attributes?.moto} </p>
                     </div>
@@ -55,10 +54,9 @@ export const SectionThree = ({data}) => {
                                 />
                             </motion.div>
                             <div className="row_three_content">
-                                <div onClick={openModal} className="book_getaway">
+                                <div onClick={() => router.push('booknow')} className="book_getaway">
                                     <p >{text[locale]?.btn1}.</p>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -70,8 +68,6 @@ export const SectionThree = ({data}) => {
 
 
 export const SectionFour = ({data}) => {
-    const cookies = useCookies();
-    const locale = cookies.get('locale');
     const ref = useRef(null);
     const [scope, animate] = useAnimate();
     const isInView = useInView({

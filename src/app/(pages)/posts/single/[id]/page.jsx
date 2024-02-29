@@ -2,13 +2,10 @@ import { RedirectButton } from "@/app/_components/Button";
 
 import { cookies } from 'next/headers'
 import Image from "next/image"
-import Link from 'next/link';
-import { GoArrowUpRight } from 'react-icons/go';
 import PostMiniGallery from "@/app/_components/PostMiniGallery";
 import { PostButton } from '@/app/_components/Button';
 import Map from "@/app/_components/Map";
 import { text } from "@/translations";
-import { revalidatePath } from 'next/cache'
 
 const fetchPosts = async (postId) => {
     "use server";
@@ -35,6 +32,8 @@ const fetchAll = async () => {
 
     const url = `${process.env.API_URL}/posts?${locale?.value}&populate=images`
     console.log(url)
+
+
     
     let data = await fetch(url, {
         method: 'GET',
@@ -52,7 +51,7 @@ const fetchAll = async () => {
 export default async function Page({ params }) {
     const data = await fetchPosts(params.id)
     const cookieStore = cookies()
-    const locale = cookieStore.get('locale')
+    const locale = cookieStore.get('locale')?.value || 'locale=en';
    
     const allData = await fetchAll()
     const image = data?.attributes?.images.data[0].attributes.url;
@@ -63,17 +62,19 @@ export default async function Page({ params }) {
         }
     });
 
-    const location = {
-        lat: 37.7749, // Replace with your desired latitude
-        lng: -122.4194, // Replace with your desired longitude
+   
+      const location = {
+        lng: parseFloat( data?.attributes?.londitude),
+        lat: parseFloat(data?.attributes?.lattitude),
       };
+
+      console.log(location)
     return (
         <section className="post_container">
             <div className="single_post_top"></div>
             <div className="single_post_main">
                 <div className="single_post_main_inner">
                     <div className="single_image">
-                      
                             <Image 
                             priority={true}
                             alt={'gallery images'} 
@@ -108,7 +109,7 @@ export default async function Page({ params }) {
                         </div>
                     </div>
                     <div className="other_posts">
-                        <h3>{text[locale?.value]?.otherLocation}</h3>
+                        <h3>{text[locale]?.otherLocation}</h3>
                         <div className="other_posts_grid">
                         {allData.map((post, i) => {
                             if(post.id == params.id) return;
@@ -152,12 +153,4 @@ const Card = ({ image, description, title, date, id, loading }) => {
     )
 }
 
-export const PostMapLink = ({ latt, long }) => {
-    const coordinates = `${latt},${long}`;
-    return (
-        <Link className="single_btn single_gps_btn" href={`https://www.google.com/maps?q=${coordinates}`} target='blank'>
-            google maps
-            <GoArrowUpRight />
-        </Link>
-    )
-}
+

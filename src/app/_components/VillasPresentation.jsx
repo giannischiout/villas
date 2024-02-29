@@ -1,13 +1,9 @@
 'use client'
-import { useScroll, useTransform } from "framer-motion"
 import Image from "next/image"
-import { BookNow } from "./Navbar"
 import { useRouter } from "next/navigation"
-import Book from "./Button"
 import { Btn } from "./Button"
 import { text } from "@/translations"
 import { useCookies } from 'next-client-cookies';
-import { mapID, reverseMapID } from "@/lib/mapIds"
 
 
 const VillasPresentation = ({ villas }) => {
@@ -21,7 +17,6 @@ const VillasPresentation = ({ villas }) => {
                     <div className="v_presentation_sticky">
                         <div className="v_presentation_top">
                             <div className="v_presentation_header">
-                                {/* choose on of our villas */}
                                 <span>{text[locale].t1}</span>
                                 <p>{text[locale].t2}</p>
                             </div>
@@ -95,7 +90,7 @@ const Card = ({ image, people, sqr, name, id, bedrooms, pullOutCouch }) => {
                     <p>{`${text[locale].bedrooms} ${bedrooms}`}</p>
                     <p>{`${text[locale].pullOutCouch} ${pullOutCouch}`}</p>
                 </div>
-                <Btn text="see more" onClick={onClick} />
+                <Btn text={text[locale].seeMore} onClick={onClick} />
 
             </div>
         </div>

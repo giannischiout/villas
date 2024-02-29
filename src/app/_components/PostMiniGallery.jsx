@@ -13,7 +13,7 @@ export default function PostMiniGallery({ images }) {
     }
     return (
         <div className="single_post_gallery">
-        < Image alt={'gallery images'} src={`${process.env.NEXT_PUBLIC_BASE_API_URL}${images[current].url}`} layout="fill" objectFit="cover" />
+        < Image alt={'gallery images'} src={`${process.env.NEXT_PUBLIC_BASE_API_URL}${images[current].url}`} fill={true} sizes={'350px 250px'} />
             <button onClick={handleNext} className="single_gallery_btn single_btn_left">
                 <IoIosArrowBack />
             </button>

@@ -51,7 +51,7 @@ const images = [
 const VillaNew = ({ data }) => {
     const [current, setCurrent] = useState(0);
     const cookies = useCookies();
-    const locale = cookies.get('locale');
+    const locale = cookies.get('locale') || 'locale=en';
     const prevImage = () => {
         setCurrent(prev => (prev + 1) % images.length)
     }
@@ -59,7 +59,7 @@ const VillaNew = ({ data }) => {
     const nextImage = () => {
         setCurrent(prev => (prev - 1 + images.length) % images.length)
     }
-    const sidebarImg = `${process.env.NEXT_PUBLIC_BASE_API_URL}${data?.attributes?.images.data[0].attributes?.url}` || '/intro_day.webp'
+    const sidebarImg =  '/intro_day.webp'
     const name = data?.attributes?.title
     const tag = data?.attributes?.tag
     const description = data?.attributes?.shortDescription
@@ -68,8 +68,7 @@ const VillaNew = ({ data }) => {
     const roomTypes = data?.attributes?.roomtypes.data
     const views = data?.attributes?.views.data
     const bathrooms = data?.attributes?.bathroom
-    console.log('bathrooms')
-    console.log(bathrooms)
+ 
     // HOOKS
     const [scope, animate] = useAnimate();
     const clipRef = useRef(null)
@@ -99,7 +98,6 @@ const VillaNew = ({ data }) => {
         })
         await animate('.v_main_top', {
             opacity: [0, 1],
-            y: ['30%', '0%'],
 
         }, {
             duration: 1,

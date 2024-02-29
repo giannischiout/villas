@@ -51,9 +51,9 @@ export default async function RootLayout({ children }) {
       <CookiesProvider>
           <ModalProvider>
             <SmoothScrolling>
-              <Navbar  dates={dates}/>
+              {/* <Navbar  dates={dates}/> */}
               {children}
-              <FooterNew />
+              {/* <FooterNew /> */}
             </SmoothScrolling>
           </ModalProvider>
         </CookiesProvider >

@@ -1,11 +1,6 @@
-.form_container_mobile {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 80px 0;
-    width: 50%;
+.bookform_container {
+    padding: 20px;
 }
-
 
 .text_area {
     width: 100%;
@@ -174,8 +169,6 @@
 
 
 
-
-
 .upwards {
     top: -300px; /* Adjust this value to position the popup */
   }
@@ -228,8 +221,10 @@
     display: block;
     border-radius: 5px;
   }
-  @media screen and (min-width:1000px) {
-        .form_mobile {
-            display: none;
-        }
+
+  @media screen and (max-width: 900px) {
+    .bookform_container {
+        margin-top: 100px;
+        margin-bottom: 80px;
+    }
   }
