@@ -113,3 +113,20 @@
     left: 0;
     bottom: -2px;
     }
+
+
+.lang_mobile {
+    display: none;
+    width: 140px;
+    font-size: 2rem;
+    margin-top: 30px;
+  
+}
+
+@media screen and (max-width: 704px) {
+    .lang_mobile {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}

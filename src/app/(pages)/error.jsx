@@ -1,5 +1,6 @@
 'use client' 
 import { useEffect, useState } from 'react'
+import { createLocale } from '../actions'
 
 export default function Error({
   error,
@@ -9,6 +10,7 @@ export default function Error({
   const [loading, setLoading]= useState(false)
 
   const handleError = () => {
+    createLocale('locale=en')
     reset()
   }
   return (

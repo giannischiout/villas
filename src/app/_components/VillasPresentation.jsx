@@ -17,8 +17,8 @@ const VillasPresentation = ({ villas }) => {
                     <div className="v_presentation_sticky">
                         <div className="v_presentation_top">
                             <div className="v_presentation_header">
-                                <span>{text[locale].t1}</span>
-                                <p>{text[locale].t2}</p>
+                                <span>{text[locale]?.t1}</span>
+                                <p>{text[locale]?.t2}</p>
                             </div>
 
                         </div>
@@ -28,35 +28,35 @@ const VillasPresentation = ({ villas }) => {
                         <div className="card1">
 
                             <Card
-                                id={1}
-                                name={villas[0].title}
+                                id={villas[0]?.id}
+                                name={villas[0]?.title}
                                 image="pres_castro.webp"
-                                people={villas[0].details.maxAduls}
-                                sqr={villas[0].details.squareMeters}
-                                bedrooms={villas[0].details.bedrooms}
-                                pullOutCouch={villas[0].details.pullOutCouch}
+                                people={villas[0]?.details.maxAduls}
+                                sqr={villas[0]?.details.squareMeters}
+                                bedrooms={villas[0]?.details.bedrooms}
+                                pullOutCouch={villas[0]?.details.pullOutCouch}
                             />
                         </div>
                         <div className="card2">
                             <Card
                                 id={2}
                                 image="pres_jira.webp"
-                                name={villas[1].title}
-                                people={villas[1].details.maxAduls}
-                                sqr={villas[1].details.squareMeters}
-                                bedrooms={villas[1].details.bedrooms}
-                                pullOutCouch={villas[1].details.pullOutCouch}
+                                name={villas[1]?.title}
+                                people={villas[1]?.details.maxAduls}
+                                sqr={villas[1]?.details.squareMeters}
+                                bedrooms={villas[1]?.details.bedrooms}
+                                pullOutCouch={villas[1]?.details.pullOutCouch}
                             />
                         </div>
                         <div className="card3">
                             <Card 
                                 id={3} 
                                 image="pres_milos.webp" 
-                                name={villas[2].title}
-                                people={villas[2].details.maxAduls}
-                                sqr={villas[2].details.squareMeters}
-                                bedrooms={villas[2].details.bedrooms}
-                                pullOutCouch={villas[2].details.pullOutCouch}
+                                name={villas[2]?.title}
+                                people={villas[2]?.details.maxAduls}
+                                sqr={villas[2]?.details.squareMeters}
+                                bedrooms={villas[2]?.details.bedrooms}
+                                pullOutCouch={villas[2]?.details.pullOutCouch}
                                 />
                         </div>
 
@@ -85,12 +85,12 @@ const Card = ({ image, people, sqr, name, id, bedrooms, pullOutCouch }) => {
             <div className="v_presentation_card_text">
                 <div className="">
                     <span className="v_card_title">{name}</span>
-                    <p>{`${text[locale].maxAdults} ${people}`}</p>
-                    <p>{`${text[locale].sqm} ${sqr}`}</p>
-                    <p>{`${text[locale].bedrooms} ${bedrooms}`}</p>
-                    <p>{`${text[locale].pullOutCouch} ${pullOutCouch}`}</p>
+                    <p>{`${text[locale]?.maxAdults} ${people}`}</p>
+                    <p>{`${text[locale]?.sqm} ${sqr}`}</p>
+                    <p>{`${text[locale]?.bedrooms} ${bedrooms}`}</p>
+                    <p>{`${text[locale]?.pullOutCouch} ${pullOutCouch}`}</p>
                 </div>
-                <Btn text={text[locale].seeMore} onClick={onClick} />
+                <Btn text={text[locale]?.seeMore} onClick={onClick} />
 
             </div>
         </div>

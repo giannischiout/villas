@@ -1,14 +1,10 @@
 import VillaNew from "@/app/_components/VillaNew"
 import ImageSlider from "@/app/_components/ImageSlider"
-import { RoomSlider } from "@/app/_components/RoomSlider"
 import AllVillas from "@/app/_components/AllVillas"
 import { cookies } from 'next/headers'
-import { mapID } from "@/lib/mapIds"
 import { text } from "@/translations"
 
-function calculateProportionalWidth(originalWidth, originalHeight, targetHeight) {
-    return (originalWidth / originalHeight) * targetHeight;
-}
+
 function getImages(sliderImgs) {
     let images = [];
     if (sliderImgs && sliderImgs.length) {
@@ -20,23 +16,13 @@ function getImages(sliderImgs) {
 }
 
 
-function getImagesWidthProportions(sliderImgs) {
-    let images = []
-    if (sliderImgs && sliderImgs.length) {
-        sliderImgs.forEach((img) => {
-            images.push({
-                src: `${process.env.NEXT_PUBLIC_BASE_API_URL}${img.attributes.url}`,
-                width: calculateProportionalWidth(img.attributes.width, img.attributes.height, 400),
-            });
-        });
-    }
-    return images
-}
+
 
 const getData = async (id) => {
+    console.log(id)
     const cookieStore = cookies()
     const locale = cookieStore.get('locale') || 'locale=en' 
-    let url = `${process.env.API_URL}/villas?${locale?.value}&populate=details,facilities,roomtypes,bathroom,images,views,interiorImages,roomImages `
+    let url = `${process.env.API_URL}/villas?${locale?.value}&populate=details,facilities,roomtypes,bathroom,images,views,interiorImages,roomImages`
     const res = await fetch(url, {
         method: 'GET',
         headers: {
@@ -46,16 +32,10 @@ const getData = async (id) => {
 
     });
     let json = await res.json();
-    console.log('json');
-    console.log(json)
-    //CREATE THE DATA FOR THE REMAINING VILLAS CARDS:
-    let newid = mapID(id, locale?.value)
-    console.log('newid')
-    console.log(newid)
-    let villa = json.data.find(villa => villa.id == newid);
-    console.log('villa')
-    console.log(villa)
-    const otherVillasData = json.data.filter(otherVilla =>otherVilla.id !== parseInt(newid));
+
+    let villa = json.data.find(villa => villa.id == id);
+  
+    const otherVillasData = json.data.filter(otherVilla =>otherVilla.id !== parseInt(id));
     const titlesAndDescriptions = otherVillasData.map((villa) => {
         return {
             title: villa.attributes.title,
@@ -74,18 +54,10 @@ export default async function Page({ params }) {
     const cookieStore = cookies()
     const locale = cookieStore.get('locale')?.value || 'locale=en'
     const { data, otherVillas } = await getData(params.id)
-    console.log('params id ')
-    console.log(params.id)
-    console.log('data')
-    console.log(data)
     const sliderImgs = data?.attributes?.interiorImages?.data;
-    const roomsImages = data?.attributes?.roomImages.data;
-    console.log('other villas')
-    console.log( otherVillas)
-
+ 
   
     const imagesSlider = getImages(sliderImgs);
-    const roomsSlider = getImagesWidthProportions(roomsImages);
     const details = data?.attributes?.details[0]
 
    
@@ -96,8 +68,7 @@ export default async function Page({ params }) {
              <div className='villa_slider'>
                  <ImageSlider images={imagesSlider} />
              </div>
-             {/* <RoomSlider images={roomsSlider} /> */}
-             <p className="allvillas_header">{text[locale].explore}</p>
+             <p className="allvillas_header">{text[locale]?.explore}</p>
              <AllVillas
                  details={details}
                  data={otherVillas}

@@ -25,12 +25,13 @@ const fetchPosts = async () => {
   let json = await data.json()
   return json.data;
 }
+
+
 const fetchMoto = async () => {
   "use server";
   const cookieStore = cookies()
   const locale = cookieStore.get('locale')
   const url = `${process.env.API_URL}/moto-texts?${locale?.value}`
-  console.log(url)
 
 
   
@@ -51,7 +52,6 @@ const fetchData = async () => {
   const cookieStore = cookies()
   const locale = cookieStore.get('locale')
   const url = `${process.env.API_URL}/hotel?${locale?.value}`
-  console.log(url)
 
 
   
@@ -68,12 +68,15 @@ const fetchData = async () => {
   return json.data;
 }
 
-const getData = async () => {
+const getVillas= async () => {
+  "use server";
   const cookieStore = cookies()
   const locale = cookieStore.get('locale')
+  console.log(locale)
   let url = `${process.env.API_URL}/villas?${locale?.value}&populate=details,facilities,roomtypes,bathroom,images,views,interiorImages,roomImages `
   const res = await fetch(url, {
       method: 'GET',
+      next: { revalidate: 200 },
       headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
@@ -91,12 +94,12 @@ const getData = async () => {
   return newdata;
 }
 export default async function Page() {
-  const cookieStore = cookies()
-  const locale = cookieStore.get('locale')
   const posts = await fetchPosts()
+  // console.log('posts')
+  // console.log(posts)
   const motos = await fetchMoto();
   const data = await fetchData()
-  const villas = await getData()
+  const villas = await getVillas()
   let description = data?.attributes.hotelshortdescription;
   let title = data?.attributes.hotelname;
 
@@ -105,7 +108,7 @@ export default async function Page() {
   return (
         <div>
             <Hero data={motos} description={description} title={title} />
-          <SectionThree  data={motos} locale={locale} />
+          <SectionThree  data={motos}  />
           <SectionFour  data={motos} />
           <SectionFive  data={motos} />
           <SlideShow posts={posts}/>
