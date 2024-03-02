@@ -36,8 +36,14 @@ const NavMenu = ({ isOpen, setIsOpen }) => {
 
 const Locale = () => {
 	const cookies = useCookies();
-	const locale = cookies.get('locale') || 'locale=en';
+	const locale = cookies.get('locale') || 'locale=en'
 
+
+	useEffect(() => {
+        if(!locale) {
+            createLocale('locale=en')
+        }
+    }, [])
 	const handleEn = () => {
         createLocale('locale=en')
 
