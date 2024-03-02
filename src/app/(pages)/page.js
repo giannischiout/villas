@@ -53,7 +53,6 @@ const fetchData = async () => {
   const locale = cookieStore.get('locale')
   const url = `${process.env.API_URL}/hotel?${locale?.value}`
 
-
   
   let data = await fetch(url, {
       method: 'GET',

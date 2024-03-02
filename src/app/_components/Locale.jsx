@@ -1,10 +1,8 @@
 'use client'
 import { createLocale } from "../actions";
 import { useCookies } from 'next-client-cookies';
-import { useEffect } from 'react';
 import { text } from "@/translations";
 import { useRouter } from "next/navigation";
-import { create } from "domain";
 
 
 
@@ -17,8 +15,7 @@ const Languages = () => {
 
     const handleLocale = (locale) => {
         createLocale(locale)
-        router.push('/')
-        router.reload();
+        router.refresh()
     }
     return (
         <div className="languages">
@@ -30,14 +27,14 @@ const Languages = () => {
             </button>
             <hr />
             <button
-                onClick={ handleLocale('locale=el')}
+                onClick={() => handleLocale('locale=el')}
                 className={locale === 'locale=el' ? 'lang_active' : ''}
             >
                   {text[locale]?.localeBtnEl}
             </button>
             <hr />
             <button
-                onClick={ handleLocale('locale=de')}
+                onClick={() => handleLocale('locale=de')}
                 className={locale === 'locale=de' ? 'lang_active' : ''}
             >
                   {text[locale]?.localeBtnDe}
