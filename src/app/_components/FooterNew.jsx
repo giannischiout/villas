@@ -5,7 +5,7 @@ import { cookies } from "next/headers";
 
 const FooterNew = () => {
     const cookieStore = cookies()
-    const locale = cookieStore.get('locale').value || 'locale=en';
+    const locale = cookieStore.get('locale')?.value || 'locale=en';
   
     return (
         <div className="footer_new_container">
