@@ -5,7 +5,6 @@ import {  SectionThree, SectionFour, SectionFive } from '../_components/SectionT
 import VillasPresentation from '../_components/VillasPresentation';
 import SlideShow from '../_components/SlideShow';
 const fetchPosts = async () => {
-  "use server";
   const cookieStore = cookies()
   const locale = cookieStore.get('locale')
   const url = `${process.env.API_URL}/posts?${locale?.value}&populate=images`
@@ -19,7 +18,7 @@ const fetchPosts = async () => {
           'Content-Type': 'application/json'
       }
   }, {
-      cache: 'no-cache'
+      cache: 'no-store'
   })
 
   let json = await data.json()
@@ -28,7 +27,6 @@ const fetchPosts = async () => {
 
 
 const fetchMoto = async () => {
-  "use server";
   const cookieStore = cookies()
   const locale = cookieStore.get('locale')
   const url = `${process.env.API_URL}/moto-texts?${locale?.value}`
@@ -48,7 +46,6 @@ const fetchMoto = async () => {
   return json.data;
 }
 const fetchData = async () => {
-  "use server";
   const cookieStore = cookies()
   const locale = cookieStore.get('locale')
   const url = `${process.env.API_URL}/hotel?${locale?.value}`
@@ -70,7 +67,6 @@ const fetchData = async () => {
 }
 
 const getVillas= async () => {
-  "use server";
   const cookieStore = cookies()
   const locale = cookieStore.get('locale')
   let url = `${process.env.API_URL}/villas?${locale?.value}&populate=details,facilities,roomtypes,bathroom,images,views,interiorImages,roomImages `
