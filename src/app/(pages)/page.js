@@ -41,7 +41,7 @@ const fetchMoto = async () => {
           'Content-Type': 'application/json'
       }
   }, {
-      cache: 'no-cache'
+      cache: 'no-store'
   })
 
   let json = await data.json()
@@ -83,7 +83,7 @@ const getVillas= async () => {
 
   },
   {
-    cache: 'no-cache'
+    cache: 'no-store'
 });
   let json = await res.json();
   let newdata = json.data.map(villa => {
