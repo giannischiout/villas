@@ -23,9 +23,13 @@ const images = [
 ]
 
 
-const Hero = ({ data, description, title}) => {
-    const [scope, animate] = useAnimate();
+const Hero = ({ data, description}) => {
+    console.log('data')
+    console.log(data)
+    console.log('description')
+    console.log(description)
 
+    const [scope, animate] = useAnimate();
     const [current, setCurrent] = useState(0);
 
     const prevImage = () => {

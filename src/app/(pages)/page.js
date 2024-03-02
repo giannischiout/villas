@@ -5,6 +5,7 @@ import {  SectionThree, SectionFour, SectionFive } from '../_components/SectionT
 import VillasPresentation from '../_components/VillasPresentation';
 import SlideShow from '../_components/SlideShow';
 const fetchPosts = async () => {
+  "use server"
   const cookieStore = cookies()
   const locale = cookieStore.get('locale')
   const url = `${process.env.API_URL}/posts?${locale?.value}&populate=images`
@@ -27,6 +28,7 @@ const fetchPosts = async () => {
 
 
 const fetchMoto = async () => {
+  "use server"
   const cookieStore = cookies()
   const locale = cookieStore.get('locale')
   const url = `${process.env.API_URL}/moto-texts?${locale?.value}`
@@ -46,6 +48,7 @@ const fetchMoto = async () => {
   return json.data;
 }
 const fetchData = async () => {
+  "use server"
   const cookieStore = cookies()
   const locale = cookieStore.get('locale')
   const url = `${process.env.API_URL}/hotel?${locale?.value}`

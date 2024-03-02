@@ -3,12 +3,13 @@ import { createLocale } from "../actions";
 import { useCookies } from 'next-client-cookies';
 import { useEffect } from 'react';
 import { text } from "@/translations";
-
+import { useRouter } from "next/navigation";
 
 
 
 const Languages = () => {
     const cookies = useCookies();
+    const router = useRouter();
     const locale = cookies.get('locale')  || 'locale=en';
 
     
@@ -16,6 +17,8 @@ const Languages = () => {
     
     const handleEn = () => {
         createLocale('locale=en')
+        router.reload();
+
 
     }
     const handleEl = () => {
