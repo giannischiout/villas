@@ -60,8 +60,6 @@ const fetchData = async () => {
       headers: {
           'Content-Type': 'application/json'
       }
-  }, {
-      cache: 'no-cache'
   })
 
   let json = await data.json()
@@ -72,7 +70,6 @@ const getVillas= async () => {
   "use server";
   const cookieStore = cookies()
   const locale = cookieStore.get('locale')
-  console.log(locale)
   let url = `${process.env.API_URL}/villas?${locale?.value}&populate=details,facilities,roomtypes,bathroom,images,views,interiorImages,roomImages `
   const res = await fetch(url, {
       method: 'GET',
@@ -95,8 +92,7 @@ const getVillas= async () => {
 }
 export default async function Page() {
   const posts = await fetchPosts()
-  // console.log('posts')
-  // console.log(posts)
+
   const motos = await fetchMoto();
   const data = await fetchData()
   const villas = await getVillas()
