@@ -13,11 +13,7 @@ const Languages = () => {
 
     
     
-    useEffect(() => {
-        if(!locale) {
-            createLocale('locale=en')
-        }
-    }, [])
+    
     const handleEn = () => {
         createLocale('locale=en')
 
