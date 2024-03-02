@@ -4,6 +4,8 @@ import Image from 'next/image';
 import { useCookies } from 'next-client-cookies';
 import { text } from '@/translations';
 import { createLocale } from '../actions';
+import { useEffect } from 'react';
+
 
 const NavMenu = ({ isOpen, setIsOpen }) => {
 	const cookies = useCookies();
