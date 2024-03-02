@@ -1,6 +1,5 @@
 'use client' // Error components must be Client Components
 import { useEffect, useState } from 'react'
-import { createLocale } from './actions'
 
 export default function Error({
   error,
@@ -11,7 +10,6 @@ export default function Error({
 
   const handleError = () => {
     reset()
-    createLocale('locale=en')
   }
   return (
     <div className='error_container'>
