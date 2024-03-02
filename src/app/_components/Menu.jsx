@@ -4,6 +4,8 @@ import Image from 'next/image';
 import { useCookies } from 'next-client-cookies';
 import { text } from '@/translations';
 import { createLocale } from '../actions';
+import { useEffect } from 'react';
+
 
 const NavMenu = ({ isOpen, setIsOpen }) => {
 	const cookies = useCookies();
@@ -39,11 +41,7 @@ const Locale = () => {
 	const locale = cookies.get('locale') || 'locale=en'
 
 
-	useEffect(() => {
-        if(!locale) {
-            createLocale('locale=en')
-        }
-    }, [])
+	
 	const handleEn = () => {
         createLocale('locale=en')
 

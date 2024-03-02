@@ -4,11 +4,8 @@ import BookNowModal from "@/app/_components/BookNow";
 const fetchData = async () => {
     "use server";
     const url = `${process.env.API_URL}/hotel?populate=*`
-    console.log(url)
-   
   
   
-    
     let data = await fetch(url, {
         method: 'GET',
         headers: {
