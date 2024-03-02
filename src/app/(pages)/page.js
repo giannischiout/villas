@@ -62,7 +62,7 @@ const fetchData = async () => {
       }
   },
   {
-    cache: 'no-cache'
+    cache: 'no-store'
 })
 
   let json = await data.json()

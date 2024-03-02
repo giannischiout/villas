@@ -38,7 +38,7 @@ const fetchAll = async () => {
         }
     },
     {
-        cache: 'no-cache'
+        cache: 'no-store'
     }
     )
 

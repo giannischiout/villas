@@ -32,7 +32,7 @@ const getData = async (id) => {
 
     },
     {
-        cache: 'no-cache'
+        cache: 'no-store'
     });
     let json = await res.json();
 
