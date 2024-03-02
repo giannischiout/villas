@@ -19,7 +19,6 @@ export default function Error({
       <button
         className='try_again'
         onClick={
-          
          handleError
         }
       >

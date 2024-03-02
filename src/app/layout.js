@@ -2,14 +2,11 @@
 
 import {  Bona_Nova, Noto_Sans_JP  } from 'next/font/google'
 import './globals.css'
-import Navbar from './_components/Navbar'
 import SmoothScrolling from './_hooks/smoothScrolling'
 import { ModalProvider } from './_context/useModal'
-import FooterNew from './_components/FooterNew'
 import { CookiesProvider } from 'next-client-cookies/server';
 
 const bonaNova = Bona_Nova({ subsets: ['latin'], weight: ['400', '700'], variable: "--font_bona_nova" })
-
 const noto =  Noto_Sans_JP({subsets: ['latin'], weight: ['300', '400', '500', '700'], variable: "--font_noto"})
 export const metadata = {
   title: 'Ionian Dream Villas',

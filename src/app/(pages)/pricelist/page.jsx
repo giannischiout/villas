@@ -24,8 +24,6 @@ const fetchPrices = async () => {
 }
 const Page = async () => {
     const data = await fetchPrices()
-    const cookieStore = cookies()
-    const locale = cookieStore.get('locale')?.value || 'locale=en'
     
     const dates = data.map((item) => {
         return {

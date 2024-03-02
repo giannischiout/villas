@@ -42,7 +42,7 @@ const Navbar = ({ dates }) => {
                     </motion.div>
                     <div className="nav_actions">
                     <Icons />
-                    <BookNow onClick={toggleModal} text={text[locale].bookNow2}/>
+                    <BookNow onClick={toggleModal} text={text[locale]?.bookNow2}/>
                     </div>
                 </div>
             </div>

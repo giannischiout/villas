@@ -16,7 +16,7 @@ const Book = ({}) => {
             <div className="btn">
                 <button >
                 </button>
-                <span>{text[locale].bookNow}</span>
+                <span>{text[locale]?.bookNow}</span>
             </div>
             <IoIosArrowRoundUp />
             </div>

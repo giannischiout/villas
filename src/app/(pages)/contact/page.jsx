@@ -2,6 +2,8 @@ import Map from "@/app/_components/Map";
 import Image from 'next/image';
 import { cookies } from "next/headers";
 
+import { text } from "@/translations";
+
 const fetchContact = async () => {
     "use server";
     const cookieStore = cookies()
@@ -23,7 +25,8 @@ const fetchContact = async () => {
     return json.data;
 }
 const Page = async () => {
-   
+    const cookieStore = cookies()
+    const locale = cookieStore.get('locale').value || 'locale=en'
 
     const data = await fetchContact()
     const hcontact = data?.attributes.hotelcontact
@@ -36,7 +39,7 @@ const Page = async () => {
             <div className="contact">
                 <div className="contact_info">
                     <div className="contact_header">
-                        <h1>CONTACT INFORMATION</h1>
+                        <h1>{text[locale].contactInfo}</h1>
                     </div>
                     {hcontact?.map((contact, index) => {
                         return (

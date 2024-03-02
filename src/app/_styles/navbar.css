@@ -114,7 +114,7 @@
 /* LANGUAGES  */
 .languages {
     display: grid;
-    grid-template-columns: 80px 2px 80px;
+    grid-template-columns: 20px 2px 20px 2px 20px;
     grid-template-rows: 1fr;
     column-gap: 10px;
     width: 100%;
@@ -124,13 +124,13 @@
 }
 
 .languages button {
-    width: 70px;
+    width: 20px;
     padding-bottom: 4px;
 
 }
 
 .languages hr {
-    height: 100%;
+    height: 60%;
     width: 1px;
     background-color: var(--primary); 
 }

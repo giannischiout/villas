@@ -19,40 +19,43 @@ const SlideShow = ({posts}) => {
       const prevImage = () => {
         setCurrent((current - 1 + posts.length) % posts.length);
       };
-       
      
     return (
-        <div className="slideshow" onClick={() =>router.push(`/posts/single/${posts[current].id}`)}>
-            <Image 
-                src={`${process.env.NEXT_PUBLIC_BASE_API_URL}${posts[current].attributes.images.data[0].attributes.url}`}
-                fill
-                alt="lefkada's island places to see"
-                sizes="100%"
-            />
-            <div className="slideshow_inner">
-                <div className="slideshow_left">
-                    <p>
-                        {posts[current]?.attributes?.title}
-                    </p>
-                    <span>
-                        {posts[current]?.attributes?.shordDescription.slice(0, 60).concat('...')}
-                    </span>
-                    <div className="btn_container">
-                        <button onClick={prevImage}>
-                            <IoIosArrowBack />
-                        </button>
-                        <button onClick={nextImage}>
-                            <IoIosArrowForward  />
-                        </button>
+        <>
+            {posts ? (
+                <div className="slideshow" onClick={() =>router.push(`/posts/single/${posts[current].id}`)}>
+                <Image 
+                    src={`${process.env.NEXT_PUBLIC_BASE_API_URL}${posts[current]?.attributes.images.data[0].attributes.url}`}
+                    fill
+                    alt="lefkada's island places to see"
+                    sizes="100%"
+                />
+                <div className="slideshow_inner">
+                    <div className="slideshow_left">
+                        <p>
+                            {posts && posts[current]?.attributes?.title}
+                        </p>
+                        <span>
+                            {posts && posts[current]?.attributes?.shordDescription.slice(0, 60).concat('...')}
+                        </span>
+                        <div className="btn_container">
+                            <button onClick={prevImage}>
+                                <IoIosArrowBack />
+                            </button>
+                            <button onClick={nextImage}>
+                                <IoIosArrowForward  />
+                            </button>
+                        </div>
+                    </div>
+                    <div className="slideshow_right" onClick={() =>router.push(`/posts/single/${posts[current].id}`)}>
+                            <div className="home_post_circle">
+                                <span>{text[locale]?.postBtn}</span>
+                            </div>
                     </div>
                 </div>
-                <div className="slideshow_right" onClick={() =>router.push(`/posts/single/${posts[current].id}`)}>
-                        <div className="home_post_circle">
-                            <span>{text[locale].postBtn}</span>
-                        </div>
-                </div>
             </div>
-        </div>
+            ) : null}
+        </>
     )
 }
 
