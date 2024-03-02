@@ -9,10 +9,6 @@ import { text } from "@/translations";
 
 const fetchPosts = async (postId) => {
     "use server";
-    const cookieStore = cookies()
-    const locale = cookieStore.get('locale')
-
-    // const url = `${process.env.API_URL}/posts?${locale?.value}&populate=images&id=${postId}`
     const url = `${process.env.API_URL}/posts/${postId}?populate=images`
     let data = await fetch(url, {
         method: 'GET',
@@ -40,8 +36,6 @@ const fetchAll = async () => {
         headers: {
             'Content-Type': 'application/json'
         }
-    }, {
-        cache: 'no-cache'
     })
 
     let json = await data.json()
@@ -68,7 +62,6 @@ export default async function Page({ params }) {
         lat: parseFloat(data?.attributes?.lattitude),
       };
 
-      console.log(location)
     return (
         <section className="post_container">
             <div className="single_post_top"></div>
