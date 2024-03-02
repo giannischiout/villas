@@ -60,7 +60,10 @@ const fetchData = async () => {
       headers: {
           'Content-Type': 'application/json'
       }
-  })
+  },
+  {
+    cache: 'no-cache'
+})
 
   let json = await data.json()
   return json.data;
@@ -78,7 +81,10 @@ const getVillas= async () => {
           'Accept': 'application/json',
       },
 
-  });
+  },
+  {
+    cache: 'no-cache'
+});
   let json = await res.json();
   let newdata = json.data.map(villa => {
     return {

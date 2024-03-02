@@ -30,6 +30,9 @@ const getData = async (id) => {
             'Accept': 'application/json',
         },
 
+    },
+    {
+        cache: 'no-cache'
     });
     let json = await res.json();
 
