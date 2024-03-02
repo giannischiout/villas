@@ -14,6 +14,9 @@ const getData = async () => {
             'Accept': 'application/json',
         },
 
+    },
+    {
+        cache: 'no-store'
     });
     let json = await res.json();
  

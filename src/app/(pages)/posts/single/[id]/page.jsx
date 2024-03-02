@@ -36,7 +36,11 @@ const fetchAll = async () => {
         headers: {
             'Content-Type': 'application/json'
         }
-    })
+    },
+    {
+        cache: 'no-store'
+    }
+    )
 
     let json = await data.json()
     return json.data;

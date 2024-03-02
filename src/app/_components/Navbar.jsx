@@ -20,7 +20,6 @@ const Navbar = ({ dates }) => {
     const locale = cookies.get('locale') || 'locale=en';
     const { scrollYProgress } = useScroll();
     const [clicked, setClicked] = useState(false)
-    const [modal, setModal,] = useState(false)
     let y = useTransform(scrollYProgress, [0, 0.1], [0, -100,], { stiffness: 100, damping: 100 }, stagger(5))
 
 
@@ -48,7 +47,6 @@ const Navbar = ({ dates }) => {
             </div>
 
             <NavMenu isOpen={clicked} setIsOpen={setClicked} />
-            {/* <BookNowModal isOpen={modal} dates={dates} /> */}
         </div>
     )
 }
