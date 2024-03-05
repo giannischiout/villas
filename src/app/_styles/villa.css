@@ -121,6 +121,11 @@
     overflow: hidden;
 }
 
+.v_main_image_container_inner img {
+    object-fit: cover;
+}
+
+
 .hero_slider_buttons {
     display: flex;
     justify-content: space-between;

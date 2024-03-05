@@ -47,11 +47,11 @@ const fetchMoto = async () => {
   let json = await data.json()
   return json.data;
 }
-const fetchData = async () => {
+const fetchHotelData = async () => {
   "use server"
   const cookieStore = cookies()
   const locale = cookieStore.get('locale')
-  const url = `${process.env.API_URL}/hotel?${locale?.value}`
+  const url = `${process.env.API_URL}/hotel?${locale?.value}&populate=hotelImages`
 
   
   let data = await fetch(url, {
@@ -65,6 +65,8 @@ const fetchData = async () => {
 })
 
   let json = await data.json()
+  console.log('json')
+  console.log(json)
   return json.data;
 }
 
@@ -97,16 +99,19 @@ export default async function Page() {
   const posts = await fetchPosts()
 
   const motos = await fetchMoto();
-  const data = await fetchData()
-  const villas = await getVillas()
+  const data = await fetchHotelData();
+  const villas = await getVillas();
+
   let description = data?.attributes.hotelshortdescription;
-  let title = data?.attributes.hotelname;
+  let images = data?.attributes.hotelImages.data.map(item => {
+    return item.attributes.url
+  })
 
 
   
   return (
         <div>
-            <Hero data={motos} description={description} title={title} />
+            <Hero data={motos} description={description} heroImages={images}  />
           <SectionThree  data={motos}  />
           <SectionFour  data={motos} />
           <SectionFive  data={motos} />

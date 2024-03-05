@@ -48,7 +48,7 @@ const images = [
 
 
 
-const VillaNew = ({ data }) => {
+const VillaNew = ({ data, heroImages }) => {
     const [current, setCurrent] = useState(0);
     const cookies = useCookies();
     const locale = cookies.get('locale') || 'locale=en';
@@ -132,7 +132,7 @@ const VillaNew = ({ data }) => {
                         <div className='v_main_image_container_inner' >
                             <Image
                                 alt="an image of the interior of the ioannian villa"
-                                src={images[current]}
+                                src={`${process.env.NEXT_PUBLIC_BASE_API_URL}${heroImages[current]}`}
                                 sizes={'100%'}
                                 fill={true}
                             />

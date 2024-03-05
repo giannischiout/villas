@@ -58,6 +58,9 @@ export default async function Page({ params }) {
     const locale = cookieStore.get('locale')?.value || 'locale=en'
     const { data, otherVillas } = await getData(params.id)
     const sliderImgs = data?.attributes?.interiorImages?.data;
+    const images = data?.attributes?.images?.data.map(item => {
+        return item.attributes.url;
+    });
  
   
     const imagesSlider = getImages(sliderImgs);
@@ -67,7 +70,7 @@ export default async function Page({ params }) {
     return (
         <div>
             <>
-                 <VillaNew data={data}/>
+                 <VillaNew data={data} heroImages={images}/>
              <div className='villa_slider'>
                  <ImageSlider images={imagesSlider} />
              </div>
