@@ -25,7 +25,7 @@ const fetchContact = async () => {
 }
 const Page = async () => {
     const cookieStore = cookies()
-    const locale = cookieStore.get('locale').value || 'locale=en'
+    const locale = cookieStore.get('locale')?.value || 'locale=en'
 
     const data = await fetchContact()
     const hcontact = data?.attributes.hotelcontact
@@ -40,21 +40,21 @@ const Page = async () => {
                     <div className="contact_header">
                         <h1>{text[locale].contactInfo}</h1>
                     </div>
-                    {hcontact?.map((contact, index) => {
+                    {hcontact.map((contact, index) => {
                         return (
                             <div key={index} className="contact_details">
-                                <p className="contact_details_title">{contact.name}</p>
+                                <p className="contact_details_title">{contact?.name}</p>
                                 <p className="contact_details_body">
                                     <span>Email: </span>
-                                    {contact.email}
+                                    {contact?.email}
                                 </p>
                                 <p className="contact_details_body">
-                                    <span>Phone: </span>
-                                    {contact.phoneNumber}
+                                    <span>{text[locale]?.phone}: </span>
+                                    {contact?.phoneNumber}
                                 </p>
                                 <p className="contact_details_body">
-                                    <span>Mobile: </span>
-                                    {contact.mobileNumber}
+                                    <span> {text[locale]?.phone}: </span>
+                                    {contact?.mobileNumber}
                                 </p>
                             </div>
                         )
