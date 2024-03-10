@@ -5,7 +5,6 @@ import { cookies } from "next/headers";
 import { text } from "@/translations";
 
 const fetchContact = async () => {
-    "use server";
     const cookieStore = cookies()
     const locale = cookieStore.get('locale')
 
