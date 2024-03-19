@@ -28,7 +28,7 @@ const Page = async () => {
     const locale = cookieStore.get('locale')?.value || 'locale=en'
 
     const data = await fetchContact()
-    const hcontact = data?.attributes?.hotelcontact
+    const hcontact = data?.attributes?.hotelcontact || []
     const location = {
         lng: parseFloat(data?.attributes.longitude), // Replace with your desired latitude
         lat: parseFloat(data?.attributes.latitude), // Replace with your desired longitude
@@ -66,7 +66,7 @@ const Page = async () => {
                     </div>
                 </div>
                 <div className="contact_maps">
-                   {location && <Map location={location} />}
+                   {location ? <Map location={location} /> : null}
                 </div>
             </div>
         </div>
