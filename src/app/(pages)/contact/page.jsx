@@ -6,9 +6,9 @@ import { text } from "@/translations";
 
 const fetchContact = async () => {
     const cookieStore = cookies()
-    const locale = cookieStore.get('locale')
+    const locale = cookieStore.get('locale')?.value || 'locale=en'
 
-    const url = `${process.env.API_URL}/hotel?${locale?.value}&populate=hotelcontact`
+    const url = `${process.env.API_URL}/hotel?${locale}&populate=hotelcontact`
 
     let data = await fetch(url, {
         method: 'GET',
@@ -28,19 +28,19 @@ const Page = async () => {
     const locale = cookieStore.get('locale')?.value || 'locale=en'
 
     const data = await fetchContact()
-    const hcontact = data?.attributes.hotelcontact
+    const hcontact = data?.attributes?.hotelcontact
     const location = {
-        lng: parseFloat(data.attributes.longitude), // Replace with your desired latitude
-        lat: parseFloat(data.attributes.latitude), // Replace with your desired longitude
+        lng: parseFloat(data?.attributes.longitude), // Replace with your desired latitude
+        lat: parseFloat(data?.attributes.latitude), // Replace with your desired longitude
     };
     return (
         <div className="contact_container">
             <div className="contact">
                 <div className="contact_info">
                     <div className="contact_header">
-                        <h1>{text[locale].contactInfo}</h1>
+                        <h1>{text[locale]?.contactInfo}</h1>
                     </div>
-                    {hcontact.map((contact, index) => {
+                    {hcontact && hcontact.map((contact, index) => {
                         return (
                             <div key={index} className="contact_details">
                                 <p className="contact_details_title">{contact?.name}</p>
