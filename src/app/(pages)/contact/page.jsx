@@ -66,7 +66,7 @@ const Page = async () => {
                     </div>
                 </div>
                 <div className="contact_maps">
-                    <Map location={location} height={'700px'} />
+                   {location && <Map location={location} />}
                 </div>
             </div>
         </div>
