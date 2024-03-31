@@ -19,7 +19,6 @@ function getImages(sliderImgs) {
 
 
 const getData = async (id) => {
-    console.log(id)
     const cookieStore = cookies()
     const locale = cookieStore.get('locale') || 'locale=en' 
     let url = `${process.env.API_URL}/villas?${locale?.value}&populate=details,facilities,roomtypes,bathroom,images,views,interiorImages,roomImages`

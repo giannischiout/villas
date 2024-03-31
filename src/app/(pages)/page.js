@@ -9,7 +9,6 @@ const fetchPosts = async () => {
   const cookieStore = cookies()
   const locale = cookieStore.get('locale')
   const url = `${process.env.API_URL}/posts?${locale?.value}&populate=images`
-  console.log(url)
 
 
   
@@ -65,8 +64,7 @@ const fetchHotelData = async () => {
 })
 
   let json = await data.json()
-  console.log('json')
-  console.log(json)
+
   return json.data;
 }
 

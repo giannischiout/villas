@@ -114,7 +114,9 @@ export const BookForm = ({ width, handleClose, dates }) => {
 			sitemap_exclude: true
 
 		}
-		const resp = await fetch('https://strapi.3v7i.com/api/booking-rqs', {
+		
+	
+		const sendEmail = await fetch('/api/sendEmail', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
@@ -123,14 +125,17 @@ export const BookForm = ({ width, handleClose, dates }) => {
 				data: formData
 			})
 		})
-		const data = await resp.json()
-		if (data) {
+		console.log('send email')
+		console.log(sendEmail)
+		const data = await sendEmail.json()
+			if (data.success) {
 			setResponseBooking(text[locale].thankYou)
 			router.push('/')
 		} else {
 			setResponseBooking(text[locale].failed)
 
 		}
+
 	}
 
 	return (

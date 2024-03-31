@@ -17,7 +17,6 @@ export const SectionThree = ({data}) => {
     const router = useRouter()
     const cookies = useCookies();
     const locale = cookies.get('locale') || 'locale=en';
-    console.log(locale)
 
     useEffect(() => {
         if (isInView) {

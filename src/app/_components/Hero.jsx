@@ -102,7 +102,6 @@ const Hero = ({ data, description, heroImages}) => {
                             </div>
                           
                         </div>
-                        {/* <ImageScroll image={'/intro_day.webp'} /> */}
                     </div>
                     <div className="intro_text" >
                         <h3>{data[0]?.attributes?.moto}</h3>
