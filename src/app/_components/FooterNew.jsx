@@ -3,6 +3,8 @@ import { text } from '@/translations'
 import { cookies } from "next/headers";
 import Image from 'next/image'
 import Link from 'next/link'
+
+
 const FooterNew = () => {
     const cookieStore = cookies()
     const locale = cookieStore.get('locale')?.value || 'locale=en';

@@ -5,7 +5,7 @@ import nodemailer from 'nodemailer';
 const transporter = nodemailer.createTransport({
   host: 'smtp.strato.de',
   port: 465,
-  // secure: true,
+  secure: true,
   auth: {
     user: process.env.NODEMAILER_USER,
     pass: process.env.NODEMAILER_PASS
@@ -68,32 +68,31 @@ const adminMailOptions = {
 };
 
   // Send emails
-  transporter.sendMail(clientMailOptions, (error, clientInfo) => {
-    if (error) {
-      console.error('Error occurred while sending booking confirmation email to the client:', error);
-    } else {
-      console.log('Booking confirmation email sent to the client:', clientInfo);
-     
-      return Response.json({
-        status: 400,
-        success: false
-       })
 
-    }
+  const sendEmailPromise = new Promise((resolve, reject) => {
+    transporter.sendMail(clientMailOptions, (error, clientInfo) => {
+      if (error) {
+        reject(error);
+        console.error('Error occurred while sending booking confirmation email to the client:', error);
+      } else {
+        console.log('Booking confirmation email sent to the client:', clientInfo);
+        resolve(clientInfo);
+      }
+    });
   });
-
-  transporter.sendMail(adminMailOptions, (error, adminInfo) => {
-    if (error) {
-      return Response.json({
-        status: 400,
-        success: false
-       })
-    } else {
-      console.log('Booking notification email sent to the admin:', adminInfo);
-
-    }
+  const sendAdminPromise = new Promise((resolve, reject) => {
+    transporter.sendMail(adminMailOptions, (error, adminInfo) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(adminInfo);
+      }
+    });
+   
   });
-
+ 
+  const [clientInfo, adminInfo] = await Promise.all([sendEmailPromise, sendAdminPromise]);
+  console.log(clientInfo, adminInfo)
 
   return Response.json({
     status: 200,
