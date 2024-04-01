@@ -1,6 +1,6 @@
 
 import nodemailer from 'nodemailer';
-import axios from 'axios';
+
 
 const transporter = nodemailer.createTransport({
   host: 'smtp.strato.de',

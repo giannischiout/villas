@@ -133,7 +133,7 @@ export const BookForm = ({ width, handleClose, dates }) => {
 			console.log('booking')
 			console.log(data.booking)
 
-			
+
 			if (data.success) {
 				setResponseBooking(text[locale].thankYou)
 				router.push('/')
@@ -141,6 +141,7 @@ export const BookForm = ({ width, handleClose, dates }) => {
 				setResponseBooking(text[locale].failed)
 			}
 		} catch (error) {
+			console.log(error)
 			setResponseBooking('Something went wrong, try again!')
 		}
 		
