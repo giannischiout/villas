@@ -6,7 +6,6 @@ const transporter = nodemailer.createTransport({
   host: 'smtp.strato.de',
   port: 465,
   secure: true,
-  sendmail: true,
   auth: {
     user: process.env.NODEMAILER_USER,
     pass: process.env.NODEMAILER_PASS
@@ -98,7 +97,7 @@ const adminMailOptions = {
   return Response.json({
     status: 200,
     success: true,
-    clinetInfo: clientInfo,
+    clientInfo: clientInfo,
     adminInfo: adminInfo
    })
 }
