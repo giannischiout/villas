@@ -93,23 +93,31 @@ const adminMailOptions = {
  
   const [clientInfo, adminInfo] = await Promise.all([sendEmailPromise, sendAdminPromise]);
 
-  let booking;
-  try {
-    const resp = await fetch('https://strapi.3v7i.com/api/booking-rqs', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({
-				data: formData
-			})
-		})
-		booking = await resp.json()
-
-	
-  } catch {
+  
+  async function bookingRqs(data) {
+    try {
+      const resp = await fetch('https://strapi.3v7i.com/api/booking-rqs', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          data: data
+        })
+      })
+      let response = await resp.json()
+      console.log(response)
+      return response;
+    } catch {
+      return null;
+    }
 
   }
+
+  const booking = await bookingRqs(data);
+  console.log('booking')
+  console.log(booking)
+
   return Response.json({
     status: 200,
     success: true,
