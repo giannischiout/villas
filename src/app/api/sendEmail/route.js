@@ -123,6 +123,6 @@ const adminMailOptions = {
     success: true,
     clientInfo: clientInfo,
     adminInfo: adminInfo,
-    booking: booking
+    // booking: booking
    })
 }
