@@ -1,6 +1,6 @@
 
 import nodemailer from 'nodemailer';
-
+import axios from 'axios';
 
 const transporter = nodemailer.createTransport({
   host: 'smtp.strato.de',
@@ -92,12 +92,29 @@ const adminMailOptions = {
   });
  
   const [clientInfo, adminInfo] = await Promise.all([sendEmailPromise, sendAdminPromise]);
-  console.log(clientInfo, adminInfo)
 
+  let booking;
+  try {
+    const resp = await fetch('https://strapi.3v7i.com/api/booking-rqs', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				data: formData
+			})
+		})
+		booking = await resp.json()
+
+	
+  } catch {
+
+  }
   return Response.json({
     status: 200,
     success: true,
     clientInfo: clientInfo,
-    adminInfo: adminInfo
+    adminInfo: adminInfo,
+    booking: booking
    })
 }
