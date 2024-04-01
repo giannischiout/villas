@@ -125,9 +125,9 @@ export const BookForm = ({ width, handleClose, dates }) => {
 				data: formData
 			})
 		})
-		console.log('send email')
-		console.log(sendEmail)
+		
 		const data = await sendEmail.json()
+		
 			if (data.success) {
 			setResponseBooking(text[locale].thankYou)
 			router.push('/')
