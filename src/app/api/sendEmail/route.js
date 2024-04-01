@@ -97,6 +97,8 @@ const adminMailOptions = {
 
   return Response.json({
     status: 200,
-    success: true
+    success: true,
+    clinetInfo: clientInfo,
+    adminInfo: adminInfo
    })
 }

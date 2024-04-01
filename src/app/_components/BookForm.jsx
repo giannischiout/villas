@@ -115,26 +115,30 @@ export const BookForm = ({ width, handleClose, dates }) => {
 
 		}
 		
-	
-		const sendEmail = await fetch('/api/sendEmail', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({
-				data: formData
+		try {
+			const sendEmail = await fetch('/api/sendEmail', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+					data: formData
+				})
 			})
-		})
-		
-		const data = await sendEmail.json()
-		
+			const data = await sendEmail.json()
+			console.log(data.clientInfo)
+			console.log(data.adminInfo)
 			if (data.success) {
-			setResponseBooking(text[locale].thankYou)
-			router.push('/')
-		} else {
-			setResponseBooking(text[locale].failed)
-
+				setResponseBooking(text[locale].thankYou)
+				router.push('/')
+			} else {
+				setResponseBooking(text[locale].failed)
+			}
+		} catch (error) {
+			setResponseBooking('Something went wrong, try again!')
 		}
+		
+		
 
 	}
 
