@@ -1,22 +1,22 @@
 
-import Link from 'next/link'
 import { text } from '@/translations'
 import { cookies } from "next/headers";
 import Image from 'next/image'
+import Link from 'next/link'
 const FooterNew = () => {
     const cookieStore = cookies()
     const locale = cookieStore.get('locale')?.value || 'locale=en';
 
     return (
         <div className="footer_new_container">
-            <div className='footer_image'>
+            <Link href="https://www.iyc.de/" className='footer_image'>
                 <Image
-                    src="/iyc.svg"
+                    src="/iyc_white.svg"
                     alt="iyc"
                     fill={true}
                     sizes="100px"
                 />
-            </div>
+            </Link>
             <div className='footer_links'>
                 <span>IOANIAN DREAM VILLAS</span>
                 <Link href={"/policy/terms"}>{text[locale]?.termsconditions}</Link>

@@ -5,6 +5,7 @@
     background-size: cover;
     background-position: center;
     display: flex;
+    align-items: center;
     flex-direction: column;
     justify-content: flex-end;
     padding: 2%;
@@ -18,7 +19,6 @@
     width: 195px;
     height: 115px;
     margin-bottom: 50px;
-    background-color: white;
 }
 
 .footer_image img {
