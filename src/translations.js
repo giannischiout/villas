@@ -48,7 +48,7 @@ export const text = {
         placeholderPhone: 'Type your mobile phone',
         placeholderEmail: 'Type your email',
         placeholderName: 'Full name',
-        thankYou: 'hank you for your request, we will get back to you as soon as possible!',
+        thankYou: 'thank you for your request, we will get back to you as soon as possible!',
         allFields: 'Please fill all fields',
         failed: 'Failed try again later',
         submit: 'Submit',

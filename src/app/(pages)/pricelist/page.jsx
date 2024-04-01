@@ -24,7 +24,6 @@ const fetchPrices = async () => {
 }
 const Page = async () => {
     const data = await fetchPrices()
-    
     const dates = data.map((item) => {
         return {
             from: item.attributes.fromDate,

@@ -11,10 +11,8 @@ const usePopupDirection = (ref, show) => {
         const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
 
         const spaceAtTop = top;
-        console.log('spaceAtTop', spaceAtTop)
         const spaceAtBottom = viewportHeight - bottom;
-        console.log('spaceAtBottom', spaceAtBottom)
-        console.log('element.offsetHeight', element.offsetHeight)
+   
         if (spaceAtBottom >= spaceAtTop) {
           setDirection('down');
         } else {

@@ -5,11 +5,10 @@ import {  SectionThree, SectionFour, SectionFive } from '../_components/SectionT
 import VillasPresentation from '../_components/VillasPresentation';
 import SlideShow from '../_components/SlideShow';
 const fetchPosts = async () => {
-  "use server";
+  "use server"
   const cookieStore = cookies()
   const locale = cookieStore.get('locale')
   const url = `${process.env.API_URL}/posts?${locale?.value}&populate=images`
-  console.log(url)
 
 
   
@@ -19,7 +18,7 @@ const fetchPosts = async () => {
           'Content-Type': 'application/json'
       }
   }, {
-      cache: 'no-cache'
+      cache: 'no-store'
   })
 
   let json = await data.json()
@@ -28,7 +27,7 @@ const fetchPosts = async () => {
 
 
 const fetchMoto = async () => {
-  "use server";
+  "use server"
   const cookieStore = cookies()
   const locale = cookieStore.get('locale')
   const url = `${process.env.API_URL}/moto-texts?${locale?.value}`
@@ -47,12 +46,11 @@ const fetchMoto = async () => {
   let json = await data.json()
   return json.data;
 }
-const fetchData = async () => {
-  "use server";
+const fetchHotelData = async () => {
+  "use server"
   const cookieStore = cookies()
   const locale = cookieStore.get('locale')
-  const url = `${process.env.API_URL}/hotel?${locale?.value}`
-
+  const url = `${process.env.API_URL}/hotel?${locale?.value}&populate=hotelImages`
 
   
   let data = await fetch(url, {
@@ -66,11 +64,11 @@ const fetchData = async () => {
 })
 
   let json = await data.json()
+
   return json.data;
 }
 
 const getVillas= async () => {
-  "use server";
   const cookieStore = cookies()
   const locale = cookieStore.get('locale')
   let url = `${process.env.API_URL}/villas?${locale?.value}&populate=details,facilities,roomtypes,bathroom,images,views,interiorImages,roomImages `
@@ -99,16 +97,19 @@ export default async function Page() {
   const posts = await fetchPosts()
 
   const motos = await fetchMoto();
-  const data = await fetchData()
-  const villas = await getVillas()
+  const data = await fetchHotelData();
+  const villas = await getVillas();
+
   let description = data?.attributes.hotelshortdescription;
-  let title = data?.attributes.hotelname;
+  let images = data?.attributes.hotelImages.data.map(item => {
+    return item.attributes.url
+  })
 
 
   
   return (
         <div>
-            <Hero data={motos} description={description} title={title} />
+            <Hero data={motos} description={description} heroImages={images}  />
           <SectionThree  data={motos}  />
           <SectionFour  data={motos} />
           <SectionFive  data={motos} />

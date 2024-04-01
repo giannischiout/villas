@@ -23,9 +23,9 @@ const images = [
 ]
 
 
-const Hero = ({ data, description, title}) => {
+const Hero = ({ data, description, heroImages}) => {
+    
     const [scope, animate] = useAnimate();
-
     const [current, setCurrent] = useState(0);
 
     const prevImage = () => {
@@ -88,7 +88,7 @@ const Hero = ({ data, description, title}) => {
                         <div className='v_main_image_container_inner' >
                             <Image
                                 alt="an image of the interior of the ioannian villa"
-                                src={images[current]}
+                                src={`${process.env.NEXT_PUBLIC_BASE_API_URL}${heroImages[current]}`}
                                 sizes={'100%'}
                                 fill={true}
                             />
@@ -102,7 +102,6 @@ const Hero = ({ data, description, title}) => {
                             </div>
                           
                         </div>
-                        {/* <ImageScroll image={'/intro_day.webp'} /> */}
                     </div>
                     <div className="intro_text" >
                         <h3>{data[0]?.attributes?.moto}</h3>

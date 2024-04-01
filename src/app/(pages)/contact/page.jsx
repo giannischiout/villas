@@ -5,11 +5,10 @@ import { cookies } from "next/headers";
 import { text } from "@/translations";
 
 const fetchContact = async () => {
-    "use server";
     const cookieStore = cookies()
-    const locale = cookieStore.get('locale')
+    const locale = cookieStore.get('locale')?.value || 'locale=en'
 
-    const url = `${process.env.API_URL}/hotel?${locale?.value}&populate=hotelcontact`
+    const url = `${process.env.API_URL}/hotel?${locale}&populate=hotelcontact`
 
     let data = await fetch(url, {
         method: 'GET',
@@ -26,36 +25,36 @@ const fetchContact = async () => {
 }
 const Page = async () => {
     const cookieStore = cookies()
-    const locale = cookieStore.get('locale').value || 'locale=en'
+    const locale = cookieStore.get('locale')?.value || 'locale=en'
 
     const data = await fetchContact()
-    const hcontact = data?.attributes.hotelcontact
+    const hcontact = data?.attributes?.hotelcontact || []
     const location = {
-        lng: parseFloat(data.attributes.longitude), // Replace with your desired latitude
-        lat: parseFloat(data.attributes.latitude), // Replace with your desired longitude
+        lng: parseFloat(data?.attributes.longitude), // Replace with your desired latitude
+        lat: parseFloat(data?.attributes.latitude), // Replace with your desired longitude
     };
     return (
         <div className="contact_container">
             <div className="contact">
                 <div className="contact_info">
                     <div className="contact_header">
-                        <h1>{text[locale].contactInfo}</h1>
+                        <h1>{text[locale]?.contactInfo}</h1>
                     </div>
-                    {hcontact?.map((contact, index) => {
+                    {hcontact && hcontact.map((contact, index) => {
                         return (
                             <div key={index} className="contact_details">
-                                <p className="contact_details_title">{contact.name}</p>
+                                <p className="contact_details_title">{contact?.name}</p>
                                 <p className="contact_details_body">
                                     <span>Email: </span>
-                                    {contact.email}
+                                    {contact?.email}
                                 </p>
                                 <p className="contact_details_body">
-                                    <span>Phone: </span>
-                                    {contact.phoneNumber}
+                                    <span>{text[locale]?.phone}: </span>
+                                    {contact?.phoneNumber}
                                 </p>
                                 <p className="contact_details_body">
-                                    <span>Mobile: </span>
-                                    {contact.mobileNumber}
+                                    <span> {text[locale]?.phone}: </span>
+                                    {contact?.mobileNumber}
                                 </p>
                             </div>
                         )
@@ -67,7 +66,7 @@ const Page = async () => {
                     </div>
                 </div>
                 <div className="contact_maps">
-                    <Map location={location} height={'700px'} />
+                   {location ? <Map location={location} /> : null}
                 </div>
             </div>
         </div>

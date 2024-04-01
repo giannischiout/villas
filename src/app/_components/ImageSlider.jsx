@@ -15,7 +15,6 @@ const fallBackImages = [
 
 const ImageSlider = ({images}) => {
     let _images = images ? images : fallBackImages;
-    console.log(_images)
     const [index, setIndex] = useState(0)
     const [scope, animate] = useAnimate();
     const ref = useRef(null);

@@ -3,7 +3,6 @@ import { cookies } from "next/headers";
 
 
 const getData = async () => {
-    "use server";
     const cookieStore = cookies()
     const locale = cookieStore.get('locale')
     let url = `${process.env.API_URL}/villas?${locale?.value}&populate=details,facilities,roomtypes,bathroom,images,views,interiorImages,roomImages `

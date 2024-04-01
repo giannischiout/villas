@@ -8,7 +8,6 @@ import Map from "@/app/_components/Map";
 import { text } from "@/translations";
 
 const fetchPosts = async (postId) => {
-    "use server";
     const url = `${process.env.API_URL}/posts/${postId}?populate=images`
     let data = await fetch(url, {
         method: 'GET',
@@ -22,12 +21,10 @@ const fetchPosts = async (postId) => {
 
 
 const fetchAll = async () => {
-    "use server";
     const cookieStore = cookies()
     const locale = cookieStore.get('locale')
 
     const url = `${process.env.API_URL}/posts?${locale?.value}&populate=images`
-    console.log(url)
 
 
     
