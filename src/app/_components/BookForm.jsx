@@ -6,12 +6,15 @@ import { IoChevronDownSharp } from "react-icons/io5";
 import { GoCalendar } from "react-icons/go";
 import { format,  } from 'date-fns';
 import usePopupDirection from "../_hooks/usePopUpDirection";
-import axios from "axios";
 import { DayPicker } from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
 import { useCookies } from 'next-client-cookies';
 import { text } from "@/translations"
 import { useRouter } from "next/navigation";
+import { createBooking } from "../actions";
+
+
+
 
 export const BookForm = ({ width, handleClose, dates }) => {
 
@@ -20,7 +23,7 @@ export const BookForm = ({ width, handleClose, dates }) => {
 	const locale = cookies.get('locale')  || 'locale=en';
 	const calendarrefA = useRef(null)
 	const calendarrefB = useRef(null)
-	const [data, setData] = useState(null)
+
 	const [responseBook, setResponseBooking] = useState(null)
 	const [show, setShow] = useState({
 		arrival: false,
@@ -42,15 +45,7 @@ export const BookForm = ({ width, handleClose, dates }) => {
 			name: 'Castro'
 		}
 	})
-	const handleFetch = async () => {
-		const url = `${process.env.NEXT_PUBLIC_BASE_API_URL}/api/hotel?&populate=hotelcontact`
-		let { data } = await axios.get(url)
-		setData(data)
-	}
-	useEffect(() => {
-		handleFetch()
-	}, [])
-
+	
 	const handleVillaId = (id, name) => {
 		setInput(prev => ({ ...prev, villa: { id: id, name: name } }))
 	  }
@@ -114,39 +109,14 @@ export const BookForm = ({ width, handleClose, dates }) => {
 			sitemap_exclude: true
 
 		}
-		
-		try {
-			let url = `${process.env.NEXT_PUBLIC_BASE_API_URL}` || 'https://ionian-dream-villas.com/'
-			const sendEmail = await fetch(`${url}/api/sendEmail`, {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify({
-					data: formData
-				})
-			})
-			const data = await sendEmail.json()
-			console.log('client')
-			console.log(data.clientInfo)
-			console.log('admin')
-			console.log(data.adminInfo)
-			console.log('booking')
-			console.log(data.booking)
 
-
-			if (data.success) {
-				setResponseBooking(text[locale].thankYou)
-				router.push('/')
-			} else {
-				setResponseBooking(text[locale].failed)
-			}
-		} catch (error) {
-			console.log(error)
-			setResponseBooking('Something went wrong, try again!')
+		const response = await createBooking(formData);
+		if(response.success) {
+			setResponseBooking(text[locale].thankYou)
+			router.push('/')
+		} else {
+			setResponseBooking(text[locale].failed)
 		}
-		
-		
 
 	}
 
