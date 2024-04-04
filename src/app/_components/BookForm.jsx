@@ -116,7 +116,8 @@ export const BookForm = ({ width, handleClose, dates }) => {
 		}
 		
 		try {
-			const sendEmail = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/sendEmail`, {
+			let url = `${process.env.NEXT_PUBLIC_BASE_API_URL}` || 'https://ionian-dream-villas.com/'
+			const sendEmail = await fetch(`${url}/api/sendEmail`, {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
