@@ -116,7 +116,7 @@ export const BookForm = ({ width, handleClose, dates }) => {
 		}
 		
 		try {
-			const sendEmail = await fetch('/api/sendEmail', {
+			const sendEmail = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/sendEmail`, {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
