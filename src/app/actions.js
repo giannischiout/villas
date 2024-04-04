@@ -11,14 +11,18 @@ export async function createLocale(locale) {
 
 
 export async function createBooking(data) {
-    const sendEmail = await fetch(`${process.env.URL}/api/sendEmail`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            data: data
+    try {
+        const respsonse = await fetch(`${process.env.URL}/api/sendEmail`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
         })
-    })
-    return  sendEmail.json()
+
+        const responsejson = await respsonse.json()
+        return responsejson
+    } catch (e) {
+        console.log(e)
+    }
 }
