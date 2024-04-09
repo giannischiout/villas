@@ -117,7 +117,7 @@ export const BookForm = ({ width, handleClose, dates }) => {
 				headers: {
 					'Content-Type': 'application/json'
 				},
-				body: JSON.stringify(data)
+				body: JSON.stringify(formData)
 			})
 
 			const responsejson = await respsonse.json()
@@ -131,7 +131,7 @@ export const BookForm = ({ width, handleClose, dates }) => {
 			}
 		} catch (e) {
 			console.log(e)
-			setResponseBooking('Failed Please try again')
+			setResponseBooking(`Failed Please try again, message: ${e}`)
 
 		}
 
