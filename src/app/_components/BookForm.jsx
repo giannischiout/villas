@@ -110,12 +110,20 @@ export const BookForm = ({ width, handleClose, dates }) => {
 
 		}
 
-		const response = await createBooking(formData);
-		if(response.success) {
-			setResponseBooking(text[locale].thankYou)
-			router.push('/')
-		} else {
-			setResponseBooking(text[locale].failed)
+		try {
+				const response = await createBooking(formData);
+				console.log('response')
+				console.log(response)
+			if(response.success) {
+				setResponseBooking(text[locale].thankYou)
+				router.push('/')
+			} else {
+				setResponseBooking(text[locale].failed)
+			}
+		} catch (e) {
+			console.log(e)
+			setResponseBooking('Failed Please try again')
+		
 		}
 
 	}
