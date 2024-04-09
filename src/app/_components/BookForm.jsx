@@ -11,6 +11,7 @@ import 'react-day-picker/dist/style.css';
 import { useCookies } from 'next-client-cookies';
 import { text } from "@/translations"
 import { useRouter } from "next/navigation";
+import { data } from "autoprefixer";
 
 
 
@@ -113,7 +114,9 @@ export const BookForm = ({ width, handleClose, dates }) => {
 				headers: {
 					'Content-Type': 'application/json'
 				},
-				body: JSON.stringify(formData)
+				body: JSON.stringify({
+					data: formData
+				})
 			})
 			const responsejson = await respsonse.json()
 			if (responsejson.success) {

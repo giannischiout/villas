@@ -17,7 +17,7 @@ const transporter = nodemailer.createTransport({
 
 export async function POST(req, res) {
   const { data } = await req.json();
-
+  console.log(data)
 
   let villa;
   switch (data?.villa) {
