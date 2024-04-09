@@ -126,13 +126,6 @@ export const BookForm = ({ width, handleClose, dates }) => {
 				})
 			})
 			const data = await sendEmail.json()
-			console.log('client')
-			console.log(data.clientInfo)
-			console.log('admin')
-			console.log(data.adminInfo)
-			console.log('booking')
-			console.log(data.booking)
-
 
 			if (data.success) {
 				setResponseBooking(text[locale].thankYou)
