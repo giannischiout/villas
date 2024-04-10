@@ -109,7 +109,7 @@ export const BookForm = ({ width, handleClose, dates }) => {
 		}
 
 		try {
-			const respsonse = await fetch(`/api/sendEmail`, {
+			const respsonse = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/sendEmail`, {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
@@ -127,7 +127,7 @@ export const BookForm = ({ width, handleClose, dates }) => {
 			}
 		} catch (e) {
 			console.log(e)
-			setResponseBooking(`Failed Please try again, message: ${e}`)
+			setResponseBooking(`Failed Please try again, message`)
 
 		}
 
