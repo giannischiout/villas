@@ -11,7 +11,6 @@ import 'react-day-picker/dist/style.css';
 import { useCookies } from 'next-client-cookies';
 import { text } from "@/translations"
 import { useRouter } from "next/navigation";
-import { data } from "autoprefixer";
 
 
 
