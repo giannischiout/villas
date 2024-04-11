@@ -11,10 +11,89 @@ import 'react-day-picker/dist/style.css';
 import { useCookies } from 'next-client-cookies';
 import { text } from "@/translations"
 import { useRouter } from "next/navigation";
+import axios from "axios";
 
 
 
-export const BookForm = ({ width, handleClose, dates }) => {
+async function bookingRqs(data) {
+	try {
+		const resp = await axios.post('https://strapi.3v7i.com/api/booking-rqs', {
+			data: data
+		})
+		return resp.data.data;
+	  } catch {
+		return null;
+	  }
+}
+
+
+async function sendEmail(recipient, data, villa) {
+    const response = {
+        emailCustomer: false,
+        emailHost: false,
+        error: null
+    };
+
+    try {
+        const emailCustomer = await axios.post('https://smtp.3v7i.com/send-email', {
+            sender: "info@ionian-dream-villas.com",
+            recipient: recipient,
+            bcc: ["gkozyris@gmail.com"],
+            subject: "Booking Request Confirmation",
+            message: `
+                Dear ${data.Name},
+                We received your booking request with the following details:
+                Name: ${data.Name}
+                Email: ${data.email}
+                Phone Number: ${data.contactPhone}
+                Villa: ${villa}
+                Period: ${data.arrivalDate} - ${data.departureDate}
+                Special Request: ${data.specialRequest}
+                We will contact you shortly.
+            `
+        });
+
+      
+
+        if (emailCustomer.data && emailCustomer.data.success) {
+            response.emailCustomer = true;
+        }
+    } catch (e) {
+        console.error('Error sending email to customer:', e);
+        response.error = e.message;
+    }
+
+    try {
+        const emailHost = await axios.post('https://smtp.3v7i.com/send-email', {
+            sender: "info@ionian-dream-villas.com",
+            recipient: "info@ionian-dream-villas.com",
+            bcc: ["gkozyris@gmail.com"],
+            subject: "New Booking Request",
+            message: `
+                New booking request received with the following details:
+                Name: ${data.Name}
+                Email: ${data.email}
+                Phone Number: ${data.contactPhone}
+                Villa: ${villa}
+                Period: ${data.arrivalDate} - ${data.departureDate}
+                Special Request: ${data.specialRequest}
+            `
+        });
+
+       
+
+        if (emailHost.data && emailHost.data.success) {
+            response.emailHost = true;
+        }
+    } catch (e) {
+        console.error('Error sending email to host:', e);
+        response.error = e.message;
+    }
+
+    return response;
+}
+
+export const BookForm = ({ dates }) => {
 	const cookies = useCookies();
 	const router = useRouter();
 	const locale = cookies.get('locale') || 'locale=en';
@@ -94,7 +173,11 @@ export const BookForm = ({ width, handleClose, dates }) => {
 		if (!selected.arrival || !selected.departure || !input.name || !input.email || !input.phone || !input.villa.id) {
 			setResponseBooking(text[locale].allFields)
 			return;
+
+
 		}
+
+		
 		let formData = {
 			Name: input.name,
 			email: input.email,
@@ -107,29 +190,13 @@ export const BookForm = ({ width, handleClose, dates }) => {
 
 		}
 
-		try {
-			const respsonse = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/sendEmail`, {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify({
-					data: formData
-				})
-			})
-			const responsejson = await respsonse.json()
-			if (responsejson.success) {
-				setResponseBooking(text[locale].thankYou)
-				router.push('/')
-			} else {
-				setResponseBooking(text[locale].failed)
-			}
-		} catch (e) {
-			console.log(e)
-			setResponseBooking(`Failed Please try again, message`)
-
+		const strapiBooking = await bookingRqs(formData);
+		const emailResponse = await  sendEmail(input.email, formData, input.villa.name)
+		if(emailResponse.emailCustomer && emailResponse.emailHost) {
+			setResponseBooking(text[locale].thankYou)
+		} else {
+			setResponseBooking(text[locale].failed)
 		}
-
 	}
 
 	return (
