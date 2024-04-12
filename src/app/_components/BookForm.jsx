@@ -191,6 +191,7 @@ export const BookForm = ({ dates }) => {
 		}
 
 		const strapiBooking = await bookingRqs(formData);
+		console.log(strapiBooking)
 		const emailResponse = await  sendEmail(input.email, formData, input.villa.name)
 		if(emailResponse.emailCustomer && emailResponse.emailHost) {
 			setResponseBooking(text[locale].thankYou)
