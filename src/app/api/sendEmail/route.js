@@ -17,7 +17,7 @@ const transporter = nodemailer.createTransport({
 
 export async function POST(req, res) {
   const { data } = await req.json();
-
+  console.log(data)
 
   let villa;
   switch (data?.villa) {
@@ -92,10 +92,37 @@ const adminMailOptions = {
   });
  
   const [clientInfo, adminInfo] = await Promise.all([sendEmailPromise, sendAdminPromise]);
-  console.log(clientInfo, adminInfo)
+
+  
+  async function bookingRqs(data) {
+    try {
+      const resp = await fetch('https://strapi.3v7i.com/api/booking-rqs', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          data: data
+        })
+      })
+      let response = await resp.json()
+      console.log(response)
+      return response;
+    } catch {
+      return null;
+    }
+
+  }
+
+  const booking = await bookingRqs(data);
+  console.log('booking')
+  console.log(booking)
 
   return Response.json({
     status: 200,
-    success: true
+    success: true,
+    clientInfo: clientInfo,
+    adminInfo: adminInfo,
+    // booking: booking
    })
 }
