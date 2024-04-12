@@ -17,9 +17,13 @@ import axios from "axios";
 
 async function bookingRqs(data) {
 	try {
-		const resp = await axios.post('https://strapi.3v7i.com/api/booking-rqs', {
-			data: data
-		})
+		const resp = await axios.post('https://strapi.3v7i.com/api/booking-rqs', {data: data}, {
+			headers: {
+				'Access-Control-Allow-Origin': '*', // This allows requests from any origin
+				'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS', // These are the allowed HTTP methods
+				'Access-Control-Allow-Headers': 'Content-Type', // These are the allowed headers in the request
+				'Content-Type': 'application/json', 
+			}})
 		return resp.data.data;
 	  } catch {
 		return null;
